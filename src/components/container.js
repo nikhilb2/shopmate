@@ -31,17 +31,26 @@ const styles = {
     width: '50%',
     fontSize: '2rem'
 
+  },
+  button: {
+    position:'absolute',
+    color: 'white',
+    margin:'9rem',
+    marginTop: '28rem',
+    width: '50%',
+    fontSize: '2rem'
+
   }
 };
 
 const  SimpleContainer = (props) => {
-  const { image, text, caption, classes } = props
+  const { image, text, caption, classes, buttonText } = props
   return (
     <div>
       <div className={classes.imageContainer} style={{backgroundImage:`url(${image})`}}>
         <Typography className={classes.heading} variant="h2">{text}</Typography>
         <Typography className={classes.caption} variant="body1">{caption}</Typography>
-        <ButtonComp />
+        <div className={classes.button}><ButtonComp text={buttonText}/></div>
       </div>
 
     </div>

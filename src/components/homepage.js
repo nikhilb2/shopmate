@@ -8,7 +8,7 @@ class Homepage extends Component {
     return (
       <div>
         <NavigationBar />
-        <SimpleContainer image='static/banner.png' text={text} caption={caption}/>
+        <SimpleContainer image='static/banner.png' text={text} caption={caption} buttonText='View All'/>
       </div>
     )
   }

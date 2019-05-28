@@ -5,23 +5,24 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = {
   button:{
-    padding: '1rem',
+    padding: '.7rem',
     paddingLeft:'1.5rem',
     paddingRight:'1.5rem',
     backgroundColor:'#FFFFFF',
     color:'#F62F5E',
     borderRadius:'2.5rem',
-    width:'10rem'
+    width:'13rem'
   },
   text: {
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize:'1.5rem'
   }
 }
 const ButtonComp = (props) => {
-  const { classes } = props
+  const { classes, text } = props
   return (
     <div className={classes.button}>
-           <Typography className={classes.text}>View All</Typography>
+           <Typography className={classes.text}>{text}</Typography>
     </div>
   )
 }
