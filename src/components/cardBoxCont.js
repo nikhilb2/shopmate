@@ -33,7 +33,7 @@ const CBContainer = props => {
       style={{
         backgroundImage: "url('static/men.png')",
         backgroundSize: 'cover',
-        marginTop:0 
+        marginTop:0
       }}
       title="MEN"
       color="white"
