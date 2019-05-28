@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavigationBar from './navBar'
 import NavBarMobile from './navBarMobile'
+import SaleBox from './saleBox'
 import Hidden from '@material-ui/core/Hidden';
 import SimpleContainer from './container'
 import SimpleContainerMobile from './containerMobile'
@@ -11,7 +12,7 @@ const captionMobile = "Even this white with red"
 class Homepage extends Component {
   render() {
     return (
-      <div>
+      <div style={{backgroundColor:'#F7F7F7'}}>
       <Hidden only={['sm','xs']}>
         <NavigationBar />
       </Hidden>
@@ -20,6 +21,7 @@ class Homepage extends Component {
       </Hidden>
       <Hidden only={['xs']}>
         <SimpleContainer image='static/banner.png' text={text} caption={caption} buttonText='View All'/>
+        <SaleBox />
       </Hidden>
       <Hidden only={['xl','sm','md','lg']}>
         <SimpleContainerMobile image='static/sale.png' text={textMobile} caption={captionMobile} buttonText='Check Twice'/>
