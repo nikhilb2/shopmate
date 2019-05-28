@@ -20,7 +20,7 @@ class Homepage extends Component {
       <Hidden only={['xs']}>
         <SimpleContainer image='static/banner.png' text={text} caption={caption} buttonText='View All'/>
       </Hidden>
-      <Hidden only={['xl','sm','md']}>
+      <Hidden only={['xl','sm','md','lg']}>
         <SimpleContainer image='static/sale.png' text={textMobile} caption={captionMobile} buttonText='View All'/>
       </Hidden>
       </div>
