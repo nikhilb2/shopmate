@@ -1,24 +1,29 @@
 import React from 'react';
 import Fab from '@material-ui/core/Fab';
 import { withStyles } from '@material-ui/styles';
+import Typography from '@material-ui/core/Typography';
 
 const styles = {
-  margin:{
-    margin: 'auto'
+  button:{
+    padding: '1rem',
+    paddingLeft:'1.5rem',
+    paddingRight:'1.5rem',
+    backgroundColor:'#FFFFFF',
+    color:'#F62F5E',
+    borderRadius:'2.5rem',
+    width:'10rem'
+  },
+  text: {
+    textAlign: 'center'
   }
 }
 const ButtonComp = (props) => {
+  const { classes } = props
   return (
-    <Fab
-          variant="extended"
-          size="medium"
-          color="primary"
-          aria-label="Add"
-          className={classes.margin}
-        >
-          Extended
-    </Fab>
+    <div className={classes.button}>
+           <Typography className={classes.text}>View All</Typography>
+    </div>
   )
 }
 
-export default ButtonComp
+export default withStyles(styles)(ButtonComp)

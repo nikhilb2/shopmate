@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
+import ButtonComp from './button'
 
 const styles = {
   root: {
@@ -40,6 +41,7 @@ const  SimpleContainer = (props) => {
       <div className={classes.imageContainer} style={{backgroundImage:`url(${image})`}}>
         <Typography className={classes.heading} variant="h2">{text}</Typography>
         <Typography className={classes.caption} variant="body1">{caption}</Typography>
+        <ButtonComp />
       </div>
 
     </div>
