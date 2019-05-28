@@ -4,12 +4,21 @@ import { withStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 
 const styles = {
-  button:{
+  buttonPrimary:{
     padding: '.7rem',
     paddingLeft:'1.5rem',
     paddingRight:'1.5rem',
     backgroundColor:'#FFFFFF',
     color:'#F62F5E',
+    borderRadius:'2.5rem',
+    width:'13rem'
+  },
+  buttonSecondary:{
+    padding: '.7rem',
+    paddingLeft:'1.5rem',
+    paddingRight:'1.5rem',
+    backgroundColor:'#F62F5E',
+    color:'#FFFFFF',
     borderRadius:'2.5rem',
     width:'13rem'
   },
@@ -19,10 +28,18 @@ const styles = {
   }
 }
 const ButtonComp = (props) => {
-  const { classes, text } = props
+  const { classes, text, button } = props
   return (
-    <div className={classes.button}>
+    <div>
+      { button === 1
+        ? <div className={classes.buttonSecondary}>
+             <Typography className={classes.text}>{text}</Typography>
+          </div>
+        : <div className={classes.buttonPrimary}>
            <Typography className={classes.text}>{text}</Typography>
+          </div>
+      }
+
     </div>
   )
 }

@@ -29,27 +29,23 @@ class SaleBox extends Component {
            <img className={classes.img} alt="complex" src="static/sumka.png" />
          </ButtonBase>
        </Grid>
-       <Grid item xs={12} sm container>
+       <Grid item xs={12} md container style={{marginTop:'auto', marginBottom:'auto'}}>
          <Grid item xs container direction="column" spacing={2}>
            <Grid item xs>
-             <Typography gutterBottom variant="subtitle1">
-               Standard license
+             <Typography gutterBottom variant="subtitle1" style={{margin:'2rem'}}>
+               Vera Bradley
              </Typography>
-             <Typography variant="body2" gutterBottom>
+             <Typography variant="body2" gutterBottom style={{marginLeft:'2rem'}}>
+               Full resolution 1920x1080 • JPEG
+               Full resolution 1920x1080 • JPEG
+               Full resolution 1920x1080 • JPEG
+               Full resolution 1920x1080 • JPEG
                Full resolution 1920x1080 • JPEG
              </Typography>
-             <Typography variant="body2" color="textSecondary">
+             <Typography variant="body2" color="textSecondary" style={{marginLeft:'2rem'}}>
                ID: 1030114
              </Typography>
            </Grid>
-           <Grid item>
-             <Typography variant="body2" style={{ cursor: 'pointer' }}>
-               Remove
-             </Typography>
-           </Grid>
-         </Grid>
-         <Grid item>
-           <Typography variant="subtitle1">$19.00</Typography>
          </Grid>
        </Grid>
      </Grid>
