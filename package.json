@@ -15,6 +15,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --single-quote --no-semi --write \"src/**/*.js\""
+  },
+  "devDependencies": {
+    "prettier": "1.17.1"
   }
 }
