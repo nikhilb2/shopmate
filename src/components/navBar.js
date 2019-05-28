@@ -40,13 +40,11 @@ const useStyles = makeStyles(theme => ({
 
 const MenuAppBar = (props) => {
   const classes = useStyles();
-  
+
   return (
     <div className={classes.root}>
       <AppBar position="static" elevation={0}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
-          </IconButton>
             <img src='static/SHOPMATE.svg' alt='shopmate' />
             <div className={classes.menu}>
               <Typography variant="subtitle1" display="block" gutterBottom className={classes.title}>
