@@ -29,6 +29,11 @@ const useStyles = makeStyles(theme => ({
     width:'50%',
     marginRight: 'auto',
     marginLeft: 'auto',
+  },
+  navRightButtons: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginRight:'1rem'
   }
 }));
 
@@ -59,51 +64,26 @@ function MenuAppBar() {
           </IconButton>
             <img src='static/SHOPMATE.svg' alt='shopmate' />
             <div className={classes.menu}>
-              <Typography variant="overline" display="block" gutterBottom className={classes.title}>
+              <Typography variant="subtitle1" display="block" gutterBottom className={classes.title}>
                 Women
               </Typography>
-              <Typography variant="overline" display="block" gutterBottom className={classes.title}>
+              <Typography variant="subtitle1" display="block" gutterBottom className={classes.title}>
                 Men
               </Typography>
-              <Typography variant="overline" display="block" gutterBottom className={classes.title}>
+              <Typography variant="subtitle1" display="block" gutterBottom className={classes.title}>
                 Kids
               </Typography>
-              <Typography variant="overline" display="block" gutterBottom className={classes.title}>
+              <Typography variant="subtitle1" display="block" gutterBottom className={classes.title}>
                 Shoes
               </Typography>
-              <Typography variant="overline" display="block" gutterBottom className={classes.title}>
+              <Typography variant="subtitle1" display="block" gutterBottom className={classes.title}>
                 Brands
               </Typography>
             </div>
-          {auth && (
-            <div>
-              <IconButton
-                aria-owns={open ? 'menu-appbar' : undefined}
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
+            <div className={classes.navRightButtons}>
+              <div style={{marginLeft:'2rem'}}><img src='static/search.svg' alt='search' /></div>
+              <div style={{marginLeft:'2rem'}}><img src='static/bag.svg' alt='bag' /></div>
             </div>
-          )}
         </Toolbar>
       </AppBar>
     </div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/bag/black</title>
+    <desc>Created with Sketch.</desc>
+    <g id="sample-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/bag/black" transform="translate(-1.000000, -1.000000)">
+            <rect id="bounds" x="0" y="0" width="20" height="20"></rect>
+            <path d="M3.96475885,8 C3.41443235,8 2.92175355,8.44259056 2.8636101,8.99539757 L2.0212135,17.0046024 C1.96339234,17.5543453 2.36554654,18 2.91509367,18 L17.0761576,18 C17.6276552,18 18.0320933,17.5443356 17.9815876,17.0046024 L17.2321232,8.99539757 C17.1806808,8.44565467 16.6993393,8 16.1425242,8 L3.96475885,8 Z" id="Path" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M6,9.98587388 L6.0150561,6.00941836 C6.02342022,3.80037684 7.81877921,2.00712961 10.0384492,2.00407018 L9.99175144,2.00413454 C12.205446,2.00108334 14,3.79641309 14,6.00406188 L14,10.0095139" id="Path" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>
