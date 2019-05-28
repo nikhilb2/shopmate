@@ -13,7 +13,7 @@ const styles = {
     justifyContent: 'center'
   },
   title: {
-    fontSize: '2rem'
+    fontSize: '2.5rem'
   }
 }
 

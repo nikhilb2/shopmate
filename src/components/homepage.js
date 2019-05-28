@@ -3,6 +3,7 @@ import NavigationBar from './navBar'
 import NavBarMobile from './navBarMobile'
 import SaleBox from './saleBox'
 import MiniBox from './miniBox'
+import RegisterCard from './registerCard'
 import Hidden from '@material-ui/core/Hidden'
 import SimpleContainer from './container'
 import SimpleContainerMobile from './containerMobile'
@@ -38,10 +39,13 @@ class Homepage extends Component {
           />
           <MiniBox
             style={{
-              backgroundImage: "url('static/banner.png')",
+              backgroundImage: "url('static/men.png')",
               backgroundSize: 'cover'
             }}
+            title="MEN"
+            color="white"
           />
+          <RegisterCard />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']}>
           <SimpleContainerMobile
