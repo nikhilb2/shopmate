@@ -10,7 +10,8 @@
     "next": "latest",
     "prop-types": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-window-size": "^1.2.2"
   },
   "scripts": {
     "dev": "next",

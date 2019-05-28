@@ -1,11 +1,17 @@
-import React from 'react';
-import NavigationBar from 'navBar.js'
-const Homepage = () => {
-  return (
-    <div>
-      <NavigationBar />
-    </div>
-  )
+import React, { Component } from 'react';
+import NavigationBar from './navBar'
+import windowSize from 'react-window-size';
+
+class Homepage extends Component {
+  render() {
+    const { windowWidth, windowHeight } = this.props
+    return (
+      <div>
+        <NavigationBar />
+      </div>
+    )
+  }
+
 }
 
-export default Homepage
+export default windowSize(Homepage)

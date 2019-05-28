@@ -1,5 +1,5 @@
 import React from 'react';
-import Homepage from '../src/components/navBar'
+import Homepage from '../src/components/homepage'
 
 export default function Index() {
   return (
