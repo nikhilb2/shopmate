@@ -26,31 +26,20 @@ const useStyles = makeStyles(theme => ({
 
 function NavBarMobile() {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  function handleChange(event) {
-    setAuth(event.target.checked);
-  }
-
-  function handleMenu(event) {
-    setAnchorEl(event.currentTarget);
-  }
-
-  function handleClose() {
-    setAnchorEl(null);
-  }
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{justifyContent: 'space-between'}}>
+        <div>
           <img src='static/back.svg' alt='back' />
+        </div>
+        <div style={{marginLeft:'2rem'}}>
           <img src='static/SHOPMATE.svg' alt='shopmate' />
+        </div>
             <div>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
-                <MenuIcon />
+                <MenuIcon color='secondary'/>
               </IconButton>
             </div>
         </Toolbar>
