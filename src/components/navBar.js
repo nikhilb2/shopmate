@@ -12,6 +12,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -37,30 +38,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function MenuAppBar() {
+const MenuAppBar = (props) => {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  function handleChange(event) {
-    setAuth(event.target.checked);
-  }
-
-  function handleMenu(event) {
-    setAnchorEl(event.currentTarget);
-  }
-
-  function handleClose() {
-    setAnchorEl(null);
-  }
-
+  
   return (
     <div className={classes.root}>
       <AppBar position="static" elevation={0}>
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Menu">
-            <MenuIcon />
           </IconButton>
             <img src='static/SHOPMATE.svg' alt='shopmate' />
             <div className={classes.menu}>
