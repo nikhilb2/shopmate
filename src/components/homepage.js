@@ -7,6 +7,8 @@ import RegisterCard from './registerCard'
 import Hidden from '@material-ui/core/Hidden'
 import SimpleContainer from './container'
 import SimpleContainerMobile from './containerMobile'
+import CBContainer from './cardBoxCont'
+
 const text = 'Background and development'
 const textMobile = 'All Shoes'
 const caption =
@@ -30,22 +32,7 @@ class Homepage extends Component {
             buttonText="View All"
           />
           <SaleBox />
-          <MiniBox
-            style={{ backgroundColor: '#84E6F1' }}
-            color="black"
-            colorCaption="#F62F5E"
-            title="WOW"
-            caption="Check WHAT!"
-          />
-          <MiniBox
-            style={{
-              backgroundImage: "url('static/men.png')",
-              backgroundSize: 'cover'
-            }}
-            title="MEN"
-            color="white"
-          />
-          <RegisterCard />
+          <CBContainer />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']}>
           <SimpleContainerMobile
