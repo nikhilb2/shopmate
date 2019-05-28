@@ -15,7 +15,7 @@ const styles = {
   },
   text: {
     textAlign: 'center',
-    fontSize:'1.5rem'
+    fontSize:'1.2rem'
   }
 }
 const ButtonComp = (props) => {

@@ -17,33 +17,30 @@ const styles = {
   heading: {
     position:'absolute',
     color: 'white',
-    margin:'9rem',
-    marginTop: '5.5rem',
-    width: '50%',
-    lineHeight: '6rem',
-    wordSpacing: '6rem'
+    marginTop:'9rem',
+    marginLeft: '2rem',
+    width: '100%'
   },
   caption: {
     position:'absolute',
     color: 'white',
-    margin:'9rem',
-    marginTop: '19.5rem',
-    width: '50%',
-    fontSize: '2rem'
+    marginTop:'13rem',
+    marginLeft: '2rem',
+    width: '100%'
 
   },
   button: {
     position:'absolute',
     color: 'white',
-    margin:'9rem',
+    margin:'2rem',
     marginTop: '28rem',
-    width: '50%',
-    fontSize: '2rem'
+    fontSize: '2rem',
+    left:0
 
   }
 };
 
-const  SimpleContainer = (props) => {
+const  SimpleContainerMobile = (props) => {
   const { image, text, caption, classes, buttonText } = props
   return (
     <div>
@@ -57,4 +54,4 @@ const  SimpleContainer = (props) => {
   );
 }
 
-export default  withStyles(styles)(SimpleContainer);
+export default  withStyles(styles)(SimpleContainerMobile);
