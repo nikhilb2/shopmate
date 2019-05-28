@@ -1,22 +1,24 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
+import { withStyles } from '@material-ui/styles';
+
+const styles = {
+  root: {
+
+  },
+  imageContainer: {
+
+  }
+};
 
 const  SimpleContainer = (props) => {
-  const { image, text } = this.props
+  const { image, text } = props
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="sm">
-        {image
-          ? <img src={img} alt={img} />
-          : null
-        }
-        <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} />
-      </Container>
-    </React.Fragment>
+    <div>
+      <div>
+        <img style={{width:'100%'}} src={image} alt={text} />
+      </div>
+    </div>
   );
 }
 
-export default SimpleContainer;
+export default  withStyles(styles)(SimpleContainer);

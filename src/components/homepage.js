@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import NavigationBar from './navBar'
-import windowSize from 'react-window-size';
-
+import SimpleContainer from './container'
 class Homepage extends Component {
   render() {
-    const { windowWidth, windowHeight } = this.props
     return (
       <div>
         <NavigationBar />
+        <SimpleContainer image='static/banner.png' text="text" />
       </div>
     )
   }
 
 }
 
-export default windowSize(Homepage)
+export default Homepage
