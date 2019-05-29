@@ -33,9 +33,9 @@ const MenBanner = props => {
       <Typography className={classes.heading} variant="h4">
         {text}
       </Typography>
-      <div style={{position:'absolute', marginTop:'3.2rem',marginLeft:'2rem', height:'250px',display:'flex', flexDirection:'column', flexWrap:'wrap'}}>
+      <div style={{position:'absolute', marginTop:'6rem',marginLeft:'2rem', height:'150px',display:'flex', flexDirection:'column', flexWrap:'wrap'}}>
       {categories && categories.rows.map(row=>(
-        <Typography style={{margin:'1rem', color:'white' }}>{row.name}</Typography>
+        <Typography style={{margin:'0.3rem',marginRight:'5rem', color:'white' }}>{row.name}</Typography>
       ))}
       </div>
       </div>
