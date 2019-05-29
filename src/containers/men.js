@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import NavigationBar from '../components/navBar'
+import NavBarMen from '../components/navBarMen'
 import NavBarMobile from '../components/navBarMobile'
 import SaleBox from '../components/saleBox'
 import MiniBox from '../components/miniBox'
@@ -21,6 +22,7 @@ class MensPage extends Component {
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']}>
+          <NavBarMen />
           <NavigationBar bgcolor="#323232" color="white" searchBox={true} />
         </Hidden>
         <Hidden only={['lg', 'md']}>
