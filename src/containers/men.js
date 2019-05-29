@@ -29,10 +29,16 @@ class MensPage extends Component {
     .then(result => {
       this.setState({ categories: result})
     })
+    fetch(decoratedUrl('products'))
+    .then(response => response.json())
+    .then(result => {
+      this.setState({ products: result})
+    })
 
   }
   render() {
-    const { categories } = this.state
+    const { categories, products } = this.state
+    console.log(products);
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']}>
