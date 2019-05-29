@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
-import NavigationBar from './navBar'
-import NavBarMobile from './navBarMobile'
-import SaleBox from './saleBox'
-import MiniBox from './miniBox'
-import RegisterCard from './registerCard'
+import NavigationBar from '../components/navBar'
+import NavBarMobile from '../components/navBarMobile'
+import SaleBox from '../components/saleBox'
+import MiniBox from '../components/miniBox'
+import RegisterCard from '../components/registerCard'
 import Hidden from '@material-ui/core/Hidden'
-import SimpleContainer from './container'
-import SimpleContainerMobile from './containerMobile'
+import Banner from '../components/banner'
+import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
+import Subscribe from '../components/subscribe'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -25,7 +26,7 @@ class Homepage extends Component {
           <NavBarMobile />
         </Hidden>
         <Hidden only={['xs']}>
-          <SimpleContainer
+          <Banner
             image="static/banner.png"
             text={text}
             caption={caption}
@@ -33,9 +34,10 @@ class Homepage extends Component {
           />
           <SaleBox />
           <CBContainer />
+          <Subscribe />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']}>
-          <SimpleContainerMobile
+          <BannerMobile
             image="static/sale.png"
             text={textMobile}
             caption={captionMobile}

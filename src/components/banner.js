@@ -39,7 +39,7 @@ const styles = {
   }
 }
 
-const SimpleContainer = props => {
+const Banner = props => {
   const { image, text, caption, classes, buttonText } = props
   return (
     <div>
@@ -61,4 +61,4 @@ const SimpleContainer = props => {
   )
 }
 
-export default withStyles(styles)(SimpleContainer)
+export default withStyles(styles)(Banner)

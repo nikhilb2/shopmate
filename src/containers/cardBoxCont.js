@@ -1,7 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/styles'
-import MiniBox from './miniBox'
-import RegisterCard from './registerCard'
+import MiniBox from '../components/miniBox'
+import RegisterCard from '../components/registerCard'
 
 
 const styles = {
