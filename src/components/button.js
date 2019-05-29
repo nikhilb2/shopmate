@@ -11,7 +11,7 @@ const styles = {
     paddingRight: '1.5rem',
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.secondary.main,
-    borderRadius: '2.5rem',
+    borderRadius: '2.5rem'
   },
   buttonSecondary: {
     padding: '.7rem',
@@ -19,7 +19,7 @@ const styles = {
     paddingRight: '1.5rem',
     backgroundColor: theme.palette.secondary.main,
     color: theme.palette.primary.main,
-    borderRadius: '2.5rem',
+    borderRadius: '2.5rem'
   },
   text: {
     textAlign: 'center',
@@ -31,12 +31,34 @@ const ButtonComp = props => {
   return (
     <div>
       {button === 1 ? (
-        <div className={classes.buttonSecondary} style={{width: width ? width : '13rem', padding: padding ? padding : '0.7rem'}}>
-          <Typography className={classes.text} style={{fontSize: fontSize ? fontSize : '1.2rem'}}>{text}</Typography>
+        <div
+          className={classes.buttonSecondary}
+          style={{
+            width: width ? width : '13rem',
+            padding: padding ? padding : '0.7rem'
+          }}
+        >
+          <Typography
+            className={classes.text}
+            style={{ fontSize: fontSize ? fontSize : '1.2rem' }}
+          >
+            {text}
+          </Typography>
         </div>
       ) : (
-        <div className={classes.buttonPrimary} style={{width: width ? width : '13rem', padding: padding ? padding : '0.7rem'}}>
-          <Typography className={classes.text} style={{fontSize: fontSize ? fontSize : '1.2rem'}}>{text}</Typography>
+        <div
+          className={classes.buttonPrimary}
+          style={{
+            width: width ? width : '13rem',
+            padding: padding ? padding : '0.7rem'
+          }}
+        >
+          <Typography
+            className={classes.text}
+            style={{ fontSize: fontSize ? fontSize : '1.2rem' }}
+          >
+            {text}
+          </Typography>
         </div>
       )}
     </div>

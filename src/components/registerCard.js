@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     marginTop: 0
   },
   media: {
-    width:620,
+    width: 620,
     height: 408
   },
   textArea: {
@@ -27,10 +27,10 @@ const useStyles = makeStyles({
     marginBottom: '1rem'
   },
   pop: {
-    width:'3.3rem',
-    backgroundColor:'#FE5C07',
+    width: '3.3rem',
+    backgroundColor: '#FE5C07',
     position: 'absolute',
-    margin:'2rem'
+    margin: '2rem'
   }
 })
 
@@ -39,11 +39,11 @@ function RegisterCard() {
 
   return (
     <Card className={classes.card}>
-    <div className={classes.pop}>
-      <Typography style={{textAlign:'center', color:'white'}}>
-        POP
-      </Typography>
-    </div>
+      <div className={classes.pop}>
+        <Typography style={{ textAlign: 'center', color: 'white' }}>
+          POP
+        </Typography>
+      </div>
       <CardMedia
         className={classes.media}
         image="static/game.png"
