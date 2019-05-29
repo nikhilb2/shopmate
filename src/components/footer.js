@@ -34,14 +34,14 @@ function Footer() {
         <Typography>Returns</Typography>
       </div>
       <div className={classes.content}>
-        <Typography className={classes.title}>Text</Typography>
+        <Typography className={classes.title}>WHAT'S IN STORE</Typography>
         <Typography>Women</Typography>
         <Typography>Men</Typography>
         <Typography>Product A-Z</Typography>
         <Typography>Buy Gift Vouchers</Typography>
       </div>
       <div className={classes.content}>
-        <Typography className={classes.title}>Follow Us</Typography>
+        <Typography className={classes.title}>FOLLOW US</Typography>
         <Typography>Facebook</Typography>
         <Typography>Twitter</Typography>
         <Typography>YouTube</Typography>
