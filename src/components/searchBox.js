@@ -13,16 +13,17 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    backgroundColor:'gray',
-    borderRadius: 40,
+    backgroundColor: 'gray',
+    borderRadius: 40
   },
   margin: {
     [`& fieldset`]: {
-      borderRadius: 40,
+      borderRadius: 40
     },
     [`& input`]: {
       padding: '.5rem',
-      color:'white'  }
+      color: 'white'
+    }
   }
 }))
 
@@ -34,13 +35,13 @@ function Subscribe() {
       <ThemeProvider theme={theme}>
         <TextField
           className={classes.margin}
-          color='primary'
+          color="primary"
           placeholder="Search"
           variant="outlined"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <Search color='primary'/>
+                <Search color="primary" />
               </InputAdornment>
             )
           }}

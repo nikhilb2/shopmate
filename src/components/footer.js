@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: '4rem'
   },
   title: {
-    fontWeight:'bold',
+    fontWeight: 'bold',
     marginBottom: '1rem'
   }
 }))
