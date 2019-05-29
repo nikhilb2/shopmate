@@ -14,7 +14,13 @@ const styles = {
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center center',
     backgroundSize: 'cover'
-  }
+  },
+  heading: {
+    position: 'absolute',
+    margin: '4rem',
+    marginTop: '3rem',
+    width: '50%'
+  },
 }
 
 const MenBanner = props => {
@@ -25,6 +31,9 @@ const MenBanner = props => {
         className={classes.imageContainer}
         style={{ backgroundImage: `url(${image})` }}
       >
+      <Typography className={classes.heading} variant="h4">
+        {text}
+      </Typography>
       </div>
     </div>
   )

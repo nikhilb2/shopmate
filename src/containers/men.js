@@ -22,7 +22,7 @@ class MensPage extends Component {
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']}>
-          <NavBarMen />
+          <NavBarMen/>
           <NavigationBar bgcolor="#323232" color="white" searchBox={true} />
         </Hidden>
         <Hidden only={['lg', 'md']}>
@@ -31,6 +31,7 @@ class MensPage extends Component {
         <Hidden only={['xs']}>
           <MenBanner
             image="static/menban.png"
+             text='Mens wear'
           />
           <SaleBox />
           <CBContainer />
