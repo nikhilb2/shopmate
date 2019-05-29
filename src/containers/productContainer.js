@@ -40,9 +40,13 @@ const ProductContainer = props => {
         >
           {products &&
             products.rows.map((item, i) => (
-              <div style={{ display: 'flex'  }}>
+              <div style={{ display: 'flex' }}>
                 {i < 6 ? (
-                  <ItemCard style={{marginRight:'2rem', marginBottom:'2rem'}} title={item.name} image={item.thumbnail} />
+                  <ItemCard
+                    style={{ marginRight: '2rem', marginBottom: '2rem' }}
+                    title={item.name}
+                    image={item.thumbnail}
+                  />
                 ) : null}
               </div>
             ))}
@@ -57,7 +61,7 @@ const ProductContainer = props => {
       >
         {products &&
           products.rows.map((item, i) => (
-            <div style={{ display: 'flex' }}>
+            <div style={{ display: 'flex', marginBottom: '-5rem' }}>
               {i > 6 && i < 10 ? (
                 <ItemCard box={1} title={item.name} image={item.thumbnail} />
               ) : null}

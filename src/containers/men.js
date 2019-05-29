@@ -16,16 +16,25 @@ import ItemCard from '../components/itemCard'
 import FilterBox from '../components/filterBox'
 import { decoratedUrl } from '../utils/request'
 import request from '../utils/request'
+import { withStyles } from '@material-ui/styles'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
 const caption =
   'Convergent the dictates of the costumer: background and development'
 const captionMobile = 'Even this white with red'
+const styles = {
+  brandBanner: {
+    backgroundColor: '#1D1E1F',
+    paddingTop: '5rem',
+    height: '30rem'
+  }
+}
 class MensPage extends Component {
   state = {
     categories: null
   }
+
   componentDidMount() {
     fetch(decoratedUrl('categories'))
       .then(response => response.json())
@@ -40,6 +49,7 @@ class MensPage extends Component {
   }
   render() {
     const { categories, products } = this.state
+    const { classes } = this.props
     console.log(products)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
@@ -59,6 +69,9 @@ class MensPage extends Component {
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <ProductContainer products={products} />
           </div>
+          <div className={classes.brandBanner}>
+            <MenBanner image="static/brand.png" />
+          </div>
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']}>
           <BannerMobile
@@ -73,4 +86,4 @@ class MensPage extends Component {
   }
 }
 
-export default MensPage
+export default withStyles(styles)(MensPage)

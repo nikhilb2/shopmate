@@ -15,6 +15,16 @@ const styles = {
     backgroundPosition: 'center center',
     backgroundSize: 'cover'
   },
+  imageContainer2: {
+    maxWidth: '940px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    margin: '2rem',
+    height: '336px',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+    backgroundSize: 'cover'
+  },
   heading: {
     position: 'absolute',
     margin: '3rem',
@@ -24,10 +34,18 @@ const styles = {
 }
 
 const MenBanner = props => {
-  const { image, text, caption, classes, buttonText, categories } = props
+  const {
+    image,
+    text,
+    caption,
+    classes,
+    buttonText,
+    categories,
+    banner
+  } = props
   return (
     <div
-      className={classes.imageContainer}
+      className={banner ? classes.imageContainer2 : classes.imageContainer}
       style={{ backgroundImage: `url(${image})` }}
     >
       <Typography className={classes.heading} variant="h4">
