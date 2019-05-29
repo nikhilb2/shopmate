@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 import TextField from '@material-ui/core/TextField';
 import InputAdornment from '@material-ui/core/InputAdornment';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 
+import ButtonComp from './button'
 import theme from '../theme'
 
 
@@ -14,15 +14,19 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
+    justifyContent: 'center'
 
   },
   margin: {
     margin: theme.spacing(1),
-        width: '30%',
     [`& fieldset`]: {
       borderRadius: 40,
 },
+    [`& input`]: {
+      padding: '.5rem',
+},
   },
+
 }));
 
 
@@ -36,7 +40,6 @@ function Subscribe() {
           className={classes.margin}
           placeholder='Your e-mail here'
           variant="outlined"
-          id="mui-theme-provider-outlined-input"
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
@@ -44,8 +47,10 @@ function Subscribe() {
               </InputAdornment>
             ),
           }}
-
         />
+        <div style={{margin: theme.spacing(1)}}>
+          <ButtonComp fontSize='.8rem' width='7rem' padding='0.5rem' text='Subscribe' button={1} />
+        </div>
       </ThemeProvider>
     </div>
   );

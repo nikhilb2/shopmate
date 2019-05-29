@@ -8,7 +8,7 @@ import Hidden from '@material-ui/core/Hidden'
 import Banner from '../components/banner'
 import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
-import Subscribe from '../components/subscribe'
+import SubsContainer from './subscriptionContainer'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -34,7 +34,7 @@ class Homepage extends Component {
           />
           <SaleBox />
           <CBContainer />
-          <Subscribe />
+          <SubsContainer />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']}>
           <BannerMobile
