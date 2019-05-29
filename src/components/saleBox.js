@@ -53,7 +53,7 @@ class SaleBox extends Component {
                 <Typography
                   variant="body2"
                   gutterBottom
-                  style={{ marginLeft: '2rem', fontSize: '1rem', width: '90%' }}
+                  style={{ margin: '2rem', fontSize: '1rem', width: '90%' }}
                 >
                   Carry the day in style with this extra large tote crafted in
                   our chic B.B. Collection textured PVC. Featuring colorful faux
