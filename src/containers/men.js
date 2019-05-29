@@ -17,7 +17,8 @@ import FilterBox from '../components/filterBox'
 import { decoratedUrl } from '../utils/request'
 import request from '../utils/request'
 import { withStyles } from '@material-ui/styles'
-
+import Typography from '@material-ui/core/Typography'
+import Subscribe from '../components/subscribe'
 const text = 'Background and development'
 const textMobile = 'All Shoes'
 const caption =
@@ -71,6 +72,10 @@ class MensPage extends Component {
           </div>
           <div className={classes.brandBanner}>
             <MenBanner image="static/brand.png" />
+          </div>
+          <div style={{backgroundColor:'#EFEFEF', height:'4rem', width:'100%', display:'flex', justifyContent:'center'}}>
+            <div  style={{marginTop:'auto', marginBottom:'auto', marginRight:'2rem'}}><Typography style={{fontWeight:'bold'}}>SUBSCRIBE FOR SHOP NEWS, UPDATES AND SPECIAL OFFERS</Typography></div>
+            <div  style={{marginTop:'auto', marginBottom:'auto'}}><Subscribe /></div>
           </div>
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']}>
