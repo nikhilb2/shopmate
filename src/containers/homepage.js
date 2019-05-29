@@ -9,6 +9,7 @@ import Banner from '../components/banner'
 import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
 import SubsContainer from './subscriptionContainer'
+import Footer from '../components/footer'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -35,6 +36,7 @@ class Homepage extends Component {
           <SaleBox />
           <CBContainer />
           <SubsContainer />
+          <Footer />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']}>
           <BannerMobile
