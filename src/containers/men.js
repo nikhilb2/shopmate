@@ -55,7 +55,7 @@ class MensPage extends Component {
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']}>
           <NavBarMen />
-          <NavigationBar bgcolor="#323232" color="white" searchBox={true} />
+          <NavigationBar bgcolor="#323232" color="primary" searchBox={true} />
         </Hidden>
         <Hidden only={['lg', 'md']}>
           <NavBarMobile />
