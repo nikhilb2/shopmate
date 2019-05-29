@@ -9,10 +9,13 @@ import Hidden from '@material-ui/core/Hidden'
 import MenBanner from '../components/menBanner'
 import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
+import ProductContainer from './productContainer'
 import SubsContainer from './subscriptionContainer'
 import Footer from '../components/footer'
-import { decoratedUrl }  from '../utils/request'
-import request  from '../utils/request'
+import ItemCard from '../components/itemCard'
+import FilterBox from '../components/filterBox'
+import { decoratedUrl } from '../utils/request'
+import request from '../utils/request'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -25,24 +28,23 @@ class MensPage extends Component {
   }
   componentDidMount() {
     fetch(decoratedUrl('categories'))
-    .then(response => response.json())
-    .then(result => {
-      this.setState({ categories: result})
-    })
+      .then(response => response.json())
+      .then(result => {
+        this.setState({ categories: result })
+      })
     fetch(decoratedUrl('products'))
-    .then(response => response.json())
-    .then(result => {
-      this.setState({ products: result})
-    })
-
+      .then(response => response.json())
+      .then(result => {
+        this.setState({ products: result })
+      })
   }
   render() {
     const { categories, products } = this.state
-    console.log(products);
+    console.log(products)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']}>
-          <NavBarMen/>
+          <NavBarMen />
           <NavigationBar bgcolor="#323232" color="white" searchBox={true} />
         </Hidden>
         <Hidden only={['lg', 'md']}>
@@ -51,13 +53,12 @@ class MensPage extends Component {
         <Hidden only={['xs']}>
           <MenBanner
             image="static/menban.png"
-             text='Categories'
-             categories={categories}
+            text="Categories"
+            categories={categories}
           />
-          <SaleBox />
-          <CBContainer />
-          <SubsContainer />
-          <Footer />
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <ProductContainer products={products} />
+          </div>
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']}>
           <BannerMobile

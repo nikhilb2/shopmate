@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="16px" viewBox="0 0 18 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/heart/red 2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="sample-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/heart/red" transform="translate(-1.000000, -2.000000)">
+            <rect id="bounds" x="0" y="0" width="20" height="20"></rect>
+            <path d="M9.99988792,17 C10.6309395,16.396441 14.2331735,12.9481783 16.4851917,10.7939977 C18.5027967,8.86358955 18.4597466,6.0499786 16.625342,4.30448888 C14.7909499,2.55855669 11.8246925,2.5662103 9.99988792,4.32133879 C8.17524585,2.5662103 5.20900091,2.55855669 3.37459632,4.30448888 C1.54019172,6.0499786 1.49730411,8.86358955 3.51475917,10.7939977 C5.76660231,12.9481783 9.36932384,16.396441 9.99988792,17" id="heart" stroke="#F62F5E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+    </g>
+</svg>

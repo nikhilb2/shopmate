@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: '1rem'
   },
   hiText: {
-    marginRight:'.5rem'
+    marginRight: '.5rem'
   }
 }))
 
@@ -58,10 +58,26 @@ const NavBarMen = props => {
         elevation={0}
       >
         <Toolbar>
-        <Typography style={{display:'flex'}}
-        >
-          <Typography className={classes.hiText}>Hi</Typography><Typography style={{color: theme.palette.secondary.main, marginRight:'.5rem'}}>Sigin in</Typography> or <Typography style={{color: theme.palette.secondary.main, marginLeft:'0.5rem'}}>Register</Typography>
-        </Typography>
+          <Typography style={{ display: 'flex' }}>
+            <Typography className={classes.hiText}>Hi</Typography>
+            <Typography
+              style={{
+                color: theme.palette.secondary.main,
+                marginRight: '.5rem'
+              }}
+            >
+              Sigin in
+            </Typography>{' '}
+            or{' '}
+            <Typography
+              style={{
+                color: theme.palette.secondary.main,
+                marginLeft: '0.5rem'
+              }}
+            >
+              Register
+            </Typography>
+          </Typography>
           <div className={classes.menu}>
             <Typography
               variant="subtitle1"
@@ -88,16 +104,15 @@ const NavBarMen = props => {
               Help & Contact
             </Typography>
 
-            <div style={{display:'flex'}}>
-              <img src='static/gbr.svg' alt='gb' />
-              <Typography style={{marginTop:'5px', margin:'0.5rem'}}>£ GBP</Typography>
+            <div style={{ display: 'flex' }}>
+              <img src="static/gbr.svg" alt="gb" />
+              <Typography style={{ marginTop: '5px', margin: '0.5rem' }}>
+                £ GBP
+              </Typography>
             </div>
-
-            </div>
-            <Work  style={{ margin: '1rem' }} />
-            <Typography>
-              Your Bag: £0
-            </Typography>
+          </div>
+          <Work style={{ margin: '1rem' }} />
+          <Typography>Your Bag: £0</Typography>
         </Toolbar>
       </AppBar>
     </div>

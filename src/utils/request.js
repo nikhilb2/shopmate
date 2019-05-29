@@ -1,10 +1,16 @@
 //import { getJwt } from './auth'
 const url = 'https://backendapi.turing.com/'
+const imageUrl = 'https://backendapi.turing.com/images/products/'
 export let parseJSONResponse = null
 
 export function decoratedUrl(params) {
-  return url+params
+  return url + params
 }
+
+export function decoratedImageUrl(params) {
+  return imageUrl + params
+}
+
 function parseJSON(response) {
   parseJSONResponse = response
   return response.json().catch(ex => {
@@ -25,11 +31,8 @@ function checkStatus(response) {
   throw error
 }
 
-
-
-
 export default async function request(param, options) {
-  const urlTofetch = url+param
+  const urlTofetch = url + param
   const decoratedOptions = Object.assign({}, options)
   decoratedOptions.headers = decoratedOptions.headers || {}
   //  decoratedOptions.headers.jwt = getJwt()
@@ -37,7 +40,9 @@ export default async function request(param, options) {
   const result = await fetch(urlTofetch, decoratedOptions) // eslint-disable-line
     .then(checkStatus)
     .then(parseJSON)
-    .then(data => { return data })
+    .then(data => {
+      return data
+    })
     .catch(err => ({ err }))
-    return result
+  return result
 }
