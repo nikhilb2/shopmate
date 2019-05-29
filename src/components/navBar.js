@@ -11,6 +11,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
+import theme from '../theme'
+import SearchBox from './searchBox'
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,10 +42,10 @@ const useStyles = makeStyles(theme => ({
 
 const MenuAppBar = props => {
   const classes = useStyles()
-
+  const { bgcolor, color, searchBox } = props
   return (
-    <div className={classes.root}>
-      <AppBar position="static" elevation={0}>
+    <div className={classes.root} >
+      <AppBar position="static" style={{backgroundColor: bgcolor ? bgcolor : theme.palette.primary.main, color: color ? color : 'black'}} elevation={0}>
         <Toolbar>
           <img src="static/SHOPMATE.svg" alt="shopmate" />
           <div className={classes.menu}>
@@ -87,6 +90,7 @@ const MenuAppBar = props => {
               Brands
             </Typography>
           </div>
+          {searchBox ? <SearchBox /> : null}
           <div className={classes.navRightButtons}>
             <div style={{ marginLeft: '2rem' }}>
               <img src="static/search.svg" alt="search" />
