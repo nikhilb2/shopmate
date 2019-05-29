@@ -14,7 +14,7 @@ import Menu from '@material-ui/core/Menu'
 import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,21 +57,43 @@ const MenuAppBar = props => {
         <Toolbar>
           <img src="static/SHOPMATE.svg" alt="shopmate" />
           <div className={classes.menu}>
-          <Button href='index' style={{textTransform: 'none'}} color={color ? color : 'black'} className={classes.title}>
+            <Button
+              href="index"
+              style={{ textTransform: 'none' }}
+              color={color ? color : 'black'}
+              className={classes.title}
+            >
               Home
-          </Button>
-          <Button href='men' style={{textTransform: 'none'}} color={color ? color : 'black'} className={classes.title}>
+            </Button>
+            <Button
+              href="men"
+              style={{ textTransform: 'none' }}
+              color={color ? color : 'black'}
+              className={classes.title}
+            >
               Categories
-          </Button>
-          <Button style={{textTransform: 'none'}} color={color ? color : 'black'} className={classes.title}>
+            </Button>
+            <Button
+              style={{ textTransform: 'none' }}
+              color={color ? color : 'black'}
+              className={classes.title}
+            >
               Kids
-          </Button>
-          <Button style={{textTransform: 'none'}} color={color ? color : 'black'} className={classes.title}>
+            </Button>
+            <Button
+              style={{ textTransform: 'none' }}
+              color={color ? color : 'black'}
+              className={classes.title}
+            >
               Shoes
-          </Button>
-          <Button style={{textTransform: 'none'}} color={color ? color : 'black'} className={classes.title}>
+            </Button>
+            <Button
+              style={{ textTransform: 'none' }}
+              color={color ? color : 'black'}
+              className={classes.title}
+            >
               Brands
-          </Button>
+            </Button>
           </div>
           {searchBox ? (
             <SearchBox />

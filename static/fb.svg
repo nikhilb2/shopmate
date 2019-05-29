@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52 (66869) - http://www.bohemiancoding.com/sketch -->
+    <title>icons/facebook/grey</title>
+    <desc>Created with Sketch.</desc>
+    <g id="sample-pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="icons/facebook/grey" transform="translate(0.000000, -0.000000)" fill="#EAEAEA">
+            <path d="M20,40 C8.954305,40 0,31.045695 0,20 C0,8.954305 8.954305,-4.54747351e-13 20,-4.54747351e-13 C31.045695,-4.54747351e-13 40,8.954305 40,20 C40,31.045695 31.045695,40 20,40 Z M21.353,29.586 L21.353,20.793 L23.781,20.793 L24.103,17.762 L21.353,17.762 L21.357,16.245 C21.357,15.455 21.433,15.031 22.568,15.031 L24.085,15.031 L24.085,12 L21.657,12 C18.742,12 17.715,13.472 17.715,15.943 L17.715,17.762 L15.897,17.762 L15.897,20.793 L17.715,20.793 L17.715,29.586 L21.353,29.586 Z"></path>
+        </g>
+    </g>
+</svg>
