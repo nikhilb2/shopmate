@@ -11,6 +11,7 @@ import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
 import SubsContainer from './subscriptionContainer'
 import Footer from '../components/footer'
+import request from '../utils/request'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -18,6 +19,11 @@ const caption =
   'Convergent the dictates of the costumer: background and development'
 const captionMobile = 'Even this white with red'
 class MensPage extends Component {
+
+  componentDidMount() {
+    const data = request('categories')
+    console.log(data);
+  }
   render() {
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
