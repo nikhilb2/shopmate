@@ -6,7 +6,7 @@ import SaleBox from '../components/saleBox'
 import MiniBox from '../components/miniBox'
 import RegisterCard from '../components/registerCard'
 import Hidden from '@material-ui/core/Hidden'
-import Banner from '../components/banner'
+import MenBanner from '../components/menBanner'
 import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
 import SubsContainer from './subscriptionContainer'
@@ -29,11 +29,8 @@ class MensPage extends Component {
           <NavBarMobile />
         </Hidden>
         <Hidden only={['xs']}>
-          <Banner
-            image="static/banner.png"
-            text={text}
-            caption={caption}
-            buttonText="View All"
+          <MenBanner
+            image="static/menban.png"
           />
           <SaleBox />
           <CBContainer />
