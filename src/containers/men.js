@@ -11,7 +11,8 @@ import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
 import SubsContainer from './subscriptionContainer'
 import Footer from '../components/footer'
-import request from '../utils/request'
+import { decoratedUrl }  from '../utils/request'
+import request  from '../utils/request'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -19,12 +20,19 @@ const caption =
   'Convergent the dictates of the costumer: background and development'
 const captionMobile = 'Even this white with red'
 class MensPage extends Component {
-
+  state = {
+    categories: null
+  }
   componentDidMount() {
-    const data = request('categories')
-    console.log(data);
+    fetch(decoratedUrl('categories'))
+    .then(response => response.json())
+    .then(result => {
+      this.setState({ categories: result})
+    })
+
   }
   render() {
+    const { categories } = this.state
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']}>
@@ -37,7 +45,8 @@ class MensPage extends Component {
         <Hidden only={['xs']}>
           <MenBanner
             image="static/menban.png"
-             text='Mens wear'
+             text='Categories'
+             categories={categories}
           />
           <SaleBox />
           <CBContainer />

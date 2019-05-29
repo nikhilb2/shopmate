@@ -17,16 +17,15 @@ const styles = {
   },
   heading: {
     position: 'absolute',
-    margin: '4rem',
-    marginTop: '3rem',
+    margin: '3rem',
+    marginTop: '1.5rem',
     width: '50%'
   },
 }
 
 const MenBanner = props => {
-  const { image, text, caption, classes, buttonText } = props
+  const { image, text, caption, classes, buttonText, categories } = props
   return (
-    <div>
       <div
         className={classes.imageContainer}
         style={{ backgroundImage: `url(${image})` }}
@@ -34,8 +33,12 @@ const MenBanner = props => {
       <Typography className={classes.heading} variant="h4">
         {text}
       </Typography>
+      <div style={{position:'absolute', marginTop:'3.2rem',marginLeft:'2rem', height:'250px',display:'flex', flexDirection:'column', flexWrap:'wrap'}}>
+      {categories && categories.rows.map(row=>(
+        <Typography style={{margin:'1rem', color:'white' }}>{row.name}</Typography>
+      ))}
       </div>
-    </div>
+      </div>
   )
 }
 
