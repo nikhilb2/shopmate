@@ -33,132 +33,112 @@ const styles = {
     height: '30rem'
   }
 }
-class MensPage extends Component {
-  state = {
-    categories: null
-  }
-
-  componentDidMount() {
-    fetch(decoratedUrl('categories'))
-      .then(response => response.json())
-      .then(result => {
-        this.setState({ categories: result })
-      })
-    fetch(decoratedUrl('products'))
-      .then(response => response.json())
-      .then(result => {
-        this.setState({ products: result })
-      })
-  }
-  render() {
-    const { categories, products } = this.state
-    const { classes } = this.props
-    console.log(products)
-    return (
-      <div style={{ backgroundColor: '#F7F7F7' }}>
-        <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen />
-          <NavigationBar bgcolor="#323232" color="primary" searchBox={true} />
-        </Hidden>
-        <Hidden only={['lg', 'md']} implementation="css">
-          <NavBarMobile />
-        </Hidden>
-        <Hidden only={['xs']} implementation="css">
-          <MenBanner
-            image="static/menban.png"
-            text="Categories"
-            categories={categories}
-          />
+const MensPage = props => {
+  const { classes, categories, products } = props
+  return (
+    <div style={{ backgroundColor: '#F7F7F7' }}>
+      <Hidden only={['sm', 'xs']} implementation="css">
+        <NavBarMen />
+        <NavigationBar bgcolor="#323232" color="primary" searchBox={true} />
+      </Hidden>
+      <Hidden only={['lg', 'md']} implementation="css">
+        <NavBarMobile />
+      </Hidden>
+      <Hidden only={['xs']} implementation="css">
+        <MenBanner
+          image="static/menban.png"
+          text="Categories"
+          categories={categories}
+        />
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <ProductContainer products={products} />
+        </div>
+        <div className={classes.brandBanner}>
+          <MenBanner image="static/brand.png" />
+        </div>
+        <div
+          style={{
+            backgroundColor: '#EFEFEF',
+            height: '4rem',
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
+          <div
+            style={{
+              marginTop: 'auto',
+              marginBottom: 'auto',
+              marginRight: '2rem'
+            }}
+          >
+            <Typography style={{ fontWeight: 'bold' }}>
+              SUBSCRIBE FOR SHOP NEWS, UPDATES AND SPECIAL OFFERS
+            </Typography>
+          </div>
+          <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
+            <Subscribe />
+          </div>
+        </div>
+        <div
+          style={{
+            backgroundColor: '#2E2E2E',
+            height: '241px',
+            width: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center'
+          }}
+        >
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <ProductContainer products={products} />
-          </div>
-          <div className={classes.brandBanner}>
-            <MenBanner image="static/brand.png" />
-          </div>
-          <div
-            style={{
-              backgroundColor: '#EFEFEF',
-              height: '4rem',
-              width: '100%',
-              display: 'flex',
-              justifyContent: 'center'
-            }}
-          >
-            <div
-              style={{
-                marginTop: 'auto',
-                marginBottom: 'auto',
-                marginRight: '2rem'
-              }}
-            >
-              <Typography style={{ fontWeight: 'bold' }}>
-                SUBSCRIBE FOR SHOP NEWS, UPDATES AND SPECIAL OFFERS
-              </Typography>
-            </div>
-            <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
-              <Subscribe />
-            </div>
+            <Typography style={{ marginRight: '4rem' }} color="primary">
+              Home
+            </Typography>
+            <Typography style={{ marginRight: '4rem' }} color="primary">
+              Categories
+            </Typography>
+            <Typography style={{ marginRight: '4rem' }} color="primary">
+              Kids
+            </Typography>
+            <Typography style={{ marginRight: '4rem' }} color="primary">
+              Shoes
+            </Typography>
+            <Typography style={{ marginRight: '4rem' }} color="primary">
+              Brands
+            </Typography>
           </div>
           <div
             style={{
-              backgroundColor: '#2E2E2E',
-              height: '241px',
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center'
+              marginRight: 'auto',
+              marginLeft: 'auto',
+              marginTop: '1rem'
             }}
           >
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Home
-              </Typography>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Categories
-              </Typography>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Kids
-              </Typography>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Shoes
-              </Typography>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Brands
-              </Typography>
-            </div>
-            <div
-              style={{
-                marginRight: 'auto',
-                marginLeft: 'auto',
-                marginTop: '1rem'
-              }}
-            >
-              <SocialIcons />
-            </div>
-            <div
-              style={{
-                marginRight: 'auto',
-                marginLeft: 'auto',
-                marginTop: '1rem'
-              }}
-            >
-              <Typography style={{ fontSize: '0.9rem', color: '#6C6C6C' }}>
-                ©2019 shopmate Ltd • Contact • Privacy Policy
-              </Typography>
-            </div>
+            <SocialIcons />
           </div>
-        </Hidden>
-        <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
-          <BannerMobile
-            image="static/sale.png"
-            text={textMobile}
-            caption={captionMobile}
-            buttonText="Check Twice"
-          />
-        </Hidden>
-      </div>
-    )
-  }
+          <div
+            style={{
+              marginRight: 'auto',
+              marginLeft: 'auto',
+              marginTop: '1rem'
+            }}
+          >
+            <Typography style={{ fontSize: '0.9rem', color: '#6C6C6C' }}>
+              ©2019 shopmate Ltd • Contact • Privacy Policy
+            </Typography>
+          </div>
+        </div>
+      </Hidden>
+      <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
+        <BannerMobile
+          image="static/sale.png"
+          text={textMobile}
+          caption={captionMobile}
+          buttonText="Check Twice"
+        />
+      </Hidden>
+    </div>
+  )
 }
 
 export default withStyles(styles)(MensPage)
