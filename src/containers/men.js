@@ -20,6 +20,7 @@ import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Subscribe from '../components/subscribe'
 import SocialIcons from '../components/socialIcons'
+import Footer2 from '../components/footer2'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -119,54 +120,7 @@ class MensPage extends Component {
               <Subscribe />
             </div>
           </div>
-          <div
-            style={{
-              backgroundColor: '#2E2E2E',
-              height: '241px',
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center'
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Home
-              </Typography>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Categories
-              </Typography>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Kids
-              </Typography>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Shoes
-              </Typography>
-              <Typography style={{ marginRight: '4rem' }} color="primary">
-                Brands
-              </Typography>
-            </div>
-            <div
-              style={{
-                marginRight: 'auto',
-                marginLeft: 'auto',
-                marginTop: '1rem'
-              }}
-            >
-              <SocialIcons />
-            </div>
-            <div
-              style={{
-                marginRight: 'auto',
-                marginLeft: 'auto',
-                marginTop: '1rem'
-              }}
-            >
-              <Typography style={{ fontSize: '0.9rem', color: '#6C6C6C' }}>
-                ©2019 shopmate Ltd • Contact • Privacy Policy
-              </Typography>
-            </div>
-          </div>
+          <Footer2 />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
           <BannerMobile
