@@ -35,7 +35,8 @@ class ProductPage extends Component {
           <div className={classes.center}>
             <Grid container spacing={0}>
               <Grid item xs={12}>
-                <ItemDetailCard productDetails={productDetails} />
+                <ItemDetailCard showProducts={true} productDetails={productDetails} />
+                <ItemDetailCard />
               </Grid>
             </Grid>
           </div>

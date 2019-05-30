@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
 import ItemCardBig from './itemCardBig'
+import ProductReivews from './productReviews'
 const styles = {
   root: {
     flexGrow: 1
@@ -38,7 +39,8 @@ class ItemDetailCard extends Component {
       bgcolor,
       image,
       box,
-      productDetails
+      productDetails,
+      showProducts
     } = this.props
 
     return (
@@ -50,7 +52,8 @@ class ItemDetailCard extends Component {
           p={1}
           className={box === 1 ? classes.box2 : classes.box}
         >
-          <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} />
+        {showProducts ? <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} /> : <ProductReivews />}
+
         </Box>
       </div>
     )
