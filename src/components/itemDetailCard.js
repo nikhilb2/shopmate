@@ -11,13 +11,13 @@ const styles = {
   },
   box: {
     maxWidth: '940px',
-    height: '625px',
+    height: '480px',
     display: 'flex',
     flexDirection: 'column',
     textAlign: 'center',
     justifyContent: 'center',
-    marginTop:0,
-    marginBottom:0
+    marginTop: 0,
+    marginBottom: 0
   },
   title: {
     fontSize: '1rem'
@@ -29,11 +29,17 @@ const styles = {
 }
 
 class ItemDetailCard extends Component {
-  state = {
-
-  }
+  state = {}
   render() {
-    const { classes, title, style, bgcolor, image, box, productDetails } = this.props
+    const {
+      classes,
+      title,
+      style,
+      bgcolor,
+      image,
+      box,
+      productDetails
+    } = this.props
 
     return (
       <div className={classes.justify}>
@@ -42,10 +48,9 @@ class ItemDetailCard extends Component {
           bgcolor={bgcolor ? bgcolor : '#FFFFFF'}
           m={0}
           p={1}
-
           className={box === 1 ? classes.box2 : classes.box}
         >
-          <ItemCardBig productDetails={productDetails} bgcolor={bgcolor}/>
+          <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} />
         </Box>
       </div>
     )

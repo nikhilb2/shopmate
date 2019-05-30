@@ -8,7 +8,14 @@ export default function Index( props ) {
   console.log(props);
   return (
     <div>
-    <ProductPage productDetails={props.productDetails}/>
+    <ProductPage productDetails={props}/>
+    <style jsx>
+    {`
+      .star {
+        background: linear-gradient(to right, blue 50%, yellow 50%);
+      }
+      `}
+    </style>
     </div>
   );
 }
@@ -16,5 +23,7 @@ export default function Index( props ) {
 Index.getInitialProps = async ({req, query}) => {
   const product = await fetch(decoratedUrl(`products/${query.prodId}`));
   const prodJson = await product.json();
-  return {productDetails: prodJson}
+  const productReviews = await fetch(decoratedUrl(`products/${query.prodId}/reviews`));
+  const prodRevJson = await productReviews.json();
+  return {productDetails: prodJson, productReviews:prodRevJson}
 }
