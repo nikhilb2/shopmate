@@ -36,7 +36,6 @@ class ProductPage extends Component {
             <Grid container spacing={0}>
               <Grid item xs={12}>
                 <ItemDetailCard productDetails={productDetails} />
-                <ItemDetailCard bgcolor="#FAFAFA" />
               </Grid>
             </Grid>
           </div>
