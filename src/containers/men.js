@@ -22,6 +22,7 @@ import Subscribe from '../components/subscribe'
 import SocialIcons from '../components/socialIcons'
 import Footer2 from '../components/footer2'
 
+
 const text = 'Background and development'
 const textMobile = 'All Shoes'
 const caption =
