@@ -6,7 +6,6 @@ import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
 import theme from '../theme'
 import PlusMinus from './plusMinus'
-import { jsx, css } from '@emotion/core'
 
 const styles = {
   box: {

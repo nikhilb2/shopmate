@@ -15,6 +15,7 @@ import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
 import Button from '@material-ui/core/Button'
+import Link from 'next/link'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,6 +58,7 @@ const MenuAppBar = props => {
         <Toolbar>
           <img src="static/SHOPMATE.svg" alt="shopmate" />
           <div className={classes.menu}>
+          <Link href="/">
             <Button
               href="index"
               style={{ textTransform: 'none' }}
@@ -65,6 +67,8 @@ const MenuAppBar = props => {
             >
               Home
             </Button>
+            </Link>
+            <Link href="/men">
             <Button
               href="men"
               style={{ textTransform: 'none' }}
@@ -73,6 +77,7 @@ const MenuAppBar = props => {
             >
               Categories
             </Button>
+            </Link>
             <Button
               style={{ textTransform: 'none' }}
               color={color ? color : 'black'}

@@ -47,10 +47,10 @@ class ItemCard extends Component {
         p={1}
         style={style}
         className={box === 1 ? classes.box2 : classes.box}
+        onMouseOver={() => this.setState({ mouseOver: true })}
+        onMouseOut={() => this.setState({ mouseOver: false })}
       >
         <div
-          onMouseOver={() => this.setState({ mouseOver: true })}
-          onMouseOut={() => this.setState({ mouseOver: false })}
           className={classes.justify}
           style={{
             backgroundImage: `url(${decoratedImageUrl(image)})`,
@@ -64,21 +64,9 @@ class ItemCard extends Component {
             opacity: mouseOver ? 0.2 : 1
           }}
         >
-          <div>
-            {mouseOver ? (
-              <img
-                style={{
-                  display: 'static',
-                  marginTop: '0px'
-                }}
-                src="static/heart.svg"
-                alt="heart"
-              />
-            ) : null}
-          </div>
         </div>
 
-        <div />
+
         <Typography
           variant="body1"
           style={{ color: color ? color : 'black' }}
