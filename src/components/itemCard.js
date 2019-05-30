@@ -4,6 +4,9 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
+import Link from 'next/link'
+import CardActionArea from '@material-ui/core/CardActionArea';
+
 const styles = {
   box: {
     width: '220px',
@@ -36,10 +39,12 @@ class ItemCard extends Component {
     mouseOver: false
   }
   render() {
-    const { classes, title, style, color, image, box } = this.props
+    const { classes, title, style, color, image, box, id } = this.props
     const { elevation, mouseOver } = this.state
     console.log(this.state)
     return (
+      <Link href={{ pathname: '/product', query: { prodId: id } }}>
+
       <Box
         boxShadow={mouseOver ? 5 : 1}
         bgcolor="#FFFFFF"
@@ -47,9 +52,10 @@ class ItemCard extends Component {
         p={1}
         style={style}
         className={box === 1 ? classes.box2 : classes.box}
-        onMouseOver={() => this.setState({ mouseOver: true })}
-        onMouseOut={() => this.setState({ mouseOver: false })}
+
       >
+      <CardActionArea style={{position:'absolute'}}  className={box === 1 ? classes.box2 : classes.box}>
+      </CardActionArea>
         <div
           className={classes.justify}
           style={{
@@ -83,7 +89,10 @@ class ItemCard extends Component {
             button={1}
           />
         </div>
+
       </Box>
+
+      </Link>
     )
   }
 }

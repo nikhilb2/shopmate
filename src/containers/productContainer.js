@@ -55,6 +55,7 @@ const ProductContainer = props => {
                     style={{ marginRight: '2rem', marginBottom: '2rem' }}
                     title={item.name}
                     image={item.thumbnail}
+                    id={item.product_id}
                   />
                 ) : null}
               </div>
