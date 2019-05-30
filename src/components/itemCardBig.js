@@ -19,7 +19,8 @@ const styles = {
   },
   justifyCol: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    justifyContent:'center'
   },
   justifyRow: {
     display: 'flex',
@@ -28,19 +29,30 @@ const styles = {
     marginRight: '4rem'
   },
   holder:{
-    marginTop:'auto',
-    marginBottom:'auto',
+    minHeight: '189px',
+    minWidth: '180px',
+    marginBottom: '2rem',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center center',
+  },
+  imgThumb: {
+    maxWidth:'90px',
+    maxHeight:'95px',
+    marginRight: '1rem'
   }
 }
 
 class ItemCard extends Component {
   state = {
-    mouseOver: false
+    selectedImage:null,
+    image1Click: true,
+    image2Click: false
   }
+
   render() {
-    const { classes, title, style, color, image, box, bgcolor } = this.props
-    const { elevation, mouseOver } = this.state
-    console.log(this.state)
+    const { classes, title, style, color, image, box, bgcolor, productDetails } = this.props
+    const { selectedImage, image1Click, image2Click } = this.state
+    console.log(productDetails)
     return (
       <Box
         boxShadow={0}
@@ -50,17 +62,23 @@ class ItemCard extends Component {
         style={style}
         className={box === 1 ? classes.box2 : classes.box}
       >
-        <div className={classes.justifyRow}>
-          <div className={classes.holder} >
-            <img src="static/sumka.png" alt="sumka" />
+        <div className={classes.justifyCol}>
+          <div className={classes.holder} style={{backgroundImage:`url(${selectedImage ? decoratedImageUrl(selectedImage) : productDetails && decoratedImageUrl(productDetails.image)})`}}>
+
+          </div>
+          <div className={classes.justifyRow} >
+            {productDetails && <img onClick={() => this.setState({selectedImage:productDetails.image, image1Click:true, image2Click:false})} className={classes.imgThumb} style={image1Click ? {borderStyle:'solid', borderWidth:'2px', borderColor:theme.palette.secondary.main} : null} src={decoratedImageUrl(productDetails.image)} alt={productDetails.name} />}
+            {productDetails && <img onClick={() => this.setState({selectedImage:productDetails.image_2,image1Click:false, image2Click:true})} className={classes.imgThumb} style={image2Click ? {borderStyle:'solid', borderWidth:'2px', borderColor:theme.palette.secondary.main} : null} src={decoratedImageUrl(productDetails.image_2)} alt={productDetails.image_2} />}
           </div>
         </div>
         <div className={classes.justifyRow} style={{marginTop:'1rem'}}>
           <div>
             <Typography style={{textAlign:'left', color:'#a4a4a4', fontSize:'1rem', marginTop:'.5rem'}}>Home->all cat -> men </Typography>
             <Typography style={{textAlign:'left', color:'yellow', fontSize:'1.5rem', marginTop:'.5rem'}}>★★★★★ </Typography>
-            <Typography style={{textAlign:'left', fontSize:'1.5rem', marginTop:0}}>Title </Typography>
-            <Typography style={{textAlign:'left', fontSize:'1.5rem', marginTop:'.5rem', color:theme.palette.secondary.main}}>£15 </Typography>
+            <Typography style={{textAlign:'left', fontSize:'1.5rem', marginTop:0}}>{productDetails && productDetails.name} </Typography>
+            <Typography style={{textAlign:'left', fontSize:'.5rem', flexWrap:'wrap', marginTop:0}}>{productDetails && productDetails.description} </Typography>
+            <Typography style={{textAlign:'left', fontSize:'1.5rem', marginTop:'.5rem', color:theme.palette.secondary.main}}><strike>£{productDetails && productDetails.price}</strike></Typography>
+            <Typography style={{textAlign:'left', fontSize:'1.5rem', marginTop:'.5rem', color:theme.palette.secondary.main}}><strong>£{productDetails && productDetails.discounted_price}</strong></Typography>
             <Typography style={{textAlign:'left', color:'#a4a4a4', fontSize:'1rem', marginTop:'.5rem'}}>Quantity</Typography>
             <div style={{display:'flex'}}><PlusMinus /></div>
             <ButtonComp

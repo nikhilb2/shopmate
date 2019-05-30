@@ -30,12 +30,11 @@ const styles = {
 
 class ItemDetailCard extends Component {
   state = {
-    mouseOver: false
+
   }
   render() {
-    const { classes, title, style, bgcolor, image, box } = this.props
-    const { elevation, mouseOver } = this.state
-    console.log(this.state)
+    const { classes, title, style, bgcolor, image, box, productDetails } = this.props
+
     return (
       <div className={classes.justify}>
         <Box
@@ -46,7 +45,7 @@ class ItemDetailCard extends Component {
 
           className={box === 1 ? classes.box2 : classes.box}
         >
-          <ItemCardBig bgcolor={bgcolor}/>
+          <ItemCardBig productDetails={productDetails} bgcolor={bgcolor}/>
         </Box>
       </div>
     )
