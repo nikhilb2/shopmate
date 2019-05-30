@@ -11,23 +11,18 @@ const styles = {
   box: {
     width: '880px',
     height: '552px',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center'
+    padding: '3rem'
   },
   title: {
     fontSize: '1rem'
   },
   justifyCol: {
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center'
+    flexDirection: 'column'
   },
   justifyRow: {
     display: 'flex',
-    flexDirection: 'row',
-    marginLeft: '4rem',
-    marginRight: '4rem'
+    flexDirection: 'row'
   },
   holder: {
     minHeight: '189px',
@@ -46,12 +41,34 @@ const styles = {
     width: 'fit-content'
   }
 }
-
+const Review = (props) => {
+  const { classes, review } = props
+  console.log('review');
+  console.log(review);
+  return (
+    <div className={classes.justifyRow}>
+      <div className={classes.justifyCol}>
+        <div>
+          <img style={{
+                            background: `linear-gradient(to right, #FFC94F ${
+                              ((review.rating) / 5) * 100
+                            }%, #EEEEEE ${((review.rating) / 5) * 100}%)`
+                          }} src='static/stars.png' alt='stars' />
+        </div>
+        <div>
+          <Typography style={{fontSize:'1.3rem', marginTop:'1rem'}}>{review.name}</Typography>
+        </div>
+      </div>
+      <div className={ classes.justifyCol} style={{justifyContent:'center'}}>
+        <Typography style={{ margin:'0 0 0 10rem'}}>{review.review}</Typography>
+      </div>
+    </div>
+  )
+}
 class ProductReivews extends Component {
   state = {
-
+    skip: 0
   }
-
 
 
 
@@ -60,10 +77,11 @@ class ProductReivews extends Component {
     const {
       classes,
       bgcolor,
-      style
+      style,
+      productDetails
 
     } = this.props
-    const { selectedImage, image1Click, image2Click, ratingInt } = this.state
+
     return (
       <Box
         boxShadow={0}
@@ -73,6 +91,15 @@ class ProductReivews extends Component {
         style={style}
         className={classes.box}
       >
+      <Typography style={{fontSize:'1.5rem', textAlign:'left'}}>
+        Product Reviews
+      </Typography>
+
+        {productDetails && productDetails.productReviews.map((review, i) => {
+          if (i < 3) {
+            return(      <div style={{borderColor:theme.palette.secondary.main, borderStyle:'solid', borderWidth:'3px', borderRadius:'10px', padding:'.5rem', marginBottom:'1rem', width:'100%'}}><Review classes={classes} review={review} />        </div>)
+          }
+        })}
 
       </Box>
     )

@@ -52,7 +52,7 @@ class ItemDetailCard extends Component {
           p={1}
           className={box === 1 ? classes.box2 : classes.box}
         >
-        {showProducts ? <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} /> : <ProductReivews />}
+        {showProducts ? <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} /> : <ProductReivews productDetails={productDetails}/>}
 
         </Box>
       </div>

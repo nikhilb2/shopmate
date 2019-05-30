@@ -43,7 +43,7 @@ class ItemCard extends Component {
     const { elevation, mouseOver } = this.state
     console.log(this.state)
     return (
-      <Link href={{ pathname: '/product', query: { prodId: id } }}>
+      <Link href={ id ? { pathname: '/product', query: { prodId: id } } : '/'}>
 
       <Box
         boxShadow={mouseOver ? 5 : 1}

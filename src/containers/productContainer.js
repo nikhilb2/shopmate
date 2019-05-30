@@ -73,7 +73,7 @@ const ProductContainer = props => {
           products.rows.map((item, i) => (
             <div style={{ display: 'flex', marginBottom: '-5rem' }}>
               {i > 6 && i < 10 ? (
-                <ItemCard box={1} title={item.name} image={item.thumbnail} />
+                <ItemCard box={1} title={item.name} image={item.thumbnail} id={item.product_id} />
               ) : null}
             </div>
           ))}

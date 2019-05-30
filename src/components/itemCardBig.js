@@ -197,7 +197,8 @@ class ItemCard extends Component {
                   backgroundColor: '#FFC94F',
                   color: 'white',
                   width: '3rem',
-                  borderRadius: '2rem'
+                  borderRadius: '2rem',
+                  fontSize:'.8rem'
                 }}
               >
                 {ratingInt}
