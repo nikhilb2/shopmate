@@ -56,14 +56,14 @@ class MensPage extends Component {
     console.log(products)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
-        <Hidden only={['sm', 'xs']}>
+        <Hidden only={['sm', 'xs']} implementation="css">
           <NavBarMen />
           <NavigationBar bgcolor="#323232" color="primary" searchBox={true} />
         </Hidden>
-        <Hidden only={['lg', 'md']}>
+        <Hidden only={['lg', 'md']} implementation="css">
           <NavBarMobile />
         </Hidden>
-        <Hidden only={['xs']}>
+        <Hidden only={['xs']} implementation="css">
           <MenBanner
             image="static/menban.png"
             text="Categories"
@@ -148,7 +148,7 @@ class MensPage extends Component {
             </div>
           </div>
         </Hidden>
-        <Hidden only={['xl', 'sm', 'md', 'lg']}>
+        <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
           <BannerMobile
             image="static/sale.png"
             text={textMobile}

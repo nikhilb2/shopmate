@@ -20,13 +20,13 @@ class Homepage extends Component {
   render() {
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
-        <Hidden only={['sm', 'xs']}>
+        <Hidden only={['sm', 'xs']} implementation="css">
           <NavigationBar />
         </Hidden>
-        <Hidden only={['lg', 'md']}>
+        <Hidden only={['lg', 'md']} implementation="css">
           <NavBarMobile />
         </Hidden>
-        <Hidden only={['xs']}>
+        <Hidden only={['xs']} implementation="css">
           <Banner
             image="static/banner.png"
             text={text}
@@ -38,7 +38,7 @@ class Homepage extends Component {
           <SubsContainer />
           <Footer />
         </Hidden>
-        <Hidden only={['xl', 'sm', 'md', 'lg']}>
+        <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
           <BannerMobile
             image="static/sale.png"
             text={textMobile}
