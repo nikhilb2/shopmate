@@ -36,7 +36,7 @@ const ProductContainer = props => {
             marginTop: '-2rem'
           }}
         >
-          { products && products.count > 0 ? searchMessage : 'no result' }
+          {products && products.count > 0 ? searchMessage : 'no result'}
         </div>
         <div
           style={{

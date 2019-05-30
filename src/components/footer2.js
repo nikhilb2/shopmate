@@ -36,46 +36,44 @@ function Footer2() {
         justifyContent: 'center'
       }}
     >
-
-
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
-      <Typography style={{ marginRight: '4rem' }} color="primary">
-        Home
-      </Typography>
-      <Typography style={{ marginRight: '4rem' }} color="primary">
-        Categories
-      </Typography>
-      <Typography style={{ marginRight: '4rem' }} color="primary">
-        Kids
-      </Typography>
-      <Typography style={{ marginRight: '4rem' }} color="primary">
-        Shoes
-      </Typography>
-      <Typography style={{ marginRight: '4rem' }} color="primary">
-        Brands
-      </Typography>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Typography style={{ marginRight: '4rem' }} color="primary">
+          Home
+        </Typography>
+        <Typography style={{ marginRight: '4rem' }} color="primary">
+          Categories
+        </Typography>
+        <Typography style={{ marginRight: '4rem' }} color="primary">
+          Kids
+        </Typography>
+        <Typography style={{ marginRight: '4rem' }} color="primary">
+          Shoes
+        </Typography>
+        <Typography style={{ marginRight: '4rem' }} color="primary">
+          Brands
+        </Typography>
+      </div>
+      <div
+        style={{
+          marginRight: 'auto',
+          marginLeft: 'auto',
+          marginTop: '1rem'
+        }}
+      >
+        <SocialIcons />
+      </div>
+      <div
+        style={{
+          marginRight: 'auto',
+          marginLeft: 'auto',
+          marginTop: '1rem'
+        }}
+      >
+        <Typography style={{ fontSize: '0.9rem', color: '#6C6C6C' }}>
+          ©2019 shopmate Ltd • Contact • Privacy Policy
+        </Typography>
+      </div>
     </div>
-    <div
-      style={{
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        marginTop: '1rem'
-      }}
-    >
-      <SocialIcons />
-    </div>
-    <div
-      style={{
-        marginRight: 'auto',
-        marginLeft: 'auto',
-        marginTop: '1rem'
-      }}
-    >
-      <Typography style={{ fontSize: '0.9rem', color: '#6C6C6C' }}>
-        ©2019 shopmate Ltd • Contact • Privacy Policy
-      </Typography>
-    </div>
-        </div>
   )
 }
 

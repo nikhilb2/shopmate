@@ -6,20 +6,22 @@ import SocialIcons from '../components/socialIcons'
 import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Footer2 from '../components/footer2'
+import ItemDetailCard from '../components/itemDetailCard'
+import Grid from '@material-ui/core/Grid'
+
 import Hidden from '@material-ui/core/Hidden'
 const styles = {
-
+  center: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center'
+  }
 }
 class ProductPage extends Component {
-  state = {
-
-  }
-
-
-
+  state = {}
 
   render() {
-
+    const { classes } = this.props
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
@@ -30,13 +32,17 @@ class ProductPage extends Component {
           <NavBarMobile />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
-
-
+          <div className={classes.center}>
+            <Grid container spacing={0}>
+              <Grid item xs={12}>
+                <ItemDetailCard />
+                <ItemDetailCard bgcolor="#FAFAFA" />
+              </Grid>
+            </Grid>
+          </div>
           <Footer2 />
         </Hidden>
-        <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
-
-        </Hidden>
+        <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css" />
       </div>
     )
   }

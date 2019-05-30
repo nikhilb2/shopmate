@@ -39,8 +39,6 @@ class MensPage extends Component {
     keyword: ''
   }
 
-
-
   searchProducts(keyword) {
     fetch(decoratedUrl(`products/search?query_string=${keyword}`))
       .then(response => response.json())
@@ -76,9 +74,7 @@ class MensPage extends Component {
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <ProductContainer
               products={
-                productSearch && keyword.length > 0
-                  ? productSearch
-                  : products
+                productSearch && keyword.length > 0 ? productSearch : products
               }
               searchMessage={
                 productSearch && productSearch.count > 0
@@ -87,10 +83,10 @@ class MensPage extends Component {
                     } found`
                   : null
               }
-              productSearchCount = {
+              productSearchCount={
                 productSearch && productSearch.count > 0 ? true : false
               }
-              keywordInput={(key) => this.keywordInput(key)}
+              keywordInput={key => this.keywordInput(key)}
             />
           </div>
           <div className={classes.brandBanner}>
