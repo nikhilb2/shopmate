@@ -43,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 
 const MenuAppBar = props => {
   const classes = useStyles()
-  const { bgcolor, color, searchBox } = props
+  const { bgcolor, color, searchBox, onChange } = props
   return (
     <div className={classes.root}>
       <AppBar
@@ -96,7 +96,7 @@ const MenuAppBar = props => {
             </Button>
           </div>
           {searchBox ? (
-            <SearchBox />
+            <SearchBox onChange={onChange} />
           ) : (
             <div className={classes.navRightButtons}>
               <div style={{ marginLeft: '2rem' }}>

@@ -33,112 +33,152 @@ const styles = {
     height: '30rem'
   }
 }
-const MensPage = props => {
-  const { classes, categories, products } = props
-  return (
-    <div style={{ backgroundColor: '#F7F7F7' }}>
-      <Hidden only={['sm', 'xs']} implementation="css">
-        <NavBarMen />
-        <NavigationBar bgcolor="#323232" color="primary" searchBox={true} />
-      </Hidden>
-      <Hidden only={['lg', 'md']} implementation="css">
-        <NavBarMobile />
-      </Hidden>
-      <Hidden only={['xs']} implementation="css">
-        <MenBanner
-          image="static/menban.png"
-          text="Categories"
-          categories={categories}
-        />
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <ProductContainer products={products} />
-        </div>
-        <div className={classes.brandBanner}>
-          <MenBanner image="static/brand.png" />
-        </div>
-        <div
-          style={{
-            backgroundColor: '#EFEFEF',
-            height: '4rem',
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center'
-          }}
-        >
-          <div
-            style={{
-              marginTop: 'auto',
-              marginBottom: 'auto',
-              marginRight: '2rem'
-            }}
-          >
-            <Typography style={{ fontWeight: 'bold' }}>
-              SUBSCRIBE FOR SHOP NEWS, UPDATES AND SPECIAL OFFERS
-            </Typography>
-          </div>
-          <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
-            <Subscribe />
-          </div>
-        </div>
-        <div
-          style={{
-            backgroundColor: '#2E2E2E',
-            height: '241px',
-            width: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center'
-          }}
-        >
+class MensPage extends Component {
+  state = {
+    keyword: ''
+  }
+
+
+
+  searchProducts(keyword) {
+    fetch(decoratedUrl(`products/search?query_string=${keyword}`))
+      .then(response => response.json())
+      .then(result => {
+        this.setState({ productSearch: result, keyword })
+      })
+  }
+
+  render() {
+    const { classes, categories, products } = this.props
+    const { productSearch, keyword } = this.state
+    console.log(products)
+    return (
+      <div style={{ backgroundColor: '#F7F7F7' }}>
+        <Hidden only={['sm', 'xs']} implementation="css">
+          <NavBarMen />
+          <NavigationBar
+            onChange={keyword => this.searchProducts(keyword)}
+            bgcolor="#323232"
+            color="primary"
+            searchBox={true}
+          />
+        </Hidden>
+        <Hidden only={['lg', 'md']} implementation="css">
+          <NavBarMobile />
+        </Hidden>
+        <Hidden only={['xs']} implementation="css">
+          <MenBanner
+            image="static/menban.png"
+            text="Categories"
+            categories={categories}
+          />
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Typography style={{ marginRight: '4rem' }} color="primary">
-              Home
-            </Typography>
-            <Typography style={{ marginRight: '4rem' }} color="primary">
-              Categories
-            </Typography>
-            <Typography style={{ marginRight: '4rem' }} color="primary">
-              Kids
-            </Typography>
-            <Typography style={{ marginRight: '4rem' }} color="primary">
-              Shoes
-            </Typography>
-            <Typography style={{ marginRight: '4rem' }} color="primary">
-              Brands
-            </Typography>
+            <ProductContainer
+              products={
+                productSearch && keyword.length > 0
+                  ? productSearch
+                  : products
+              }
+              searchMessage={
+                productSearch && productSearch.count > 0
+                  ? `${productSearch.count} ${
+                      productSearch.count > 1 ? 'matches' : 'match'
+                    } found`
+                  : null
+              }
+              productSearchCount = {
+                productSearch && productSearch.count > 0 ? true : false
+              }
+              keywordInput={(key) => this.keywordInput(key)}
+            />
+          </div>
+          <div className={classes.brandBanner}>
+            <MenBanner image="static/brand.png" />
           </div>
           <div
             style={{
-              marginRight: 'auto',
-              marginLeft: 'auto',
-              marginTop: '1rem'
+              backgroundColor: '#EFEFEF',
+              height: '4rem',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center'
             }}
           >
-            <SocialIcons />
+            <div
+              style={{
+                marginTop: 'auto',
+                marginBottom: 'auto',
+                marginRight: '2rem'
+              }}
+            >
+              <Typography style={{ fontWeight: 'bold' }}>
+                SUBSCRIBE FOR SHOP NEWS, UPDATES AND SPECIAL OFFERS
+              </Typography>
+            </div>
+            <div style={{ marginTop: 'auto', marginBottom: 'auto' }}>
+              <Subscribe />
+            </div>
           </div>
           <div
             style={{
-              marginRight: 'auto',
-              marginLeft: 'auto',
-              marginTop: '1rem'
+              backgroundColor: '#2E2E2E',
+              height: '241px',
+              width: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
             }}
           >
-            <Typography style={{ fontSize: '0.9rem', color: '#6C6C6C' }}>
-              ©2019 shopmate Ltd • Contact • Privacy Policy
-            </Typography>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Typography style={{ marginRight: '4rem' }} color="primary">
+                Home
+              </Typography>
+              <Typography style={{ marginRight: '4rem' }} color="primary">
+                Categories
+              </Typography>
+              <Typography style={{ marginRight: '4rem' }} color="primary">
+                Kids
+              </Typography>
+              <Typography style={{ marginRight: '4rem' }} color="primary">
+                Shoes
+              </Typography>
+              <Typography style={{ marginRight: '4rem' }} color="primary">
+                Brands
+              </Typography>
+            </div>
+            <div
+              style={{
+                marginRight: 'auto',
+                marginLeft: 'auto',
+                marginTop: '1rem'
+              }}
+            >
+              <SocialIcons />
+            </div>
+            <div
+              style={{
+                marginRight: 'auto',
+                marginLeft: 'auto',
+                marginTop: '1rem'
+              }}
+            >
+              <Typography style={{ fontSize: '0.9rem', color: '#6C6C6C' }}>
+                ©2019 shopmate Ltd • Contact • Privacy Policy
+              </Typography>
+            </div>
           </div>
-        </div>
-      </Hidden>
-      <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
-        <BannerMobile
-          image="static/sale.png"
-          text={textMobile}
-          caption={captionMobile}
-          buttonText="Check Twice"
-        />
-      </Hidden>
-    </div>
-  )
+        </Hidden>
+        <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
+          <BannerMobile
+            image="static/sale.png"
+            text={textMobile}
+            caption={captionMobile}
+            buttonText="Check Twice"
+          />
+        </Hidden>
+      </div>
+    )
+  }
 }
 
 export default withStyles(styles)(MensPage)

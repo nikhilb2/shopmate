@@ -22,12 +22,21 @@ const styles = {
 }
 
 const ProductContainer = props => {
-  const { classes, products } = props
+  const { classes, products, searchMessage } = props
   return (
     <div style={{ width: '100%' }}>
       <div className={classes.container}>
         <div className={classes.content}>
           <FilterBox />
+        </div>
+        <div
+          style={{
+            position: 'absolute',
+            marginLeft: '35%',
+            marginTop: '-2rem'
+          }}
+        >
+          { products && products.count > 0 ? searchMessage : 'no result' }
         </div>
         <div
           style={{
