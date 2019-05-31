@@ -86,6 +86,8 @@ class NavBarMen extends Component {
     console.log(result);
     if (!result.error) {
       this.setState({user:result.customer})
+      saveAuth(result.accessToken)
+      saveUserDetails(result.customer)
     } else {
       this.setState({error:result})
     }
