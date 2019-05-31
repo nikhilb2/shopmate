@@ -5,18 +5,25 @@ import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
 import theme from '../theme'
 import { withStyles } from '@material-ui/styles'
-
+import { decoratedUrl, decoratedOptions } from '../utils/request'
+import { saveAuth, saveUserDetails, getUserDetails } from '../utils/auth'
 const styles = {
 
 }
-
-class SignIn extends Component {
+class Register extends Component {
   state = {
+    name: null,
     email: null,
     password: null
   }
+
+
+
+
   render() {
-    const { style, bgcolor, classes } = this.props
+    const { style, bgcolor, classes, onClick } = this.props
+    const { result } = this.state
+      console.log(this.state);
     return (
       <Box
         boxShadow={5}
@@ -32,13 +39,25 @@ class SignIn extends Component {
         <div>
           <TextField
             id="outlined-email-input"
+            label="Name"
+            className={classes.textField}
+            type="text"
+            name="name"
+            margin="normal"
+            variant="outlined"
+            onChange={(e) => this.setState({name:e.target.value})}
+          />
+        </div>
+        <div>
+          <TextField
+            id="outlined-email-input"
             label="Email"
             className={classes.textField}
             type="email"
             name="email"
-            autoComplete="email"
             margin="normal"
             variant="outlined"
+            onChange={(e) => this.setState({email:e.target.value})}
           />
         </div>
         <div>
@@ -50,6 +69,7 @@ class SignIn extends Component {
             autoComplete="current-password"
             margin="normal"
             variant="outlined"
+            onChange={(e) => this.setState({password:e.target.value})}
           />
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -59,6 +79,7 @@ class SignIn extends Component {
             width="7rem"
             padding="0.5rem"
             text="Sign In"
+            onClick={() => onClick(this.state)}
           />
         </div>
       </Box>
@@ -67,4 +88,4 @@ class SignIn extends Component {
 
 }
 
-export default withStyles(styles)(SignIn)
+export default withStyles(styles)(Register)

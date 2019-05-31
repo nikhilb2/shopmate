@@ -1,5 +1,5 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
@@ -14,11 +14,11 @@ import Menu from '@material-ui/core/Menu'
 import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
-import SignIn from './signIn'
-const useStyles = makeStyles(theme => ({
+import SignIn from './signInPopper'
+
+const styles ={
   root: {
-    flexGrow: 1,
-    shodow: 'none'
+    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2)
@@ -38,69 +38,94 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     marginRight: '1rem'
   }
-}))
-
-const NavBarMen = props => {
-  const classes = useStyles()
-  const { bgcolor, color, searchBox } = props
-  return (
-    <div className={classes.root}>
-      <AppBar
-        position="static"
-        style={{
-          backgroundColor: bgcolor ? bgcolor : theme.palette.primary.main,
-          color: color ? color : 'black',
-          height: '50px'
-        }}
-        elevation={0}
-      >
-        <Toolbar>
-          <Typography style={{ display: 'flex' }}>
-            <Typography>Hi</Typography>
-            <SignIn text="Sign In" />
-            <Typography>or</Typography>
-
-            <SignIn text="Register" type="register" />
-          </Typography>
-          <div className={classes.menu}>
-            <Typography
-              variant="subtitle1"
-              display="block"
-              gutterBottom
-              className={classes.title}
-            >
-              Daily Deals
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              display="block"
-              gutterBottom
-              className={classes.title}
-            >
-              Sell
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              display="block"
-              gutterBottom
-              className={classes.title}
-            >
-              Help & Contact
-            </Typography>
-
-            <div style={{ display: 'flex' }}>
-              <img src="static/gbr.svg" alt="gb" />
-              <Typography style={{ marginTop: '5px', margin: '0.5rem' }}>
-                £ GBP
-              </Typography>
-            </div>
-          </div>
-          <Work style={{ margin: '1rem' }} />
-          <Typography>Your Bag: £0</Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-  )
 }
 
-export default NavBarMen
+class NavBarMen extends Component  {
+  state = {
+    user: null
+  }
+  registerUser(data) {
+    fetch(decoratedUrl('customers'), decoratedOptions({
+      method: 'POST',
+      body: JSON.stringify(data)
+    }))
+    .then(response => response.json())
+    .then(result => {
+      this.setState({user:result})
+      saveAuth(result.accessToken)
+      saveUserDetails(result.customer)
+    })
+  }
+  render() {
+
+    const { bgcolor, color, searchBox, classes } = this.props
+
+    const { user } = this.state
+
+    return (
+      <div className={classes.root}>
+        <AppBar
+          position="static"
+          style={{
+            backgroundColor: bgcolor ? bgcolor : theme.palette.primary.main,
+            color: color ? color : 'black',
+            height: '50px'
+          }}
+          elevation={0}
+        >
+          <Toolbar>
+            <Typography style={{ display: 'flex' }}>
+              <Typography>Hi</Typography>
+
+              { user ? <Typography>{user.name}</Typography> : <div><SignIn text="Sign In" />  <Typography>or</Typography>
+
+                <SignIn text="Register" type="register" onClick={(data) => this.registerUser(data)} /><div>}
+
+
+
+
+            </Typography>
+            <div className={classes.menu}>
+              <Typography
+                variant="subtitle1"
+                display="block"
+                gutterBottom
+                className={classes.title}
+              >
+                Daily Deals
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                display="block"
+                gutterBottom
+                className={classes.title}
+              >
+                Sell
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                display="block"
+                gutterBottom
+                className={classes.title}
+              >
+                Help & Contact
+              </Typography>
+
+              <div style={{ display: 'flex' }}>
+                <img src="static/gbr.svg" alt="gb" />
+                <Typography style={{ marginTop: '5px', margin: '0.5rem' }}>
+                  £ GBP
+                </Typography>
+              </div>
+            </div>
+            <Work style={{ margin: '1rem' }} />
+            <Typography>Your Bag: £0</Typography>
+          </Toolbar>
+        </AppBar>
+      </div>
+    )
+  }
+
+}
+
+export default withStyles(styles)(NavBarMen)

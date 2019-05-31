@@ -1,11 +1,11 @@
-import jsCookie from 'js-cookie'
+import Cookies from 'js-cookie'
 
-export const saveAuth = jwt => {
-  jsCookie.set('jwt', jwt, { expires: 7 })
+export const saveAuth = accessToken => {
+  Cookies.set('accessToken', accessToken, { expires: 1 })
 }
 
 export const saveUserDetails = details => {
-  jsCookie.set('user', JSON.stringify(details.data))
+  Cookies.set('user', JSON.stringify(details))
 }
 
 export const getUserDetails = () => {
@@ -13,7 +13,7 @@ export const getUserDetails = () => {
   return user ? JSON.parse(user) : null
 }
 
-export const getJwt = () => jsCookie.get('jwt')
+export const getAccessToken = () => jsCookie.get('jwt')
 
 export const logout = () => {
   jsCookie.remove('user')

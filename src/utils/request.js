@@ -10,6 +10,14 @@ export function decoratedUrl(params) {
 export function decoratedImageUrl(params) {
   return imageUrl + params
 }
+export function decoratedOptions(params) {
+  const newOptions = Object.assign(params, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  return newOptions
+}
 
 function parseJSON(response) {
   parseJSONResponse = response

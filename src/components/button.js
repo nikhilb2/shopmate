@@ -30,7 +30,7 @@ const styles = {
   }
 }
 const ButtonComp = props => {
-  const { classes, text, button, width, fontSize, padding } = props
+  const { classes, text, button, width, fontSize, padding, onClick } = props
   return (
     <div>
       {button === 1 ? (
@@ -42,6 +42,7 @@ const ButtonComp = props => {
           }}
           variant="contained"
           color="secondary"
+          onClick={onClick}
         >
           <Typography
             className={classes.text}
@@ -57,6 +58,7 @@ const ButtonComp = props => {
             width: width ? width : '13rem',
             padding: padding ? padding : '0.7rem'
           }}
+          onClick={onClick}
         >
           <Typography
             className={classes.text}
