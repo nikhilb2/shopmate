@@ -1,4 +1,4 @@
-//import { getJwt } from './auth'
+import { getAccessToken } from './auth'
 const url = 'https://backendapi.turing.com/'
 const imageUrl = 'https://backendapi.turing.com/images/products/'
 export let parseJSONResponse = null
@@ -44,7 +44,7 @@ export default async function request(param, options) {
   const urlTofetch = url + param
   const decoratedOptions = Object.assign({}, options)
   decoratedOptions.headers = decoratedOptions.headers || {}
-  //  decoratedOptions.headers.jwt = getJwt()
+  decoratedOptions.headers['user-key'] = getAccessToken()
   console.log(decoratedOptions)
   const result = await fetch(urlTofetch, decoratedOptions) // eslint-disable-line
     .then(checkStatus)
