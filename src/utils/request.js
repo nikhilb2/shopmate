@@ -76,3 +76,15 @@ export const fetchRequest = async (param, options) => {
   }
 
 }
+export const fetchRequestWithoutResponse = async (param, options) => {
+  const urlTofetch = url + param
+  const newOptions = decoratedOptions(options)
+  try {
+    const response = checkStatus(await fetch(urlTofetch, newOptions))
+
+    return response
+  } catch (error) {
+    error
+  }
+
+}

@@ -7,7 +7,7 @@ import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField';
 import ButtonComp from './button'
-import { fetchRequest } from '../utils/request'
+import { fetchRequest, fetchRequestWithoutResponse } from '../utils/request'
 
 const styles = {
   box: {
@@ -35,14 +35,14 @@ class AddReview extends Component {
 
   async postReview() {
     const { productDetails } = this.props.productDetails
-    const result = await fetchRequest(`products/${productDetails.product_id}/reviews`, {
+    const result = await fetchRequestWithoutResponse(`products/${productDetails.product_id}/reviews`, {
       method: 'POST',
       body: JSON.stringify(this.state)
     })
     console.log('result');
     console.log(result);
     if (!result.error) {
-      this.setState({reviewStatus:'Success'})
+      this.setState({reviewStatus:result.status})
     } else {
       this.setState({error:result})
     }
@@ -94,7 +94,7 @@ class AddReview extends Component {
             width='6rem'
             text='submit'
             />
-            {reviewStatus}
+            {reviewStatus === 200 ? 'Review Posted SuccessFully' : null}
       </Box>
       </div>
     )
