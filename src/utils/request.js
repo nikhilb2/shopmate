@@ -35,6 +35,7 @@ function checkStatus(response) {
   }
   const error = new Error(response.statusText)
   error.response = response
+  error.error = true
   error.httpErrCode = response.status
   throw error
 }
@@ -57,15 +58,16 @@ export default async function request(param, options) {
 
 export const fetchRequest = async (param, options) => {
   const urlTofetch = url + param
-  const decoratedOptions = Object.assign({}, options)
-  decoratedOptions.headers = decoratedOptions.headers || {}
+  const newOptions = decoratedOptions(options)
   try {
-    const response = checkStatus(await fetch(urlTofetch, decoratedOptions))
+    const response = checkStatus(await fetch(urlTofetch, newOptions))
     const result = await parseJSON(response)
 
     return result
   } catch (error) {
-    error
+    const parseRes = await error.response.json()
+    const parsedError = Object.assign(error, parseRes)
+    return parsedError
   }
 
 }

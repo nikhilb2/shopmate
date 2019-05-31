@@ -16,7 +16,7 @@ import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
 import SignInPopper from './signInPopper'
 import { saveAuth, saveUserDetails, getUserDetails, logout } from '../utils/auth'
-import { decoratedUrl, decoratedOptions } from '../utils/request'
+import { decoratedUrl, decoratedOptions, fetchRequest } from '../utils/request'
 import ButtonComp from './button'
 const styles = {
   root: {
@@ -66,7 +66,6 @@ class NavBarMen extends Component {
         })
       .then(res => res.json())
       .then(result => {
-        log(result)
         this.setState({ user: result })
         saveAuth(result.accessToken)
         saveUserDetails(result.customer)
@@ -76,6 +75,20 @@ class NavBarMen extends Component {
        this.setState({error})
        return error
      })
+  }
+
+  async signInUser(data) {
+    const result = await fetchRequest('customers/login', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+    console.log('result');
+    console.log(result);
+    if (!result.error) {
+      this.setState({user:result.customer})
+    } else {
+      this.setState({error:result})
+    }
   }
 
   componentDidMount() {
@@ -117,7 +130,7 @@ class NavBarMen extends Component {
               ) : (
                 <div style={{display:'flex'}}>
                   <Typography>Hi</Typography>
-                  <SignInPopper text="Sign In" />
+                  <SignInPopper error={error} text="Sign In" signin={(data) => this.signInUser(data)}/>
                   <Typography>or</Typography>
                   <SignInPopper
                     text="Register"

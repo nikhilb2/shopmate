@@ -14,7 +14,7 @@ class SignIn extends Component {
     password: null
   }
   render() {
-    const { style, bgcolor, classes } = this.props
+    const { style, bgcolor, classes, signin, error } = this.props
     return (
       <Box
         boxShadow={5}
@@ -37,6 +37,7 @@ class SignIn extends Component {
             autoComplete="email"
             margin="normal"
             variant="outlined"
+            onChange={(e) => this.setState({email: e.target.value})}
           />
         </div>
         <div>
@@ -48,6 +49,7 @@ class SignIn extends Component {
             autoComplete="current-password"
             margin="normal"
             variant="outlined"
+            onChange={(e) => this.setState({password: e.target.value})}
           />
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -57,8 +59,10 @@ class SignIn extends Component {
             width="7rem"
             padding="0.5rem"
             text="Sign In"
+            onClick={() => signin(this.state)}
           />
         </div>
+        {error ? error.error.message : null}
       </Box>
     )
   }
