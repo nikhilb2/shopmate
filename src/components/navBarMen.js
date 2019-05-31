@@ -47,7 +47,7 @@ class NavBarMen extends Component {
     user: null,
     error: null
   }
-  registerUser(data) {
+/*  registerUser(data) {
     fetch(
       decoratedUrl('customers'),
       decoratedOptions({
@@ -75,6 +75,20 @@ class NavBarMen extends Component {
        this.setState({error})
        return error
      })
+  }
+*/
+  async  registerUser(data) {
+    const result = await fetchRequest('customers', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    })
+    console.log('result');
+    console.log(result);
+    if (!result.error) {
+      this.setState({user:result.customer})
+    } else {
+      this.setState({error:result})
+    }
   }
 
   async signInUser(data) {

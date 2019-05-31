@@ -77,7 +77,7 @@ class Register extends Component {
             onClick={() => register(this.state)}
           />
         </div>
-        <div>{error ? error.message+": "+error.httpErrCode : null}</div>
+        <div>{error ? error.error.message : null}</div>
       </Box>
     )
   }
