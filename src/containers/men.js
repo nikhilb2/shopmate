@@ -21,7 +21,6 @@ import Typography from '@material-ui/core/Typography'
 import Subscribe from '../components/subscribe'
 import SocialIcons from '../components/socialIcons'
 import Footer2 from '../components/footer2'
-import SignIn from '../components/signIn'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -129,9 +128,6 @@ class MensPage extends Component {
             buttonText="Check Twice"
           />
         </Hidden>
-        <div style={{ position:'fixed'}}>
-          <SignIn />
-        </div>
       </div>
     )
   }

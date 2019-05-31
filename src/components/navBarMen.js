@@ -14,7 +14,7 @@ import Menu from '@material-ui/core/Menu'
 import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
-
+import SignIn from './signIn'
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -37,9 +37,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'row',
     marginRight: '1rem'
-  },
-  hiText: {
-    marginRight: '.5rem'
   }
 }))
 
@@ -59,24 +56,11 @@ const NavBarMen = props => {
       >
         <Toolbar>
           <Typography style={{ display: 'flex' }}>
-            <Typography className={classes.hiText}>Hi</Typography>
-            <Typography
-              style={{
-                color: theme.palette.secondary.main,
-                marginRight: '.5rem'
-              }}
-            >
-              Sigin in
-            </Typography>{' '}
-            or{' '}
-            <Typography
-              style={{
-                color: theme.palette.secondary.main,
-                marginLeft: '0.5rem'
-              }}
-            >
-              Register
-            </Typography>
+            <Typography>Hi</Typography>
+              <SignIn text='Sign In' />
+<Typography>or</Typography>
+
+        <SignIn text='Register' type='register' />
           </Typography>
           <div className={classes.menu}>
             <Typography
