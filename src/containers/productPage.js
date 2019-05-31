@@ -38,7 +38,7 @@ class ProductPage extends Component {
                 <ItemDetailCard showProducts={true} productDetails={productDetails} />
                 </Grid>
                   <Grid item xs={12} >
-                <ItemDetailCard style={{display:'flex', justifyContent:'center'}} productDetails={productDetails}/>
+                <ItemDetailCard  productDetails={productDetails}/>
               </Grid>
             </Grid>
           </div>

@@ -37,7 +37,7 @@ const styles = {
     backgroundPosition: 'center center'
   },
   imgThumb: {
-    maxWidth: '90px',
+    minWidth: '90px',
     maxHeight: '95px',
     marginRight: '1rem'
   },
@@ -69,7 +69,7 @@ class ItemCard extends Component {
       if (review.rating > 5) {
         totalOfRatings = totalOfRatings + 5
       } else if (review.rating < 1) {
-        totalOfRatings = totalOfRatings + 0
+        totalOfRatings = totalOfRatings
       } else {
         totalOfRatings = totalOfRatings + review.rating
       }
@@ -107,7 +107,7 @@ class ItemCard extends Component {
         style={style}
         className={box === 1 ? classes.box2 : classes.box}
       >
-        <div className={classes.justifyCol}>
+        <div className={classes.justifyCol} style={{marginLeft:'4rem'}}>
           <div
             className={classes.holder}
             style={{

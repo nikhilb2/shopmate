@@ -37,7 +37,8 @@ const styles = {
 }
 class MensPage extends Component {
   state = {
-    keyword: ''
+    keyword: '',
+    showSignIn: 'hidden'
   }
 
   searchProducts(keyword) {
@@ -50,7 +51,7 @@ class MensPage extends Component {
 
   render() {
     const { classes, categories, products } = this.props
-    const { productSearch, keyword } = this.state
+    const { productSearch, keyword, showSignIn } = this.state
     console.log(products)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
@@ -108,6 +109,7 @@ class MensPage extends Component {
                 marginBottom: 'auto',
                 marginRight: '2rem'
               }}
+              onClick={() => this.setState({showSignIn:''})}
             >
               <Typography style={{ fontWeight: 'bold' }}>
                 SUBSCRIBE FOR SHOP NEWS, UPDATES AND SPECIAL OFFERS
@@ -127,7 +129,9 @@ class MensPage extends Component {
             buttonText="Check Twice"
           />
         </Hidden>
-        <SignIn />
+        <div style={{ position:'fixed'}}>
+          <SignIn />
+        </div>
       </div>
     )
   }

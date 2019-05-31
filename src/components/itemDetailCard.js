@@ -12,11 +12,9 @@ const styles = {
   },
   box: {
     maxWidth: '940px',
-    height: '480px',
-    display: 'flex',
-    flexDirection: 'column',
+    maxHeight: '1000px',
+    display: 'block',
     textAlign: 'center',
-    justifyContent: 'center',
     marginTop: 0,
     marginBottom: 0
   },

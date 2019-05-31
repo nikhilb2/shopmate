@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid';
 const styles = {
   box: {
     width: '880px',
-    height: '552px',
+    minHeight: '552px',
     padding: '1rem',
   },
   title: {
