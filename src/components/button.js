@@ -30,7 +30,7 @@ const styles = {
   }
 }
 const ButtonComp = props => {
-  const { classes, text, button, width, fontSize, padding, onClick } = props
+  const { classes, text, margin, button, width, fontSize, padding, onClick } = props
   return (
     <div>
       {button === 1 ? (
@@ -38,7 +38,8 @@ const ButtonComp = props => {
           className={classes.buttonSecondary}
           style={{
             width: width ? width : '13rem',
-            padding: padding ? padding : '0.7rem'
+            padding: padding ? padding : '0.7rem',
+            margin: margin ? margin : 0
           }}
           variant="contained"
           color="secondary"

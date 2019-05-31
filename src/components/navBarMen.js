@@ -15,9 +15,9 @@ import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
 import SignInPopper from './signInPopper'
-import { saveAuth, saveUserDetails, getUserDetails } from '../utils/auth'
+import { saveAuth, saveUserDetails, getUserDetails, logout } from '../utils/auth'
 import { decoratedUrl, decoratedOptions } from '../utils/request'
-
+import ButtonComp from './button'
 const styles = {
   root: {
     flexGrow: 1
@@ -71,6 +71,11 @@ class NavBarMen extends Component {
     this.setState({ user: getUser })
   }
 
+  logOutUser() {
+    logout()
+    this.setState({user:null})
+  }
+
   render() {
     const { bgcolor, color, searchBox, classes } = this.props
 
@@ -89,13 +94,13 @@ class NavBarMen extends Component {
           elevation={0}
         >
           <Toolbar>
-            <Typography style={{ display: 'flex' }}>
-              <Typography>Hi</Typography>
+
 
               {user ? (
-                <Typography>{user.name}</Typography>
+                <div style={{display:'flex'}}><Typography>Hi! {user.name}</Typography><ButtonComp margin='2 0 0 0' button={1} text='Logout' onClick={() => this.logOutUser()} padding='.2rem' fontSize='.8rem' width='fit-content' /></div>
               ) : (
-                <div>
+                <div style={{display:'flex'}}>
+                  <Typography>Hi</Typography>
                   <SignInPopper text="Sign In" />
                   <Typography>or</Typography>
                   <SignInPopper
@@ -105,7 +110,6 @@ class NavBarMen extends Component {
                   />
                 </div>
               )}
-            </Typography>
             <div className={classes.menu}>
               <Typography
                 variant="subtitle1"

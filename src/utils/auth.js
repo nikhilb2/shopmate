@@ -13,9 +13,9 @@ export const getUserDetails = () => {
   return user ? JSON.parse(user) : null
 }
 
-export const getAccessToken = () => jsCookie.get('jwt')
+export const getAccessToken = () => Cookies.get('jwt')
 
 export const logout = () => {
-  jsCookie.remove('user')
-  jsCookie.remove('jwt')
+  Cookies.remove('user')
+  Cookies.remove('accessToken')
 }

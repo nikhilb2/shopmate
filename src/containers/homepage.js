@@ -10,6 +10,7 @@ import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
 import SubsContainer from './subscriptionContainer'
 import Footer from '../components/footer'
+import NavBarMen from '../components/navBarMen'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -21,6 +22,7 @@ class Homepage extends Component {
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
+          <NavBarMen />
           <NavigationBar />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
