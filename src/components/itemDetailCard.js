@@ -44,7 +44,7 @@ class ItemDetailCard extends Component {
     } = this.props
 
     return (
-      <div className={classes.justify}>
+      <div style={{style}} className={classes.justify}>
         <Box
           boxShadow={3}
           bgcolor={bgcolor ? bgcolor : '#FFFFFF'}

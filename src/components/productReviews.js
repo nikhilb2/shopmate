@@ -6,12 +6,13 @@ import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
 import theme from '../theme'
 import PlusMinus from './plusMinus'
+import Grid from '@material-ui/core/Grid';
 
 const styles = {
   box: {
     width: '880px',
     height: '552px',
-    padding: '3rem'
+    padding: '1rem',
   },
   title: {
     fontSize: '1rem'
@@ -42,11 +43,16 @@ const styles = {
   }
 }
 const Review = (props) => {
-  const { classes, review } = props
+  const { classes, review, style } = props
   console.log('review');
   console.log(review);
   return (
-    <div className={classes.justifyRow}>
+    <Box       boxShadow={4}
+          bgcolor='#FFFFFF'
+          m={1}
+          p={1}
+          style={style}
+          className={classes.justifyRow}>
       <div className={classes.justifyCol}>
         <div>
           <img style={{
@@ -62,7 +68,7 @@ const Review = (props) => {
       <div className={ classes.justifyCol} style={{justifyContent:'center'}}>
         <Typography style={{ margin:'0 0 0 10rem'}}>{review.review}</Typography>
       </div>
-    </div>
+    </Box>
   )
 }
 class ProductReivews extends Component {
@@ -91,16 +97,18 @@ class ProductReivews extends Component {
         style={style}
         className={classes.box}
       >
-      <Typography style={{fontSize:'1.5rem', textAlign:'left'}}>
+      <Grid container spacing={3} style={{display:'flex', justifyContent:'center', marginRight:'auto', marginLeft:'auto'}}>
+      <Grid item xs={12}>
+      <Typography style={{fontSize:'1.5rem'}}>
         Product Reviews
       </Typography>
-
+      </Grid>
         {productDetails && productDetails.productReviews.map((review, i) => {
           if (i < 3) {
-            return(      <div style={{borderColor:theme.palette.secondary.main, borderStyle:'solid', borderWidth:'3px', borderRadius:'10px', padding:'.5rem', marginBottom:'1rem', width:'100%'}}><Review classes={classes} review={review} />        </div>)
+            return(      <Grid item xs={12}><Review style={{width:'60vw', marginRight:'auto', marginLeft:'auto'}} classes={classes} review={review} /></Grid>)
           }
         })}
-
+        </Grid>
       </Box>
     )
   }
