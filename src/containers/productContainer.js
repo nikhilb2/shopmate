@@ -1,6 +1,7 @@
 import React from 'react'
 import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
+import Hidden from '@material-ui/core/Hidden'
 
 import theme from '../theme'
 import ItemCard from '../components/itemCard'
@@ -26,9 +27,11 @@ const ProductContainer = props => {
   return (
     <div style={{ width: '100%' }}>
       <div className={classes.container}>
+      <Hidden only={['xl', 'sm']} implementation="css">
         <div className={classes.content}>
           <FilterBox />
         </div>
+        </Hidden>
         <div
           style={{
             position: 'absolute',
@@ -62,6 +65,7 @@ const ProductContainer = props => {
             ))}
         </div>
       </div>
+      <Hidden only={['xl', 'sm']} implementation="css">
       <div
         style={{
           display: 'flex',
@@ -78,6 +82,7 @@ const ProductContainer = props => {
             </div>
           ))}
       </div>
+      </Hidden>
     </div>
   )
 }
