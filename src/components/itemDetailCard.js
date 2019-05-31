@@ -6,6 +6,7 @@ import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
 import ItemCardBig from './itemCardBig'
 import ProductReivews from './productReviews'
+import AddReview from './addReview'
 const styles = {
   root: {
     flexGrow: 1
@@ -40,7 +41,7 @@ class ItemDetailCard extends Component {
       productDetails,
       showProducts
     } = this.props
-
+    console.log(productDetails);
     return (
       <div style={{ style }} className={classes.justify}>
         <Box
@@ -53,8 +54,11 @@ class ItemDetailCard extends Component {
           {showProducts ? (
             <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} />
           ) : (
+            <div>
             <ProductReivews productDetails={productDetails} />
+                      <AddReview  productDetails={productDetails} /></div>
           )}
+
         </Box>
       </div>
     )

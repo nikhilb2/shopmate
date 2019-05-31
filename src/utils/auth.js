@@ -13,7 +13,7 @@ export const getUserDetails = () => {
   return user ? JSON.parse(user) : null
 }
 
-export const getAccessToken = () => Cookies.get('jwt')
+export const getAccessToken = () => Cookies.get('accessToken')
 
 export const logout = () => {
   Cookies.remove('user')

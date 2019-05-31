@@ -11,11 +11,16 @@ export function decoratedImageUrl(params) {
   return imageUrl + params
 }
 export function decoratedOptions(params) {
-  const newOptions = Object.assign(params, {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+  const accessToken = getAccessToken()
+    const newOptions = Object.assign(params, {
+      headers: {
+        'Content-Type': 'application/json',
+        'user-key': accessToken
+      }
+    })
+
+
+  console.log(accessToken);
   return newOptions
 }
 
