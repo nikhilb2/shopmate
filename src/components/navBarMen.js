@@ -47,36 +47,7 @@ class NavBarMen extends Component {
     user: null,
     error: null
   }
-/*  registerUser(data) {
-    fetch(
-      decoratedUrl('customers'),
-      decoratedOptions({
-        method: 'POST',
-        body: JSON.stringify(data)
-      })
-    )
-      .then(response => {
-        if (response.status >= 200 && response.status < 300) {
-          return response
-        }
-        const error = new Error(response.statusText)
-        error.response = response
-        error.httpErrCode = response.status
-        throw error
-        })
-      .then(res => res.json())
-      .then(result => {
-        this.setState({ user: result })
-        saveAuth(result.accessToken)
-        saveUserDetails(result.customer)
-      })
-     .catch(error => {
-       console.log(error);
-       this.setState({error})
-       return error
-     })
-  }
-*/
+
   async  registerUser(data) {
     const result = await fetchRequest('customers', {
       method: 'POST',
@@ -102,6 +73,8 @@ class NavBarMen extends Component {
     console.log(result);
     if (!result.error) {
       this.setState({user:result.customer})
+      saveAuth(result.accessToken)
+      saveUserDetails(result.customer)
     } else {
       this.setState({error:result})
     }

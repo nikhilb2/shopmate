@@ -22,7 +22,7 @@ class Homepage extends Component {
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen />
+          <NavBarMen bgcolor='#edeeee'/>
           <NavigationBar />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
