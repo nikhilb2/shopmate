@@ -108,7 +108,7 @@ class MensPage extends Component {
                 marginBottom: 'auto',
                 marginRight: '2rem'
               }}
-              onClick={() => this.setState({showSignIn:''})}
+              onClick={() => this.setState({ showSignIn: '' })}
             >
               <Typography style={{ fontWeight: 'bold' }}>
                 SUBSCRIBE FOR SHOP NEWS, UPDATES AND SPECIAL OFFERS

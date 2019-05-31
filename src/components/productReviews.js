@@ -6,13 +6,13 @@ import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
 import theme from '../theme'
 import PlusMinus from './plusMinus'
-import Grid from '@material-ui/core/Grid';
+import Grid from '@material-ui/core/Grid'
 
 const styles = {
   box: {
     width: '880px',
     minHeight: '552px',
-    padding: '1rem',
+    padding: '1rem'
   },
   title: {
     fontSize: '1rem'
@@ -42,31 +42,41 @@ const styles = {
     width: 'fit-content'
   }
 }
-const Review = (props) => {
+const Review = props => {
   const { classes, review, style } = props
-  console.log('review');
-  console.log(review);
+  console.log('review')
+  console.log(review)
   return (
-    <Box       boxShadow={4}
-          bgcolor='#FFFFFF'
-          m={1}
-          p={1}
-          style={style}
-          className={classes.justifyRow}>
+    <Box
+      boxShadow={4}
+      bgcolor="#FFFFFF"
+      m={1}
+      p={1}
+      style={style}
+      className={classes.justifyRow}
+    >
       <div className={classes.justifyCol}>
         <div>
-          <img style={{
-                            background: `linear-gradient(to right, #FFC94F ${
-                              ((review.rating) / 5) * 100
-                            }%, #EEEEEE ${((review.rating) / 5) * 100}%)`
-                          }} src='static/stars.png' alt='stars' />
+          <img
+            style={{
+              background: `linear-gradient(to right, #FFC94F ${(review.rating /
+                5) *
+                100}%, #EEEEEE ${(review.rating / 5) * 100}%)`
+            }}
+            src="static/stars.png"
+            alt="stars"
+          />
         </div>
         <div>
-          <Typography style={{fontSize:'1.3rem', marginTop:'1rem'}}>{review.name}</Typography>
+          <Typography style={{ fontSize: '1.3rem', marginTop: '1rem' }}>
+            {review.name}
+          </Typography>
         </div>
       </div>
-      <div className={ classes.justifyCol} style={{justifyContent:'center'}}>
-        <Typography style={{ margin:'0 0 0 10rem'}}>{review.review}</Typography>
+      <div className={classes.justifyCol} style={{ justifyContent: 'center' }}>
+        <Typography style={{ margin: '0 0 0 10rem' }}>
+          {review.review}
+        </Typography>
       </div>
     </Box>
   )
@@ -76,17 +86,8 @@ class ProductReivews extends Component {
     skip: 0
   }
 
-
-
-
   render() {
-    const {
-      classes,
-      bgcolor,
-      style,
-      productDetails
-
-    } = this.props
+    const { classes, bgcolor, style, productDetails } = this.props
 
     return (
       <Box
@@ -97,17 +98,39 @@ class ProductReivews extends Component {
         style={style}
         className={classes.box}
       >
-      <Grid container spacing={3} style={{display:'flex', justifyContent:'center', marginRight:'auto', marginLeft:'auto'}}>
-      <Grid item xs={12}>
-      <Typography style={{fontSize:'1.5rem'}}>
-        Product Reviews
-      </Typography>
-      </Grid>
-        {productDetails && productDetails.productReviews.map((review, i) => {
-          if (i < 3) {
-            return(      <Grid item xs={12}><Review style={{width:'60vw', marginRight:'auto', marginLeft:'auto'}} classes={classes} review={review} /></Grid>)
-          }
-        })}
+        <Grid
+          container
+          spacing={3}
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginRight: 'auto',
+            marginLeft: 'auto'
+          }}
+        >
+          <Grid item xs={12}>
+            <Typography style={{ fontSize: '1.5rem' }}>
+              Product Reviews
+            </Typography>
+          </Grid>
+          {productDetails &&
+            productDetails.productReviews.map((review, i) => {
+              if (i < 3) {
+                return (
+                  <Grid item xs={12}>
+                    <Review
+                      style={{
+                        width: '60vw',
+                        marginRight: 'auto',
+                        marginLeft: 'auto'
+                      }}
+                      classes={classes}
+                      review={review}
+                    />
+                  </Grid>
+                )
+              }
+            })}
         </Grid>
       </Box>
     )

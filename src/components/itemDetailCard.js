@@ -42,7 +42,7 @@ class ItemDetailCard extends Component {
     } = this.props
 
     return (
-      <div style={{style}} className={classes.justify}>
+      <div style={{ style }} className={classes.justify}>
         <Box
           boxShadow={3}
           bgcolor={bgcolor ? bgcolor : '#FFFFFF'}
@@ -50,8 +50,11 @@ class ItemDetailCard extends Component {
           p={1}
           className={box === 1 ? classes.box2 : classes.box}
         >
-        {showProducts ? <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} /> : <ProductReivews productDetails={productDetails}/>}
-
+          {showProducts ? (
+            <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} />
+          ) : (
+            <ProductReivews productDetails={productDetails} />
+          )}
         </Box>
       </div>
     )

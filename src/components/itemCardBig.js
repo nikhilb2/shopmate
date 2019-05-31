@@ -107,7 +107,7 @@ class ItemCard extends Component {
         style={style}
         className={box === 1 ? classes.box2 : classes.box}
       >
-        <div className={classes.justifyCol} style={{marginLeft:'4rem'}}>
+        <div className={classes.justifyCol} style={{ marginLeft: '4rem' }}>
           <div
             className={classes.holder}
             style={{
@@ -169,7 +169,7 @@ class ItemCard extends Component {
           </div>
         </div>
         <div className={classes.justifyRow} style={{ marginTop: '1rem' }}>
-          <div style={{margin:'auto'}}>
+          <div style={{ margin: 'auto' }}>
             <Typography
               style={{
                 textAlign: 'left',
@@ -198,7 +198,7 @@ class ItemCard extends Component {
                   color: 'white',
                   width: '3rem',
                   borderRadius: '2rem',
-                  fontSize:'.8rem'
+                  fontSize: '.8rem'
                 }}
               >
                 {ratingInt}

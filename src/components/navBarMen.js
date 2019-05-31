@@ -57,10 +57,10 @@ const NavBarMen = props => {
         <Toolbar>
           <Typography style={{ display: 'flex' }}>
             <Typography>Hi</Typography>
-              <SignIn text='Sign In' />
-<Typography>or</Typography>
+            <SignIn text="Sign In" />
+            <Typography>or</Typography>
 
-        <SignIn text='Register' type='register' />
+            <SignIn text="Register" type="register" />
           </Typography>
           <div className={classes.menu}>
             <Typography

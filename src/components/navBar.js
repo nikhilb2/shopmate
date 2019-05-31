@@ -58,25 +58,25 @@ const MenuAppBar = props => {
         <Toolbar>
           <img src="static/SHOPMATE.svg" alt="shopmate" />
           <div className={classes.menu}>
-          <Link href="/">
-            <Button
-              href="index"
-              style={{ textTransform: 'none' }}
-              color={color ? color : 'black'}
-              className={classes.title}
-            >
-              Home
-            </Button>
+            <Link href="/">
+              <Button
+                href="index"
+                style={{ textTransform: 'none' }}
+                color={color ? color : 'black'}
+                className={classes.title}
+              >
+                Home
+              </Button>
             </Link>
             <Link href="/men">
-            <Button
-              href="men"
-              style={{ textTransform: 'none' }}
-              color={color ? color : 'black'}
-              className={classes.title}
-            >
-              Categories
-            </Button>
+              <Button
+                href="men"
+                style={{ textTransform: 'none' }}
+                color={color ? color : 'black'}
+                className={classes.title}
+              >
+                Categories
+              </Button>
             </Link>
             <Button
               style={{ textTransform: 'none' }}

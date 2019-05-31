@@ -2,7 +2,7 @@ import React from 'react'
 import Fab from '@material-ui/core/Fab'
 import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 import theme from '../theme'
 
 const styles = {
@@ -34,10 +34,15 @@ const ButtonComp = props => {
   return (
     <div>
       {button === 1 ? (
-        <Button className={classes.buttonSecondary}           style={{
-                    width: width ? width : '13rem',
-                    padding: padding ? padding : '0.7rem'
-                  }} variant="contained" color="secondary">
+        <Button
+          className={classes.buttonSecondary}
+          style={{
+            width: width ? width : '13rem',
+            padding: padding ? padding : '0.7rem'
+          }}
+          variant="contained"
+          color="secondary"
+        >
           <Typography
             className={classes.text}
             style={{ fontSize: fontSize ? fontSize : '1.2rem' }}
@@ -46,18 +51,20 @@ const ButtonComp = props => {
           </Typography>
         </Button>
       ) : (
-        <Button className={classes.buttonPrimary}
-        style={{
-          width: width ? width : '13rem',
-          padding: padding ? padding : '0.7rem'
-        }}>
+        <Button
+          className={classes.buttonPrimary}
+          style={{
+            width: width ? width : '13rem',
+            padding: padding ? padding : '0.7rem'
+          }}
+        >
           <Typography
             className={classes.text}
             style={{ fontSize: fontSize ? fontSize : '1.2rem' }}
           >
             {text}
           </Typography>
-          </Button>
+        </Button>
       )}
     </div>
   )

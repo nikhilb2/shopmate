@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
 import Link from 'next/link'
-import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActionArea from '@material-ui/core/CardActionArea'
 
 const styles = {
   box: {
@@ -43,55 +43,51 @@ class ItemCard extends Component {
     const { elevation, mouseOver } = this.state
     console.log(this.state)
     return (
-      <Link href={ id ? { pathname: '/product', query: { prodId: id } } : '/'}>
-
-      <Box
-        boxShadow={mouseOver ? 5 : 1}
-        bgcolor="#FFFFFF"
-        m={1}
-        p={1}
-        style={style}
-        className={box === 1 ? classes.box2 : classes.box}
-
-      >
-      <CardActionArea style={{position:'absolute'}}  className={box === 1 ? classes.box2 : classes.box}>
-      </CardActionArea>
-        <div
-          className={classes.justify}
-          style={{
-            backgroundImage: `url(${decoratedImageUrl(image)})`,
-            width: '120px',
-            height: '111px',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center center',
-            backgroundSize: 'cover',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            opacity: mouseOver ? 0.2 : 1
-          }}
+      <Link href={id ? { pathname: '/product', query: { prodId: id } } : '/'}>
+        <Box
+          boxShadow={mouseOver ? 5 : 1}
+          bgcolor="#FFFFFF"
+          m={1}
+          p={1}
+          style={style}
+          className={box === 1 ? classes.box2 : classes.box}
         >
-        </div>
-
-
-        <Typography
-          variant="body1"
-          style={{ color: color ? color : 'black' }}
-          className={classes.title}
-        >
-          {title}
-        </Typography>
-        <div className={classes.justify}>
-          <ButtonComp
-            fontSize=".8rem"
-            width="7rem"
-            padding="0.5rem"
-            text="Buy Now"
-            button={1}
+          <CardActionArea
+            style={{ position: 'absolute' }}
+            className={box === 1 ? classes.box2 : classes.box}
           />
-        </div>
+          <div
+            className={classes.justify}
+            style={{
+              backgroundImage: `url(${decoratedImageUrl(image)})`,
+              width: '120px',
+              height: '111px',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center center',
+              backgroundSize: 'cover',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+              opacity: mouseOver ? 0.2 : 1
+            }}
+          />
 
-      </Box>
-
+          <Typography
+            variant="body1"
+            style={{ color: color ? color : 'black' }}
+            className={classes.title}
+          >
+            {title}
+          </Typography>
+          <div className={classes.justify}>
+            <ButtonComp
+              fontSize=".8rem"
+              width="7rem"
+              padding="0.5rem"
+              text="Buy Now"
+              button={1}
+            />
+          </div>
+        </Box>
       </Link>
     )
   }

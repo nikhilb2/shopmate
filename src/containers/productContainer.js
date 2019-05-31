@@ -27,10 +27,10 @@ const ProductContainer = props => {
   return (
     <div style={{ width: '100%' }}>
       <div className={classes.container}>
-      <Hidden only={['xl', 'sm']} implementation="css">
-        <div className={classes.content}>
-          <FilterBox />
-        </div>
+        <Hidden only={['xl', 'sm']} implementation="css">
+          <div className={classes.content}>
+            <FilterBox />
+          </div>
         </Hidden>
         <div
           style={{
@@ -66,22 +66,27 @@ const ProductContainer = props => {
         </div>
       </div>
       <Hidden only={['xl', 'sm']} implementation="css">
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-around'
-        }}
-      >
-        {products &&
-          products.rows.map((item, i) => (
-            <div style={{ display: 'flex', marginBottom: '-5rem' }}>
-              {i > 6 && i < 10 ? (
-                <ItemCard box={1} title={item.name} image={item.thumbnail} id={item.product_id} />
-              ) : null}
-            </div>
-          ))}
-      </div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-around'
+          }}
+        >
+          {products &&
+            products.rows.map((item, i) => (
+              <div style={{ display: 'flex', marginBottom: '-5rem' }}>
+                {i > 6 && i < 10 ? (
+                  <ItemCard
+                    box={1}
+                    title={item.name}
+                    image={item.thumbnail}
+                    id={item.product_id}
+                  />
+                ) : null}
+              </div>
+            ))}
+        </div>
       </Hidden>
     </div>
   )
