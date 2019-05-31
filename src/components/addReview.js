@@ -43,6 +43,7 @@ class AddReview extends Component {
     console.log(result);
     if (!result.error) {
       this.setState({reviewStatus:result.status})
+      this.props.getProductReviews()
     } else {
       this.setState({error:result})
     }

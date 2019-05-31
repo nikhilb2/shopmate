@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
-import { decoratedImageUrl } from '../utils/request'
+import { fetchRequest } from '../utils/request'
 import ItemCardBig from './itemCardBig'
 import ProductReivews from './productReviews'
 import AddReview from './addReview'
@@ -29,7 +29,24 @@ const styles = {
 }
 
 class ItemDetailCard extends Component {
-  state = {}
+  state = {
+    newProductReviews:null
+  }
+
+  async getProductReviews() {
+    const { productDetails } = this.props.productDetails
+    const result = await fetchRequest(`products/${productDetails.product_id}/reviews`, {
+      method: 'GET',
+    })
+    if (!result.error) {
+      console.log(result);
+      this.setState({newProductReviews:{ productReviews: result}})
+    } else {
+      this.setState({error:result})
+    }
+  }
+
+
   render() {
     const {
       classes,
@@ -41,6 +58,8 @@ class ItemDetailCard extends Component {
       productDetails,
       showProducts
     } = this.props
+
+    const { newProductReviews } = this.state
     console.log(productDetails);
     return (
       <div style={{ style }} className={classes.justify}>
@@ -55,8 +74,8 @@ class ItemDetailCard extends Component {
             <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} />
           ) : (
             <div>
-            <ProductReivews productDetails={productDetails} />
-                      <AddReview  productDetails={productDetails} /></div>
+            <ProductReivews productDetails={ newProductReviews ? newProductReviews : productDetails} />
+                      <AddReview getProductReviews={() => this.getProductReviews()} productDetails={productDetails} /></div>
           )}
 
         </Box>
