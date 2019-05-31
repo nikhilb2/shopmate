@@ -41,7 +41,6 @@ class ItemCard extends Component {
   render() {
     const { classes, title, style, color, image, box, id } = this.props
     const { elevation, mouseOver } = this.state
-    console.log(this.state)
     return (
       <Link href={id ? { pathname: '/product', query: { prodId: id } } : '/'}>
         <Box
