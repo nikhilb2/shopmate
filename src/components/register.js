@@ -16,7 +16,7 @@ class Register extends Component {
   }
 
   render() {
-    const { style, bgcolor, classes, register } = this.props
+    const { style, bgcolor, classes, register, error } = this.props
     const { result } = this.state
     console.log(this.props)
     return (
@@ -77,6 +77,7 @@ class Register extends Component {
             onClick={() => register(this.state)}
           />
         </div>
+        <div>{error ? error.message+": "+error.httpErrCode : null}</div>
       </Box>
     )
   }

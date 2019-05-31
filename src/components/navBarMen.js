@@ -44,7 +44,8 @@ const styles = {
 
 class NavBarMen extends Component {
   state = {
-    user: null
+    user: null,
+    error: null
   }
   registerUser(data) {
     fetch(
@@ -54,12 +55,27 @@ class NavBarMen extends Component {
         body: JSON.stringify(data)
       })
     )
-      .then(response => response.json())
+      .then(response => {
+        if (response.status >= 200 && response.status < 300) {
+          return response
+        }
+        const error = new Error(response.statusText)
+        error.response = response
+        error.httpErrCode = response.status
+        throw error
+        })
+      .then(res => res.json())
       .then(result => {
+        log(result)
         this.setState({ user: result })
         saveAuth(result.accessToken)
         saveUserDetails(result.customer)
       })
+     .catch(error => {
+       console.log(error);
+       this.setState({error})
+       return error
+     })
   }
 
   componentDidMount() {
@@ -79,8 +95,8 @@ class NavBarMen extends Component {
   render() {
     const { bgcolor, color, searchBox, classes } = this.props
 
-    const { user } = this.state
-    console.log(user)
+    const { user, error } = this.state
+    console.log(this.state)
 
     return (
       <div className={classes.root}>
@@ -107,6 +123,7 @@ class NavBarMen extends Component {
                     text="Register"
                     type="register"
                     register={data => this.registerUser(data)}
+                    error = { error }
                   />
                 </div>
               )}

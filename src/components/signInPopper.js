@@ -28,7 +28,7 @@ const SignInPop = props => {
 
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popover' : null
-  const { type, text, register } = props
+  const { type, text, register, error } = props
   return (
     <div>
       <Button
@@ -57,7 +57,7 @@ const SignInPop = props => {
         }}
       >
         <div>
-          {type === 'register' ? <Register register={register} /> : <SignIn />}
+          {type === 'register' ? <Register error={error} register={register} /> : <SignIn />}
         </div>
       </Popover>
     </div>

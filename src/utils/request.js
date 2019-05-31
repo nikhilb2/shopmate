@@ -54,3 +54,18 @@ export default async function request(param, options) {
     .catch(err => ({ err }))
   return result
 }
+
+export const fetchRequest = async (param, options) => {
+  const urlTofetch = url + param
+  const decoratedOptions = Object.assign({}, options)
+  decoratedOptions.headers = decoratedOptions.headers || {}
+  try {
+    const response = checkStatus(await fetch(urlTofetch, decoratedOptions))
+    const result = await parseJSON(response)
+
+    return result
+  } catch (error) {
+    error
+  }
+
+}
