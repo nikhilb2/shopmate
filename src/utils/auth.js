@@ -9,7 +9,7 @@ export const saveUserDetails = details => {
 }
 
 export const getUserDetails = () => {
-  const user = jsCookie.get('user')
+  const user = Cookies.get('user')
   return user ? JSON.parse(user) : null
 }
 

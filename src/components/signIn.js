@@ -6,9 +6,7 @@ import ButtonComp from './button'
 import theme from '../theme'
 import { withStyles } from '@material-ui/styles'
 
-const styles = {
-
-}
+const styles = {}
 
 class SignIn extends Component {
   state = {
@@ -64,7 +62,6 @@ class SignIn extends Component {
       </Box>
     )
   }
-
 }
 
 export default withStyles(styles)(SignIn)

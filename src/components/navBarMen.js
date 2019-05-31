@@ -14,9 +14,11 @@ import Menu from '@material-ui/core/Menu'
 import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
-import SignIn from './signInPopper'
+import SignInPopper from './signInPopper'
+import { saveAuth, saveUserDetails, getUserDetails } from '../utils/auth'
+import { decoratedUrl, decoratedOptions } from '../utils/request'
 
-const styles ={
+const styles = {
   root: {
     flexGrow: 1
   },
@@ -36,31 +38,44 @@ const styles ={
   navRightButtons: {
     display: 'flex',
     flexDirection: 'row',
-    marginRight: '1rem'
+    marginRight: '1.1rem'
   }
 }
 
-class NavBarMen extends Component  {
+class NavBarMen extends Component {
   state = {
     user: null
   }
   registerUser(data) {
-    fetch(decoratedUrl('customers'), decoratedOptions({
-      method: 'POST',
-      body: JSON.stringify(data)
-    }))
-    .then(response => response.json())
-    .then(result => {
-      this.setState({user:result})
-      saveAuth(result.accessToken)
-      saveUserDetails(result.customer)
-    })
+    fetch(
+      decoratedUrl('customers'),
+      decoratedOptions({
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+    )
+      .then(response => response.json())
+      .then(result => {
+        this.setState({ user: result })
+        saveAuth(result.accessToken)
+        saveUserDetails(result.customer)
+      })
   }
-  render() {
 
+  componentDidMount() {
+    this.getUserFromCookies()
+  }
+
+  getUserFromCookies() {
+    const getUser = getUserDetails()
+    this.setState({ user: getUser })
+  }
+
+  render() {
     const { bgcolor, color, searchBox, classes } = this.props
 
     const { user } = this.state
+    console.log(user)
 
     return (
       <div className={classes.root}>
@@ -77,13 +92,19 @@ class NavBarMen extends Component  {
             <Typography style={{ display: 'flex' }}>
               <Typography>Hi</Typography>
 
-              { user ? <Typography>{user.name}</Typography> : <div><SignIn text="Sign In" />  <Typography>or</Typography>
-
-                <SignIn text="Register" type="register" onClick={(data) => this.registerUser(data)} /><div>}
-
-
-
-
+              {user ? (
+                <Typography>{user.name}</Typography>
+              ) : (
+                <div>
+                  <SignInPopper text="Sign In" />
+                  <Typography>or</Typography>
+                  <SignInPopper
+                    text="Register"
+                    type="register"
+                    register={data => this.registerUser(data)}
+                  />
+                </div>
+              )}
             </Typography>
             <div className={classes.menu}>
               <Typography
@@ -125,7 +146,6 @@ class NavBarMen extends Component  {
       </div>
     )
   }
-
 }
 
 export default withStyles(styles)(NavBarMen)

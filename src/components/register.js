@@ -7,9 +7,7 @@ import theme from '../theme'
 import { withStyles } from '@material-ui/styles'
 import { decoratedUrl, decoratedOptions } from '../utils/request'
 import { saveAuth, saveUserDetails, getUserDetails } from '../utils/auth'
-const styles = {
-
-}
+const styles = {}
 class Register extends Component {
   state = {
     name: null,
@@ -17,13 +15,10 @@ class Register extends Component {
     password: null
   }
 
-
-
-
   render() {
-    const { style, bgcolor, classes, onClick } = this.props
+    const { style, bgcolor, classes, register } = this.props
     const { result } = this.state
-      console.log(this.state);
+    console.log(this.props)
     return (
       <Box
         boxShadow={5}
@@ -45,7 +40,7 @@ class Register extends Component {
             name="name"
             margin="normal"
             variant="outlined"
-            onChange={(e) => this.setState({name:e.target.value})}
+            onChange={e => this.setState({ name: e.target.value })}
           />
         </div>
         <div>
@@ -57,7 +52,7 @@ class Register extends Component {
             name="email"
             margin="normal"
             variant="outlined"
-            onChange={(e) => this.setState({email:e.target.value})}
+            onChange={e => this.setState({ email: e.target.value })}
           />
         </div>
         <div>
@@ -69,7 +64,7 @@ class Register extends Component {
             autoComplete="current-password"
             margin="normal"
             variant="outlined"
-            onChange={(e) => this.setState({password:e.target.value})}
+            onChange={e => this.setState({ password: e.target.value })}
           />
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
@@ -79,13 +74,12 @@ class Register extends Component {
             width="7rem"
             padding="0.5rem"
             text="Sign In"
-            onClick={() => onClick(this.state)}
+            onClick={() => register(this.state)}
           />
         </div>
       </Box>
     )
   }
-
 }
 
 export default withStyles(styles)(Register)
