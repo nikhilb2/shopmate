@@ -10,7 +10,7 @@ import PlusMinus from './plusMinus'
 const styles = {
   box: {
     width: '880px',
-    height: '552px',
+    minHeight: '400px',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center'
@@ -169,7 +169,7 @@ class ItemCard extends Component {
           </div>
         </div>
         <div className={classes.justifyRow} style={{ marginTop: '1rem' }}>
-          <div>
+          <div style={{margin:'auto'}}>
             <Typography
               style={{
                 textAlign: 'left',
