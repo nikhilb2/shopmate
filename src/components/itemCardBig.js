@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
-import { decoratedImageUrl } from '../utils/request'
+import { decoratedImageUrl, fetchRequest } from '../utils/request'
 import theme from '../theme'
 import PlusMinus from './plusMinus'
 
@@ -52,7 +52,8 @@ class ItemCard extends Component {
     selectedImage: null,
     image1Click: true,
     image2Click: false,
-    rating: 0
+    rating: 0,
+    cartId: null
   }
 
   componentDidMount() {
@@ -60,6 +61,33 @@ class ItemCard extends Component {
     if (productDetails) {
       this.rating()
     }
+  }
+
+  async createCartId() {
+    const newCartId = await fetchRequest('shoppingcart/generateUniqueId',{
+      method: 'GET'
+    })
+    this.setState({cartId:newCartId.cart_id})
+    return newCartId
+  }
+
+  async addToCart(productId) {
+    const { cartId } = this.state
+    let addToCartResult = null
+    if ( cartId ) {
+      const addToCartResult = await fetchRequest('shoppingcart/add', {
+        method: 'POST',
+        body: JSON.stringify({cart_id: cartId, product_id: productId, attributes:'none'})
+      })
+    } else {
+      const newCartId = await this.createCartId()
+      const addToCartResult = await fetchRequest('shoppingcart/add', {
+        method: 'POST',
+        body: JSON.stringify({cart_id: newCartId.cart_id, product_id: productId, attributes:'none'})
+      })
+
+    }
+    this.setState({itemsInCart:addToCartResult})
   }
 
   rating() {
@@ -98,6 +126,7 @@ class ItemCard extends Component {
       productDetails
     } = this.props
     const { selectedImage, image1Click, image2Click, ratingInt } = this.state
+    console.log(this.state);
     return (
       <Box
         boxShadow={0}
@@ -262,6 +291,7 @@ class ItemCard extends Component {
               button={1}
               style={{ width: '2rem' }}
               text="Add to cart"
+              onClick={() => this.addToCart(productDetails.productDetails.product_id)}
             />
           </div>
         </div>
