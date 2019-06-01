@@ -10,7 +10,8 @@ const styles = {
     justifyContent: 'center',
     flexDirection: 'row',
     margin: '.5rem',
-    marginLeft: 0
+    marginLeft: 0,
+    textAlign: 'center'
   },
   round: {
     backgroundColor: '#eeefef',
@@ -31,13 +32,13 @@ const styles = {
   }
 }
 const PlusMinus = props => {
-  const { classes } = props
+  const { classes, text } = props
   return (
     <div className={classes.root}>
       <Typography className={classes.round} style={{ marginLeft: 0 }}>
         +
       </Typography>
-      <Typography className={classes.number}>2</Typography>
+      <Typography className={classes.number}>{text}</Typography>
       <Typography className={classes.round}>-</Typography>
     </div>
   )

@@ -54,7 +54,8 @@ class ItemCard extends Component {
     image1Click: true,
     image2Click: false,
     rating: 0,
-    cartId: null
+    cartId: null,
+    itemQuantity: 1
   }
 
   componentDidMount() {
@@ -99,7 +100,13 @@ class ItemCard extends Component {
     } = this.props
     //console.log('productDetails');
     //console.log(productDetails);
-    const { selectedImage, image1Click, image2Click, ratingInt } = this.state
+    const {
+      selectedImage,
+      image1Click,
+      image2Click,
+      ratingInt,
+      itemQuantity
+    } = this.state
     //console.log(this.state);
     return (
       <Box
@@ -254,7 +261,7 @@ class ItemCard extends Component {
               Quantity
             </Typography>
             <div style={{ display: 'flex' }}>
-              <PlusMinus />
+              <PlusMinus text={itemQuantity} />
             </div>
             <ButtonComp
               button={1}

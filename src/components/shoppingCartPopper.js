@@ -22,6 +22,10 @@ class ShoppingCartPopper extends Component {
     anchorEl: null
   }
 
+  closePopover() {
+    this.setState({ anchorEl: null })
+  }
+
   render() {
     const { anchorEl } = this.state
     const open = Boolean(anchorEl)
@@ -45,7 +49,6 @@ class ShoppingCartPopper extends Component {
         <Popover
           id={id}
           open={open}
-          anchorEl={anchorEl}
           onClose={() => this.setState({ anchorEl: null })}
           anchorOrigin={{
             vertical: 'bottom',
@@ -56,7 +59,11 @@ class ShoppingCartPopper extends Component {
             horizontal: 'center'
           }}
         >
-          <ShoppingCart cartItems={cartItems} />
+          <ShoppingCart
+            countItems={countItems}
+            closePopover={() => this.closePopover()}
+            cartItems={cartItems}
+          />
         </Popover>
       </div>
     )

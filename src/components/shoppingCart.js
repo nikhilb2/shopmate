@@ -8,6 +8,8 @@ import ItemCardBig from './itemCardBig'
 import ProductReivews from './productReviews'
 import AddReview from './addReview'
 import CartItems from './shoppingCartItems.js'
+import Button from '@material-ui/core/Button'
+import Close from '@material-ui/icons/Close'
 const styles = {
   justifyCol: {
     display: 'flex',
@@ -39,12 +41,11 @@ const styles = {
   imageThumbHolder: {
     width: '96px',
     height: '96px'
-
   },
   nameAndImage: {
     flexGrow: 1,
     display: 'flex',
-    justifyContent:'flex-start'
+    justifyContent: 'flex-start'
   }
 }
 
@@ -54,7 +55,7 @@ class ShoppingCart extends Component {
   }
 
   render() {
-    const { classes, bgcolor, cartItems } = this.props
+    const { classes, bgcolor, cartItems, closePopover, countItems } = this.props
 
     const { newProductReviews } = this.state
     //console.log('productDetails')
@@ -67,12 +68,25 @@ class ShoppingCart extends Component {
         p={1}
         className={classes.box}
       >
+        <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Button
+            size="medium"
+            onClick={() => closePopover()}
+            className={classes.margin}
+          >
+            <Close />
+          </Button>
+        </div>
         <div className={classes.justifyCol}>
           <div>
-            <Typography style={{ textAlign: 'left' }}>title</Typography>
+            <Typography
+              variant="h5"
+              style={{ textAlign: 'left', marginLeft: '1rem' }}
+            >
+              {countItems} Items In Your Cart
+            </Typography>
           </div>
-            <CartItems cartItems={cartItems} />
-
+          <CartItems cartItems={cartItems} />
         </div>
         <div className={classes.bottomButtons}>
           <ButtonComp text="Back to Shop" />
