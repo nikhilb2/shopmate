@@ -56,7 +56,14 @@ class ShoppingCart extends Component {
   }
 
   render() {
-    const { classes, bgcolor, cartItems, closePopover, countItems, placeOrder } = this.props
+    const {
+      classes,
+      bgcolor,
+      cartItems,
+      closePopover,
+      countItems,
+      placeOrder
+    } = this.props
 
     return (
       <Box
@@ -87,11 +94,15 @@ class ShoppingCart extends Component {
           <CartItems cartItems={cartItems} />
         </div>
         <div className={classes.bottomButtons}>
-          <ButtonComp text="Back to Shop" onClick={() => closePopover()}/>
-          <ButtonComp text="Checkout" onClick={() => {
-            placeOrder()
-            closePopover()
-          }} button={1} />
+          <ButtonComp text="Back to Shop" onClick={() => closePopover()} />
+          <ButtonComp
+            text="Checkout"
+            onClick={() => {
+              placeOrder()
+              closePopover()
+            }}
+            button={1}
+          />
         </div>
       </Box>
     )

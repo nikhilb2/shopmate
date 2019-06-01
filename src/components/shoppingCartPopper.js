@@ -30,7 +30,14 @@ class ShoppingCartPopper extends Component {
     const { anchorEl } = this.state
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : null
-    const { type, text, classes, countItems, cartItems, placeOrder } = this.props
+    const {
+      type,
+      text,
+      classes,
+      countItems,
+      cartItems,
+      placeOrder
+    } = this.props
     console.log(this.props)
     return (
       <div>

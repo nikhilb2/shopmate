@@ -200,7 +200,9 @@ class NavBarMen extends Component {
               countItems={totalItems}
               placeOrder={placeOrder}
             />
-            <Typography>Your Bag: {amount ? `£${Math.round(amount * 100) / 100}` : 0}</Typography>
+            <Typography>
+              Your Bag: {amount ? `£${Math.round(amount * 100) / 100}` : 0}
+            </Typography>
           </Toolbar>
         </AppBar>
       </div>

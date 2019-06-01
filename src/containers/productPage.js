@@ -11,7 +11,7 @@ import Grid from '@material-ui/core/Grid'
 import { fetchRequest } from '../utils/request'
 import { saveCartId, removeCartId } from '../utils/auth'
 import Hidden from '@material-ui/core/Hidden'
-import Box from '@material-ui/core/Box';
+import Box from '@material-ui/core/Box'
 import ButtonComp from '../components/button'
 const styles = {
   center: {
@@ -29,15 +29,19 @@ class ProductPage extends Component {
   }
   async placeOrder() {
     const { user } = this.props
-    const orderStatus = await fetchRequest('orders',{
+    const orderStatus = await fetchRequest('orders', {
       method: 'POST',
-      body: JSON.stringify({cart_id: user.cartId, shipping_id: 4, tax_id:2})
+      body: JSON.stringify({ cart_id: user.cartId, shipping_id: 4, tax_id: 2 })
     })
-    this.setState({orderStatus, newTotalItems: null, newAmount:null, newCartItems:null})
-    console.log(orderStatus);
+    this.setState({
+      orderStatus,
+      newTotalItems: null,
+      newAmount: null,
+      newCartItems: null
+    })
+    console.log(orderStatus)
     removeCartId()
   }
-
 
   async createCartId() {
     const newCartId = await fetchRequest('shoppingcart/generateUniqueId', {
@@ -127,21 +131,24 @@ class ProductPage extends Component {
     console.log(this.state)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
-      {this.state.orderStatus
-        ?      <Box
-      bgcolor="background.paper"
-      color="text.primary"
-      p={2}
-      position='fixed'
-      top={0}
-      left="43%"
-      zIndex="modal"
-    >
+        {this.state.orderStatus ? (
+          <Box
+            bgcolor="background.paper"
+            color="text.primary"
+            p={2}
+            position="fixed"
+            top={0}
+            left="43%"
+            zIndex="modal"
+          >
             <Typography>Order Placed SuccessFully</Typography>
-            <ButtonComp text='ok' onClick={() => this.setState({orderStatus: null})} button={1}/>
-        </Box>
-        : null
-        }
+            <ButtonComp
+              text="ok"
+              onClick={() => this.setState({ orderStatus: null })}
+              button={1}
+            />
+          </Box>
+        ) : null}
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavBarMen
             cartItems={newCartItems ? newCartItems : cartItems}
@@ -177,7 +184,6 @@ class ProductPage extends Component {
           <Footer2 />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css" />
-
       </div>
     )
   }
