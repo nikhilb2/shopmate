@@ -9,8 +9,10 @@ import Footer2 from '../components/footer2'
 import ItemDetailCard from '../components/itemDetailCard'
 import Grid from '@material-ui/core/Grid'
 import { fetchRequest } from '../utils/request'
-import { saveCartId } from '../utils/auth'
+import { saveCartId, removeCartId } from '../utils/auth'
 import Hidden from '@material-ui/core/Hidden'
+import Box from '@material-ui/core/Box';
+import ButtonComp from '../components/button'
 const styles = {
   center: {
     display: 'flex',
@@ -22,8 +24,20 @@ class ProductPage extends Component {
   state = {
     newCartItems: null,
     newtotalItems: null,
-    newAmount: null
+    newAmount: null,
+    orderStatus: null
   }
+  async placeOrder() {
+    const { user } = this.props
+    const orderStatus = await fetchRequest('orders',{
+      method: 'POST',
+      body: JSON.stringify({cart_id: user.cartId, shipping_id: 4, tax_id:2})
+    })
+    this.setState({orderStatus, newTotalItems: null, newAmount:null, newCartItems:null})
+    console.log(orderStatus);
+    removeCartId()
+  }
+
 
   async createCartId() {
     const newCartId = await fetchRequest('shoppingcart/generateUniqueId', {
@@ -109,16 +123,32 @@ class ProductPage extends Component {
       amount,
       cartItems
     } = this.props
-    const { newTotalItems, newCartItems, newAmount } = this.state
-    console.log(this.props)
+    const { newTotalItems, newCartItems, newAmount, orderStatus } = this.state
+    console.log(this.state)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
+      {this.state.orderStatus
+        ?      <Box
+      bgcolor="background.paper"
+      color="text.primary"
+      p={2}
+      position='fixed'
+      top={0}
+      left="43%"
+      zIndex="modal"
+    >
+            <Typography>Order Placed SuccessFully</Typography>
+            <ButtonComp text='ok' onClick={() => this.setState({orderStatus: null})} button={1}/>
+        </Box>
+        : null
+        }
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavBarMen
             cartItems={newCartItems ? newCartItems : cartItems}
             totalItems={newTotalItems ? newTotalItems : totalItems}
             amount={newAmount ? newAmount : amount}
             bgcolor="#efefef"
+            placeOrder={() => this.placeOrder()}
           />
           <NavigationBar />
         </Hidden>
@@ -147,6 +177,7 @@ class ProductPage extends Component {
           <Footer2 />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css" />
+
       </div>
     )
   }

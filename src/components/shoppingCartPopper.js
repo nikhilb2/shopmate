@@ -30,7 +30,7 @@ class ShoppingCartPopper extends Component {
     const { anchorEl } = this.state
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : null
-    const { type, text, classes, countItems, cartItems } = this.props
+    const { type, text, classes, countItems, cartItems, placeOrder } = this.props
     console.log(this.props)
     return (
       <div>
@@ -63,6 +63,7 @@ class ShoppingCartPopper extends Component {
             countItems={countItems}
             closePopover={() => this.closePopover()}
             cartItems={cartItems}
+            placeOrder={placeOrder}
           />
         </Popover>
       </div>

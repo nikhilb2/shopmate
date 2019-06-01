@@ -112,7 +112,8 @@ class NavBarMen extends Component {
       classes,
       totalItems,
       cartItems,
-      amount
+      amount,
+      placeOrder
     } = this.props
 
     const { user, error } = this.state
@@ -197,8 +198,9 @@ class NavBarMen extends Component {
               cartItems={cartItems}
               text={this.workIcon()}
               countItems={totalItems}
+              placeOrder={placeOrder}
             />
-            <Typography>Your Bag: £{Math.round(amount * 100) / 100}</Typography>
+            <Typography>Your Bag: {amount ? `£${Math.round(amount * 100) / 100}` : 0}</Typography>
           </Toolbar>
         </AppBar>
       </div>

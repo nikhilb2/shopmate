@@ -3,7 +3,8 @@ import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
-import { decoratedImageUrl } from '../utils/request'
+import { decoratedImageUrl, fetchRequest } from '../utils/request'
+import { removeCartId } from '../utils/auth'
 import ItemCardBig from './itemCardBig'
 import ProductReivews from './productReviews'
 import AddReview from './addReview'
@@ -55,11 +56,8 @@ class ShoppingCart extends Component {
   }
 
   render() {
-    const { classes, bgcolor, cartItems, closePopover, countItems } = this.props
+    const { classes, bgcolor, cartItems, closePopover, countItems, placeOrder } = this.props
 
-    const { newProductReviews } = this.state
-    //console.log('productDetails')
-    //console.log(productReviews)
     return (
       <Box
         boxShadow={0}
@@ -89,8 +87,11 @@ class ShoppingCart extends Component {
           <CartItems cartItems={cartItems} />
         </div>
         <div className={classes.bottomButtons}>
-          <ButtonComp text="Back to Shop" />
-          <ButtonComp text="Checkout" button={1} />
+          <ButtonComp text="Back to Shop" onClick={() => closePopover()}/>
+          <ButtonComp text="Checkout" onClick={() => {
+            placeOrder()
+            closePopover()
+          }} button={1} />
         </div>
       </Box>
     )
