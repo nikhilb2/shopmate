@@ -64,8 +64,6 @@ class ItemCard extends Component {
     }
   }
 
-
-
   rating() {
     const { productReviews } = this.props
     let totalOfRatings = 0
@@ -78,12 +76,10 @@ class ItemCard extends Component {
         totalOfRatings = totalOfRatings + review.rating
       }
     })
-    const rating = Math.round(
-      (totalOfRatings / productReviews.length * 5)) * 100
+    const rating =
+      Math.round((totalOfRatings / productReviews.length) * 5) * 100
     const ratingInt =
-      Math.round(
-        (totalOfRatings / productReviews.length) * 100
-      ) / 100
+      Math.round((totalOfRatings / productReviews.length) * 100) / 100
     //console.log(rating)
     //console.log(ratingInt)
     this.setState({ rating, ratingInt })
@@ -121,8 +117,7 @@ class ItemCard extends Component {
               backgroundImage: `url(${
                 selectedImage
                   ? decoratedImageUrl(selectedImage)
-                  : productDetails &&
-                    decoratedImageUrl(productDetails.image)
+                  : productDetails && decoratedImageUrl(productDetails.image)
               })`
             }}
           />
@@ -234,9 +229,7 @@ class ItemCard extends Component {
                 color: theme.palette.secondary.main
               }}
             >
-              <strike>
-                £{productDetails && productDetails.price}
-              </strike>
+              <strike>£{productDetails && productDetails.price}</strike>
             </Typography>
             <Typography
               style={{
@@ -247,9 +240,7 @@ class ItemCard extends Component {
               }}
             >
               <strong>
-                £
-                {productDetails &&
-                  productDetails.discounted_price}
+                £{productDetails && productDetails.discounted_price}
               </strong>
             </Typography>
             <Typography

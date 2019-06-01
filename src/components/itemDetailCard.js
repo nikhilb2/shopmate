@@ -76,7 +76,12 @@ class ItemDetailCard extends Component {
           className={box === 1 ? classes.box2 : classes.box}
         >
           {showProducts ? (
-            <ItemCardBig productReviews={productReviews} productDetails={productDetails} bgcolor={bgcolor} addToCart={addToCart} />
+            <ItemCardBig
+              productReviews={productReviews}
+              productDetails={productDetails}
+              bgcolor={bgcolor}
+              addToCart={addToCart}
+            />
           ) : (
             <div>
               <ProductReivews

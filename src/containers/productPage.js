@@ -20,79 +20,106 @@ const styles = {
 }
 class ProductPage extends Component {
   state = {
-    newCartItems:null,
-    newtotalItems:null,
+    newCartItems: null,
+    newtotalItems: null,
     newAmount: null
   }
 
-
   async createCartId() {
-    const newCartId = await fetchRequest('shoppingcart/generateUniqueId',{
+    const newCartId = await fetchRequest('shoppingcart/generateUniqueId', {
       method: 'GET'
     })
     saveCartId(newCartId.cart_id)
-    this.setState({cartId:newCartId.cart_id})
+    this.setState({ cartId: newCartId.cart_id })
     return newCartId.cart_id
   }
 
   async getCartItems(cartId) {
-    const cartItems = await fetchRequest(decoratedUrl(`shoppingcart/${user.cartId}`))
-    if (cartItems.length > 0 ) {
+    const cartItems = await fetchRequest(
+      decoratedUrl(`shoppingcart/${user.cartId}`)
+    )
+    if (cartItems.length > 0) {
       let totalItems = 0
-      cartItems.forEach(item=>{
+      cartItems.forEach(item => {
         totalItems = totalItems + item.quantity
       })
-      this.setState({newTotalItems: totalItems, newCartItems:cartItems})
+      this.setState({ newTotalItems: totalItems, newCartItems: cartItems })
     }
   }
 
   async addToCart(productId) {
     const { user } = this.props
-    console.log(this.props);
+    console.log(this.props)
     let addToCartResult = null
-    console.log(productId);
-    if ( user.cartId ) {
+    console.log(productId)
+    if (user.cartId) {
       const addToCartResult = await fetchRequest('shoppingcart/add', {
         method: 'POST',
-        body: JSON.stringify({cart_id: user.cartId, product_id: productId, attributes:'none'})
+        body: JSON.stringify({
+          cart_id: user.cartId,
+          product_id: productId,
+          attributes: 'none'
+        })
       })
-      if ( addToCartResult.length > 0 ) {
+      if (addToCartResult.length > 0) {
         let totalItems = 0
         let amount = 0
-        addToCartResult.forEach(item=>{
+        addToCartResult.forEach(item => {
           totalItems = totalItems + item.quantity
-          amount = amount + (item.quantity * item.price)
+          amount = amount + item.quantity * item.price
         })
-        this.setState({newTotalItems: totalItems, newCartItems:addToCartResult, newAmount:amount})
+        this.setState({
+          newTotalItems: totalItems,
+          newCartItems: addToCartResult,
+          newAmount: amount
+        })
       }
     } else {
       const newCartId = await this.createCartId()
       const addToCartResult = await fetchRequest('shoppingcart/add', {
         method: 'POST',
-        body: JSON.stringify({cart_id: newCartId, product_id: productId, attributes:'none'})
+        body: JSON.stringify({
+          cart_id: newCartId,
+          product_id: productId,
+          attributes: 'none'
+        })
       })
-      if ( addToCartResult.length > 0 ) {
+      if (addToCartResult.length > 0) {
         let totalItems = 0
         let amount = 0
-        addToCartResult.forEach(item=>{
+        addToCartResult.forEach(item => {
           totalItems = totalItems + item.quantity
-          amount = amount + (item.quantity * item.price)
+          amount = amount + item.quantity * item.price
         })
-        this.setState({newTotalItems: totalItems, newCartItems:addToCartResult, newAmount:amount})
+        this.setState({
+          newTotalItems: totalItems,
+          newCartItems: addToCartResult,
+          newAmount: amount
+        })
       }
-
     }
-
   }
 
   render() {
-    const { classes, productDetails, productReviews, totalItems, amount } = this.props
+    const {
+      classes,
+      productDetails,
+      productReviews,
+      totalItems,
+      amount,
+      cartItems
+    } = this.props
     const { newTotalItems, newCartItems, newAmount } = this.state
-    console.log(this.props);
+    console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen totalItems={newTotalItems ? newTotalItems : totalItems} amount={newAmount ? newAmount : amount} bgcolor="#efefef" />
+          <NavBarMen
+            cartItems={newCartItems ? newCartItems : cartItems}
+            totalItems={newTotalItems ? newTotalItems : totalItems}
+            amount={newAmount ? newAmount : amount}
+            bgcolor="#efefef"
+          />
           <NavigationBar />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
@@ -106,11 +133,14 @@ class ProductPage extends Component {
                   showProducts={true}
                   productDetails={productDetails}
                   productReviews={productReviews}
-                  addToCart={(productId) => this.addToCart(productId)}
+                  addToCart={productId => this.addToCart(productId)}
                 />
               </Grid>
               <Grid item xs={12}>
-                <ItemDetailCard productDetails={productDetails} productReviews={productReviews} />
+                <ItemDetailCard
+                  productDetails={productDetails}
+                  productReviews={productReviews}
+                />
               </Grid>
             </Grid>
           </div>

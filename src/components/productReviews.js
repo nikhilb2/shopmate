@@ -87,7 +87,13 @@ class ProductReivews extends Component {
   }
 
   render() {
-    const { classes, bgcolor, style, productDetails, productReviews } = this.props
+    const {
+      classes,
+      bgcolor,
+      style,
+      productDetails,
+      productReviews
+    } = this.props
     //console.log('productReviews@');
     //console.log(productReviews);
     return (

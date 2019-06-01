@@ -3,17 +3,18 @@ import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
-import { fetchRequest } from '../utils/request'
+import { decoratedImageUrl } from '../utils/request'
 import ItemCardBig from './itemCardBig'
 import ProductReivews from './productReviews'
 import AddReview from './addReview'
+import CartItems from './shoppingCartItems.js'
 const styles = {
   justifyCol: {
     display: 'flex',
-    flexDirection:'column'
+    flexDirection: 'column'
   },
   justifyRow: {
-    flexGrow:1,
+    flexGrow: 1,
     display: 'flex',
     justifyContent: 'space-between'
   },
@@ -26,16 +27,25 @@ const styles = {
     marginBottom: 0
   },
   bottomButtons: {
-    flexGrow:1,
+    flexGrow: 1,
     display: 'flex',
-    justifyContent:'space-around',
+    justifyContent: 'space-around',
     backgroundColor: '#EFEFEF',
-    padding:'1rem'
+    padding: '1rem'
   },
   textTop: {
     color: '#E5E5E5'
-  }
+  },
+  imageThumbHolder: {
+    width: '96px',
+    height: '96px'
 
+  },
+  nameAndImage: {
+    flexGrow: 1,
+    display: 'flex',
+    justifyContent:'flex-start'
+  }
 }
 
 class ShoppingCart extends Component {
@@ -43,44 +53,32 @@ class ShoppingCart extends Component {
     newProductReviews: null
   }
 
-
-
   render() {
-    const {
-      classes,
-      bgcolor
-    } = this.props
+    const { classes, bgcolor, cartItems } = this.props
 
     const { newProductReviews } = this.state
     //console.log('productDetails')
     //console.log(productReviews)
     return (
-        <Box
-          boxShadow={3}
-          bgcolor={bgcolor ? bgcolor : '#FFFFFF'}
-          m={0}
-          p={1}
-          className={classes.box}
-        >
-          <div className={classes.justifyCol}>
-            <div>
-              <Typography style={{textAlign:'left'}}>title</Typography>
-            </div>
-            <div className={classes.justifyRow} style={{borderBottom: 'solid 1px', borderColor: '#E5E5E5', color: '#E5E5E5'}}>
-              <Typography >Item</Typography>
-              <Typography>Quantity</Typography>
-              <Typography >Price</Typography>
-            </div>
-            <div className={classes.justifyRow} >
-              this place to be mapped
-            </div>
+      <Box
+        boxShadow={0}
+        bgcolor={bgcolor ? bgcolor : '#FFFFFF'}
+        m={0}
+        p={1}
+        className={classes.box}
+      >
+        <div className={classes.justifyCol}>
+          <div>
+            <Typography style={{ textAlign: 'left' }}>title</Typography>
           </div>
-          <div className={classes.bottomButtons}>
-            <ButtonComp text='Back to Shop'/>
-            <ButtonComp text='Checkout' button={1}/>
-          </div>
-        </Box>
+            <CartItems cartItems={cartItems} />
 
+        </div>
+        <div className={classes.bottomButtons}>
+          <ButtonComp text="Back to Shop" />
+          <ButtonComp text="Checkout" button={1} />
+        </div>
+      </Box>
     )
   }
 }

@@ -19,16 +19,15 @@ const styles = {
 
 class ShoppingCartPopper extends Component {
   state = {
-    anchorEl: null,
+    anchorEl: null
   }
-
 
   render() {
     const { anchorEl } = this.state
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : null
-    const { type, text, classes, countItems } = this.props
-    //console.log(this.props);
+    const { type, text, classes, countItems, cartItems } = this.props
+    console.log(this.props)
     return (
       <div>
         <Button
@@ -37,9 +36,9 @@ class ShoppingCartPopper extends Component {
             padding: 1,
             margin: 0
           }}
-          onClick={(event) => this.setState({anchorEl: event.currentTarget})}
+          onClick={event => this.setState({ anchorEl: event.currentTarget })}
         >
-          <Badge  badgeContent={countItems} color="secondary">
+          <Badge badgeContent={countItems} color="secondary">
             {text}
           </Badge>
         </Button>
@@ -47,7 +46,7 @@ class ShoppingCartPopper extends Component {
           id={id}
           open={open}
           anchorEl={anchorEl}
-          onClose={() => this.setState({anchorEl: null})}
+          onClose={() => this.setState({ anchorEl: null })}
           anchorOrigin={{
             vertical: 'bottom',
             horizontal: 'center'
@@ -57,12 +56,11 @@ class ShoppingCartPopper extends Component {
             horizontal: 'center'
           }}
         >
-          <ShoppingCart />
+          <ShoppingCart cartItems={cartItems} />
         </Popover>
       </div>
     )
   }
-
 }
 
 export default ShoppingCartPopper
