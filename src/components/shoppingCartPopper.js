@@ -27,7 +27,7 @@ class ShoppingCartPopper extends Component {
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : null
     const { type, text, classes, countItems } = this.props
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <div>
         <Button

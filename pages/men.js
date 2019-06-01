@@ -6,8 +6,8 @@ import { userDetails } from '../hocs/auth-hoc'
 
 function Index(props) {
   const { categories, products, user } = props
-  console.log('Mens container');
-  console.log(props);
+  //console.log('Mens container');
+  //console.log(props);
   return (
     <MensPage {...props} />
   );

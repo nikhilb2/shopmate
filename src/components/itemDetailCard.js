@@ -42,7 +42,7 @@ class ItemDetailCard extends Component {
       }
     )
     if (!result.error) {
-      console.log(result)
+      //console.log(result)
       this.setState({ newProductReviews: result })
     } else {
       this.setState({ error: result })
@@ -63,8 +63,8 @@ class ItemDetailCard extends Component {
     } = this.props
 
     const { newProductReviews } = this.state
-    console.log('productDetails')
-    console.log(productReviews)
+    //console.log('productDetails')
+    //console.log(productReviews)
     return (
       <div style={{ style }} className={classes.justify}>
         <Box

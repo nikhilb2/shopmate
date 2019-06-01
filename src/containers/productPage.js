@@ -21,11 +21,11 @@ class ProductPage extends Component {
   state = {}
 
   render() {
-    const { classes, productDetails,productReviews } = this.props
+    const { classes, productDetails, productReviews, totalItems } = this.props
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen bgcolor="#efefef" />
+          <NavBarMen totalItems={totalItems} bgcolor="#efefef" />
           <NavigationBar />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">

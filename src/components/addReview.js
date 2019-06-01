@@ -34,8 +34,8 @@ class AddReview extends Component {
 
   async postReview() {
     const { productDetails } = this.props
-    console.log('productDetails');
-    console.log(productDetails);
+    //console.log('productDetails');
+    //console.log(productDetails);
     const result = await fetchRequestWithoutResponse(
       `products/${productDetails.product_id}/reviews`,
       {
@@ -43,8 +43,8 @@ class AddReview extends Component {
         body: JSON.stringify(this.state)
       }
     )
-    console.log('result')
-    console.log(result)
+    //console.log('result')
+    //console.log(result)
     if (!result.error) {
       this.setState({ reviewStatus: result.status })
       this.props.getProductReviews()

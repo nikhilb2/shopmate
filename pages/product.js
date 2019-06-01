@@ -6,8 +6,8 @@ import fetch from 'isomorphic-unfetch'
 import { userDetails } from '../hocs/auth-hoc'
 
 function Index( props ) {
-  console.log('props');
-  console.log(props);
+  //console.log('props');
+  //console.log(props);
   return (
     <div>
     <ProductPage {...props} />

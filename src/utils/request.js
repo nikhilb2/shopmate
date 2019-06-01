@@ -19,7 +19,7 @@ export function decoratedOptions(params) {
     }
   })
 
-  console.log(accessToken)
+  //console.log(accessToken)
   return newOptions
 }
 
@@ -49,7 +49,7 @@ export default async function request(param, options) {
   const decoratedOptions = Object.assign({}, options)
   decoratedOptions.headers = decoratedOptions.headers || {}
   decoratedOptions.headers['user-key'] = getAccessToken()
-  console.log(decoratedOptions)
+  //console.log(decoratedOptions)
   const result = await fetch(urlTofetch, decoratedOptions) // eslint-disable-line
     .then(checkStatus)
     .then(parseJSON)

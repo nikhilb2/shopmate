@@ -66,8 +66,8 @@ class NavBarMen extends Component {
       method: 'POST',
       body: JSON.stringify(data)
     })
-    console.log('result')
-    console.log(result)
+    //console.log('result')
+    //console.log(result)
     if (!result.error) {
       this.setState({ user: result.customer })
       saveAuth(result.accessToken)
@@ -82,8 +82,8 @@ class NavBarMen extends Component {
       method: 'POST',
       body: JSON.stringify(data)
     })
-    console.log('result')
-    console.log(result)
+    //console.log('result')
+    //console.log(result)
     if (!result.error) {
       this.setState({ user: result.customer })
       saveAuth(result.accessToken)
@@ -111,7 +111,7 @@ class NavBarMen extends Component {
     const { bgcolor, color, searchBox, classes, totalItems, cartItems } = this.props
 
     const { user, error } = this.state
-    console.log(this.props)
+    //console.log(this.props)
 
     return (
       <div className={classes.root}>

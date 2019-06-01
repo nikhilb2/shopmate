@@ -116,8 +116,8 @@ class ItemCard extends Component {
       Math.round(
         (totalOfRatings / productReviews.length) * 100
       ) / 100
-    console.log(rating)
-    console.log(ratingInt)
+    //console.log(rating)
+    //console.log(ratingInt)
     this.setState({ rating, ratingInt })
   }
 
@@ -132,10 +132,10 @@ class ItemCard extends Component {
       bgcolor,
       productDetails
     } = this.props
-    console.log('productDetails');
-    console.log(productDetails);
+    //console.log('productDetails');
+    //console.log(productDetails);
     const { selectedImage, image1Click, image2Click, ratingInt } = this.state
-    console.log(this.state);
+    //console.log(this.state);
     return (
       <Box
         boxShadow={0}

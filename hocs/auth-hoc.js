@@ -9,21 +9,21 @@ export const userDetails = Page => {
   userDetails.getInitialProps = async context => {
     const req = context.req
     const isServer = !!req
-    console.log('context');
-    console.log(context);
+    //console.log('context');
+    //console.log(context);
 
-    const  user  = isServer ? getServerUser(cookies(context)) : getUserDetails()
+    const  user  = isServer ? getServerUser(cookies(context)) : {user:getUserDetails(), cartId:getCartId()}
 
-    console.log('user.cartId');
-    console.log(user.cartId);
+    //console.log('user.cartId');
+    //console.log(user.cartId);
 
 
     const initProps = Page.getInitialProps ? await Page.getInitialProps(context) : {}
     if (user && user.cartId) {
       const cartItems = await fetch(decoratedUrl(`shoppingcart/${user.cartId}`))
       const cartItemJson = await cartItems.json()
-      console.log('cartItemJson');
-      console.log(cartItemJson);
+      //console.log('cartItemJson');
+      //console.log(cartItemJson);
       initProps.cartItems = cartItemJson
       if (cartItemJson.length > 0 ) {
         let totalItems = 0
