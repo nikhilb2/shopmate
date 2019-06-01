@@ -9,6 +9,7 @@ import ButtonComp from './button'
 import theme from '../theme'
 import { getCartId } from '../utils/auth'
 import { fetchRequest } from '../utils/request'
+import Badge from '@material-ui/core/Badge';
 
 const styles = {
   typography: {
@@ -32,14 +33,15 @@ class ShoppingCartPopper extends Component {
       <div>
         <Button
           style={{
-            color: theme.palette.secondary.main,
             textTransform: 'none',
             padding: 1,
             margin: 0
           }}
           onClick={(event) => this.setState({anchorEl: event.currentTarget})}
         >
-          {text} {countItems}
+          <Badge  badgeContent={countItems} color="secondary">
+            {text}
+          </Badge>
         </Button>
         <Popover
           id={id}

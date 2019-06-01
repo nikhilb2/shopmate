@@ -57,7 +57,7 @@ class NavBarMen extends Component {
 
   workIcon() {
     return(
-      <Work style={{ margin: '1rem' }} />
+      <Work />
     )
   }
 
