@@ -34,7 +34,7 @@ class ItemDetailCard extends Component {
   }
 
   async getProductReviews() {
-    const { productDetails } = this.props
+    const { productDetails, addToCart } = this.props
     const result = await fetchRequest(
       `products/${productDetails.product_id}/reviews`,
       {
@@ -59,7 +59,8 @@ class ItemDetailCard extends Component {
       box,
       productDetails,
       productReviews,
-      showProducts
+      showProducts,
+      addToCart
     } = this.props
 
     const { newProductReviews } = this.state
@@ -75,7 +76,7 @@ class ItemDetailCard extends Component {
           className={box === 1 ? classes.box2 : classes.box}
         >
           {showProducts ? (
-            <ItemCardBig productReviews={productReviews} productDetails={productDetails} bgcolor={bgcolor} />
+            <ItemCardBig productReviews={productReviews} productDetails={productDetails} bgcolor={bgcolor} addToCart={addToCart} />
           ) : (
             <div>
               <ProductReivews

@@ -62,41 +62,9 @@ class ItemCard extends Component {
     if (productDetails) {
       this.rating()
     }
-    this.loadCartId()
   }
 
-  loadCartId() {
-    const data = getCartId()
-    this.setState({cartId:data})
-  }
 
-  async createCartId() {
-    const newCartId = await fetchRequest('shoppingcart/generateUniqueId',{
-      method: 'GET'
-    })
-    saveCartId(newCartId.cart_id)
-    this.setState({cartId:newCartId.cart_id})
-    return newCartId.cart_id
-  }
-
-  async addToCart(productId) {
-    const { cartId } = this.state
-    let addToCartResult = null
-    if ( cartId ) {
-      const addToCartResult = await fetchRequest('shoppingcart/add', {
-        method: 'POST',
-        body: JSON.stringify({cart_id: cartId, product_id: productId, attributes:'none'})
-      })
-    } else {
-      const newCartId = await this.createCartId()
-      const addToCartResult = await fetchRequest('shoppingcart/add', {
-        method: 'POST',
-        body: JSON.stringify({cart_id: newCartId, product_id: productId, attributes:'none'})
-      })
-
-    }
-    this.setState({itemsInCart:addToCartResult})
-  }
 
   rating() {
     const { productReviews } = this.props
@@ -130,7 +98,8 @@ class ItemCard extends Component {
       image,
       box,
       bgcolor,
-      productDetails
+      productDetails,
+      addToCart
     } = this.props
     //console.log('productDetails');
     //console.log(productDetails);
@@ -300,7 +269,7 @@ class ItemCard extends Component {
               button={1}
               style={{ width: '2rem' }}
               text="Add to cart"
-              onClick={() => this.addToCart(productDetails.product_id)}
+              onClick={() => addToCart(productDetails.product_id)}
             />
           </div>
         </div>
