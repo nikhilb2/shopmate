@@ -23,14 +23,17 @@ export const userDetails = Page => {
       const cartItems = await fetch(decoratedUrl(`shoppingcart/${user.cartId}`))
       const cartItemJson = await cartItems.json()
       //console.log('cartItemJson');
-      //console.log(cartItemJson);
+      console.log(cartItemJson);
       initProps.cartItems = cartItemJson
       if (cartItemJson.length > 0 ) {
         let totalItems = 0
+        let amount = 0
         cartItemJson.forEach(item=>{
           totalItems = totalItems + item.quantity
+          amount = amount + (item.quantity * item.price)
         })
         initProps.totalItems = totalItems
+        initProps.amount = amount
       }
     }
     initProps.user = user

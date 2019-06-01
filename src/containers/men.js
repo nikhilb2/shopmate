@@ -52,14 +52,14 @@ class MensPage extends Component {
 
 
   render() {
-    const { classes, categories, products, countItems, totalItems, cartItems } = this.props
+    const { classes, categories, products, countItems, totalItems, cartItems, amount } = this.props
     const { productSearch, keyword, showSignIn } = this.state
     //console.log('this.props')
     //console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen totalItems={totalItems} cartItems={cartItems} />
+          <NavBarMen totalItems={totalItems} cartItems={cartItems} amount={amount}/>
           <NavigationBar
             onChange={keyword => this.searchProducts(keyword)}
             bgcolor="#323232"

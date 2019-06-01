@@ -21,7 +21,8 @@ const styles = {
 class ProductPage extends Component {
   state = {
     newCartItems:null,
-    newtotalItems:null
+    newtotalItems:null,
+    newAmount: null
   }
 
 
@@ -57,10 +58,12 @@ class ProductPage extends Component {
       })
       if ( addToCartResult.length > 0 ) {
         let totalItems = 0
+        let amount = 0
         addToCartResult.forEach(item=>{
           totalItems = totalItems + item.quantity
+          amount = amount + (item.quantity * item.price)
         })
-        this.setState({newTotalItems: totalItems, newCartItems:addToCartResult})
+        this.setState({newTotalItems: totalItems, newCartItems:addToCartResult, newAmount:amount})
       }
     } else {
       const newCartId = await this.createCartId()
@@ -70,10 +73,12 @@ class ProductPage extends Component {
       })
       if ( addToCartResult.length > 0 ) {
         let totalItems = 0
+        let amount = 0
         addToCartResult.forEach(item=>{
           totalItems = totalItems + item.quantity
+          amount = amount + (item.quantity * item.price)
         })
-        this.setState({newTotalItems: totalItems, newCartItems:addToCartResult})
+        this.setState({newTotalItems: totalItems, newCartItems:addToCartResult, newAmount:amount})
       }
 
     }
@@ -81,13 +86,13 @@ class ProductPage extends Component {
   }
 
   render() {
-    const { classes, productDetails, productReviews, totalItems } = this.props
-    const { newTotalItems, newCartItems } = this.state
+    const { classes, productDetails, productReviews, totalItems, amount } = this.props
+    const { newTotalItems, newCartItems, newAmount } = this.state
     console.log(this.props);
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen totalItems={newTotalItems ? newTotalItems : totalItems} bgcolor="#efefef" />
+          <NavBarMen totalItems={newTotalItems ? newTotalItems : totalItems} amount={newAmount ? newAmount : amount} bgcolor="#efefef" />
           <NavigationBar />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">

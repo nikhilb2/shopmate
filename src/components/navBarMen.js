@@ -108,7 +108,7 @@ class NavBarMen extends Component {
   }
 
   render() {
-    const { bgcolor, color, searchBox, classes, totalItems, cartItems } = this.props
+    const { bgcolor, color, searchBox, classes, totalItems, cartItems, amount } = this.props
 
     const { user, error } = this.state
     //console.log(this.props)
@@ -189,7 +189,7 @@ class NavBarMen extends Component {
               </div>
             </div>
               <ShoppingCartPopper text={this.workIcon()} countItems={totalItems} />
-            <Typography>Your Bag: £0</Typography>
+            <Typography>Your Bag: £{(Math.round(amount*100))/100}</Typography>
           </Toolbar>
         </AppBar>
       </div>
