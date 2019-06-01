@@ -15,6 +15,7 @@ import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
 import SignInPopper from './signInPopper'
+import ShoppingCartPopper from './shoppingCartPopper'
 import {
   saveAuth,
   saveUserDetails,
@@ -47,10 +48,17 @@ const styles = {
   }
 }
 
+
 class NavBarMen extends Component {
   state = {
     user: null,
     error: null
+  }
+
+  workIcon() {
+    return(
+      <Work style={{ margin: '1rem' }} />
+    )
   }
 
   async registerUser(data) {
@@ -180,7 +188,7 @@ class NavBarMen extends Component {
                 </Typography>
               </div>
             </div>
-            <Work style={{ margin: '1rem' }} />
+              <ShoppingCartPopper text={this.workIcon()} />
             <Typography>Your Bag: £0</Typography>
           </Toolbar>
         </AppBar>
