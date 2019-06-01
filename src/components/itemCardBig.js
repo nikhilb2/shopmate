@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
 import { decoratedImageUrl, fetchRequest } from '../utils/request'
+import { getCartId, saveCartId } from '../utils/auth'
 import theme from '../theme'
 import PlusMinus from './plusMinus'
 
@@ -61,14 +62,20 @@ class ItemCard extends Component {
     if (productDetails) {
       this.rating()
     }
+    this.loadCartId()
+  }
+
+  loadCartId() {
+    const data = getCartId()
+    this.setState({cartId:data})
   }
 
   async createCartId() {
     const newCartId = await fetchRequest('shoppingcart/generateUniqueId',{
       method: 'GET'
     })
-    this.setState({cartId:newCartId.cart_id})
-    return newCartId
+    saveCartId(newCartId.cart_id)
+    return newCartId.cart_id
   }
 
   async addToCart(productId) {
@@ -83,7 +90,7 @@ class ItemCard extends Component {
       const newCartId = await this.createCartId()
       const addToCartResult = await fetchRequest('shoppingcart/add', {
         method: 'POST',
-        body: JSON.stringify({cart_id: newCartId.cart_id, product_id: productId, attributes:'none'})
+        body: JSON.stringify({cart_id: newCartId, product_id: productId, attributes:'none'})
       })
 
     }

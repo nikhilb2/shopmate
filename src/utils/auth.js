@@ -7,6 +7,9 @@ export const saveAuth = accessToken => {
 export const saveUserDetails = details => {
   Cookies.set('user', JSON.stringify(details))
 }
+export const saveCartId = cartId => {
+  Cookies.set('cartId', JSON.stringify(cartId))
+}
 
 export const getUserDetails = () => {
   const user = Cookies.get('user')
@@ -14,6 +17,9 @@ export const getUserDetails = () => {
 }
 
 export const getAccessToken = () => Cookies.get('accessToken')
+
+export const getCartId = () => Cookies.get('cartId')
+export const removeCartId = () => Cookies.remove('cartId')
 
 export const logout = () => {
   Cookies.remove('user')
