@@ -30,22 +30,24 @@ const styles = {
 
 class ItemDetailCard extends Component {
   state = {
-    newProductReviews:null
+    newProductReviews: null
   }
 
   async getProductReviews() {
     const { productDetails } = this.props.productDetails
-    const result = await fetchRequest(`products/${productDetails.product_id}/reviews`, {
-      method: 'GET',
-    })
+    const result = await fetchRequest(
+      `products/${productDetails.product_id}/reviews`,
+      {
+        method: 'GET'
+      }
+    )
     if (!result.error) {
-      console.log(result);
-      this.setState({newProductReviews:{ productReviews: result}})
+      console.log(result)
+      this.setState({ newProductReviews: { productReviews: result } })
     } else {
-      this.setState({error:result})
+      this.setState({ error: result })
     }
   }
-
 
   render() {
     const {
@@ -60,7 +62,7 @@ class ItemDetailCard extends Component {
     } = this.props
 
     const { newProductReviews } = this.state
-    console.log(productDetails);
+    console.log(productDetails)
     return (
       <div style={{ style }} className={classes.justify}>
         <Box
@@ -74,10 +76,17 @@ class ItemDetailCard extends Component {
             <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} />
           ) : (
             <div>
-            <ProductReivews productDetails={ newProductReviews ? newProductReviews : productDetails} />
-                      <AddReview getProductReviews={() => this.getProductReviews()} productDetails={productDetails} /></div>
+              <ProductReivews
+                productDetails={
+                  newProductReviews ? newProductReviews : productDetails
+                }
+              />
+              <AddReview
+                getProductReviews={() => this.getProductReviews()}
+                productDetails={productDetails}
+              />
+            </div>
           )}
-
         </Box>
       </div>
     )

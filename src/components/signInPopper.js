@@ -57,7 +57,11 @@ const SignInPop = props => {
         }}
       >
         <div>
-          {type === 'register' ? <Register error={error} register={register} /> : <SignIn error={error} signin={signin}/>}
+          {type === 'register' ? (
+            <Register error={error} register={register} />
+          ) : (
+            <SignIn error={error} signin={signin} />
+          )}
         </div>
       </Popover>
     </div>

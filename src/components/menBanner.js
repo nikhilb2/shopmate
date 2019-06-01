@@ -2,7 +2,7 @@ import React from 'react'
 import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import ButtonComp from './button'
-import Button from '@material-ui/core/Button';
+import Button from '@material-ui/core/Button'
 import Link from 'next/link'
 
 const styles = {
@@ -66,12 +66,19 @@ const MenBanner = props => {
       >
         {categories &&
           categories.rows.map(row => (
-            <Link href={{ pathname: '/men', query: { catId: row.category_id } }}>
-            <Button color="primary"
-              style={{ margin: '0.3rem', marginRight: '5rem', color: 'white' }}
+            <Link
+              href={{ pathname: '/men', query: { catId: row.category_id } }}
             >
-              {row.name}
-            </Button >
+              <Button
+                color="primary"
+                style={{
+                  margin: '0.3rem',
+                  marginRight: '5rem',
+                  color: 'white'
+                }}
+              >
+                {row.name}
+              </Button>
             </Link>
           ))}
       </div>

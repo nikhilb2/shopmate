@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography'
 import theme from '../theme'
 import Box from '@material-ui/core/Box'
 import Grid from '@material-ui/core/Grid'
-import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField'
 import ButtonComp from './button'
 import { fetchRequest, fetchRequestWithoutResponse } from '../utils/request'
 
@@ -14,7 +14,7 @@ const styles = {
     maxWidth: '940px',
     maxHeight: '1000px',
     display: 'flex',
-    flexDirection:'column',
+    flexDirection: 'column',
     textAlign: 'center',
     marginTop: 0,
     marginBottom: 0,
@@ -24,7 +24,6 @@ const styles = {
     display: 'flex',
     justifyContent: 'center'
   }
-
 }
 class AddReview extends Component {
   state = {
@@ -35,21 +34,22 @@ class AddReview extends Component {
 
   async postReview() {
     const { productDetails } = this.props.productDetails
-    const result = await fetchRequestWithoutResponse(`products/${productDetails.product_id}/reviews`, {
-      method: 'POST',
-      body: JSON.stringify(this.state)
-    })
-    console.log('result');
-    console.log(result);
+    const result = await fetchRequestWithoutResponse(
+      `products/${productDetails.product_id}/reviews`,
+      {
+        method: 'POST',
+        body: JSON.stringify(this.state)
+      }
+    )
+    console.log('result')
+    console.log(result)
     if (!result.error) {
-      this.setState({reviewStatus:result.status})
+      this.setState({ reviewStatus: result.status })
       this.props.getProductReviews()
     } else {
-      this.setState({error:result})
+      this.setState({ error: result })
     }
   }
-
-
 
   render() {
     const { classes } = this.props
@@ -63,10 +63,10 @@ class AddReview extends Component {
           p={1}
           className={classes.box}
         >
+          <Typography style={{ fontSize: '1.5rem' }}>Add a review</Typography>
 
-              <Typography style={{fontSize: '1.5rem'}}>Add a review</Typography>
-
-          <TextField style={{width:'600px'}}
+          <TextField
+            style={{ width: '600px' }}
             id="filled-multiline-static"
             label="Review"
             multiline
@@ -74,33 +74,69 @@ class AddReview extends Component {
             className={classes.textField}
             margin="normal"
             variant="filled"
-            onChange={(e) => this.setState({review: e.target.value})}
+            onChange={e => this.setState({ review: e.target.value })}
           />
 
-            <div style={{display:'flex'}}>
-              <Typography style={{fontSize: '.7', marginRight:'2rem'}}>Rating</Typography>
-              <div><img onClick={() => this.setState({rating:1})} onMouseOver={() => this.setState({rating:1})} src={rating > 0 ? 'static/goldstar.svg' : 'static/greystar.svg'} alt='star'/></div>
-              <div><img onClick={() => this.setState({rating:2})} onMouseOver={() => this.setState({rating:2})} src={rating > 1 ? 'static/goldstar.svg' : 'static/greystar.svg'} alt='star'/></div>
-              <div><img onClick={() => this.setState({rating:3})} onMouseOver={() => this.setState({rating:3})} src={rating > 2 ? 'static/goldstar.svg' : 'static/greystar.svg'} alt='star'/></div>
-              <div><img onClick={() => this.setState({rating:4})} onMouseOver={() => this.setState({rating:4})} src={rating > 3 ? 'static/goldstar.svg' : 'static/greystar.svg'} alt='star'/></div>
-              <div><img onClick={() => this.setState({rating:5})} onMouseOver={() => this.setState({rating:5})} src={rating > 4 ? 'static/goldstar.svg' : 'static/greystar.svg'} alt='star'/></div>
+          <div style={{ display: 'flex' }}>
+            <Typography style={{ fontSize: '.7', marginRight: '2rem' }}>
+              Rating
+            </Typography>
+            <div>
+              <img
+                onClick={() => this.setState({ rating: 1 })}
+                onMouseOver={() => this.setState({ rating: 1 })}
+                src={rating > 0 ? 'static/goldstar.svg' : 'static/greystar.svg'}
+                alt="star"
+              />
             </div>
-            <ButtonComp onClick={() => {
-              if (rating && review ) {
+            <div>
+              <img
+                onClick={() => this.setState({ rating: 2 })}
+                onMouseOver={() => this.setState({ rating: 2 })}
+                src={rating > 1 ? 'static/goldstar.svg' : 'static/greystar.svg'}
+                alt="star"
+              />
+            </div>
+            <div>
+              <img
+                onClick={() => this.setState({ rating: 3 })}
+                onMouseOver={() => this.setState({ rating: 3 })}
+                src={rating > 2 ? 'static/goldstar.svg' : 'static/greystar.svg'}
+                alt="star"
+              />
+            </div>
+            <div>
+              <img
+                onClick={() => this.setState({ rating: 4 })}
+                onMouseOver={() => this.setState({ rating: 4 })}
+                src={rating > 3 ? 'static/goldstar.svg' : 'static/greystar.svg'}
+                alt="star"
+              />
+            </div>
+            <div>
+              <img
+                onClick={() => this.setState({ rating: 5 })}
+                onMouseOver={() => this.setState({ rating: 5 })}
+                src={rating > 4 ? 'static/goldstar.svg' : 'static/greystar.svg'}
+                alt="star"
+              />
+            </div>
+          </div>
+          <ButtonComp
+            onClick={() => {
+              if (rating && review) {
                 this.postReview()
               }
-
             }}
             button={1}
-            width='6rem'
-            text='submit'
-            />
-            {reviewStatus === 200 ? 'Review Posted SuccessFully' : null}
-      </Box>
+            width="6rem"
+            text="submit"
+          />
+          {reviewStatus === 200 ? 'Review Posted SuccessFully' : null}
+        </Box>
       </div>
     )
   }
-
 }
 
 export default withStyles(styles)(AddReview)

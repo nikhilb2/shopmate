@@ -12,15 +12,14 @@ export function decoratedImageUrl(params) {
 }
 export function decoratedOptions(params) {
   const accessToken = getAccessToken()
-    const newOptions = Object.assign(params, {
-      headers: {
-        'Content-Type': 'application/json',
-        'user-key': accessToken
-      }
-    })
+  const newOptions = Object.assign(params, {
+    headers: {
+      'Content-Type': 'application/json',
+      'user-key': accessToken
+    }
+  })
 
-
-  console.log(accessToken);
+  console.log(accessToken)
   return newOptions
 }
 
@@ -74,7 +73,6 @@ export const fetchRequest = async (param, options) => {
     const parsedError = Object.assign(error, parseRes)
     return parsedError
   }
-
 }
 export const fetchRequestWithoutResponse = async (param, options) => {
   const urlTofetch = url + param
@@ -86,5 +84,4 @@ export const fetchRequestWithoutResponse = async (param, options) => {
   } catch (error) {
     error
   }
-
 }

@@ -37,7 +37,7 @@ class SignIn extends Component {
             autoComplete="email"
             margin="normal"
             variant="outlined"
-            onChange={(e) => this.setState({email: e.target.value})}
+            onChange={e => this.setState({ email: e.target.value })}
           />
         </div>
         <div>
@@ -49,7 +49,7 @@ class SignIn extends Component {
             autoComplete="current-password"
             margin="normal"
             variant="outlined"
-            onChange={(e) => this.setState({password: e.target.value})}
+            onChange={e => this.setState({ password: e.target.value })}
           />
         </div>
         <div style={{ display: 'flex', justifyContent: 'center' }}>

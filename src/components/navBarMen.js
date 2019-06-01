@@ -15,7 +15,12 @@ import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
 import SignInPopper from './signInPopper'
-import { saveAuth, saveUserDetails, getUserDetails, logout } from '../utils/auth'
+import {
+  saveAuth,
+  saveUserDetails,
+  getUserDetails,
+  logout
+} from '../utils/auth'
 import { decoratedUrl, decoratedOptions, fetchRequest } from '../utils/request'
 import ButtonComp from './button'
 const styles = {
@@ -48,19 +53,19 @@ class NavBarMen extends Component {
     error: null
   }
 
-  async  registerUser(data) {
+  async registerUser(data) {
     const result = await fetchRequest('customers', {
       method: 'POST',
       body: JSON.stringify(data)
     })
-    console.log('result');
-    console.log(result);
+    console.log('result')
+    console.log(result)
     if (!result.error) {
-      this.setState({user:result.customer})
+      this.setState({ user: result.customer })
       saveAuth(result.accessToken)
       saveUserDetails(result.customer)
     } else {
-      this.setState({error:result})
+      this.setState({ error: result })
     }
   }
 
@@ -69,14 +74,14 @@ class NavBarMen extends Component {
       method: 'POST',
       body: JSON.stringify(data)
     })
-    console.log('result');
-    console.log(result);
+    console.log('result')
+    console.log(result)
     if (!result.error) {
-      this.setState({user:result.customer})
+      this.setState({ user: result.customer })
       saveAuth(result.accessToken)
       saveUserDetails(result.customer)
     } else {
-      this.setState({error:result})
+      this.setState({ error: result })
     }
   }
 
@@ -91,7 +96,7 @@ class NavBarMen extends Component {
 
   logOutUser() {
     logout()
-    this.setState({user:null})
+    this.setState({ user: null })
   }
 
   render() {
@@ -112,23 +117,36 @@ class NavBarMen extends Component {
           elevation={0}
         >
           <Toolbar>
-
-
-              {user ? (
-                <div style={{display:'flex'}}><Typography>Hi! {user.name}</Typography><ButtonComp margin='2 0 0 0' button={1} text='Logout' onClick={() => this.logOutUser()} padding='.2rem' fontSize='.8rem' width='fit-content' /></div>
-              ) : (
-                <div style={{display:'flex'}}>
-                  <Typography>Hi</Typography>
-                  <SignInPopper error={error} text="Sign In" signin={(data) => this.signInUser(data)}/>
-                  <Typography>or</Typography>
-                  <SignInPopper
-                    text="Register"
-                    type="register"
-                    register={data => this.registerUser(data)}
-                    error = { error }
-                  />
-                </div>
-              )}
+            {user ? (
+              <div style={{ display: 'flex' }}>
+                <Typography>Hi! {user.name}</Typography>
+                <ButtonComp
+                  margin="0 0 0 1rem"
+                  button={1}
+                  text="Logout"
+                  onClick={() => this.logOutUser()}
+                  padding=".2rem"
+                  fontSize=".8rem"
+                  width="fit-content"
+                />
+              </div>
+            ) : (
+              <div style={{ display: 'flex' }}>
+                <Typography>Hi</Typography>
+                <SignInPopper
+                  error={error}
+                  text="Sign In"
+                  signin={data => this.signInUser(data)}
+                />
+                <Typography>or</Typography>
+                <SignInPopper
+                  text="Register"
+                  type="register"
+                  register={data => this.registerUser(data)}
+                  error={error}
+                />
+              </div>
+            )}
             <div className={classes.menu}>
               <Typography
                 variant="subtitle1"

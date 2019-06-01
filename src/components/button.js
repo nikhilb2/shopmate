@@ -30,7 +30,16 @@ const styles = {
   }
 }
 const ButtonComp = props => {
-  const { classes, text, margin, button, width, fontSize, padding, onClick } = props
+  const {
+    classes,
+    text,
+    margin,
+    button,
+    width,
+    fontSize,
+    padding,
+    onClick
+  } = props
   return (
     <div>
       {button === 1 ? (
