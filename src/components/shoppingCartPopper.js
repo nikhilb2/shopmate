@@ -9,8 +9,8 @@ import ButtonComp from './button'
 import theme from '../theme'
 import { getCartId } from '../utils/auth'
 import { fetchRequest } from '../utils/request'
-import Badge from '@material-ui/core/Badge';
-
+import Badge from '@material-ui/core/Badge'
+import ShoppingCart from './shoppingCart.js'
 const styles = {
   typography: {
     padding: theme.spacing(2)
@@ -57,13 +57,7 @@ class ShoppingCartPopper extends Component {
             horizontal: 'center'
           }}
         >
-          <div>
-            Something will pop
-            Something will pop
-            Something will pop
-            Something will pop
-            Something will pop
-          </div>
+          <ShoppingCart />
         </Popover>
       </div>
     )
