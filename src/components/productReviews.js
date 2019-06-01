@@ -87,8 +87,9 @@ class ProductReivews extends Component {
   }
 
   render() {
-    const { classes, bgcolor, style, productDetails } = this.props
-
+    const { classes, bgcolor, style, productDetails, productReviews } = this.props
+    console.log('productReviews@');
+    console.log(productReviews);
     return (
       <Box
         boxShadow={0}
@@ -113,8 +114,8 @@ class ProductReivews extends Component {
               Product Reviews
             </Typography>
           </Grid>
-          {productDetails &&
-            productDetails.productReviews.map((review, i) => {
+          {productReviews &&
+            productReviews.map((review, i) => {
               if (i < 3) {
                 return (
                   <Grid item xs={12}>

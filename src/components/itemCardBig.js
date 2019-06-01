@@ -75,6 +75,7 @@ class ItemCard extends Component {
       method: 'GET'
     })
     saveCartId(newCartId.cart_id)
+    this.setState({cartId:newCartId.cart_id})
     return newCartId.cart_id
   }
 
@@ -98,9 +99,9 @@ class ItemCard extends Component {
   }
 
   rating() {
-    const { productDetails } = this.props
+    const { productReviews } = this.props
     let totalOfRatings = 0
-    productDetails.productReviews.forEach(review => {
+    productReviews.forEach(review => {
       if (review.rating > 5) {
         totalOfRatings = totalOfRatings + 5
       } else if (review.rating < 1) {
@@ -110,11 +111,10 @@ class ItemCard extends Component {
       }
     })
     const rating = Math.round(
-      (totalOfRatings / (productDetails.productReviews.length * 5)) * 100
-    )
+      (totalOfRatings / productReviews.length * 5)) * 100
     const ratingInt =
       Math.round(
-        (totalOfRatings / productDetails.productReviews.length) * 100
+        (totalOfRatings / productReviews.length) * 100
       ) / 100
     console.log(rating)
     console.log(ratingInt)
@@ -132,6 +132,8 @@ class ItemCard extends Component {
       bgcolor,
       productDetails
     } = this.props
+    console.log('productDetails');
+    console.log(productDetails);
     const { selectedImage, image1Click, image2Click, ratingInt } = this.state
     console.log(this.state);
     return (
@@ -151,7 +153,7 @@ class ItemCard extends Component {
                 selectedImage
                   ? decoratedImageUrl(selectedImage)
                   : productDetails &&
-                    decoratedImageUrl(productDetails.productDetails.image)
+                    decoratedImageUrl(productDetails.image)
               })`
             }}
           />
@@ -160,7 +162,7 @@ class ItemCard extends Component {
               <img
                 onClick={() =>
                   this.setState({
-                    selectedImage: productDetails.productDetails.image,
+                    selectedImage: productDetails.image,
                     image1Click: true,
                     image2Click: false
                   })
@@ -175,15 +177,15 @@ class ItemCard extends Component {
                       }
                     : null
                 }
-                src={decoratedImageUrl(productDetails.productDetails.image)}
-                alt={productDetails.productDetails.name}
+                src={decoratedImageUrl(productDetails.image)}
+                alt={productDetails.name}
               />
             )}
             {productDetails && (
               <img
                 onClick={() =>
                   this.setState({
-                    selectedImage: productDetails.productDetails.image_2,
+                    selectedImage: productDetails.image_2,
                     image1Click: false,
                     image2Click: true
                   })
@@ -198,8 +200,8 @@ class ItemCard extends Component {
                       }
                     : null
                 }
-                src={decoratedImageUrl(productDetails.productDetails.image_2)}
-                alt={productDetails.productDetails.image_2}
+                src={decoratedImageUrl(productDetails.image_2)}
+                alt={productDetails.image_2}
               />
             )}
           </div>
@@ -243,7 +245,7 @@ class ItemCard extends Component {
             <Typography
               style={{ textAlign: 'left', fontSize: '1.5rem', marginTop: 0 }}
             >
-              {productDetails && productDetails.productDetails.name}{' '}
+              {productDetails && productDetails.name}{' '}
             </Typography>
             <Typography
               style={{
@@ -253,7 +255,7 @@ class ItemCard extends Component {
                 marginTop: 0
               }}
             >
-              {productDetails && productDetails.productDetails.description}{' '}
+              {productDetails && productDetails.description}{' '}
             </Typography>
             <Typography
               style={{
@@ -264,7 +266,7 @@ class ItemCard extends Component {
               }}
             >
               <strike>
-                £{productDetails && productDetails.productDetails.price}
+                £{productDetails && productDetails.price}
               </strike>
             </Typography>
             <Typography
@@ -278,7 +280,7 @@ class ItemCard extends Component {
               <strong>
                 £
                 {productDetails &&
-                  productDetails.productDetails.discounted_price}
+                  productDetails.discounted_price}
               </strong>
             </Typography>
             <Typography
@@ -298,7 +300,7 @@ class ItemCard extends Component {
               button={1}
               style={{ width: '2rem' }}
               text="Add to cart"
-              onClick={() => this.addToCart(productDetails.productDetails.product_id)}
+              onClick={() => this.addToCart(productDetails.product_id)}
             />
           </div>
         </div>

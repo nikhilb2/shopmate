@@ -2,12 +2,14 @@ import React from 'react';
 import MensPage from '../src/containers/men'
 import { decoratedUrl } from '../src/utils/request'
 import fetch from 'isomorphic-unfetch'
+import { userDetails } from '../hocs/auth-hoc'
 
-
-
-export default function Index({ categories, products }) {
+function Index(props) {
+  const { categories, products, user } = props
+  console.log('Mens container');
+  console.log(props);
   return (
-    <MensPage categories={categories} products={products} />
+    <MensPage {...props} />
   );
 }
 
@@ -18,3 +20,5 @@ Index.getInitialProps = async ({ req, query }) => {
   const prodJson = await prod.json();
   return { categories: catJson, products: prodJson };
 };
+
+export default userDetails(Index)

@@ -21,7 +21,7 @@ class ProductPage extends Component {
   state = {}
 
   render() {
-    const { classes, productDetails } = this.props
+    const { classes, productDetails,productReviews } = this.props
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
@@ -38,10 +38,11 @@ class ProductPage extends Component {
                 <ItemDetailCard
                   showProducts={true}
                   productDetails={productDetails}
+                  productReviews={productReviews}
                 />
               </Grid>
               <Grid item xs={12}>
-                <ItemDetailCard productDetails={productDetails} />
+                <ItemDetailCard productDetails={productDetails} productReviews={productReviews}/>
               </Grid>
             </Grid>
           </div>

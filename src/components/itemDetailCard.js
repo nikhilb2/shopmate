@@ -34,7 +34,7 @@ class ItemDetailCard extends Component {
   }
 
   async getProductReviews() {
-    const { productDetails } = this.props.productDetails
+    const { productDetails } = this.props
     const result = await fetchRequest(
       `products/${productDetails.product_id}/reviews`,
       {
@@ -43,7 +43,7 @@ class ItemDetailCard extends Component {
     )
     if (!result.error) {
       console.log(result)
-      this.setState({ newProductReviews: { productReviews: result } })
+      this.setState({ newProductReviews: result })
     } else {
       this.setState({ error: result })
     }
@@ -58,11 +58,13 @@ class ItemDetailCard extends Component {
       image,
       box,
       productDetails,
+      productReviews,
       showProducts
     } = this.props
 
     const { newProductReviews } = this.state
-    console.log(productDetails)
+    console.log('productDetails')
+    console.log(productReviews)
     return (
       <div style={{ style }} className={classes.justify}>
         <Box
@@ -73,12 +75,12 @@ class ItemDetailCard extends Component {
           className={box === 1 ? classes.box2 : classes.box}
         >
           {showProducts ? (
-            <ItemCardBig productDetails={productDetails} bgcolor={bgcolor} />
+            <ItemCardBig productReviews={productReviews} productDetails={productDetails} bgcolor={bgcolor} />
           ) : (
             <div>
               <ProductReivews
-                productDetails={
-                  newProductReviews ? newProductReviews : productDetails
+                productReviews={
+                  newProductReviews ? newProductReviews : productReviews
                 }
               />
               <AddReview

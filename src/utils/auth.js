@@ -21,6 +21,10 @@ export const getAccessToken = () => Cookies.get('accessToken')
 export const getCartId = () => Cookies.get('cartId')
 export const removeCartId = () => Cookies.remove('cartId')
 
+export const getServerUser = user => {
+  return user
+}
+
 export const logout = () => {
   Cookies.remove('user')
   Cookies.remove('accessToken')

@@ -20,6 +20,8 @@ import Typography from '@material-ui/core/Typography'
 import Subscribe from '../components/subscribe'
 import SocialIcons from '../components/socialIcons'
 import Footer2 from '../components/footer2'
+import { getCartId } from '../utils/auth'
+import { fetchRequest } from '../utils/request'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -36,7 +38,8 @@ const styles = {
 class MensPage extends Component {
   state = {
     keyword: '',
-    showSignIn: 'hidden'
+    showSignIn: 'hidden',
+    cartItems:[],
   }
 
   searchProducts(keyword) {
@@ -47,14 +50,16 @@ class MensPage extends Component {
       })
   }
 
+
   render() {
-    const { classes, categories, products } = this.props
+    const { classes, categories, products, countItems, totalItems, cartItems } = this.props
     const { productSearch, keyword, showSignIn } = this.state
-    console.log(products)
+    console.log('this.props')
+    console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen />
+          <NavBarMen totalItems={totalItems} cartItems={cartItems} />
           <NavigationBar
             onChange={keyword => this.searchProducts(keyword)}
             bgcolor="#323232"

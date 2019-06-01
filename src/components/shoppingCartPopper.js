@@ -8,6 +8,7 @@ import Box from '@material-ui/core/Box'
 import ButtonComp from './button'
 import theme from '../theme'
 import { getCartId } from '../utils/auth'
+import { fetchRequest } from '../utils/request'
 
 const styles = {
   typography: {
@@ -17,15 +18,16 @@ const styles = {
 
 class ShoppingCartPopper extends Component {
   state = {
-    setAnchorEl: null
+    anchorEl: null,
   }
+
 
   render() {
     const { anchorEl } = this.state
     const open = Boolean(anchorEl)
     const id = open ? 'simple-popover' : null
-    const { type, text, classes } = this.props
-    console.log(anchorEl);
+    const { type, text, classes, countItems } = this.props
+    console.log(this.props);
     return (
       <div>
         <Button
@@ -37,7 +39,7 @@ class ShoppingCartPopper extends Component {
           }}
           onClick={(event) => this.setState({anchorEl: event.currentTarget})}
         >
-          {text}
+          {text} {countItems}
         </Button>
         <Popover
           id={id}
