@@ -19,6 +19,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "now-build": "next build",
     "format": "prettier --single-quote --no-semi --write \"src/**/*.js\""
   },
   "devDependencies": {
