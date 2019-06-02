@@ -5,7 +5,7 @@ import { decoratedUrl } from '../src/utils/request'
 import fetch from 'isomorphic-unfetch'
 import { userDetails } from '../hocs/auth-hoc'
 
-function Index( props ) {
+function Product( props ) {
   //console.log('props');
   //console.log(props);
   return (
@@ -22,7 +22,7 @@ function Index( props ) {
   );
 }
 
-Index.getInitialProps = async ({req, query}) => {
+Product.getInitialProps = async ({req, query}) => {
   const product = await fetch(decoratedUrl(`products/${query.prodId}`));
   const prodJson = await product.json();
   const productReviews = await fetch(decoratedUrl(`products/${query.prodId}/reviews`));
@@ -30,4 +30,4 @@ Index.getInitialProps = async ({req, query}) => {
   return {productDetails: prodJson, productReviews:prodRevJson}
 }
 
-export default userDetails(Index)
+export default userDetails(Product)

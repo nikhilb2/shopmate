@@ -4,7 +4,7 @@ import { decoratedUrl } from '../src/utils/request'
 import fetch from 'isomorphic-unfetch'
 import { userDetails } from '../hocs/auth-hoc'
 
-function Index(props) {
+function Men(props) {
   const { categories, products, user } = props
   //console.log('Mens container');
   //console.log(props);
@@ -13,7 +13,7 @@ function Index(props) {
   );
 }
 
-Index.getInitialProps = async ({ req, query }) => {
+Men.getInitialProps = async ({ req, query }) => {
   const cat = await fetch(decoratedUrl('categories'));
   const catJson = await cat.json();
   const prod = await fetch(decoratedUrl(query.catId ? `products/inCategory/${query.catId}`: 'products'))
@@ -21,4 +21,4 @@ Index.getInitialProps = async ({ req, query }) => {
   return { categories: catJson, products: prodJson };
 };
 
-export default userDetails(Index)
+export default userDetails(Men)

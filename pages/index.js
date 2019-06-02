@@ -1,8 +1,12 @@
 import React from 'react';
 import Homepage from '../src/containers/homepage'
+import { userDetails } from '../hocs/auth-hoc'
 
-export default function Index() {
+function Index(props) {
   return (
-    <Homepage />
+    <Homepage {...props}/>
   );
 }
+
+
+export default userDetails(Index)

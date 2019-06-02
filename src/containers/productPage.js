@@ -94,6 +94,7 @@ class ProductPage extends Component {
       }
     } else {
       const newCartId = await this.createCartId()
+      saveCartId(newCartId)
       const addToCartResult = await fetchRequest('shoppingcart/add', {
         method: 'POST',
         body: JSON.stringify({
