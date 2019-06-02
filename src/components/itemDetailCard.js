@@ -30,8 +30,7 @@ const styles = {
 
 class ItemDetailCard extends Component {
   state = {
-    newProductReviews: null,
-    addedToCartWithOutUser: false
+    newProductReviews: null
   }
 
   async getProductReviews() {
@@ -65,7 +64,7 @@ class ItemDetailCard extends Component {
       user
     } = this.props
 
-    const { newProductReviews, addedToCartWithOutUser } = this.state
+    const { newProductReviews } = this.state
     //console.log('productDetails')
     //console.log(productReviews)
     return (
@@ -103,24 +102,6 @@ class ItemDetailCard extends Component {
             </div>
           )}
         </Box>
-        {addedToCartWithOutUser ? (
-          <Box
-            bgcolor="background.paper"
-            color="text.primary"
-            p={2}
-            position="fixed"
-            top={0}
-            left="43%"
-            zIndex="modal"
-          >
-            <Typography>Please Login first</Typography>
-            <ButtonComp
-              text="ok"
-              onClick={() => this.setState({ addedToCartWithOutUser: false })}
-              button={1}
-            />
-          </Box>
-        ) : null}
       </div>
     )
   }

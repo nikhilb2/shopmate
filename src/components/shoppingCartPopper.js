@@ -36,7 +36,8 @@ class ShoppingCartPopper extends Component {
       classes,
       countItems,
       cartItems,
-      placeOrder
+      placeOrder,
+      user
     } = this.props
     console.log(this.props)
     return (
@@ -71,6 +72,7 @@ class ShoppingCartPopper extends Component {
             closePopover={() => this.closePopover()}
             cartItems={cartItems}
             placeOrder={placeOrder}
+            user={user}
           />
         </Popover>
       </div>

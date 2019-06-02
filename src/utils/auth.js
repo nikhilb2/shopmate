@@ -23,7 +23,7 @@ export const removeCartId = () => Cookies.remove('cartId')
 
 export const getServerUser = user => {
   return {
-    user: JSON.parse(user.user),
+    user: user.user ? JSON.parse(user.user) : null,
     cartId: user.cartId,
     accessToken: user.accessToken
   }

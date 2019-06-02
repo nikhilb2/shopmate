@@ -14,7 +14,7 @@ import Menu from '@material-ui/core/Menu'
 import theme from '../theme'
 import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
-import SignInPopper from './signInPopper'
+import UserLogin from './userLogin'
 import ShoppingCartPopper from './shoppingCartPopper'
 import {
   saveAuth,
@@ -50,7 +50,7 @@ const styles = {
 
 class NavBarMen extends Component {
   state = {
-    user: null,
+    newUser: null,
     error: null
   }
 
@@ -66,7 +66,7 @@ class NavBarMen extends Component {
     //console.log('result')
     //console.log(result)
     if (!result.error) {
-      this.setState({ user: result.customer })
+      this.setState({ newUser: result.customer })
       saveAuth(result.accessToken)
       saveUserDetails(result.customer)
     } else {
@@ -82,7 +82,7 @@ class NavBarMen extends Component {
     //console.log('result')
     //console.log(result)
     if (!result.error) {
-      this.setState({ user: result.customer })
+      this.setState({ newUser: result.customer })
       saveAuth(result.accessToken)
       saveUserDetails(result.customer)
     } else {
@@ -92,7 +92,7 @@ class NavBarMen extends Component {
 
   logOutUser() {
     logout()
-    this.setState({ user: null })
+    this.setState({ newUser: null })
   }
 
   render() {
@@ -108,9 +108,8 @@ class NavBarMen extends Component {
       user
     } = this.props
 
-    const { error } = this.state
+    const { error, newUser } = this.state
     console.log(this.props)
-
     return (
       <div className={classes.root}>
         <AppBar
@@ -123,36 +122,13 @@ class NavBarMen extends Component {
           elevation={0}
         >
           <Toolbar>
-            {user && user.user ? (
-              <div style={{ display: 'flex' }}>
-                <Typography>Hi! {user.user.name}</Typography>
-                <ButtonComp
-                  margin="0 0 0 1rem"
-                  button={1}
-                  text="Logout"
-                  onClick={() => this.logOutUser()}
-                  padding=".2rem"
-                  fontSize=".8rem"
-                  width="fit-content"
-                />
-              </div>
-            ) : (
-              <div style={{ display: 'flex' }}>
-                <Typography>Hi</Typography>
-                <SignInPopper
-                  error={error}
-                  text="Sign In"
-                  signin={data => this.signInUser(data)}
-                />
-                <Typography>or</Typography>
-                <SignInPopper
-                  text="Register"
-                  type="register"
-                  register={data => this.registerUser(data)}
-                  error={error}
-                />
-              </div>
-            )}
+            <UserLogin
+              registerUser={data => this.registerUser(data)}
+              signInUser={data => this.signInUser(data)}
+              error={error}
+              logOutUser={() => this.logOutUser()}
+              user={newUser ? newUser : user && user.user ? user.user : null}
+            />
             <div className={classes.menu}>
               <Typography
                 variant="subtitle1"

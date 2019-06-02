@@ -52,7 +52,8 @@ const styles = {
 
 class ShoppingCart extends Component {
   state = {
-    newProductReviews: null
+    newProductReviews: null,
+    checkOutWithoutUser: false
   }
 
   render() {
@@ -62,9 +63,11 @@ class ShoppingCart extends Component {
       cartItems,
       closePopover,
       countItems,
-      placeOrder
+      placeOrder,
+      user
     } = this.props
 
+    const { checkOutWithoutUser } = this.props
     return (
       <Box
         boxShadow={0}
@@ -73,6 +76,24 @@ class ShoppingCart extends Component {
         p={1}
         className={classes.box}
       >
+        {checkOutWithoutUser ? (
+          <Box
+            bgcolor="background.paper"
+            color="text.primary"
+            p={2}
+            position="fixed"
+            top={0}
+            left="43%"
+            zIndex="modal"
+          >
+            <Typography>You need to be logged in to check out</Typography>
+            <ButtonComp
+              text="ok"
+              onClick={() => this.setState({ checkOutWithoutUser: false })}
+              button={1}
+            />
+          </Box>
+        ) : null}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button
             size="medium"
@@ -98,8 +119,12 @@ class ShoppingCart extends Component {
           <ButtonComp
             text="Checkout"
             onClick={() => {
-              placeOrder()
-              closePopover()
+              if (user.user) {
+                placeOrder()
+                closePopover()
+              } else {
+                this.setState({ checkOutWithoutUser: true })
+              }
             }}
             button={1}
           />
