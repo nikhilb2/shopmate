@@ -22,7 +22,11 @@ export const getCartId = () => Cookies.get('cartId')
 export const removeCartId = () => Cookies.remove('cartId')
 
 export const getServerUser = user => {
-  return user
+  return {
+    user: JSON.parse(user.user),
+    cartId: user.cartId,
+    accessToken: user.accessToken
+  }
 }
 
 export const logout = () => {

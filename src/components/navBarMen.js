@@ -90,15 +90,6 @@ class NavBarMen extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getUserFromCookies()
-  }
-
-  getUserFromCookies() {
-    const getUser = getUserDetails()
-    this.setState({ user: getUser })
-  }
-
   logOutUser() {
     logout()
     this.setState({ user: null })
@@ -113,11 +104,12 @@ class NavBarMen extends Component {
       totalItems,
       cartItems,
       amount,
-      placeOrder
+      placeOrder,
+      user
     } = this.props
 
-    const { user, error } = this.state
-    //console.log(this.props)
+    const { error } = this.state
+    console.log(this.props)
 
     return (
       <div className={classes.root}>
@@ -131,9 +123,9 @@ class NavBarMen extends Component {
           elevation={0}
         >
           <Toolbar>
-            {user ? (
+            {user && user.user ? (
               <div style={{ display: 'flex' }}>
-                <Typography>Hi! {user.name}</Typography>
+                <Typography>Hi! {user.user.name}</Typography>
                 <ButtonComp
                   margin="0 0 0 1rem"
                   button={1}
@@ -199,6 +191,7 @@ class NavBarMen extends Component {
               text={this.workIcon()}
               countItems={totalItems}
               placeOrder={placeOrder}
+              user={user}
             />
             <Typography>
               Your Bag: {amount ? `£${Math.round(amount * 100) / 100}` : 0}

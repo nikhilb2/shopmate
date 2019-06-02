@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import ButtonComp from './button'
 import { fetchRequest, fetchRequestWithoutResponse } from '../utils/request'
+import SignInPopper from './signInPopper'
 
 const styles = {
   box: {
@@ -54,7 +55,8 @@ class AddReview extends Component {
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, user } = this.props
+    console.log(user.user)
     const { rating, review, reviewStatus } = this.state
     return (
       <div className={classes.justify}>
@@ -124,16 +126,21 @@ class AddReview extends Component {
               />
             </div>
           </div>
-          <ButtonComp
-            onClick={() => {
-              if (rating && review) {
-                this.postReview()
-              }
-            }}
-            button={1}
-            width="6rem"
-            text="submit"
-          />
+          {user & user.user ? (
+            <ButtonComp
+              onClick={() => {
+                if (rating && review) {
+                  this.postReview()
+                }
+              }}
+              button={1}
+              width="6rem"
+              text="submit"
+            />
+          ) : (
+            <Typography>Not Signed In</Typography>
+          )}
+
           {reviewStatus === 200 ? 'Review Posted SuccessFully' : null}
         </Box>
       </div>

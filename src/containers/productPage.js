@@ -126,7 +126,8 @@ class ProductPage extends Component {
       productReviews,
       totalItems,
       amount,
-      cartItems
+      cartItems,
+      user
     } = this.props
     const { newTotalItems, newCartItems, newAmount, orderStatus } = this.state
     console.log(this.state)
@@ -157,6 +158,7 @@ class ProductPage extends Component {
             amount={newAmount ? newAmount : amount}
             bgcolor="#efefef"
             placeOrder={() => this.placeOrder()}
+            user={user}
           />
           <NavigationBar />
         </Hidden>
@@ -172,12 +174,14 @@ class ProductPage extends Component {
                   productDetails={productDetails}
                   productReviews={productReviews}
                   addToCart={productId => this.addToCart(productId)}
+                  user={user}
                 />
               </Grid>
               <Grid item xs={12}>
                 <ItemDetailCard
                   productDetails={productDetails}
                   productReviews={productReviews}
+                  user={user}
                 />
               </Grid>
             </Grid>

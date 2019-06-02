@@ -96,7 +96,8 @@ class ItemCard extends Component {
       box,
       bgcolor,
       productDetails,
-      addToCart
+      addToCart,
+      addedToCartWithOutUser
     } = this.props
     //console.log('productDetails');
     //console.log(productDetails);
@@ -267,7 +268,9 @@ class ItemCard extends Component {
               button={1}
               style={{ width: '2rem' }}
               text="Add to cart"
-              onClick={() => addToCart(productDetails.product_id)}
+              onClick={() => {
+                addToCart(productDetails.product_id)
+              }}
             />
           </div>
         </div>

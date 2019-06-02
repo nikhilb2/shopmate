@@ -19,7 +19,7 @@ const caption =
 const captionMobile = 'Even this white with red'
 class Homepage extends Component {
   render() {
-    const { totalItems, cartItems, amount } = this.props
+    const { totalItems, cartItems, amount, user } = this.props
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
@@ -27,6 +27,7 @@ class Homepage extends Component {
             totalItems={totalItems}
             cartItems={cartItems}
             amount={amount}
+            user={user}
             bgcolor="#edeeee"
           />
           <NavigationBar />

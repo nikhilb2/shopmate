@@ -58,11 +58,12 @@ class MensPage extends Component {
       countItems,
       totalItems,
       cartItems,
-      amount
+      amount,
+      user
     } = this.props
     const { productSearch, keyword, showSignIn } = this.state
-    //console.log('this.props')
-    //console.log(this.props)
+    console.log('this.props')
+    console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
@@ -70,6 +71,7 @@ class MensPage extends Component {
             totalItems={totalItems}
             cartItems={cartItems}
             amount={amount}
+            user={user}
           />
           <NavigationBar
             onChange={keyword => this.searchProducts(keyword)}
