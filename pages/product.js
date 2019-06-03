@@ -6,11 +6,9 @@ import fetch from 'isomorphic-unfetch'
 import { userDetails } from '../hocs/auth-hoc'
 
 function Product( props ) {
-  //console.log('props');
-  //console.log(props);
   return (
     <div>
-    <ProductPage {...props} />
+      <ProductPage {...props} />
     </div>
   );
 }
