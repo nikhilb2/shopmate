@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     flexWrap: 'wrap',
   },
   paper: {
-    padding: theme.spacing(1, 2),
+    marginLeft:0,
     backgroundColor:'transparent'
   },
 }));
