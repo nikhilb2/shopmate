@@ -370,7 +370,7 @@ class ItemCard extends Component {
                     marginTop: '.5rem'
                   }}
                 >
-                  Home->all cat -> men{' '}
+                  <Breadcrumb name={this.state.categoryName} />
                 </Typography>
                 <div style={{ display: 'flex' }}>
                   <div
