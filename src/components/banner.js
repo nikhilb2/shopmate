@@ -16,26 +16,18 @@ const styles = {
     position: 'absolute',
     color: 'white',
     margin: '9rem',
-    marginTop: '5.5rem',
-    width: '50%',
+    top: '3.6rem',
+    left: 0,
     lineHeight: '6rem',
-    wordSpacing: '6rem'
+    width: '50%'
   },
   caption: {
-    position: 'absolute',
-    color: 'white',
-    margin: '9rem',
-    marginTop: '19.5rem',
-    width: '50%',
-    fontSize: '2rem'
+    fontSize: '2rem',
+    marginTop: '2rem'
   },
   button: {
-    position: 'absolute',
-    color: 'white',
-    margin: '9rem',
-    marginTop: '28rem',
-    width: '50%',
-    fontSize: '2rem'
+    fontSize: '2rem',
+    marginTop: '2rem'
   }
 }
 
@@ -47,14 +39,16 @@ const Banner = props => {
         className={classes.imageContainer}
         style={{ backgroundImage: `url(${image})` }}
       >
-        <Typography className={classes.heading} variant="h2">
-          {text}
-        </Typography>
-        <Typography className={classes.caption} variant="body1">
-          {caption}
-        </Typography>
-        <div className={classes.button}>
-          <ButtonComp text={buttonText} />
+        <div className={classes.heading} >
+          <Typography style={{wordSpacing:'4rem', lineHeight: '6rem',}} variant="h2">
+            {text}
+          </Typography>
+          <Typography className={classes.caption} variant="body1">
+            {caption}
+          </Typography>
+          <div className={classes.button}>
+            <ButtonComp text={buttonText} />
+          </div>
         </div>
       </div>
     </div>
