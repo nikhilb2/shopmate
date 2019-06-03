@@ -24,15 +24,15 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function NavBarMobile() {
+function NavBarMobile(props) {
   const classes = useStyles()
-
+  const { back } = props
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar style={{ justifyContent: 'space-between' }}>
           <div>
-            <img src="static/back.svg" alt="back" />
+            {back ? <img src="static/back.svg" alt="back" /> : null}
           </div>
           <div style={{ marginLeft: '2rem' }}>
             <img src="static/SHOPMATE.svg" alt="shopmate" />

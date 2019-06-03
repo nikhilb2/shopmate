@@ -4,46 +4,48 @@ import Typography from '@material-ui/core/Typography'
 import ButtonComp from './button'
 
 const styles = {
-  root: {},
-  imageContainer: {
+  root: {
+    padding: '1rem'
+  },
+  container: {
     width: '100%',
-    height: '100vh',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center center',
-    backgroundSize: 'cover'
+    height: '100vw',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    textAlign: 'center',
   },
   heading: {
     position: 'absolute',
     color: 'white',
-    margin: '2rem',
-    top: '6rem',
-    left: 0
+    marginTop: '9rem',
+    marginLeft: '2rem',
+    width: '100%'
   },
   caption: {
     position: 'absolute',
     color: 'white',
-    margin: '2rem',
-    top: '10rem',
-    left: 0
+    marginTop: '13rem',
+    marginLeft: '2rem',
+    width: '100%'
   },
   button: {
     position: 'absolute',
     color: 'white',
-    marginBottom: '-2rem',
-    margin:'2rem',  
-    bottom: '0',
+    margin: '2rem',
+    marginTop: '28rem',
     fontSize: '2rem',
     left: 0
   }
 }
 
-const BannerMobile = props => {
-  const { image, text, caption, classes, buttonText } = props
+const BannerMobileMini = props => {
+  const { bgcolor, text, caption, classes, buttonText } = props
   return (
-          <div style={{padding:'1rem'}}>
+    <div className={classes.root}>
       <div
-        className={classes.imageContainer}
-        style={{ backgroundImage: `url(${image})` }}
+        className={classes.container}
+        style={{ backgroundColor: bgcolor }}
       >
         <Typography className={classes.heading} variant="h2">
           {text}
@@ -54,9 +56,9 @@ const BannerMobile = props => {
         <div className={classes.button}>
           <ButtonComp text={buttonText} />
         </div>
-        </div>
       </div>
+    </div>
   )
 }
 
-export default withStyles(styles)(BannerMobile)
+export default withStyles(styles)(BannerMobileMini)

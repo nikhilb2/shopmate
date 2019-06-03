@@ -11,6 +11,7 @@ import CBContainer from './cardBoxCont'
 import SubsContainer from './subscriptionContainer'
 import Footer from '../components/footer'
 import NavBarMen from '../components/navBarMen'
+import BannerMobileMini from '../components/bannerMobileMini'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -54,6 +55,7 @@ class Homepage extends Component {
             caption={captionMobile}
             buttonText="Check Twice"
           />
+          <BannerMobileMini bgcolor='#FE5C07' />
         </Hidden>
       </div>
     )
