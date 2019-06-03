@@ -3,6 +3,9 @@ import Button from '@material-ui/core/Button'
 import Menu from '@material-ui/core/Menu'
 import MenuItem from '@material-ui/core/MenuItem'
 import MenuIcon from '@material-ui/icons/Menu'
+import SignInPopper from './signInPopper'
+import Link from 'next/link'
+
 function MainMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
@@ -31,7 +34,11 @@ function MainMenu(props) {
       >
         {menuItems
           ? menuItems.rows.map(item => (
+            <Link
+              href={{ pathname: '/men', query: { catId: item.category_id } }}
+            >
               <MenuItem onClick={handleClose}>{item.name}</MenuItem>
+            </Link>
             ))
           : null}
       </Menu>
