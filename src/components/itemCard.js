@@ -44,7 +44,6 @@ class ItemCard extends Component {
     return (
       <Link href={id ? { pathname: '/product', query: { prodId: id } } : '/'}>
         <Card
-          boxShadow={mouseOver ? 5 : 1}
           bgcolor="#FFFFFF"
           m={1}
           p={1}

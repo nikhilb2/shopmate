@@ -140,7 +140,7 @@ class MensPage extends Component {
         <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
           {products &&
             products.rows.map((item, i) => (
-              <div>
+              <div key={item.product_id}>
                 {i < 10 ? (
                   <ItemCard
                     title={item.name}

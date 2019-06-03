@@ -67,6 +67,7 @@ const MenBanner = props => {
         {categories &&
           categories.rows.map(row => (
             <Link
+              key={row.category_id}
               href={{ pathname: '/men', query: { catId: row.category_id } }}
             >
               <Button
