@@ -12,6 +12,7 @@ import SubsContainer from './subscriptionContainer'
 import Footer from '../components/footer'
 import NavBarMen from '../components/navBarMen'
 import BannerMobileMini from '../components/bannerMobileMini'
+import ItemCard from '../components/itemCard'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -20,7 +21,8 @@ const caption =
 const captionMobile = 'Even this white with red'
 class Homepage extends Component {
   render() {
-    const { totalItems, cartItems, amount, user } = this.props
+    const { totalItems, cartItems, amount, user, products } = this.props
+    console.log(products);
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
@@ -60,6 +62,16 @@ class Homepage extends Component {
             text='Autumn'
             caption='will come again'
            />
+           { products && products.rows.map((item,i) => (
+             <div>{i < 6 ?              <ItemCard
+                            title={item.name}
+                            image={item.thumbnail}
+                            id={item.product_id}
+                            style={{width:'100%', margin:0, marginBottom:'1.5rem'}}
+                          /> : null }</div>
+
+           ))}
+
         </Hidden>
       </div>
     )

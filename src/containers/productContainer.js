@@ -27,7 +27,7 @@ const ProductContainer = props => {
   return (
     <div style={{ width: '100%' }}>
       <div className={classes.container}>
-        <Hidden only={['xl', 'sm']} implementation="css">
+        <Hidden only={['xl', 'sm', 'xs']} implementation="css">
           <div className={classes.content}>
             <FilterBox />
           </div>

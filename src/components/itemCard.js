@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
-import Box from '@material-ui/core/Box'
+import Card from '@material-ui/core/Card';
 import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
 import Link from 'next/link'
@@ -43,7 +43,7 @@ class ItemCard extends Component {
     const { elevation, mouseOver } = this.state
     return (
       <Link href={id ? { pathname: '/product', query: { prodId: id } } : '/'}>
-        <Box
+        <Card
           boxShadow={mouseOver ? 5 : 1}
           bgcolor="#FFFFFF"
           m={1}
@@ -86,7 +86,7 @@ class ItemCard extends Component {
               button={1}
             />
           </div>
-        </Box>
+        </Card>
       </Link>
     )
   }
