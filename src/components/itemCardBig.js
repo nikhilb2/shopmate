@@ -252,20 +252,27 @@ class ItemCard extends Component {
                     color: theme.palette.secondary.main
                   }}
                 >
-                  <strike>£{productDetails && productDetails.price}</strike>
+                  {productDetails && productDetails.discounted_price > 0
+                    ? <strike>£{productDetails && productDetails.price}</strike>
+                    : `£${productDetails && productDetails.price}`
+                  }
+
                 </Typography>
-                <Typography
-                  style={{
-                    textAlign: 'left',
-                    fontSize: '1.5rem',
-                    marginTop: '.5rem',
-                    color: theme.palette.secondary.main
-                  }}
-                >
-                  <strong>
-                    £{productDetails && productDetails.discounted_price}
-                  </strong>
-                </Typography>
+                {productDetails && productDetails.discounted_price > 0
+                  ? <Typography
+                    style={{
+                      textAlign: 'left',
+                      fontSize: '1.5rem',
+                      marginTop: '.5rem',
+                      color: theme.palette.secondary.main
+                    }}
+                  >
+                    <strong>
+                      £{productDetails && productDetails.discounted_price}
+                    </strong>
+                  </Typography>
+                  : null
+                }
                 <Typography
                   style={{
                     textAlign: 'left',
@@ -424,9 +431,14 @@ class ItemCard extends Component {
                     color: theme.palette.secondary.main
                   }}
                 >
-                  <strike>£{productDetails && productDetails.price}</strike>
-                </Typography>
-                <Typography
+                {productDetails && productDetails.discounted_price > 0
+                  ? <strike>£{productDetails && productDetails.price}</strike>
+                  : `£${productDetails && productDetails.price}`
+                }
+
+              </Typography>
+              {productDetails && productDetails.discounted_price > 0
+                ? <Typography
                   style={{
                     textAlign: 'left',
                     fontSize: '1.5rem',
@@ -438,6 +450,8 @@ class ItemCard extends Component {
                     £{productDetails && productDetails.discounted_price}
                   </strong>
                 </Typography>
+                : null
+              }
                 <Typography
                   style={{
                     textAlign: 'left',
