@@ -11,6 +11,9 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormGroup from '@material-ui/core/FormGroup'
 import MenuItem from '@material-ui/core/MenuItem'
 import Menu from '@material-ui/core/Menu'
+import Link from 'next/link'
+import Button from '@material-ui/core/Button'
+import Router from 'next/router'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,10 +35,16 @@ function NavBarMobile(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar style={{ justifyContent: 'space-between' }}>
-          <div>{back ? <img src="static/back.svg" alt="back" /> : null}</div>
-          <div style={{ marginLeft: '2rem' }}>
-            <img src="static/SHOPMATE.svg" alt="shopmate" />
-          </div>
+          <div>{back
+            ?<Button
+              onClick={() => Router.back()}
+              color="primary"
+              ><img src="static/back.svg" alt="back" /> </Button>: null}</div>
+          <Link href='/'>
+            <div style={{ marginLeft: '2rem' }}>
+              <img src="static/SHOPMATE.svg" alt="shopmate" />
+            </div>
+          </Link>
           <div>
             <IconButton
               edge="start"
