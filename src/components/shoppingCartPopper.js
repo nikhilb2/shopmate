@@ -59,7 +59,7 @@ class ShoppingCartPopper extends Component {
           open={open}
           onClose={() => this.setState({ anchorEl: null })}
           anchorOrigin={{
-            vertical: 'bottom',
+            vertical: 'top',
             horizontal: 'center'
           }}
           transformOrigin={{
