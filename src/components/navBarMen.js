@@ -16,6 +16,7 @@ import SearchBox from './searchBox'
 import Work from '@material-ui/icons/WorkOutlineRounded'
 import UserLogin from './userLogin'
 import ShoppingCartPopper from './shoppingCartPopper'
+import Hidden from '@material-ui/core/Hidden'
 import {
   saveAuth,
   saveUserDetails,
@@ -26,20 +27,15 @@ import { decoratedUrl, decoratedOptions, fetchRequest } from '../utils/request'
 import ButtonComp from './button'
 const styles = {
   root: {
-    flexGrow: 1
+    flexGrow:1
+
   },
   menuButton: {
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow: 1
-  },
-  menu: {
-    display: 'flex',
-    flexDirection: 'row',
-    width: '50%',
-    marginRight: 'auto',
-    marginLeft: 'auto'
+    flexGrow:1,
+    textAlign:'center'
   },
   navRightButtons: {
     display: 'flex',
@@ -109,7 +105,7 @@ class NavBarMen extends Component {
       user
     } = this.props
 
-    const { error, newUser } = this.state
+    const { error, newUser, mobile } = this.state
     console.log(this.props)
     return (
       <div className={classes.root}>
@@ -130,7 +126,7 @@ class NavBarMen extends Component {
               logOutUser={() => this.logOutUser()}
               user={newUser ? newUser : user && user.user ? user.user : null}
             />
-            <div className={classes.menu}>
+            <Hidden className={classes.menu} only={['xs']}>
               <Typography
                 variant="subtitle1"
                 display="block"
@@ -162,7 +158,7 @@ class NavBarMen extends Component {
                   £ GBP
                 </Typography>
               </div>
-            </div>
+            </Hidden>
             <ShoppingCartPopper
               cartItems={cartItems}
               text={this.workIcon()}
