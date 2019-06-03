@@ -39,8 +39,11 @@ const Banner = props => {
         className={classes.imageContainer}
         style={{ backgroundImage: `url(${image})` }}
       >
-        <div className={classes.heading} >
-          <Typography style={{wordSpacing:'4rem', lineHeight: '6rem',}} variant="h2">
+        <div className={classes.heading}>
+          <Typography
+            style={{ wordSpacing: '4rem', lineHeight: '6rem' }}
+            variant="h2"
+          >
             {text}
           </Typography>
           <Typography className={classes.caption} variant="body1">

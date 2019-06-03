@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 const MenuAppBar = props => {
   const classes = useStyles()
-  const { bgcolor, color, searchBox, onChange } = props
+  const { bgcolor, color, searchBox, onChange, categories } = props
   return (
     <div className={classes.root}>
       <AppBar
@@ -62,47 +62,42 @@ const MenuAppBar = props => {
             </Button>
           </Link>
           <div className={classes.menu}>
-            <Link href="/">
-              <Button
-                href="index"
-                style={{ textTransform: 'none' }}
-                color={color ? color : 'black'}
-                className={classes.title}
-              >
-                Home
-              </Button>
-            </Link>
-            <Link href="/men">
-              <Button
-                href="men"
-                style={{ textTransform: 'none' }}
-                color={color ? color : 'black'}
-                className={classes.title}
-              >
-                Categories
-              </Button>
-            </Link>
-            <Button
-              style={{ textTransform: 'none' }}
-              color={color ? color : 'black'}
-              className={classes.title}
-            >
-              Kids
-            </Button>
-            <Button
-              style={{ textTransform: 'none' }}
-              color={color ? color : 'black'}
-              className={classes.title}
-            >
-              Shoes
-            </Button>
-            <Button
-              style={{ textTransform: 'none' }}
-              color={color ? color : 'black'}
-              className={classes.title}
-            >
-              Brands
-            </Button>
+            <div style={{ flexGrow: 1 }}>
+              <Link href="/men">
+                <Button
+                  href="men"
+                  style={{ textTransform: 'none' }}
+                  color={color ? color : 'black'}
+                  className={classes.title}
+                >
+                  All Categories
+                </Button>
+              </Link>
+            </div>
+            {categories &&
+              categories.rows.map((item, i) => (
+                <div style={{ flexGrow: 1 }}>
+                  {i < 6 ? (
+                    <div>
+                      <Link
+                        key={item.category_id}
+                        href={{
+                          pathname: '/men',
+                          query: { catId: item.category_id }
+                        }}
+                      >
+                        <Button
+                          style={{ textTransform: 'none' }}
+                          color={color ? color : 'black'}
+                          className={classes.title}
+                        >
+                          {item.name}
+                        </Button>
+                      </Link>
+                    </div>
+                  ) : null}
+                </div>
+              ))}
           </div>
           {searchBox ? (
             <SearchBox onChange={onChange} />

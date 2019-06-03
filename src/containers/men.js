@@ -79,6 +79,7 @@ class MensPage extends Component {
             bgcolor="#323232"
             color="primary"
             searchBox={true}
+            categories={categories}
           />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">

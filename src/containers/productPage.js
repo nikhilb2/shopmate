@@ -162,7 +162,7 @@ class ProductPage extends Component {
           </Box>
         ) : null}
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavigationBar />
+          <NavigationBar categories={categories} />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
           <NavBarMobile back={true} />
