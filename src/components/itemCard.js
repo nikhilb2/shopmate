@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
-import Card from '@material-ui/core/Card';
+import Card from '@material-ui/core/Card'
 import ButtonComp from './button'
 import { decoratedImageUrl } from '../utils/request'
 import Link from 'next/link'

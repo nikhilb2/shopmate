@@ -30,7 +30,7 @@ const styles = {
     position: 'absolute',
     color: 'white',
     marginBottom: '-2rem',
-    margin:'2rem',  
+    margin: '2rem',
     bottom: '0',
     fontSize: '2rem',
     left: 0
@@ -40,7 +40,7 @@ const styles = {
 const BannerMobile = props => {
   const { image, text, caption, classes, buttonText } = props
   return (
-          <div style={{padding:'1rem'}}>
+    <div style={{ padding: '1rem' }}>
       <div
         className={classes.imageContainer}
         style={{ backgroundImage: `url(${image})` }}
@@ -54,8 +54,8 @@ const BannerMobile = props => {
         <div className={classes.button}>
           <ButtonComp text={buttonText} />
         </div>
-        </div>
       </div>
+    </div>
   )
 }
 

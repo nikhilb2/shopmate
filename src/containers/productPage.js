@@ -163,7 +163,7 @@ class ProductPage extends Component {
           <NavigationBar />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
-          <NavBarMobile back={true}/>
+          <NavBarMobile back={true} />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
           <div className={classes.center}>

@@ -168,7 +168,9 @@ class NavBarMen extends Component {
               text={this.workIcon()}
               countItems={totalItems}
               placeOrder={placeOrder}
-              user={newUser ? newUser : user && user.user ? user && user.user : null}
+              user={
+                newUser ? newUser : user && user.user ? user && user.user : null
+              }
             />
             <Typography>
               Your Bag: {amount ? `£${Math.round(amount * 100) / 100}` : 0}

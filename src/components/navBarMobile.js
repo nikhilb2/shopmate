@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
+import MainMenu from './menu'
 import AccountCircle from '@material-ui/icons/AccountCircle'
 import Switch from '@material-ui/core/Switch'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -27,13 +27,12 @@ const useStyles = makeStyles(theme => ({
 function NavBarMobile(props) {
   const classes = useStyles()
   const { back } = props
+  const { categories } = props
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar style={{ justifyContent: 'space-between' }}>
-          <div>
-            {back ? <img src="static/back.svg" alt="back" /> : null}
-          </div>
+          <div>{back ? <img src="static/back.svg" alt="back" /> : null}</div>
           <div style={{ marginLeft: '2rem' }}>
             <img src="static/SHOPMATE.svg" alt="shopmate" />
           </div>
@@ -44,7 +43,7 @@ function NavBarMobile(props) {
               color="inherit"
               aria-label="Menu"
             >
-              <MenuIcon color="secondary" />
+              <MainMenu color="secondary" menuItems={categories} />
             </IconButton>
           </div>
         </Toolbar>

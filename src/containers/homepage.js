@@ -21,8 +21,15 @@ const caption =
 const captionMobile = 'Even this white with red'
 class Homepage extends Component {
   render() {
-    const { totalItems, cartItems, amount, user, products } = this.props
-    console.log(products);
+    const {
+      totalItems,
+      cartItems,
+      amount,
+      user,
+      products,
+      categories
+    } = this.props
+    console.log(categories)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <Hidden only={['sm', 'xs']} implementation="css">
@@ -36,7 +43,7 @@ class Homepage extends Component {
           <NavigationBar />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
-          <NavBarMobile />
+          <NavBarMobile categories={categories} />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
           <Banner
@@ -58,20 +65,23 @@ class Homepage extends Component {
             buttonText="Check Twice"
           />
           <BannerMobileMini
-            bgcolor='#FE5C07'
-            text='Autumn'
-            caption='will come again'
-           />
-           { products && products.rows.map((item,i) => (
-             <div>{i < 6 ?              <ItemCard
-                            title={item.name}
-                            image={item.thumbnail}
-                            id={item.product_id}
-                            style={{width:'100%', margin:0, marginBottom:'1.5rem'}}
-                          /> : null }</div>
-
-           ))}
-
+            bgcolor="#FE5C07"
+            text="Autumn"
+            caption="will come again"
+          />
+          {products &&
+            products.rows.map((item, i) => (
+              <div>
+                {i < 6 ? (
+                  <ItemCard
+                    title={item.name}
+                    image={item.thumbnail}
+                    id={item.product_id}
+                    style={{ width: '100%', margin: 0, marginBottom: '1.5rem' }}
+                  />
+                ) : null}
+              </div>
+            ))}
         </Hidden>
       </div>
     )

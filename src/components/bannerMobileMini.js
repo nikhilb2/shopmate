@@ -13,7 +13,7 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    textAlign: 'center',
+    textAlign: 'center'
   }
 }
 
@@ -21,14 +21,19 @@ const BannerMobileMini = props => {
   const { bgcolor, text, caption, classes, color } = props
   return (
     <div className={classes.root}>
-      <div
-        className={classes.container}
-        style={{ backgroundColor: bgcolor }}
-      >
-        <Typography className={classes.heading} style={{color:color ? color : 'white'}} variant="h2">
+      <div className={classes.container} style={{ backgroundColor: bgcolor }}>
+        <Typography
+          className={classes.heading}
+          style={{ color: color ? color : 'white' }}
+          variant="h2"
+        >
           {text}
         </Typography>
-        <Typography className={classes.caption} style={{color:color ? color : 'white'}} variant="body1">
+        <Typography
+          className={classes.caption}
+          style={{ color: color ? color : 'white' }}
+          variant="body1"
+        >
           {caption}
         </Typography>
       </div>
