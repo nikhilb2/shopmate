@@ -7,7 +7,7 @@ import { decoratedImageUrl, fetchRequest } from '../utils/request'
 import { getCartId, saveCartId } from '../utils/auth'
 import theme from '../theme'
 import PlusMinus from './plusMinus'
-
+import Breadcrumb from './breadcrumbs'
 const styles = {
   box: {
     width: '880px',
@@ -55,7 +55,8 @@ class ItemCard extends Component {
     image2Click: false,
     rating: 0,
     cartId: null,
-    itemQuantity: 1
+    itemQuantity: 1,
+    categoryName: null
   }
 
   componentDidMount() {
@@ -197,7 +198,7 @@ class ItemCard extends Component {
                     marginTop: '.5rem'
                   }}
                 >
-                  Home->all cat -> men{' '}
+                  <Breadcrumb name={this.state.categoryName} />
                 </Typography>
                 <div style={{ display: 'flex' }}>
                   <div
