@@ -23,14 +23,18 @@ const styles = {
 }
 
 const ProductContainer = props => {
-  const { classes, products, searchMessage } = props
-  console.log(products);
+  const { classes, products, searchMessage, categories, departments } = props
+  console.log(products)
   return (
     <div style={{ width: '100%' }}>
       <div className={classes.container}>
         <Hidden only={['xl', 'sm', 'xs']} implementation="css">
           <div className={classes.content}>
-            <FilterBox productCount={products ? products.count : 0}/>
+            <FilterBox
+              productCount={products ? products.count : 0}
+              categories={categories}
+              departments={departments}
+            />
           </div>
         </Hidden>
         <div
@@ -76,7 +80,10 @@ const ProductContainer = props => {
         >
           {products &&
             products.rows.map((item, i) => (
-              <div style={{ display: 'flex', marginBottom: '-5rem' }} key={item.product_id}>
+              <div
+                style={{ display: 'flex', marginBottom: '-5rem' }}
+                key={item.product_id}
+              >
                 {i > 6 && i < 10 ? (
                   <ItemCard
                     box={1}

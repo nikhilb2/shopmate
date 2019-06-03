@@ -59,7 +59,8 @@ class MensPage extends Component {
       totalItems,
       cartItems,
       amount,
-      user
+      user,
+      departments
     } = this.props
     const { productSearch, keyword, showSignIn } = this.state
     console.log('this.props')
@@ -105,6 +106,8 @@ class MensPage extends Component {
                 productSearch && productSearch.count > 0 ? true : false
               }
               keywordInput={key => this.keywordInput(key)}
+              categories={categories}
+              departments={departments}
             />
           </div>
           <div className={classes.brandBanner}>

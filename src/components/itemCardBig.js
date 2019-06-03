@@ -118,170 +118,169 @@ class ItemCard extends Component {
           justifyContent: 'center'
         }}
       >
-        {mobile
-          ? <div>
-          <div
-            className={classes.holder}
-            style={{
-              backgroundImage: `url(${
-                selectedImage
-                  ? decoratedImageUrl(selectedImage)
-                  : productDetails &&
-                    decoratedImageUrl(productDetails.image)
-              })`
-            }}
-          />
-          <div className={classes.justifyRow}>
-            {productDetails && (
-              <img
-                onClick={() =>
-                  this.setState({
-                    selectedImage: productDetails.image,
-                    image1Click: true,
-                    image2Click: false
-                  })
-                }
-                className={classes.imgThumb}
-                style={
-                  image1Click
-                    ? {
-                        borderStyle: 'solid',
-                        borderWidth: '2px',
-                        borderColor: theme.palette.secondary.main
-                      }
-                    : null
-                }
-                src={decoratedImageUrl(productDetails.image)}
-                alt={productDetails.name}
-              />
-            )}
-            {productDetails && (
-              <img
-                onClick={() =>
-                  this.setState({
-                    selectedImage: productDetails.image_2,
-                    image1Click: false,
-                    image2Click: true
-                  })
-                }
-                className={classes.imgThumb}
-                style={
-                  image2Click
-                    ? {
-                        borderStyle: 'solid',
-                        borderWidth: '2px',
-                        borderColor: theme.palette.secondary.main
-                      }
-                    : null
-                }
-                src={decoratedImageUrl(productDetails.image_2)}
-                alt={productDetails.image_2}
-              />
-            )}
-          </div>
-          <div className={classes.justifyRow} style={{ marginTop: '1rem' }}>
-            <div style={{ margin: 'auto' }}>
-              <Typography
-                style={{
-                  textAlign: 'left',
-                  color: '#a4a4a4',
-                  fontSize: '1rem',
-                  marginTop: '.5rem'
-                }}
-              >
-                Home->all cat -> men{' '}
-              </Typography>
-              <div style={{ display: 'flex' }}>
-                <div
-                  className={classes.stars}
+        {mobile ? (
+          <div>
+            <div
+              className={classes.holder}
+              style={{
+                backgroundImage: `url(${
+                  selectedImage
+                    ? decoratedImageUrl(selectedImage)
+                    : productDetails && decoratedImageUrl(productDetails.image)
+                })`
+              }}
+            />
+            <div className={classes.justifyRow}>
+              {productDetails && (
+                <img
+                  onClick={() =>
+                    this.setState({
+                      selectedImage: productDetails.image,
+                      image1Click: true,
+                      image2Click: false
+                    })
+                  }
+                  className={classes.imgThumb}
+                  style={
+                    image1Click
+                      ? {
+                          borderStyle: 'solid',
+                          borderWidth: '2px',
+                          borderColor: theme.palette.secondary.main
+                        }
+                      : null
+                  }
+                  src={decoratedImageUrl(productDetails.image)}
+                  alt={productDetails.name}
+                />
+              )}
+              {productDetails && (
+                <img
+                  onClick={() =>
+                    this.setState({
+                      selectedImage: productDetails.image_2,
+                      image1Click: false,
+                      image2Click: true
+                    })
+                  }
+                  className={classes.imgThumb}
+                  style={
+                    image2Click
+                      ? {
+                          borderStyle: 'solid',
+                          borderWidth: '2px',
+                          borderColor: theme.palette.secondary.main
+                        }
+                      : null
+                  }
+                  src={decoratedImageUrl(productDetails.image_2)}
+                  alt={productDetails.image_2}
+                />
+              )}
+            </div>
+            <div className={classes.justifyRow} style={{ marginTop: '1rem' }}>
+              <div style={{ margin: 'auto' }}>
+                <Typography
                   style={{
-                    background: `linear-gradient(to right, #FFC94F ${
-                      this.state.rating
-                    }%, #EEEEEE ${100 - this.state.rating}%)`
+                    textAlign: 'left',
+                    color: '#a4a4a4',
+                    fontSize: '1rem',
+                    marginTop: '.5rem'
                   }}
                 >
-                  <img src="static/stars.png" alt="stars" />
+                  Home->all cat -> men{' '}
+                </Typography>
+                <div style={{ display: 'flex' }}>
+                  <div
+                    className={classes.stars}
+                    style={{
+                      background: `linear-gradient(to right, #FFC94F ${
+                        this.state.rating
+                      }%, #EEEEEE ${100 - this.state.rating}%)`
+                    }}
+                  >
+                    <img src="static/stars.png" alt="stars" />
+                  </div>
+                  <Typography
+                    style={{
+                      marginLeft: '2rem',
+                      backgroundColor: '#FFC94F',
+                      color: 'white',
+                      width: '3rem',
+                      borderRadius: '2rem',
+                      fontSize: '.8rem',
+                      textAlign: 'center'
+                    }}
+                  >
+                    {ratingInt}
+                  </Typography>
                 </div>
                 <Typography
                   style={{
-                    marginLeft: '2rem',
-                    backgroundColor: '#FFC94F',
-                    color: 'white',
-                    width: '3rem',
-                    borderRadius: '2rem',
-                    fontSize: '.8rem',
-                    textAlign:'center'
+                    textAlign: 'left',
+                    fontSize: '1.5rem',
+                    marginTop: 0
                   }}
                 >
-                  {ratingInt}
+                  {productDetails && productDetails.name}{' '}
                 </Typography>
+                <Typography
+                  style={{
+                    textAlign: 'left',
+                    fontSize: '.5rem',
+                    flexWrap: 'wrap',
+                    marginTop: 0
+                  }}
+                >
+                  {productDetails && productDetails.description}{' '}
+                </Typography>
+                <Typography
+                  style={{
+                    textAlign: 'left',
+                    fontSize: '1.5rem',
+                    marginTop: '.5rem',
+                    color: theme.palette.secondary.main
+                  }}
+                >
+                  <strike>£{productDetails && productDetails.price}</strike>
+                </Typography>
+                <Typography
+                  style={{
+                    textAlign: 'left',
+                    fontSize: '1.5rem',
+                    marginTop: '.5rem',
+                    color: theme.palette.secondary.main
+                  }}
+                >
+                  <strong>
+                    £{productDetails && productDetails.discounted_price}
+                  </strong>
+                </Typography>
+                <Typography
+                  style={{
+                    textAlign: 'left',
+                    color: '#a4a4a4',
+                    fontSize: '1rem',
+                    marginTop: '.5rem'
+                  }}
+                >
+                  Quantity
+                </Typography>
+                <div style={{ display: 'flex' }}>
+                  <PlusMinus text={itemQuantity} />
+                </div>
+                <ButtonComp
+                  button={1}
+                  style={{ width: '2rem' }}
+                  text="Add to cart"
+                  onClick={() => {
+                    addToCart(productDetails.product_id)
+                  }}
+                />
               </div>
-              <Typography
-                style={{
-                  textAlign: 'left',
-                  fontSize: '1.5rem',
-                  marginTop: 0
-                }}
-              >
-                {productDetails && productDetails.name}{' '}
-              </Typography>
-              <Typography
-                style={{
-                  textAlign: 'left',
-                  fontSize: '.5rem',
-                  flexWrap: 'wrap',
-                  marginTop: 0
-                }}
-              >
-                {productDetails && productDetails.description}{' '}
-              </Typography>
-              <Typography
-                style={{
-                  textAlign: 'left',
-                  fontSize: '1.5rem',
-                  marginTop: '.5rem',
-                  color: theme.palette.secondary.main
-                }}
-              >
-                <strike>£{productDetails && productDetails.price}</strike>
-              </Typography>
-              <Typography
-                style={{
-                  textAlign: 'left',
-                  fontSize: '1.5rem',
-                  marginTop: '.5rem',
-                  color: theme.palette.secondary.main
-                }}
-              >
-                <strong>
-                  £{productDetails && productDetails.discounted_price}
-                </strong>
-              </Typography>
-              <Typography
-                style={{
-                  textAlign: 'left',
-                  color: '#a4a4a4',
-                  fontSize: '1rem',
-                  marginTop: '.5rem'
-                }}
-              >
-                Quantity
-              </Typography>
-              <div style={{ display: 'flex' }}>
-                <PlusMinus text={itemQuantity} />
-              </div>
-              <ButtonComp
-                button={1}
-                style={{ width: '2rem' }}
-                text="Add to cart"
-                onClick={() => {
-                  addToCart(productDetails.product_id)
-                }}
-              />
             </div>
           </div>
-          </div>
-          : (
+        ) : (
           <Box
             boxShadow={0}
             bgcolor={bgcolor ? bgcolor : '#FFFFFF'}
@@ -382,7 +381,7 @@ class ItemCard extends Component {
                       width: '3rem',
                       borderRadius: '2rem',
                       fontSize: '.8rem',
-                      textAlign:'center'
+                      textAlign: 'center'
                     }}
                   >
                     {ratingInt}
