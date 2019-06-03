@@ -67,7 +67,7 @@ class ShoppingCart extends Component {
       user
     } = this.props
 
-    const { checkOutWithoutUser } = this.props
+    const { checkOutWithoutUser } = this.state
     return (
       <Box
         boxShadow={0}
@@ -112,7 +112,7 @@ class ShoppingCart extends Component {
               {countItems} Items In Your Cart
             </Typography>
           </div>
-          <CartItems cartItems={cartItems} />
+          {cartItems ? <CartItems cartItems={cartItems} /> : null}
         </div>
         <div className={classes.bottomButtons}>
           <ButtonComp text="Back to Shop" onClick={() => closePopover()} />
