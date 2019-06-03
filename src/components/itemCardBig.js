@@ -62,7 +62,9 @@ class ItemCard extends Component {
     const { productDetails } = this.props
     if (productDetails) {
       this.rating()
+      this.getProductCategory(productDetails.product_id)
     }
+
   }
 
   rating() {
@@ -86,6 +88,13 @@ class ItemCard extends Component {
     this.setState({ rating, ratingInt })
   }
 
+  async getProductCategory(productId) {
+    const catName = await fetchRequest(`categories/inProduct/${productId}`, {
+      method : 'GET'
+    })
+    this.setState({categoryName: catName[0].name})
+  }
+
   render() {
     const {
       classes,
@@ -101,7 +110,7 @@ class ItemCard extends Component {
       mobile
     } = this.props
     //console.log('productDetails');
-    //console.log(productDetails);
+    console.log(productDetails);
     const {
       selectedImage,
       image1Click,
