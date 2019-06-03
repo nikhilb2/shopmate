@@ -135,6 +135,14 @@ class ProductPage extends Component {
     console.log(this.state)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
+      <NavBarMen
+        cartItems={newCartItems ? newCartItems : cartItems}
+        totalItems={newTotalItems ? newTotalItems : totalItems}
+        amount={newAmount ? newAmount : amount}
+        bgcolor="#efefef"
+        placeOrder={() => this.placeOrder()}
+        user={user}
+      />
         {this.state.orderStatus ? (
           <Box
             bgcolor="background.paper"
@@ -154,14 +162,6 @@ class ProductPage extends Component {
           </Box>
         ) : null}
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen
-            cartItems={newCartItems ? newCartItems : cartItems}
-            totalItems={newTotalItems ? newTotalItems : totalItems}
-            amount={newAmount ? newAmount : amount}
-            bgcolor="#efefef"
-            placeOrder={() => this.placeOrder()}
-            user={user}
-          />
           <NavigationBar />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">

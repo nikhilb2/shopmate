@@ -67,13 +67,13 @@ class MensPage extends Component {
     console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
+      <NavBarMen
+        totalItems={totalItems}
+        cartItems={cartItems}
+        amount={amount}
+        user={user}
+      />
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavBarMen
-            totalItems={totalItems}
-            cartItems={cartItems}
-            amount={amount}
-            user={user}
-          />
           <NavigationBar
             onChange={keyword => this.searchProducts(keyword)}
             bgcolor="#323232"
