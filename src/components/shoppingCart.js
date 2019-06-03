@@ -115,9 +115,13 @@ class ShoppingCart extends Component {
           {cartItems ? <CartItems cartItems={cartItems} /> : null}
         </div>
         <div className={classes.bottomButtons}>
-          <ButtonComp text="Back to Shop" width='fit-content' onClick={() => closePopover()} />
           <ButtonComp
-            width='fit-content'
+            text="Back to Shop"
+            width="fit-content"
+            onClick={() => closePopover()}
+          />
+          <ButtonComp
+            width="fit-content"
             text="Checkout"
             onClick={() => {
               if (user && user.user) {

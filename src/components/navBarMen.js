@@ -27,15 +27,14 @@ import { decoratedUrl, decoratedOptions, fetchRequest } from '../utils/request'
 import ButtonComp from './button'
 const styles = {
   root: {
-    flexGrow:1
-
+    flexGrow: 1
   },
   menuButton: {
     marginRight: theme.spacing(2)
   },
   title: {
-    flexGrow:1,
-    textAlign:'center'
+    flexGrow: 1,
+    textAlign: 'center'
   },
   navRightButtons: {
     display: 'flex',

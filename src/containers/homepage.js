@@ -32,13 +32,13 @@ class Homepage extends Component {
     console.log(categories)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
-      <NavBarMen
-        totalItems={totalItems}
-        cartItems={cartItems}
-        amount={amount}
-        user={user}
-        bgcolor="#edeeee"
-      />
+        <NavBarMen
+          totalItems={totalItems}
+          cartItems={cartItems}
+          amount={amount}
+          user={user}
+          bgcolor="#edeeee"
+        />
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavigationBar />
         </Hidden>

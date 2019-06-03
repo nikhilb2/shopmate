@@ -56,7 +56,11 @@ const MenuAppBar = props => {
         elevation={0}
       >
         <Toolbar>
-          <img src="static/SHOPMATE.svg" alt="shopmate" />
+          <Link href="/">
+            <Button color="primary">
+              <img src="static/SHOPMATE.svg" alt="shopmate" />
+            </Button>
+          </Link>
           <div className={classes.menu}>
             <Link href="/">
               <Button

@@ -35,12 +35,14 @@ function NavBarMobile(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar style={{ justifyContent: 'space-between' }}>
-          <div>{back
-            ?<Button
-              onClick={() => Router.back()}
-              color="primary"
-              ><img src="static/back.svg" alt="back" /> </Button>: null}</div>
-          <Link href='/'>
+          <div>
+            {back ? (
+              <Button onClick={() => Router.back()} color="primary">
+                <img src="static/back.svg" alt="back" />{' '}
+              </Button>
+            ) : null}
+          </div>
+          <Link href="/">
             <div style={{ marginLeft: '2rem' }}>
               <img src="static/SHOPMATE.svg" alt="shopmate" />
             </div>
