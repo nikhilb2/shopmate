@@ -129,7 +129,8 @@ class ProductPage extends Component {
       totalItems,
       amount,
       cartItems,
-      user
+      user,
+      categories
     } = this.props
     const { newTotalItems, newCartItems, newAmount, orderStatus } = this.state
     console.log(this.state)
