@@ -81,7 +81,7 @@ class MensPage extends Component {
           />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
-          <NavBarMobile />
+          <NavBarMobile categories={categories} back={true} />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
           <MenBanner
@@ -138,12 +138,19 @@ class MensPage extends Component {
           <Footer2 />
         </Hidden>
         <Hidden only={['xl', 'sm', 'md', 'lg']} implementation="css">
-          <BannerMobile
-            image="static/sale.png"
-            text={textMobile}
-            caption={captionMobile}
-            buttonText="Check Twice"
-          />
+          {products &&
+            products.rows.map((item, i) => (
+              <div>
+                {i < 10 ? (
+                  <ItemCard
+                    title={item.name}
+                    image={item.thumbnail}
+                    id={item.product_id}
+                    style={{ width: '100%', margin: 0, marginBottom: '1.5rem' }}
+                  />
+                ) : null}
+              </div>
+            ))}
         </Hidden>
       </div>
     )

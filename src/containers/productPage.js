@@ -13,6 +13,8 @@ import { saveCartId, removeCartId } from '../utils/auth'
 import Hidden from '@material-ui/core/Hidden'
 import Box from '@material-ui/core/Box'
 import ButtonComp from '../components/button'
+import ItemCardBig from '../components/itemCardBig'
+
 const styles = {
   center: {
     display: 'flex',
@@ -164,6 +166,14 @@ class ProductPage extends Component {
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
           <NavBarMobile back={true} />
+          <ItemCardBig
+            showProducts={true}
+            productDetails={productDetails}
+            productReviews={productReviews}
+            addToCart={productId => this.addToCart(productId)}
+            user={user}
+            mobile={true}
+          />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
           <div className={classes.center}>

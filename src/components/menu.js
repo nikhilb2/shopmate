@@ -34,11 +34,11 @@ function MainMenu(props) {
       >
         {menuItems
           ? menuItems.rows.map(item => (
-            <Link
-              href={{ pathname: '/men', query: { catId: item.category_id } }}
-            >
-              <MenuItem onClick={handleClose}>{item.name}</MenuItem>
-            </Link>
+              <Link
+                href={{ pathname: '/men', query: { catId: item.category_id } }}
+              >
+                <MenuItem onClick={handleClose}>{item.name}</MenuItem>
+              </Link>
             ))
           : null}
       </Menu>
