@@ -209,7 +209,8 @@ class ItemCard extends Component {
                     color: 'white',
                     width: '3rem',
                     borderRadius: '2rem',
-                    fontSize: '.8rem'
+                    fontSize: '.8rem',
+                    textAlign:'center'
                   }}
                 >
                   {ratingInt}
@@ -380,7 +381,8 @@ class ItemCard extends Component {
                       color: 'white',
                       width: '3rem',
                       borderRadius: '2rem',
-                      fontSize: '.8rem'
+                      fontSize: '.8rem',
+                      textAlign:'center'
                     }}
                   >
                     {ratingInt}
