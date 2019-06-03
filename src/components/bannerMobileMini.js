@@ -14,48 +14,23 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'center',
     textAlign: 'center',
-  },
-  heading: {
-    position: 'absolute',
-    color: 'white',
-    marginTop: '9rem',
-    marginLeft: '2rem',
-    width: '100%'
-  },
-  caption: {
-    position: 'absolute',
-    color: 'white',
-    marginTop: '13rem',
-    marginLeft: '2rem',
-    width: '100%'
-  },
-  button: {
-    position: 'absolute',
-    color: 'white',
-    margin: '2rem',
-    marginTop: '28rem',
-    fontSize: '2rem',
-    left: 0
   }
 }
 
 const BannerMobileMini = props => {
-  const { bgcolor, text, caption, classes, buttonText } = props
+  const { bgcolor, text, caption, classes, color } = props
   return (
     <div className={classes.root}>
       <div
         className={classes.container}
         style={{ backgroundColor: bgcolor }}
       >
-        <Typography className={classes.heading} variant="h2">
+        <Typography className={classes.heading} style={{color:color ? color : 'white'}} variant="h2">
           {text}
         </Typography>
-        <Typography className={classes.caption} variant="body1">
+        <Typography className={classes.caption} style={{color:color ? color : 'white'}} variant="body1">
           {caption}
         </Typography>
-        <div className={classes.button}>
-          <ButtonComp text={buttonText} />
-        </div>
       </div>
     </div>
   )

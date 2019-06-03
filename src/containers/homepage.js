@@ -55,7 +55,11 @@ class Homepage extends Component {
             caption={captionMobile}
             buttonText="Check Twice"
           />
-          <BannerMobileMini bgcolor='#FE5C07' />
+          <BannerMobileMini
+            bgcolor='#FE5C07'
+            text='Autumn'
+            caption='will come again'
+           />
         </Hidden>
       </div>
     )
