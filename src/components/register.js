@@ -73,7 +73,7 @@ class Register extends Component {
             fontSize=".8rem"
             width="7rem"
             padding="0.5rem"
-            text="Sign In"
+            text="Register"
             onClick={() => register(this.state)}
           />
         </div>
