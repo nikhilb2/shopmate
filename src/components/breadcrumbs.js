@@ -32,7 +32,6 @@ function CustomSeparator(props) {
           <Link color="inherit" >
             {name}
           </Link>
-          <Typography color="textPrimary">breadcrumb</Typography>
         </Breadcrumbs>
       </Paper>
     </div>
