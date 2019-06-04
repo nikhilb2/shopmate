@@ -7,6 +7,7 @@ import { decoratedImageUrl } from '../utils/request'
 import theme from '../theme'
 import PlusMinus from './plusMinus'
 import Grid from '@material-ui/core/Grid'
+import moment from 'moment'
 
 const styles = {
   box: {
@@ -70,6 +71,9 @@ const Review = props => {
         <div>
           <Typography style={{ fontSize: '1.3rem', marginTop: '1rem' }}>
             {review.name}
+          </Typography>
+          <Typography style={{ fontSize: '.7rem', marginTop: '.5rem' }}>
+            {moment(review.created_on, "YYYYMMDD").fromNow()}
           </Typography>
         </div>
       </div>
