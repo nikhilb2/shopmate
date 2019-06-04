@@ -24,7 +24,7 @@ const styles = {
 
 const ProductContainer = props => {
   const { classes, products, searchMessage, categories, departments } = props
-  console.log(products)
+  //console.log(products)
   return (
     <div style={{ width: '100%' }}>
       <div className={classes.container}>

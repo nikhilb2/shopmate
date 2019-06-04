@@ -21,7 +21,7 @@ const styles = {
 
 const FilterBox = props => {
   const { classes, productCount, categories, departments } = props
-  console.log(departments)
+  //console.log(departments)
   return (
     <div className={classes.container}>
       <Typography className={classes.margin} variant="h5">

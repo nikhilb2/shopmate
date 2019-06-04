@@ -20,7 +20,7 @@ export const userDetails = Page => {
     if (user && user.cartId) {
       const cartItems = await fetch(decoratedUrl(`shoppingcart/${user.cartId}`))
       const cartItemJson = await cartItems.json()
-      console.log(cartItemJson)
+      //console.log(cartItemJson)
       initProps.cartItems = cartItemJson
       if (cartItemJson.length > 0) {
         let totalItems = 0

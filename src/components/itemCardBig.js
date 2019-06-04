@@ -116,7 +116,7 @@ class ItemCard extends Component {
       ratingInt,
       itemQuantity
     } = this.state
-    console.log(this.state)
+    //console.log(this.state)
     return (
       <div
         style={{

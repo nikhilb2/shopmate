@@ -41,7 +41,7 @@ class ProductPage extends Component {
       newAmount: null,
       newCartItems: null
     })
-    console.log(orderStatus)
+    //console.log(orderStatus)
     removeCartId()
   }
 
@@ -134,7 +134,7 @@ class ProductPage extends Component {
       categories
     } = this.props
     const { newTotalItems, newCartItems, newAmount, orderStatus } = this.state
-    console.log(this.state)
+    //console.log(this.state)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen
