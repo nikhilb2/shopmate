@@ -3,6 +3,7 @@ const url = 'https://backendapi.turing.com/'
 const imageUrl = 'https://backendapi.turing.com/images/products/'
 export let parseJSONResponse = null
 
+// concat url with param
 export function decoratedUrl(params) {
   return url + params
 }
@@ -10,6 +11,8 @@ export function decoratedUrl(params) {
 export function decoratedImageUrl(params) {
   return imageUrl + params
 }
+
+//concat fetch options with user-key and other headers
 export function decoratedOptions(params) {
   const accessToken = getAccessToken()
   const newOptions = Object.assign(params, {
@@ -44,21 +47,7 @@ function checkStatus(response) {
   throw error
 }
 
-export default async function request(param, options) {
-  const urlTofetch = url + param
-  const decoratedOptions = Object.assign({}, options)
-  decoratedOptions.headers = decoratedOptions.headers || {}
-  decoratedOptions.headers['user-key'] = getAccessToken()
-  //console.log(decoratedOptions)
-  const result = await fetch(urlTofetch, decoratedOptions) // eslint-disable-line
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(data => {
-      return data
-    })
-    .catch(err => ({ err }))
-  return result
-}
+
 
 export const fetchRequest = async (param, options) => {
   const urlTofetch = url + param

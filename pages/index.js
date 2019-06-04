@@ -9,7 +9,7 @@ function Index(props) {
     <Homepage {...props}/>
   );
 }
-
+//category and product props to homepage component
 Index.getInitialProps = async ({ req, query }) => {
   const cat = await fetch(decoratedUrl('categories'));
   const catJson = await cat.json();

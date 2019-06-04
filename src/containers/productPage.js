@@ -69,9 +69,8 @@ class ProductPage extends Component {
 
   async addToCart(productId) {
     const { user } = this.props
-    console.log(this.props)
     let addToCartResult = null
-    console.log(productId)
+    //if there's a cartId stored in cookies
     if (user.cartId) {
       const addToCartResult = await fetchRequest('shoppingcart/add', {
         method: 'POST',
@@ -81,6 +80,7 @@ class ProductPage extends Component {
           attributes: 'none'
         })
       })
+    // calculate total items in cart and total amount
       if (addToCartResult.length > 0) {
         let totalItems = 0
         let amount = 0
@@ -95,6 +95,7 @@ class ProductPage extends Component {
         })
       }
     } else {
+      //create a cart id and store to cookies
       const newCartId = await this.createCartId()
       saveCartId(newCartId)
       const addToCartResult = await fetchRequest('shoppingcart/add', {

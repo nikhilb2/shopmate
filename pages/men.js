@@ -6,13 +6,11 @@ import { userDetails } from '../hocs/auth-hoc'
 
 function Men(props) {
   const { categories, products, user } = props
-  //console.log('Mens container');
-  //console.log(props);
   return (
     <MensPage {...props} />
   );
 }
-
+// category, departent and products props in Men page
 Men.getInitialProps = async ({ req, query }) => {
   const cat = await fetch(decoratedUrl('categories'));
   const catJson = await cat.json();

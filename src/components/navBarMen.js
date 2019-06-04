@@ -58,10 +58,9 @@ class NavBarMen extends Component {
       method: 'POST',
       body: JSON.stringify(data)
     })
-    //console.log('result')
-    //console.log(result)
     if (!result.error) {
       this.setState({ newUser: result.customer })
+      //save to cookies
       saveAuth(result.accessToken)
       saveUserDetails(result.customer)
     } else {
@@ -74,10 +73,9 @@ class NavBarMen extends Component {
       method: 'POST',
       body: JSON.stringify(data)
     })
-    //console.log('result')
-    //console.log(result)
     if (!result.error) {
       this.setState({ newUser: result.customer })
+      //save to cookies
       saveAuth(result.accessToken)
       saveUserDetails(result.customer)
     } else {
@@ -86,6 +84,7 @@ class NavBarMen extends Component {
   }
 
   logOutUser() {
+    //remove user from cookies
     logout()
     this.setState({ newUser: null })
     window.location.reload()

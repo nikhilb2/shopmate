@@ -12,7 +12,7 @@ function Product( props ) {
     </div>
   );
 }
-
+//required props in product page
 Product.getInitialProps = async ({req, query}) => {
   const cat = await fetch(decoratedUrl('categories'));
   const catJson = await cat.json();
