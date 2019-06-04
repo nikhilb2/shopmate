@@ -16,7 +16,7 @@ const styles = {
     position: 'absolute',
     color: 'white',
     margin: '2rem',
-    top: '6rem',
+    marginTop: '6rem',
     left: 0
   },
   caption: {
@@ -27,13 +27,9 @@ const styles = {
     left: 0
   },
   button: {
-    position: 'absolute',
+    position:'absolute',
     color: 'white',
-    marginBottom: '-2rem',
-    margin: '2rem',
-    bottom: '0',
-    fontSize: '2rem',
-    left: 0
+    margin: '0'
   }
 }
 
@@ -45,15 +41,19 @@ const BannerMobile = props => {
         className={classes.imageContainer}
         style={{ backgroundImage: `url(${image})` }}
       >
-        <Typography className={classes.heading} variant="h2">
+      <div className={classes.heading}>
+        <Typography  variant="h2">
           {text}
         </Typography>
-        <Typography className={classes.caption} variant="body1">
+        <Typography variant="body1">
           {caption}
         </Typography>
-        <div className={classes.button}>
-          <ButtonComp text={buttonText} />
+
         </div>
+
+      </div>
+      <div style={{position:'absolute', bottom:'1rem', marginLeft :'1rem'}}>
+        <ButtonComp text={buttonText} />
       </div>
     </div>
   )
