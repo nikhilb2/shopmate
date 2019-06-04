@@ -45,7 +45,7 @@ const RadioButtons = props => {
             values.rows.map(item => (
               <Link
                 key={item.category_id}
-                href={{ pathname: '/men', query: { catId: item.category_id } }}
+                href={{ pathname: '/category', query: { catId: item.category_id } }}
               >
                 <FormControlLabel
                   value={item.name}

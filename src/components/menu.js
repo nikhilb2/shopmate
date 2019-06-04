@@ -36,7 +36,7 @@ const MainMenu = props => {
           ? menuItems.rows.map(item => (
               <Link
                 key={item.category_id}
-                href={{ pathname: '/men', query: { catId: item.category_id } }}
+                href={{ pathname: '/category', query: { catId: item.category_id } }}
               >
                 <MenuItem onClick={handleClose}>{item.name}</MenuItem>
               </Link>

@@ -1,15 +1,15 @@
 import React from 'react'
-import MensPage from '../src/containers/men'
+import CategoryPage from '../src/containers/categoryPage'
 import { decoratedUrl } from '../src/utils/request'
 import fetch from 'isomorphic-unfetch'
 import { userDetails } from '../hocs/auth-hoc'
 
-const Men = props => {
+const Category = props => {
   const { categories, products, user } = props
-  return <MensPage {...props} />
+  return <CategoryPage {...props} />
 }
 // category, departent and products props in Men page
-Men.getInitialProps = async ({ req, query }) => {
+Category.getInitialProps = async ({ req, query }) => {
   const cat = await fetch(decoratedUrl('categories'))
   const catJson = await cat.json()
   const dep = await fetch(decoratedUrl('departments'))
@@ -27,4 +27,4 @@ Men.getInitialProps = async ({ req, query }) => {
   return { categories: catJson, products: prodJson, departments: depJson }
 }
 
-export default userDetails(Men)
+export default userDetails(Category)

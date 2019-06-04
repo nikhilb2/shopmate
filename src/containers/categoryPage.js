@@ -35,7 +35,7 @@ const styles = {
     height: '30rem'
   }
 }
-class MensPage extends Component {
+class CategoryPage extends Component {
   state = {
     keyword: '',
     showSignIn: 'hidden',
@@ -159,4 +159,4 @@ class MensPage extends Component {
   }
 }
 
-export default withStyles(styles)(MensPage)
+export default withStyles(styles)(CategoryPage)

@@ -60,7 +60,7 @@ const Selection = props => {
               <Link
                 key={item.department_id}
                 href={{
-                  pathname: '/men',
+                  pathname: '/category',
                   query: { depId: item.department_id }
                 }}
               >

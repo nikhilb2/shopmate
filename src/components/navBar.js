@@ -63,9 +63,8 @@ const MenuAppBar = props => {
           </Link>
           <div className={classes.menu}>
             <div style={{ flexGrow: 1 }}>
-              <Link href="/men">
+              <Link href="/category">
                 <Button
-                  href="men"
                   style={{ textTransform: 'none' }}
                   color={color ? color : 'black'}
                   className={classes.title}
@@ -82,7 +81,7 @@ const MenuAppBar = props => {
                       <Link
                         key={item.category_id}
                         href={{
-                          pathname: '/men',
+                          pathname: '/category',
                           query: { catId: item.category_id }
                         }}
                       >
