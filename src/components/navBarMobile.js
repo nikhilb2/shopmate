@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function NavBarMobile(props) {
+const NavBarMobile = props => {
   const classes = useStyles()
   const { back } = props
   const { categories } = props

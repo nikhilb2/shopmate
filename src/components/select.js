@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function Selection(props) {
+const Selection = props => {
   const classes = useStyles()
   const [age, setAge] = React.useState('')
   const [open, setOpen] = React.useState(false)

@@ -39,7 +39,6 @@ class ShoppingCartPopper extends Component {
       placeOrder,
       user
     } = this.props
-    console.log(this.props)
     return (
       <div>
         <Button

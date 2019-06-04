@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function Footer2() {
+const Footer2 = () => {
   const classes = useStyles()
 
   return (

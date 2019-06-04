@@ -5,7 +5,7 @@ import { decoratedUrl } from '../src/utils/request'
 import fetch from 'isomorphic-unfetch'
 import { userDetails } from '../hocs/auth-hoc'
 
-function Product( props ) {
+const Product = ( props ) => {
   return (
     <div>
       <ProductPage {...props} />

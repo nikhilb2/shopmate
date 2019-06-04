@@ -63,8 +63,6 @@ class MensPage extends Component {
       departments
     } = this.props
     const { productSearch, keyword, showSignIn } = this.state
-    console.log('this.props')
-    console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen

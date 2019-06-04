@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function RadioButtons(props) {
+const RadioButtons = props => {
   const classes = useStyles()
   const [value, setValue] = React.useState('female')
 

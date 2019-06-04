@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   }
 })
 
-function RegisterCard() {
+const RegisterCard = () => {
   const classes = useStyles()
 
   return (

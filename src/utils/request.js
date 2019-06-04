@@ -47,8 +47,6 @@ function checkStatus(response) {
   throw error
 }
 
-
-
 export const fetchRequest = async (param, options) => {
   const urlTofetch = url + param
   const newOptions = decoratedOptions(options)

@@ -80,7 +80,7 @@ class ProductPage extends Component {
           attributes: 'none'
         })
       })
-    // calculate total items in cart and total amount
+      // calculate total items in cart and total amount
       if (addToCartResult.length > 0) {
         let totalItems = 0
         let amount = 0

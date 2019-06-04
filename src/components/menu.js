@@ -6,7 +6,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import SignInPopper from './signInPopper'
 import Link from 'next/link'
 
-function MainMenu(props) {
+const MainMenu = props => {
   const [anchorEl, setAnchorEl] = React.useState(null)
 
   function handleClick(event) {

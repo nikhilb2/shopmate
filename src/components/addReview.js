@@ -34,7 +34,7 @@ class AddReview extends Component {
   }
 
   async postReview() {
-    const { productDetails } = this.props;
+    const { productDetails } = this.props
     const result = await fetchRequestWithoutResponse(
       `products/${productDetails.product_id}/reviews`,
       {

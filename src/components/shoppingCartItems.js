@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function CartItems(props) {
+const CartItems = props => {
   const classes = useStyles()
   const { cartItems } = props
   return (

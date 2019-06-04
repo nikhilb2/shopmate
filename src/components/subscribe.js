@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function Subscribe() {
+const Subscribe = () => {
   const classes = useStyles()
 
   return (

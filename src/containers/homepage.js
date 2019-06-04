@@ -29,7 +29,6 @@ class Homepage extends Component {
       products,
       categories
     } = this.props
-    console.log(categories)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen

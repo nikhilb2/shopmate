@@ -104,7 +104,6 @@ class NavBarMen extends Component {
     } = this.props
 
     const { error, newUser, mobile } = this.state
-    console.log(this.props)
     return (
       <div className={classes.root}>
         <AppBar

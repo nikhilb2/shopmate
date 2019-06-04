@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-function SocialIcons() {
+const SocialIcons = () => {
   const classes = useStyles()
 
   return (

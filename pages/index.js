@@ -4,7 +4,7 @@ import { userDetails } from '../hocs/auth-hoc'
 import { decoratedUrl } from '../src/utils/request'
 import fetch from 'isomorphic-unfetch'
 
-function Index(props) {
+const Index = (props) => {
   return (
     <Homepage {...props}/>
   );

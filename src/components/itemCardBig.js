@@ -65,7 +65,6 @@ class ItemCard extends Component {
       this.rating()
       this.getProductCategory(productDetails.product_id)
     }
-
   }
 
   rating() {
@@ -91,9 +90,9 @@ class ItemCard extends Component {
 
   async getProductCategory(productId) {
     const catName = await fetchRequest(`categories/inProduct/${productId}`, {
-      method : 'GET'
+      method: 'GET'
     })
-    this.setState({categoryName: catName[0].name})
+    this.setState({ categoryName: catName[0].name })
   }
 
   render() {
@@ -110,8 +109,6 @@ class ItemCard extends Component {
       addedToCartWithOutUser,
       mobile
     } = this.props
-    //console.log('productDetails');
-    console.log(productDetails);
     const {
       selectedImage,
       image1Click,
@@ -119,7 +116,7 @@ class ItemCard extends Component {
       ratingInt,
       itemQuantity
     } = this.state
-    console.log(this.state);
+    console.log(this.state)
     return (
       <div
         style={{
@@ -252,14 +249,14 @@ class ItemCard extends Component {
                     color: theme.palette.secondary.main
                   }}
                 >
-                  {productDetails && productDetails.discounted_price > 0
-                    ? <strike>£{productDetails && productDetails.price}</strike>
-                    : `£${productDetails && productDetails.price}`
-                  }
-
+                  {productDetails && productDetails.discounted_price > 0 ? (
+                    <strike>£{productDetails && productDetails.price}</strike>
+                  ) : (
+                    `£${productDetails && productDetails.price}`
+                  )}
                 </Typography>
-                {productDetails && productDetails.discounted_price > 0
-                  ? <Typography
+                {productDetails && productDetails.discounted_price > 0 ? (
+                  <Typography
                     style={{
                       textAlign: 'left',
                       fontSize: '1.5rem',
@@ -271,8 +268,7 @@ class ItemCard extends Component {
                       £{productDetails && productDetails.discounted_price}
                     </strong>
                   </Typography>
-                  : null
-                }
+                ) : null}
                 <Typography
                   style={{
                     textAlign: 'left',
@@ -431,27 +427,26 @@ class ItemCard extends Component {
                     color: theme.palette.secondary.main
                   }}
                 >
-                {productDetails && productDetails.discounted_price > 0
-                  ? <strike>£{productDetails && productDetails.price}</strike>
-                  : `£${productDetails && productDetails.price}`
-                }
-
-              </Typography>
-              {productDetails && productDetails.discounted_price > 0
-                ? <Typography
-                  style={{
-                    textAlign: 'left',
-                    fontSize: '1.5rem',
-                    marginTop: '.5rem',
-                    color: theme.palette.secondary.main
-                  }}
-                >
-                  <strong>
-                    £{productDetails && productDetails.discounted_price}
-                  </strong>
+                  {productDetails && productDetails.discounted_price > 0 ? (
+                    <strike>£{productDetails && productDetails.price}</strike>
+                  ) : (
+                    `£${productDetails && productDetails.price}`
+                  )}
                 </Typography>
-                : null
-              }
+                {productDetails && productDetails.discounted_price > 0 ? (
+                  <Typography
+                    style={{
+                      textAlign: 'left',
+                      fontSize: '1.5rem',
+                      marginTop: '.5rem',
+                      color: theme.palette.secondary.main
+                    }}
+                  >
+                    <strong>
+                      £{productDetails && productDetails.discounted_price}
+                    </strong>
+                  </Typography>
+                ) : null}
                 <Typography
                   style={{
                     textAlign: 'left',
