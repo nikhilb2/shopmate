@@ -20,7 +20,7 @@
     "build": "next build",
     "start": "next start",
     "now-build": "next build",
-    "format": "prettier --single-quote --no-semi --write \"src/**/*.js\""
+    "format": "prettier --single-quote --no-semi --write \"{src/**/*.js,pages/**/*.js,hocs/**/*.js}\""
   },
   "devDependencies": {
     "prettier": "1.17.1"

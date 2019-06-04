@@ -1,8 +1,8 @@
-import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheets } from '@material-ui/styles';
-import flush from 'styled-jsx/server';
-import theme from '../src/theme';
+import React from 'react'
+import Document, { Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheets } from '@material-ui/styles'
+import flush from 'styled-jsx/server'
+import theme from '../src/theme'
 
 class MyDocument extends Document {
   render() {
@@ -27,7 +27,7 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </html>
-    );
+    )
   }
 }
 
@@ -55,15 +55,15 @@ MyDocument.getInitialProps = async ctx => {
   // 4. page.render
 
   // Render app and page and get the context of the page with collected side effects.
-  const sheets = new ServerStyleSheets();
-  const originalRenderPage = ctx.renderPage;
+  const sheets = new ServerStyleSheets()
+  const originalRenderPage = ctx.renderPage
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: App => props => sheets.collect(<App {...props} />),
-    });
+      enhanceApp: App => props => sheets.collect(<App {...props} />)
+    })
 
-  const initialProps = await Document.getInitialProps(ctx);
+  const initialProps = await Document.getInitialProps(ctx)
 
   return {
     ...initialProps,
@@ -73,8 +73,8 @@ MyDocument.getInitialProps = async ctx => {
         {sheets.getStyleElement()}
         {flush() || null}
       </React.Fragment>
-    ),
-  };
-};
+    )
+  }
+}
 
-export default MyDocument;
+export default MyDocument

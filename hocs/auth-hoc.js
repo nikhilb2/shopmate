@@ -10,20 +10,24 @@ export const userDetails = Page => {
     const req = context.req
     const isServer = !!req
 
-    const  user  = isServer ? getServerUser(cookies(context)) : {user:getUserDetails(), cartId:getCartId()}
+    const user = isServer
+      ? getServerUser(cookies(context))
+      : { user: getUserDetails(), cartId: getCartId() }
 
-    const initProps = Page.getInitialProps ? await Page.getInitialProps(context) : {}
+    const initProps = Page.getInitialProps
+      ? await Page.getInitialProps(context)
+      : {}
     if (user && user.cartId) {
       const cartItems = await fetch(decoratedUrl(`shoppingcart/${user.cartId}`))
       const cartItemJson = await cartItems.json()
-      console.log(cartItemJson);
+      console.log(cartItemJson)
       initProps.cartItems = cartItemJson
-      if (cartItemJson.length > 0 ) {
+      if (cartItemJson.length > 0) {
         let totalItems = 0
         let amount = 0
-        cartItemJson.forEach(item=>{
+        cartItemJson.forEach(item => {
           totalItems = totalItems + item.quantity
-          amount = amount + (item.quantity * item.price)
+          amount = amount + item.quantity * item.price
         })
         initProps.totalItems = totalItems
         initProps.amount = amount
@@ -31,7 +35,7 @@ export const userDetails = Page => {
     }
     initProps.user = user
     return {
-      ...(initProps)
+      ...initProps
     }
   }
 
