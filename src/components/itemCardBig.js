@@ -80,7 +80,7 @@ class ItemCard extends Component {
       }
     })
     const rating =
-      Math.round((totalOfRatings / productReviews.length) * 5) * 100
+      Math.round((totalOfRatings / productReviews.length)*20)
     const ratingInt =
       Math.round((totalOfRatings / productReviews.length) * 100) / 100
     //console.log(rating)
@@ -114,9 +114,10 @@ class ItemCard extends Component {
       image1Click,
       image2Click,
       ratingInt,
-      itemQuantity
+      itemQuantity,
+      rating
     } = this.state
-    //console.log(this.state)
+    console.log(this.state)
     return (
       <div
         style={{
@@ -202,8 +203,8 @@ class ItemCard extends Component {
                     className={classes.stars}
                     style={{
                       background: `linear-gradient(to right, #FFC94F ${
-                        this.state.rating
-                      }%, #EEEEEE ${100 - this.state.rating}%)`
+                        rating
+                      }%, #EEEEEE ${rating}%)`
                     }}
                   >
                     <img src="static/stars.png" alt="stars" />
