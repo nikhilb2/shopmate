@@ -85,6 +85,9 @@ class ShoppingCart extends Component {
             top={0}
             left="43%"
             zIndex="modal"
+            style={{
+              top: '30%'
+            }}
           >
             <Typography>You need to be logged in to check out</Typography>
             <ButtonComp
