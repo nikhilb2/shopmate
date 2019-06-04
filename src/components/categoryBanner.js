@@ -35,7 +35,7 @@ const styles = {
   }
 }
 
-const MenBanner = props => {
+const CategoryBanner = props => {
   const {
     image,
     text,
@@ -87,4 +87,4 @@ const MenBanner = props => {
   )
 }
 
-export default withStyles(styles)(MenBanner)
+export default withStyles(styles)(CategoryBanner)

@@ -6,7 +6,7 @@ import SaleBox from '../components/saleBox'
 import MiniBox from '../components/miniBox'
 import RegisterCard from '../components/registerCard'
 import Hidden from '@material-ui/core/Hidden'
-import MenBanner from '../components/menBanner'
+import CategoryBanner from '../components/categoryBanner'
 import BannerMobile from '../components/bannerMobile'
 import CBContainer from './cardBoxCont'
 import ProductContainer from './productContainer'
@@ -84,7 +84,7 @@ class CategoryPage extends Component {
           <NavBarMobile categories={categories} back={true} />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
-          <MenBanner
+          <CategoryBanner
             image="static/menban.png"
             text="Categories"
             categories={categories}
@@ -110,7 +110,7 @@ class CategoryPage extends Component {
             />
           </div>
           <div className={classes.brandBanner}>
-            <MenBanner image="static/brand.png" />
+            <CategoryBanner image="static/brand.png" />
           </div>
           <div
             style={{
