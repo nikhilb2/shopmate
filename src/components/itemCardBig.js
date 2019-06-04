@@ -119,7 +119,7 @@ class ItemCard extends Component {
       ratingInt,
       itemQuantity
     } = this.state
-    //console.log(this.state);
+    console.log(this.state);
     return (
       <div
         style={{
@@ -222,7 +222,7 @@ class ItemCard extends Component {
                       textAlign: 'center'
                     }}
                   >
-                    {ratingInt}
+                    {ratingInt ? ratingInt : 'none'}
                   </Typography>
                 </div>
                 <Typography
@@ -401,7 +401,7 @@ class ItemCard extends Component {
                       textAlign: 'center'
                     }}
                   >
-                    {ratingInt}
+                    {ratingInt ? ratingInt : 'none'}
                   </Typography>
                 </div>
                 <Typography
