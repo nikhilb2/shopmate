@@ -51,7 +51,7 @@ const RadioButtons = props => {
                   query: { catId: item.category_id }
                 }}
               >
-                <div onClick={() => clearProducts()}>
+                <div onClick={handleChange}>
                 <FormControlLabel
                   value={item.name}
                   control={<Radio />}
