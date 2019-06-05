@@ -7,6 +7,7 @@ import theme from '../theme'
 import ItemCard from '../components/itemCard'
 import FilterBox from '../components/filterBox'
 import ButtonComp from '../components/button'
+import { withRouter } from 'next/router'
 
 const styles = {
   container: {
@@ -27,13 +28,31 @@ class ProductContainer extends Component {
 
   state = {
     skip: 2,
-    limit: 10
+    limit: 10,
+    param: null
   }
+
+  componentDidMount() {
+    this.checkParam()
+  }
+
+  checkParam() {
+    const { query } = this.props.router
+    if (query.catId) {
+      this.setState({param: {name: 'inCategory', id: query.catId} })
+    } else if (query.depId) {
+      this.setState({param: {name: 'inDepartment', id: query.deptId} })
+    } else {
+      this.setState({param: {name:'null'}})
+    }
+    console.log(this.props);
+  }
+
   render() {
     const { classes, products, searchMessage, categories, departments, getMoreProducts } = this.props
 
-    const { skip, limit } = this.state
-    //console.log(products)
+    const { skip, limit, param } = this.state
+    console.log(this.state)
     return (
       <div style={{ width: '100%' }}>
         <div className={classes.container}>
@@ -101,15 +120,17 @@ class ProductContainer extends Component {
               ))}
           </div>
         </Hidden>
-        <ButtonComp onClick={() => {
-          getMoreProducts({name:null}, skip, limit)
+        <div style={{display:'flex', justifyContent:'center', margin:'1rem'}}>
+        <ButtonComp button={1} fontSize='1rem' width='fit-content' onClick={() => {
+          getMoreProducts(param, skip, limit)
           this.setState({skip:skip+1})
         }
-      } text='more'/>
+      } text='Load More'/>
+      </div>
       </div>
     )
   }
 
 }
 
-export default withStyles(styles)(ProductContainer)
+export default withRouter(withStyles(styles)(ProductContainer))

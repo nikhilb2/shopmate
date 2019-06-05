@@ -23,6 +23,7 @@ import Footer2 from '../components/footer2'
 import { getCartId } from '../utils/auth'
 import { fetchRequest } from '../utils/request'
 
+
 const text = 'Background and development'
 const textMobile = 'All Shoes'
 const caption =
@@ -40,7 +41,8 @@ class CategoryPage extends Component {
     keyword: '',
     showSignIn: 'hidden',
     cartItems: [],
-    newProducts: null
+    newProducts: null,
+    params: null
   }
 
   searchProducts(keyword) {
@@ -52,6 +54,8 @@ class CategoryPage extends Component {
   }
 
 
+
+
   async getMoreProducts(type,skip,limit) {
     const { newProducts } = this.state
     if (type.name==='inCategory' || type.name==='inDepartment') {
@@ -59,12 +63,21 @@ class CategoryPage extends Component {
         method: 'GET'
       })
       if (newProducts) {
+        let prod = newProducts.rows
+        prod.push(...getMoreProducts.rows)
         this.setState({newProducts: {
-          rows: Object.assign(newProducts.rows, getMoreProducts.rows),
+          rows: prod,
           count: getMoreProducts.count
         }})
+        console.log('getMoreProducts');
+        console.log(getMoreProducts);
       } else {
-        this.setState({newProducts: getMoreProducts})
+        let prod = this.props.products.rows
+        prod.push(...getMoreProducts.rows)
+        this.setState({newProducts: {
+          rows: prod,
+          count: getMoreProducts.count
+        }})
       }
 
     } else {
@@ -104,8 +117,8 @@ class CategoryPage extends Component {
       user,
       departments
     } = this.props
+
     const { productSearch, keyword, showSignIn, newProducts } = this.state
-    console.log(this.state);
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen
