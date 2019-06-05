@@ -42,7 +42,7 @@ class CategoryPage extends Component {
     showSignIn: 'hidden',
     cartItems: [],
     newProducts: null,
-    param: null,
+    param: {name: null},
     skip: 2,
     limit: 9,
   }
@@ -61,17 +61,18 @@ class CategoryPage extends Component {
 
   checkParam() {
     const { query } = this.props.router
+
     if (query.catId) {
       this.setState({ param: { name: 'inCategory', id: query.catId, ogName:'catId' } })
-    } else if (query.depId) {
+    }
+    if (query.depId) {
       this.setState({ param: { name: 'inDepartment', id: query.deptId, ogName:'depId' } })
-    } else {
-      this.setState({ param: { name: 'null' } })
     }
     console.log(this.props)
   }
 
   async getMoreProducts() {
+    const updateParams =  await this.checkParam()
     const { newProducts, skip, limit, param } = this.state
     if (param.name === 'inCategory' || param.name === 'inDepartment') {
       const getMoreProducts = await fetchRequest(

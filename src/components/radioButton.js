@@ -26,9 +26,10 @@ const RadioButtons = props => {
 
   function handleChange(event) {
     setValue(event.target.value)
+    props.clearProducts()
   }
 
-  const { values } = props
+  const { values, clearProducts } = props
 
   return (
     <div className={classes.root}>
@@ -50,11 +51,13 @@ const RadioButtons = props => {
                   query: { catId: item.category_id }
                 }}
               >
+                <div onClick={() => clearProducts()}>
                 <FormControlLabel
                   value={item.name}
                   control={<Radio />}
                   label={item.name}
                 />
+                </div>
               </Link>
             ))}
         </RadioGroup>
