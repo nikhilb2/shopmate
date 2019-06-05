@@ -36,7 +36,6 @@ const Selection = props => {
   }
 
   function clearProductsAndHandleClose() {
-
     console.log(props)
     setOpen(false)
     props.clearProducts()

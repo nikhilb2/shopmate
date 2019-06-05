@@ -81,7 +81,7 @@ const CategoryBanner = props => {
                   marginRight: '5rem',
                   color: 'white'
                 }}
-                onClick={()=>clearProducts()}
+                onClick={() => clearProducts()}
               >
                 {row.name}
               </Button>

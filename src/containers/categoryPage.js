@@ -42,9 +42,9 @@ class CategoryPage extends Component {
     showSignIn: 'hidden',
     cartItems: [],
     newProducts: null,
-    param: {name: null},
+    param: { name: null },
     skip: 2,
-    limit: 9,
+    limit: 9
   }
 
   searchProducts(keyword) {
@@ -63,16 +63,20 @@ class CategoryPage extends Component {
     const { query } = this.props.router
 
     if (query.catId) {
-      this.setState({ param: { name: 'inCategory', id: query.catId, ogName:'catId' } })
+      this.setState({
+        param: { name: 'inCategory', id: query.catId, ogName: 'catId' }
+      })
     }
     if (query.depId) {
-      this.setState({ param: { name: 'inDepartment', id: query.deptId, ogName:'depId' } })
+      this.setState({
+        param: { name: 'inDepartment', id: query.deptId, ogName: 'depId' }
+      })
     }
     console.log(this.props)
   }
 
   async getMoreProducts() {
-    const updateParams =  await this.checkParam()
+    const updateParams = await this.checkParam()
     const { newProducts, skip, limit, param } = this.state
     if (param.name === 'inCategory' || param.name === 'inDepartment') {
       const getMoreProducts = await fetchRequest(
@@ -89,7 +93,7 @@ class CategoryPage extends Component {
             rows: prod,
             count: getMoreProducts.count
           },
-          skip: skip+1
+          skip: skip + 1
         })
         console.log('getMoreProducts')
         console.log(getMoreProducts)
@@ -101,7 +105,7 @@ class CategoryPage extends Component {
             rows: prod,
             count: getMoreProducts.count
           },
-          skip: skip+1
+          skip: skip + 1
         })
       }
     } else {
@@ -119,7 +123,7 @@ class CategoryPage extends Component {
             rows: prod,
             count: getMoreProducts.count
           },
-          skip: skip+1
+          skip: skip + 1
         })
         console.log('getMoreProducts')
         console.log(getMoreProducts)
@@ -131,14 +135,14 @@ class CategoryPage extends Component {
             rows: prod,
             count: getMoreProducts.count
           },
-          skip: skip+1
+          skip: skip + 1
         })
       }
     }
   }
 
   clearProducts() {
-    this.setState({newProducts:null, skip: 2})
+    this.setState({ newProducts: null, skip: 2 })
   }
 
   render() {

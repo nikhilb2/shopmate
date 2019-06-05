@@ -32,14 +32,21 @@ const styles = {
   }
 }
 const PlusMinus = props => {
-  const { classes, text } = props
+  const { classes, text, adjustQuantity, quantity } = props
+  console.log(props)
   return (
     <div className={classes.root}>
-      <Typography className={classes.round} style={{ marginLeft: 0 }}>
+      <Typography
+        className={classes.round}
+        style={{ marginLeft: 0 }}
+        onClick={() => adjustQuantity(-1)}
+      >
+        -
+      </Typography>
+      <Typography className={classes.number}>{quantity}</Typography>
+      <Typography className={classes.round} onClick={() => adjustQuantity(1)}>
         +
       </Typography>
-      <Typography className={classes.number}>{text}</Typography>
-      <Typography className={classes.round}>-</Typography>
     </div>
   )
 }

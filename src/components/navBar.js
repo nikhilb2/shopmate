@@ -44,7 +44,14 @@ const useStyles = makeStyles(theme => ({
 
 const MenuAppBar = props => {
   const classes = useStyles()
-  const { bgcolor, color, searchBox, onChange, categories, clearProducts } = props
+  const {
+    bgcolor,
+    color,
+    searchBox,
+    onChange,
+    categories,
+    clearProducts
+  } = props
   return (
     <div className={classes.root}>
       <AppBar

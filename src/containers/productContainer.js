@@ -24,10 +24,7 @@ const styles = {
 }
 
 class ProductContainer extends Component {
-  state = {
-
-  }
-
+  state = {}
 
   render() {
     const {

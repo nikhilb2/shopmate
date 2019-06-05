@@ -27,7 +27,8 @@ class ProductPage extends Component {
     newCartItems: null,
     newtotalItems: null,
     newAmount: null,
-    orderStatus: null
+    orderStatus: null,
+    quantity: 1
   }
   async placeOrder() {
     const { user } = this.props
@@ -122,6 +123,19 @@ class ProductPage extends Component {
     }
   }
 
+  noOfItemToCart(productId) {
+    let i = 1
+    while (this.state.quantity >= i) {
+      this.addToCart(productId)
+      i++
+    }
+    this.setState({ quantity: 1 })
+  }
+
+  adjustQuantity(number) {
+    this.setState({ quantity: this.state.quantity + number })
+  }
+
   render() {
     const {
       classes,
@@ -133,7 +147,13 @@ class ProductPage extends Component {
       user,
       categories
     } = this.props
-    const { newTotalItems, newCartItems, newAmount, orderStatus } = this.state
+    const {
+      newTotalItems,
+      newCartItems,
+      newAmount,
+      orderStatus,
+      quantity
+    } = this.state
     //console.log(this.state)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
@@ -172,9 +192,11 @@ class ProductPage extends Component {
             showProducts={true}
             productDetails={productDetails}
             productReviews={productReviews}
-            addToCart={productId => this.addToCart(productId)}
+            addToCart={productId => this.noOfItemToCart(productId)}
             user={user}
             mobile={true}
+            quantity={quantity}
+            adjustQuantity={number => this.adjustQuantity(number)}
           />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
@@ -185,8 +207,10 @@ class ProductPage extends Component {
                   showProducts={true}
                   productDetails={productDetails}
                   productReviews={productReviews}
-                  addToCart={productId => this.addToCart(productId)}
+                  addToCart={productId => this.noOfItemToCart(productId)}
                   user={user}
+                  quantity={quantity}
+                  adjustQuantity={number => this.adjustQuantity(number)}
                 />
               </Grid>
               <Grid item xs={12}>

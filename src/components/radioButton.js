@@ -52,11 +52,11 @@ const RadioButtons = props => {
                 }}
               >
                 <div onClick={handleChange}>
-                <FormControlLabel
-                  value={item.name}
-                  control={<Radio />}
-                  label={item.name}
-                />
+                  <FormControlLabel
+                    value={item.name}
+                    control={<Radio />}
+                    label={item.name}
+                  />
                 </div>
               </Link>
             ))}

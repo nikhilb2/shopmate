@@ -106,14 +106,15 @@ class ItemCard extends Component {
       productDetails,
       addToCart,
       addedToCartWithOutUser,
-      mobile
+      mobile,
+      quantity,
+      adjustQuantity
     } = this.props
     const {
       selectedImage,
       image1Click,
       image2Click,
       ratingInt,
-      itemQuantity,
       rating
     } = this.state
     console.log(this.state)
@@ -278,7 +279,10 @@ class ItemCard extends Component {
                   Quantity
                 </Typography>
                 <div style={{ display: 'flex' }}>
-                  <PlusMinus text={itemQuantity} />
+                  <PlusMinus
+                    quantity={quantity}
+                    adjustQuantity={adjustQuantity}
+                  />
                 </div>
                 <ButtonComp
                   button={1}
@@ -456,7 +460,10 @@ class ItemCard extends Component {
                   Quantity
                 </Typography>
                 <div style={{ display: 'flex' }}>
-                  <PlusMinus text={itemQuantity} />
+                  <PlusMinus
+                    quantity={quantity}
+                    adjustQuantity={adjustQuantity}
+                  />
                 </div>
                 <ButtonComp
                   button={1}

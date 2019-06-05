@@ -61,7 +61,9 @@ class ItemDetailCard extends Component {
       productReviews,
       showProducts,
       addToCart,
-      user
+      user,
+      adjustQuantity,
+      quantity
     } = this.props
 
     const { newProductReviews } = this.state
@@ -86,6 +88,8 @@ class ItemDetailCard extends Component {
               addedToCartWithOutUser={() =>
                 this.setState({ addedToCartWithOutUser: true })
               }
+              adjustQuantity={adjustQuantity}
+              quantity={quantity}
             />
           ) : (
             <div>
