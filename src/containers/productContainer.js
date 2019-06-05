@@ -56,16 +56,14 @@ const ProductContainer = props => {
           }}
         >
           {products &&
-            products.rows.map((item, i) => (
+            products.rows.slice(0, 6).map((item, i) => (
               <div style={{ display: 'flex' }} key={item.product_id}>
-                {i < 6 ? (
-                  <ItemCard
-                    style={{ marginRight: '2rem', marginBottom: '2rem' }}
-                    title={item.name}
-                    image={item.thumbnail}
-                    id={item.product_id}
-                  />
-                ) : null}
+                <ItemCard
+                  style={{ marginRight: '2rem', marginBottom: '2rem' }}
+                  title={item.name}
+                  image={item.thumbnail}
+                  id={item.product_id}
+                />
               </div>
             ))}
         </div>
@@ -79,19 +77,17 @@ const ProductContainer = props => {
           }}
         >
           {products &&
-            products.rows.map((item, i) => (
+            products.rows.slice(6, 9).map((item, i) => (
               <div
                 style={{ display: 'flex', marginBottom: '-5rem' }}
                 key={item.product_id}
               >
-                {i > 6 && i < 10 ? (
-                  <ItemCard
-                    box={1}
-                    title={item.name}
-                    image={item.thumbnail}
-                    id={item.product_id}
-                  />
-                ) : null}
+                <ItemCard
+                  box={1}
+                  title={item.name}
+                  image={item.thumbnail}
+                  id={item.product_id}
+                />
               </div>
             ))}
         </div>

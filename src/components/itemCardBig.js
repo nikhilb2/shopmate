@@ -79,8 +79,7 @@ class ItemCard extends Component {
         totalOfRatings = totalOfRatings + review.rating
       }
     })
-    const rating =
-      Math.round((totalOfRatings / productReviews.length)*20)
+    const rating = Math.round((totalOfRatings / productReviews.length) * 20)
     const ratingInt =
       Math.round((totalOfRatings / productReviews.length) * 100) / 100
     //console.log(rating)
@@ -202,9 +201,7 @@ class ItemCard extends Component {
                   <div
                     className={classes.stars}
                     style={{
-                      background: `linear-gradient(to right, #FFC94F ${
-                        rating
-                      }%, #EEEEEE ${rating}%)`
+                      background: `linear-gradient(to right, #FFC94F ${rating}%, #EEEEEE ${rating}%)`
                     }}
                   >
                     <img src="static/stars.png" alt="stars" />

@@ -73,7 +73,7 @@ const Review = props => {
             {review.name}
           </Typography>
           <Typography style={{ fontSize: '.7rem', marginTop: '.5rem' }}>
-            {moment(review.created_on, "YYYYMMDD").fromNow()}
+            {moment(review.created_on, 'YYYYMMDD').fromNow()}
           </Typography>
         </div>
       </div>
@@ -125,21 +125,19 @@ class ProductReivews extends Component {
             </Typography>
           </Grid>
           {productReviews &&
-            productReviews.slice(0,3).map((review, i) =>
-                 (
-                  <Grid item xs={12} key={'review'+i}>
-                    <Review
-                      style={{
-                        width: '60vw',
-                        marginRight: 'auto',
-                        marginLeft: 'auto'
-                      }}
-                      classes={classes}
-                      review={review}
-                    />
-                  </Grid>
-                )
-            )}
+            productReviews.slice(0, 3).map((review, i) => (
+              <Grid item xs={12} key={'review' + i}>
+                <Review
+                  style={{
+                    width: '60vw',
+                    marginRight: 'auto',
+                    marginLeft: 'auto'
+                  }}
+                  classes={classes}
+                  review={review}
+                />
+              </Grid>
+            ))}
         </Grid>
       </Box>
     )
