@@ -125,10 +125,9 @@ class ProductReivews extends Component {
             </Typography>
           </Grid>
           {productReviews &&
-            productReviews.map((review, i) => {
-              if (i < 3) {
-                return (
-                  <Grid item xs={12}>
+            productReviews.slice(0,3).map((review, i) =>
+                 (
+                  <Grid item xs={12} key={'review'+i}>
                     <Review
                       style={{
                         width: '60vw',
@@ -140,8 +139,7 @@ class ProductReivews extends Component {
                     />
                   </Grid>
                 )
-              }
-            })}
+            )}
         </Grid>
       </Box>
     )
