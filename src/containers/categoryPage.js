@@ -39,15 +39,57 @@ class CategoryPage extends Component {
   state = {
     keyword: '',
     showSignIn: 'hidden',
-    cartItems: []
+    cartItems: [],
+    newProducts: null
   }
 
   searchProducts(keyword) {
     fetch(decoratedUrl(`products/search?query_string=${keyword}`))
       .then(response => response.json())
       .then(result => {
-        this.setState({ productSearch: result, keyword })
+        this.setState({ newProducts: result, keyword })
       })
+  }
+
+
+  async getMoreProducts(type,skip,limit) {
+    const { newProducts } = this.state
+    if (type.name==='inCategory' || type.name==='inDepartment') {
+      const getMoreProducts = await fetchRequest(`products/${type.name}/${type.name}?page=${skip}&limit=${limit}`, {
+        method: 'GET'
+      })
+      if (newProducts) {
+        this.setState({newProducts: {
+          rows: Object.assign(newProducts.rows, getMoreProducts.rows),
+          count: getMoreProducts.count
+        }})
+      } else {
+        this.setState({newProducts: getMoreProducts})
+      }
+
+    } else {
+      const getMoreProducts = await fetchRequest(`products?page=${skip}&limit=${limit}`, {
+        method: 'GET'
+      })
+      if (newProducts) {
+        let prod = newProducts.rows
+        prod.push(...getMoreProducts.rows)
+        this.setState({newProducts: {
+          rows: prod,
+          count: getMoreProducts.count
+        }})
+        console.log('getMoreProducts');
+        console.log(getMoreProducts);
+      } else {
+        let prod = this.props.products.rows
+        prod.push(...getMoreProducts.rows)
+        this.setState({newProducts: {
+          rows: prod,
+          count: getMoreProducts.count
+        }})
+      }
+    }
+
   }
 
   render() {
@@ -62,7 +104,8 @@ class CategoryPage extends Component {
       user,
       departments
     } = this.props
-    const { productSearch, keyword, showSignIn } = this.state
+    const { productSearch, keyword, showSignIn, newProducts } = this.state
+    console.log(this.state);
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen
@@ -91,9 +134,8 @@ class CategoryPage extends Component {
           />
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <ProductContainer
-              products={
-                productSearch && keyword.length > 0 ? productSearch : products
-              }
+              getMoreProducts={(type,skip,limit) => this.getMoreProducts(type,skip,limit)}
+              products={newProducts ? newProducts : products}
               searchMessage={
                 productSearch && productSearch.count > 0
                   ? `${productSearch.count} ${
