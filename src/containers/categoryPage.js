@@ -22,6 +22,7 @@ import SocialIcons from '../components/socialIcons'
 import Footer2 from '../components/footer2'
 import { getCartId } from '../utils/auth'
 import { fetchRequest } from '../utils/request'
+import { withRouter } from 'next/router'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -41,7 +42,9 @@ class CategoryPage extends Component {
     showSignIn: 'hidden',
     cartItems: [],
     newProducts: null,
-    params: null
+    param: null,
+    skip: 2,
+    limit: 9,
   }
 
   searchProducts(keyword) {
@@ -52,11 +55,27 @@ class CategoryPage extends Component {
       })
   }
 
-  async getMoreProducts(type, skip, limit) {
-    const { newProducts } = this.state
-    if (type.name === 'inCategory' || type.name === 'inDepartment') {
+  componentDidMount() {
+    this.checkParam()
+  }
+
+  checkParam() {
+    const { query } = this.props.router
+    if (query.catId) {
+      this.setState({ param: { name: 'inCategory', id: query.catId, ogName:'catId' } })
+    } else if (query.depId) {
+      this.setState({ param: { name: 'inDepartment', id: query.deptId, ogName:'depId' } })
+    } else {
+      this.setState({ param: { name: 'null' } })
+    }
+    console.log(this.props)
+  }
+
+  async getMoreProducts() {
+    const { newProducts, skip, limit, param } = this.state
+    if (param.name === 'inCategory' || param.name === 'inDepartment') {
       const getMoreProducts = await fetchRequest(
-        `products/${type.name}/${type.id}?page=${skip}&limit=${limit}`,
+        `products/${param.name}/${param.id}?page=${skip}&limit=${limit}`,
         {
           method: 'GET'
         }
@@ -68,7 +87,8 @@ class CategoryPage extends Component {
           newProducts: {
             rows: prod,
             count: getMoreProducts.count
-          }
+          },
+          skip: skip+1
         })
         console.log('getMoreProducts')
         console.log(getMoreProducts)
@@ -79,7 +99,8 @@ class CategoryPage extends Component {
           newProducts: {
             rows: prod,
             count: getMoreProducts.count
-          }
+          },
+          skip: skip+1
         })
       }
     } else {
@@ -96,7 +117,8 @@ class CategoryPage extends Component {
           newProducts: {
             rows: prod,
             count: getMoreProducts.count
-          }
+          },
+          skip: skip+1
         })
         console.log('getMoreProducts')
         console.log(getMoreProducts)
@@ -107,10 +129,15 @@ class CategoryPage extends Component {
           newProducts: {
             rows: prod,
             count: getMoreProducts.count
-          }
+          },
+          skip: skip+1
         })
       }
     }
+  }
+
+  clearProducts() {
+    this.setState({newProducts:null, skip: 2})
   }
 
   render() {
@@ -142,6 +169,7 @@ class CategoryPage extends Component {
             color="primary"
             searchBox={true}
             categories={categories}
+            clearProducts={() => this.clearProducts()}
           />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
@@ -152,6 +180,7 @@ class CategoryPage extends Component {
             image="static/menban.png"
             text="Categories"
             categories={categories}
+            clearProducts={() => this.clearProducts()}
           />
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <ProductContainer
@@ -172,6 +201,7 @@ class CategoryPage extends Component {
               keywordInput={key => this.keywordInput(key)}
               categories={categories}
               departments={departments}
+              clearProducts={() => this.clearProducts()}
             />
           </div>
           <div className={classes.brandBanner}>
@@ -224,4 +254,4 @@ class CategoryPage extends Component {
   }
 }
 
-export default withStyles(styles)(CategoryPage)
+export default withRouter(withStyles(styles)(CategoryPage))

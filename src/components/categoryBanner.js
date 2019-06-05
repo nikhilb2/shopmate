@@ -43,7 +43,8 @@ const CategoryBanner = props => {
     classes,
     buttonText,
     categories,
-    banner
+    banner,
+    clearProducts
   } = props
   return (
     <div
@@ -80,6 +81,7 @@ const CategoryBanner = props => {
                   marginRight: '5rem',
                   color: 'white'
                 }}
+                onClick={()=>clearProducts()}
               >
                 {row.name}
               </Button>

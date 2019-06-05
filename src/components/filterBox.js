@@ -20,7 +20,7 @@ const styles = {
 }
 
 const FilterBox = props => {
-  const { classes, productCount, categories, departments } = props
+  const { classes, productCount, categories, departments, clearProducts } = props
   //console.log(departments)
   return (
     <div className={classes.container}>
@@ -31,11 +31,12 @@ const FilterBox = props => {
         values={departments}
         name="Select Department"
         label="cat name"
+        clearProducts={clearProducts}
       />
       <Typography className={classes.margin} variant="h5">
         or
       </Typography>
-      <RadioButton values={categories} />
+      <RadioButton values={categories} clearProducts={clearProducts}/>
     </div>
   )
 }

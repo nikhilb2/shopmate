@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 
 const MenuAppBar = props => {
   const classes = useStyles()
-  const { bgcolor, color, searchBox, onChange, categories } = props
+  const { bgcolor, color, searchBox, onChange, categories, clearProducts } = props
   return (
     <div className={classes.root}>
       <AppBar
@@ -57,7 +57,7 @@ const MenuAppBar = props => {
       >
         <Toolbar>
           <Link href="/">
-            <Button color="primary">
+            <Button onClick={() => clearProducts()} color="primary">
               <img src="static/SHOPMATE.svg" alt="shopmate" />
             </Button>
           </Link>

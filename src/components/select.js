@@ -34,7 +34,15 @@ const Selection = props => {
   function handleOpen() {
     setOpen(true)
   }
-  const { name, values, label } = props
+
+  function clearProductsAndHandleClose() {
+
+    console.log(props)
+    setOpen(false)
+    props.clearProducts()
+  }
+
+  const { name, values, label, clearProducts } = props
 
   return (
     <form autoComplete="off">
@@ -64,7 +72,7 @@ const Selection = props => {
                   query: { depId: item.department_id }
                 }}
               >
-                <MenuItem onClick={handleClose} value={10}>
+                <MenuItem onClick={clearProductsAndHandleClose} value={10}>
                   {item.name}
                 </MenuItem>
               </Link>

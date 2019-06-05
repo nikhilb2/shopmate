@@ -7,7 +7,6 @@ import theme from '../theme'
 import ItemCard from '../components/itemCard'
 import FilterBox from '../components/filterBox'
 import ButtonComp from '../components/button'
-import { withRouter } from 'next/router'
 
 const styles = {
   container: {
@@ -26,26 +25,9 @@ const styles = {
 
 class ProductContainer extends Component {
   state = {
-    skip: 2,
-    limit: 9,
-    param: null
+
   }
 
-  componentDidMount() {
-    this.checkParam()
-  }
-
-  checkParam() {
-    const { query } = this.props.router
-    if (query.catId) {
-      this.setState({ param: { name: 'inCategory', id: query.catId } })
-    } else if (query.depId) {
-      this.setState({ param: { name: 'inDepartment', id: query.deptId } })
-    } else {
-      this.setState({ param: { name: 'null' } })
-    }
-    console.log(this.props)
-  }
 
   render() {
     const {
@@ -54,7 +36,8 @@ class ProductContainer extends Component {
       searchMessage,
       categories,
       departments,
-      getMoreProducts
+      getMoreProducts,
+      clearProducts
     } = this.props
 
     const { skip, limit, param } = this.state
@@ -68,6 +51,7 @@ class ProductContainer extends Component {
                 productCount={products ? products.count : 0}
                 categories={categories}
                 departments={departments}
+                clearProducts={clearProducts}
               />
             </div>
           </Hidden>
@@ -147,4 +131,4 @@ class ProductContainer extends Component {
   }
 }
 
-export default withRouter(withStyles(styles)(ProductContainer))
+export default withStyles(styles)(ProductContainer)
