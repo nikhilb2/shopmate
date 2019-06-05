@@ -23,7 +23,6 @@ import Footer2 from '../components/footer2'
 import { getCartId } from '../utils/auth'
 import { fetchRequest } from '../utils/request'
 
-
 const text = 'Background and development'
 const textMobile = 'All Shoes'
 const caption =
@@ -53,56 +52,65 @@ class CategoryPage extends Component {
       })
   }
 
-
-
-
-  async getMoreProducts(type,skip,limit) {
+  async getMoreProducts(type, skip, limit) {
     const { newProducts } = this.state
-    if (type.name==='inCategory' || type.name==='inDepartment') {
-      const getMoreProducts = await fetchRequest(`products/${type.name}/${type.name}?page=${skip}&limit=${limit}`, {
-        method: 'GET'
-      })
+    if (type.name === 'inCategory' || type.name === 'inDepartment') {
+      const getMoreProducts = await fetchRequest(
+        `products/${type.name}/${type.id}?page=${skip}&limit=${limit}`,
+        {
+          method: 'GET'
+        }
+      )
       if (newProducts) {
         let prod = newProducts.rows
         prod.push(...getMoreProducts.rows)
-        this.setState({newProducts: {
-          rows: prod,
-          count: getMoreProducts.count
-        }})
-        console.log('getMoreProducts');
-        console.log(getMoreProducts);
+        this.setState({
+          newProducts: {
+            rows: prod,
+            count: getMoreProducts.count
+          }
+        })
+        console.log('getMoreProducts')
+        console.log(getMoreProducts)
       } else {
         let prod = this.props.products.rows
         prod.push(...getMoreProducts.rows)
-        this.setState({newProducts: {
-          rows: prod,
-          count: getMoreProducts.count
-        }})
+        this.setState({
+          newProducts: {
+            rows: prod,
+            count: getMoreProducts.count
+          }
+        })
       }
-
     } else {
-      const getMoreProducts = await fetchRequest(`products?page=${skip}&limit=${limit}`, {
-        method: 'GET'
-      })
+      const getMoreProducts = await fetchRequest(
+        `products?page=${skip}&limit=${limit}`,
+        {
+          method: 'GET'
+        }
+      )
       if (newProducts) {
         let prod = newProducts.rows
         prod.push(...getMoreProducts.rows)
-        this.setState({newProducts: {
-          rows: prod,
-          count: getMoreProducts.count
-        }})
-        console.log('getMoreProducts');
-        console.log(getMoreProducts);
+        this.setState({
+          newProducts: {
+            rows: prod,
+            count: getMoreProducts.count
+          }
+        })
+        console.log('getMoreProducts')
+        console.log(getMoreProducts)
       } else {
         let prod = this.props.products.rows
         prod.push(...getMoreProducts.rows)
-        this.setState({newProducts: {
-          rows: prod,
-          count: getMoreProducts.count
-        }})
+        this.setState({
+          newProducts: {
+            rows: prod,
+            count: getMoreProducts.count
+          }
+        })
       }
     }
-
   }
 
   render() {
@@ -147,7 +155,9 @@ class CategoryPage extends Component {
           />
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <ProductContainer
-              getMoreProducts={(type,skip,limit) => this.getMoreProducts(type,skip,limit)}
+              getMoreProducts={(type, skip, limit) =>
+                this.getMoreProducts(type, skip, limit)
+              }
               products={newProducts ? newProducts : products}
               searchMessage={
                 productSearch && productSearch.count > 0

@@ -25,10 +25,9 @@ const styles = {
 }
 
 class ProductContainer extends Component {
-
   state = {
     skip: 2,
-    limit: 10,
+    limit: 9,
     param: null
   }
 
@@ -39,17 +38,24 @@ class ProductContainer extends Component {
   checkParam() {
     const { query } = this.props.router
     if (query.catId) {
-      this.setState({param: {name: 'inCategory', id: query.catId} })
+      this.setState({ param: { name: 'inCategory', id: query.catId } })
     } else if (query.depId) {
-      this.setState({param: {name: 'inDepartment', id: query.deptId} })
+      this.setState({ param: { name: 'inDepartment', id: query.deptId } })
     } else {
-      this.setState({param: {name:'null'}})
+      this.setState({ param: { name: 'null' } })
     }
-    console.log(this.props);
+    console.log(this.props)
   }
 
   render() {
-    const { classes, products, searchMessage, categories, departments, getMoreProducts } = this.props
+    const {
+      classes,
+      products,
+      searchMessage,
+      categories,
+      departments,
+      getMoreProducts
+    } = this.props
 
     const { skip, limit, param } = this.state
     console.log(this.state)
@@ -120,17 +126,25 @@ class ProductContainer extends Component {
               ))}
           </div>
         </Hidden>
-        <div style={{display:'flex', justifyContent:'center', margin:'1rem'}}>
-        <ButtonComp button={1} fontSize='1rem' width='fit-content' onClick={() => {
-          getMoreProducts(param, skip, limit)
-          this.setState({skip:skip+1})
-        }
-      } text='Load More'/>
-      </div>
+        <div
+          style={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}
+        >
+          {products.count > products.rows.length ? (
+            <ButtonComp
+              button={1}
+              fontSize="1rem"
+              width="fit-content"
+              onClick={() => {
+                getMoreProducts(param, skip, limit)
+                this.setState({ skip: skip + 1 })
+              }}
+              text="Load More"
+            />
+          ) : null}
+        </div>
       </div>
     )
   }
-
 }
 
 export default withRouter(withStyles(styles)(ProductContainer))

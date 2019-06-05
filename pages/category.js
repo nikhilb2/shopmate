@@ -17,10 +17,10 @@ Category.getInitialProps = async ({ req, query }) => {
   const prod = await fetch(
     decoratedUrl(
       query.catId
-        ? `products/inCategory/${query.catId}?page=1&limit=10`
+        ? `products/inCategory/${query.catId}?page=1&limit=9`
         : query.depId
-        ? `products/inDepartment/${query.depId}?page=1&limit=10`
-        : 'products?page=1&limit=10'
+        ? `products/inDepartment/${query.depId}?page=1&limit=9`
+        : 'products?page=1&limit=9'
     )
   )
   const prodJson = await prod.json()
