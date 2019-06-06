@@ -168,7 +168,7 @@ class CategoryPage extends Component {
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen
           cartItems={newCartItems ? newCartItems : cartItems}
-          totalItems={newTotalItems ? newTotalItems : totalItems}
+          totalItems={newTotalItems || newTotalItems === 0 ? newTotalItems : totalItems}
           amount={newAmount ? newAmount : amount}
           bgcolor="#efefef"
           placeOrder={cartId => placeOrder(cartId)}

@@ -113,9 +113,7 @@ class MyApp extends App {
         method: 'DELETE'
       }
     )
-    if (removeFromCartResult.status === 200) {
-      this.getCartItems(user.cartId)
-    }
+      await this.getCartItems(user.cartId)
   }
 
   async noOfItemToCart(productId) {
