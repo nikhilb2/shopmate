@@ -23,6 +23,7 @@ const styles = {
   }
 }
 class ProductPage extends Component {
+  /*
   state = {
     newCartItems: null,
     newtotalItems: null,
@@ -135,7 +136,7 @@ class ProductPage extends Component {
   adjustQuantity(number) {
     this.setState({ quantity: this.state.quantity + number })
   }
-
+*/
   render() {
     const {
       classes,
@@ -145,15 +146,18 @@ class ProductPage extends Component {
       amount,
       cartItems,
       user,
-      categories
-    } = this.props
-    const {
+      categories,
       newTotalItems,
       newCartItems,
       newAmount,
       orderStatus,
-      quantity
-    } = this.state
+      quantity,
+      addToCart,
+      adjustQuantity,
+      getCartItems,
+      noOfItemToCart,
+      placeOrder
+    } = this.props
     //console.log(this.state)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
@@ -162,10 +166,11 @@ class ProductPage extends Component {
           totalItems={newTotalItems ? newTotalItems : totalItems}
           amount={newAmount ? newAmount : amount}
           bgcolor="#efefef"
-          placeOrder={() => this.placeOrder()}
+          placeOrder={cartId => placeOrder(cartId)}
           user={user}
+          addToCart={addToCart}
         />
-        {this.state.orderStatus ? (
+        {orderStatus ? (
           <Box
             bgcolor="background.paper"
             color="text.primary"
@@ -176,11 +181,7 @@ class ProductPage extends Component {
             zIndex="modal"
           >
             <Typography>Order Placed SuccessFully</Typography>
-            <ButtonComp
-              text="ok"
-              onClick={() => this.setState({ orderStatus: null })}
-              button={1}
-            />
+            <ButtonComp text="ok" onClick={() => null} button={1} />
           </Box>
         ) : null}
         <Hidden only={['sm', 'xs']} implementation="css">
@@ -192,11 +193,11 @@ class ProductPage extends Component {
             showProducts={true}
             productDetails={productDetails}
             productReviews={productReviews}
-            addToCart={productId => this.noOfItemToCart(productId)}
+            addToCart={productId => noOfItemToCart(productId)}
             user={user}
             mobile={true}
             quantity={quantity}
-            adjustQuantity={number => this.adjustQuantity(number)}
+            adjustQuantity={number => adjustQuantity(number)}
           />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
@@ -207,10 +208,10 @@ class ProductPage extends Component {
                   showProducts={true}
                   productDetails={productDetails}
                   productReviews={productReviews}
-                  addToCart={productId => this.noOfItemToCart(productId)}
+                  addToCart={productId => noOfItemToCart(productId)}
                   user={user}
                   quantity={quantity}
-                  adjustQuantity={number => this.adjustQuantity(number)}
+                  adjustQuantity={number => adjustQuantity(number)}
                 />
               </Grid>
               <Grid item xs={12}>

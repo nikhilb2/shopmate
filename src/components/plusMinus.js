@@ -32,19 +32,34 @@ const styles = {
   }
 }
 const PlusMinus = props => {
-  const { classes, text, adjustQuantity, quantity } = props
+  const { classes, text, onClick, quantity, upddateBag, adjustQuantity, addToCart } = props
   console.log(props)
   return (
     <div className={classes.root}>
       <Typography
         className={classes.round}
         style={{ marginLeft: 0 }}
-        onClick={() => adjustQuantity(-1)}
+        onClick={() => {
+          if (upddateBag) {
+            null
+          } else {
+            adjustQuantity(-1)
+          }
+        }}
       >
         -
       </Typography>
       <Typography className={classes.number}>{quantity}</Typography>
-      <Typography className={classes.round} onClick={() => adjustQuantity(1)}>
+      <Typography
+        className={classes.round}
+        onClick={() => {
+          if (upddateBag) {
+            addToCart()
+          } else {
+            adjustQuantity(1)
+          }
+        }}
+      >
         +
       </Typography>
     </div>

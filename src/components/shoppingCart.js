@@ -64,7 +64,8 @@ class ShoppingCart extends Component {
       closePopover,
       countItems,
       placeOrder,
-      user
+      user,
+      addToCart
     } = this.props
 
     const { checkOutWithoutUser } = this.state
@@ -115,7 +116,7 @@ class ShoppingCart extends Component {
               {countItems} Items In Your Cart
             </Typography>
           </div>
-          {cartItems ? <CartItems cartItems={cartItems} /> : null}
+          {cartItems ? <CartItems addToCart={addToCart} cartItems={cartItems} /> : null}
         </div>
         <div className={classes.bottomButtons}>
           <ButtonComp

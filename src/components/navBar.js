@@ -64,7 +64,7 @@ const MenuAppBar = props => {
       >
         <Toolbar>
           <Link href="/">
-            <Button onClick={() => clearProducts()} color="primary">
+            <Button onClick={() => null} color="primary">
               <img src="static/SHOPMATE.svg" alt="shopmate" />
             </Button>
           </Link>

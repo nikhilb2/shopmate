@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
 
 const CartItems = props => {
   const classes = useStyles()
-  const { cartItems } = props
+  const { cartItems, addToCart } = props
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -97,7 +97,7 @@ const CartItems = props => {
                 </div>
               </TableCell>
               <TableCell className={classes.tableCell} align="right">
-                <PlusMinus text={row.quantity} />
+                <PlusMinus addToCart={() => addToCart(row.product_id)} quantity={row.quantity} upddateBag={true} />
               </TableCell>
               <TableCell className={classes.tableCell} align="right">
                 <Typography>£{row.price}</Typography>
