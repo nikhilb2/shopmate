@@ -5,7 +5,7 @@ import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../src/theme'
 import { fetchRequest, fetchRequestWithoutResponse } from '../src/utils/request'
-import { getUserDetails, getCartId, getServerUser } from '../src/utils/auth'
+import { getUserDetails, getCartId, getServerUser, removeCartId, saveCartId } from '../src/utils/auth'
 
 const user = { user: getUserDetails(), cartId: getCartId() }
 
@@ -278,7 +278,7 @@ class MyApp extends App {
             getMoreProducts={() => this.getMoreProducts()}
             searchProducts={(keyword) => this.searchProducts(keyword)}
             clearProducts={() => this.clearProducts()}
-          
+
             {...this.state}
             {...pageProps}
           />

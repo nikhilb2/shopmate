@@ -158,7 +158,8 @@ class ProductPage extends Component {
       noOfItemToCart,
       placeOrder,
       removeFromCart,
-      reduceQuantity
+      reduceQuantity,
+      clearProducts
     } = this.props
     //console.log(this.state)
     return (
@@ -189,7 +190,7 @@ class ProductPage extends Component {
           </Box>
         ) : null}
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavigationBar categories={categories} />
+          <NavigationBar categories={categories} clearProducts={clearProducts}/>
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
           <NavBarMobile back={true} />

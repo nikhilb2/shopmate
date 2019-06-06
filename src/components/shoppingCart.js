@@ -72,6 +72,8 @@ class ShoppingCart extends Component {
     } = this.props
 
     const { checkOutWithoutUser } = this.state
+    console.log('user');
+    console.log(user);
     return (
       <Box
         boxShadow={0}
@@ -138,7 +140,7 @@ class ShoppingCart extends Component {
             width="fit-content"
             text="Checkout"
             onClick={() => {
-              if (user && user.user) {
+              if (user) {
                 placeOrder()
                 closePopover()
               } else {

@@ -33,7 +33,8 @@ class Homepage extends Component {
       newTotalItems,
       newAmount,
       removeFromCart,
-      reduceQuantity
+      reduceQuantity,
+      clearProducts
     } = this.props
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
@@ -50,7 +51,7 @@ class Homepage extends Component {
         />
 
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavigationBar categories={categories} />
+          <NavigationBar categories={categories} clearProducts={clearProducts}/>
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
           <NavBarMobile categories={categories} />
