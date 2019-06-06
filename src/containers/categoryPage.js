@@ -38,6 +38,7 @@ const styles = {
 }
 class CategoryPage extends Component {
   state = {
+    /*
     keyword: '',
     showSignIn: 'hidden',
     cartItems: [],
@@ -45,8 +46,9 @@ class CategoryPage extends Component {
     param: { name: null },
     skip: 2,
     limit: 9
+    */
   }
-
+/*
   searchProducts(keyword) {
     fetch(decoratedUrl(`products/search?query_string=${keyword}`))
       .then(response => response.json())
@@ -144,6 +146,7 @@ class CategoryPage extends Component {
   clearProducts() {
     this.setState({ newProducts: null, skip: 2 })
   }
+  */
 
   render() {
     const {
@@ -161,10 +164,15 @@ class CategoryPage extends Component {
       newTotalItems,
       newAmount,
       removeFromCart,
-      reduceQuantity
+      reduceQuantity,
+      productSearch,
+      keyword,
+      newProducts,
+      getMoreProducts,
+      searchProducts,
+      clearProducts
     } = this.props
 
-    const { productSearch, keyword, showSignIn, newProducts } = this.state
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen
@@ -185,7 +193,7 @@ class CategoryPage extends Component {
             color="primary"
             searchBox={true}
             categories={categories}
-            clearProducts={() => this.clearProducts()}
+            clearProducts={clearProducts}
           />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
@@ -196,12 +204,12 @@ class CategoryPage extends Component {
             image="static/menban.png"
             text="Categories"
             categories={categories}
-            clearProducts={() => this.clearProducts()}
+            clearProducts={clearProducts}
           />
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <ProductContainer
-              getMoreProducts={(type, skip, limit) =>
-                this.getMoreProducts(type, skip, limit)
+              getMoreProducts={
+                getMoreProducts
               }
               products={newProducts ? newProducts : products}
               searchMessage={
@@ -217,7 +225,7 @@ class CategoryPage extends Component {
               keywordInput={key => this.keywordInput(key)}
               categories={categories}
               departments={departments}
-              clearProducts={() => this.clearProducts()}
+              clearProducts={clearProducts}
             />
           </div>
           <div className={classes.brandBanner}>
@@ -238,7 +246,6 @@ class CategoryPage extends Component {
                 marginBottom: 'auto',
                 marginRight: '2rem'
               }}
-              onClick={() => this.setState({ showSignIn: '' })}
             >
               <Typography style={{ fontWeight: 'bold' }}>
                 SUBSCRIBE FOR SHOP NEWS, UPDATES AND SPECIAL OFFERS

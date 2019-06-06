@@ -64,7 +64,7 @@ const MenuAppBar = props => {
       >
         <Toolbar>
           <Link href="/">
-            <Button onClick={() => null} color="primary">
+            <Button onClick={() => clearProducts()} color="primary">
               <img src="static/SHOPMATE.svg" alt="shopmate" />
             </Button>
           </Link>
@@ -75,6 +75,7 @@ const MenuAppBar = props => {
                   style={{ textTransform: 'none' }}
                   color={color ? color : 'black'}
                   className={classes.title}
+                  onClick={() => clearProducts()}
                 >
                   All Categories
                 </Button>
@@ -96,6 +97,7 @@ const MenuAppBar = props => {
                           style={{ textTransform: 'none' }}
                           color={color ? color : 'black'}
                           className={classes.title}
+                          onClick={() => clearProducts()}
                         >
                           {item.name}
                         </Button>

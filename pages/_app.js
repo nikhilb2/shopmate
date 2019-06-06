@@ -15,7 +15,13 @@ class MyApp extends App {
     newtotalItems: null,
     newAmount: null,
     orderStatus: null,
-    quantity: 1
+    quantity: 1,
+    cartItems: [],
+    newProducts: null,
+    param: { name: null },
+    skip: 2,
+    limit: 9,
+    keyword: '',
   }
   async placeOrder() {
     const orderStatus = await fetchRequest('orders', {
@@ -150,7 +156,106 @@ class MyApp extends App {
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles)
     }
+
+    this.checkParam()
   }
+
+  searchProducts(keyword) {
+    fetch(decoratedUrl(`products/search?query_string=${keyword}`))
+      .then(response => response.json())
+      .then(result => {
+        this.setState({ newProducts: result, keyword })
+      })
+  }
+
+
+  checkParam() {
+    const { query } = this.props.router
+
+    if (query.catId) {
+      this.setState({
+        param: { name: 'inCategory', id: query.catId, ogName: 'catId' }
+      })
+    }
+    if (query.depId) {
+      this.setState({
+        param: { name: 'inDepartment', id: query.deptId, ogName: 'depId' }
+      })
+    }
+    console.log(this.props)
+  }
+
+  async getMoreProducts() {
+    const updateParams = await this.checkParam()
+    const { newProducts, skip, limit, param } = this.state
+    if (param.name === 'inCategory' || param.name === 'inDepartment') {
+      const getMoreProducts = await fetchRequest(
+        `products/${param.name}/${param.id}?page=${skip}&limit=${limit}`,
+        {
+          method: 'GET'
+        }
+      )
+      if (newProducts) {
+        let prod = newProducts.rows
+        prod.push(...getMoreProducts.rows)
+        this.setState({
+          newProducts: {
+            rows: prod,
+            count: getMoreProducts.count
+          },
+          skip: skip + 1
+        })
+        console.log('getMoreProducts')
+        console.log(getMoreProducts)
+      } else {
+        let prod = this.props.pageProps.products.rows
+        prod.push(...getMoreProducts.rows)
+        this.setState({
+          newProducts: {
+            rows: prod,
+            count: getMoreProducts.count
+          },
+          skip: skip + 1
+        })
+      }
+    } else {
+      const getMoreProducts = await fetchRequest(
+        `products?page=${skip}&limit=${limit}`,
+        {
+          method: 'GET'
+        }
+      )
+      if (newProducts) {
+        let prod = newProducts.rows
+        prod.push(...getMoreProducts.rows)
+        this.setState({
+          newProducts: {
+            rows: prod,
+            count: getMoreProducts.count
+          },
+          skip: skip + 1
+        })
+        console.log('getMoreProducts')
+        console.log(getMoreProducts)
+      } else {
+        let prod = this.props.pageProps.products.rows
+        prod.push(...getMoreProducts.rows)
+        this.setState({
+          newProducts: {
+            rows: prod,
+            count: getMoreProducts.count
+          },
+          skip: skip + 1
+        })
+      }
+    }
+  }
+
+  clearProducts() {
+    this.setState({ newProducts: null, skip: 2 })
+  }
+
+
 
   render() {
     const { Component, pageProps } = this.props
@@ -170,6 +275,10 @@ class MyApp extends App {
             placeOrder={cartId => this.placeOrder(cartId)}
             removeFromCart={itemId => this.removeFromCart(itemId)}
             reduceQuantity={(itemId, quantity) => this.reduceQuantity(itemId, quantity)}
+            getMoreProducts={() => this.getMoreProducts()}
+            searchProducts={(keyword) => this.searchProducts(keyword)}
+            clearProducts={() => this.clearProducts()}
+          
             {...this.state}
             {...pageProps}
           />
