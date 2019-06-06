@@ -11,7 +11,7 @@ import AddReview from './addReview'
 import CartItems from './shoppingCartItems.js'
 import Button from '@material-ui/core/Button'
 import Close from '@material-ui/icons/Close'
-import PaymentForm from './paymentForm'
+
 const styles = {
   justifyCol: {
     display: 'flex',
@@ -84,27 +84,6 @@ class ShoppingCart extends Component {
         p={1}
         className={classes.box}
       >
-        {orderStatus ? (
-          <Box
-            bgcolor="background.paper"
-            color="text.primary"
-            p={2}
-            position="fixed"
-            top={0}
-            left="43%"
-            zIndex="modal"
-            style={{
-              top: '30%'
-            }}
-          >
-            <PaymentForm />
-            <ButtonComp
-              text="ok"
-              onClick={() => clearOrderStatus()}
-              button={1}
-            />
-          </Box>
-        ) : null}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button
             size="medium"
@@ -144,6 +123,7 @@ class ShoppingCart extends Component {
             onClick={() => {
               if (user) {
                 placeOrder()
+                closePopover()
               } else {
                 this.setState({ checkOutWithoutUser: true })
               }

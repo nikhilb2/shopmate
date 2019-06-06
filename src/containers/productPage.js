@@ -14,6 +14,7 @@ import Hidden from '@material-ui/core/Hidden'
 import Box from '@material-ui/core/Box'
 import ButtonComp from '../components/button'
 import ItemCardBig from '../components/itemCardBig'
+import PaymentForm from '../components/paymentForm'
 
 const styles = {
   center: {
@@ -23,120 +24,7 @@ const styles = {
   }
 }
 class ProductPage extends Component {
-  /*
-  state = {
-    newCartItems: null,
-    newtotalItems: null,
-    newAmount: null,
-    orderStatus: null,
-    quantity: 1
-  }
-  async placeOrder() {
-    const { user } = this.props
-    const orderStatus = await fetchRequest('orders', {
-      method: 'POST',
-      body: JSON.stringify({ cart_id: user.cartId, shipping_id: 4, tax_id: 2 })
-    })
-    this.setState({
-      orderStatus,
-      newTotalItems: null,
-      newAmount: null,
-      newCartItems: null
-    })
-    //console.log(orderStatus)
-    removeCartId()
-  }
 
-  async createCartId() {
-    const newCartId = await fetchRequest('shoppingcart/generateUniqueId', {
-      method: 'GET'
-    })
-    saveCartId(newCartId.cart_id)
-    this.setState({ cartId: newCartId.cart_id })
-    return newCartId.cart_id
-  }
-
-  async getCartItems(cartId) {
-    const cartItems = await fetchRequest(
-      decoratedUrl(`shoppingcart/${user.cartId}`)
-    )
-    if (cartItems.length > 0) {
-      let totalItems = 0
-      cartItems.forEach(item => {
-        totalItems = totalItems + item.quantity
-      })
-      this.setState({ newTotalItems: totalItems, newCartItems: cartItems })
-    }
-  }
-
-  async addToCart(productId) {
-    const { user } = this.props
-    let addToCartResult = null
-    //if there's a cartId stored in cookies
-    if (user.cartId) {
-      const addToCartResult = await fetchRequest('shoppingcart/add', {
-        method: 'POST',
-        body: JSON.stringify({
-          cart_id: user.cartId,
-          product_id: productId,
-          attributes: 'none'
-        })
-      })
-      // calculate total items in cart and total amount
-      if (addToCartResult.length > 0) {
-        let totalItems = 0
-        let amount = 0
-        addToCartResult.forEach(item => {
-          totalItems = totalItems + item.quantity
-          amount = amount + item.quantity * item.price
-        })
-        this.setState({
-          newTotalItems: totalItems,
-          newCartItems: addToCartResult,
-          newAmount: amount
-        })
-      }
-    } else {
-      //create a cart id and store to cookies
-      const newCartId = await this.createCartId()
-      saveCartId(newCartId)
-      const addToCartResult = await fetchRequest('shoppingcart/add', {
-        method: 'POST',
-        body: JSON.stringify({
-          cart_id: newCartId,
-          product_id: productId,
-          attributes: 'none'
-        })
-      })
-      if (addToCartResult.length > 0) {
-        let totalItems = 0
-        let amount = 0
-        addToCartResult.forEach(item => {
-          totalItems = totalItems + item.quantity
-          amount = amount + item.quantity * item.price
-        })
-        this.setState({
-          newTotalItems: totalItems,
-          newCartItems: addToCartResult,
-          newAmount: amount
-        })
-      }
-    }
-  }
-
-  noOfItemToCart(productId) {
-    let i = 1
-    while (this.state.quantity >= i) {
-      this.addToCart(productId)
-      i++
-    }
-    this.setState({ quantity: 1 })
-  }
-
-  adjustQuantity(number) {
-    this.setState({ quantity: this.state.quantity + number })
-  }
-*/
   render() {
     const {
       classes,
@@ -182,16 +70,28 @@ class ProductPage extends Component {
         />
         {orderStatus ? (
           <Box
-            bgcolor="background.paper"
+            bgcolor="#eeefef"
             color="text.primary"
+            boxShadow={4}
             p={2}
             position="fixed"
             top={0}
-            left="43%"
+            left="35%"
             zIndex="modal"
+            style={{
+              top: '30%',
+              width: '50%'
+            }}
           >
-            <Typography>Order Placed SuccessFully</Typography>
-            <ButtonComp text="ok" onClick={() => null} button={1} />
+            <Typography variant='h5' style={{textAlign:'center'}}>Payment details</Typography>
+            <PaymentForm />
+            <ButtonComp
+              fontSize='1rem'
+              width='3rem'
+              text="ok"
+              onClick={() => clearOrderStatus()}
+              button={1}
+            />
           </Box>
         ) : null}
         <Hidden only={['sm', 'xs']} implementation="css">

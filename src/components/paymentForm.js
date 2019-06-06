@@ -1,7 +1,7 @@
 // CheckoutForm.js
 import React from 'react';
 import {injectStripe, CardElement} from 'react-stripe-elements';
-
+import theme from '../theme'
 
 class CheckoutForm extends React.Component {
   handleSubmit = async (ev) => {
@@ -46,9 +46,10 @@ class CheckoutForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <CardElement />
-        <button>Confirm order</button>
+      <form style={{padding:'2rem', borderRadius:'2rem', marginLeft:'auto', marginRight: 'auto', backgroundColor:'white'}} onSubmit={this.handleSubmit}>
+          <p>Card Details</p>
+          <CardElement style={{marginBottom:'1rem', fontSize:'10rem'}}/>
+          <button style={{marginTop:'1.5rem', color:'white', backgroundColor:theme.palette.secondary.main, fontSize:'1rem', padding:'.5rem', borderRadius:'2rem'}}>Confirm order</button>
       </form>
     );
   }

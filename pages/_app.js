@@ -21,7 +21,8 @@ class MyApp extends App {
     skip: 2,
     limit: 9,
     keyword: '',
-    stripe: null
+    stripe: null,
+    stripeToken: null
   }
   async placeOrder() {
     const { newCartId } = this.state
@@ -266,6 +267,10 @@ class MyApp extends App {
     this.setState({orderStatus:null})
   }
 
+  stripeToken(token) {
+    this.setState({stripeToken:token})
+  }
+
 
 
   render() {
@@ -292,6 +297,7 @@ class MyApp extends App {
             searchProducts={(keyword) => this.searchProducts(keyword)}
             clearProducts={() => this.clearProducts()}
             clearOrderStatus={() => this.clearOrderStatus()}
+            stripeToken={() => this.stripeToken()}
             {...this.state}
             {...pageProps}
           />
