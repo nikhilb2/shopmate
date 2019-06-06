@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../src/theme'
-import { fetchRequest } from '../src/utils/request'
+import { fetchRequest, fetchRequestWithoutResponse } from '../src/utils/request'
 import { getUserDetails, getCartId, getServerUser } from '../src/utils/auth'
 
 const user = { user: getUserDetails(), cartId: getCartId() }
@@ -42,16 +42,14 @@ class MyApp extends App {
   }
 
   async getCartItems(cartId) {
-    const cartItems = await fetchRequest(
-      decoratedUrl(`shoppingcart/${user.cartId}`)
-    )
-    if (cartItems.length > 0) {
-      let totalItems = 0
-      cartItems.forEach(item => {
-        totalItems = totalItems + item.quantity
-      })
-      this.setState({ newTotalItems: totalItems, newCartItems: cartItems })
-    }
+    const cartItems = await fetchRequest(`shoppingcart/${user.cartId}`, {
+      method: 'GET'
+    })
+    let totalItems = 0
+    cartItems.forEach(item => {
+      totalItems = totalItems + item.quantity
+    })
+    this.setState({ newTotalItems: totalItems, newCartItems: cartItems })
   }
 
   async addToCart(productId) {
@@ -107,6 +105,18 @@ class MyApp extends App {
       }
     }
   }
+  async removeFromCart(itemId) {
+    //if there's a cartId stored in cookies
+    const removeFromCartResult = await fetchRequestWithoutResponse(
+      `shoppingcart/removeProduct/${itemId}`,
+      {
+        method: 'DELETE'
+      }
+    )
+    if (removeFromCartResult.status === 200) {
+      this.getCartItems(user.cartId)
+    }
+  }
 
   noOfItemToCart(productId) {
     let i = 1
@@ -145,6 +155,7 @@ class MyApp extends App {
             noOfItemToCart={productId => this.noOfItemToCart(productId)}
             getCartItems={cartId => this.getCartItems(cartId)}
             placeOrder={cartId => this.placeOrder(cartId)}
+            removeFromCart={itemId => this.removeFromCart(itemId)}
             {...this.state}
             {...pageProps}
           />

@@ -32,7 +32,15 @@ const styles = {
   }
 }
 const PlusMinus = props => {
-  const { classes, text, onClick, quantity, upddateBag, adjustQuantity, addToCart } = props
+  const {
+    classes,
+    text,
+    onClick,
+    quantity,
+    upddateBag,
+    adjustQuantity,
+    addToCart
+  } = props
   console.log(props)
   return (
     <div className={classes.root}>
@@ -41,7 +49,6 @@ const PlusMinus = props => {
         style={{ marginLeft: 0 }}
         onClick={() => {
           if (upddateBag) {
-            null
           } else {
             adjustQuantity(-1)
           }

@@ -30,12 +30,12 @@ class Homepage extends Component {
       categories,
       addToCart,
       newCartItems,
-newTotalItems,
-newAmount
+      newTotalItems,
+      newAmount,
+      removeFromCart
     } = this.props
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
-
         <NavBarMen
           cartItems={newCartItems ? newCartItems : cartItems}
           totalItems={newTotalItems ? newTotalItems : totalItems}
@@ -44,8 +44,8 @@ newAmount
           placeOrder={cartId => placeOrder(cartId)}
           user={user}
           addToCart={addToCart}
+          removeFromCart={removeFromCart}
         />
-
 
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavigationBar categories={categories} />

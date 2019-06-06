@@ -9,6 +9,8 @@ import Paper from '@material-ui/core/Paper'
 import { decoratedImageUrl } from '../utils/request'
 import Typography from '@material-ui/core/Typography'
 import PlusMinus from './plusMinus'
+import Button from '@material-ui/core/Button'
+import Close from '@material-ui/icons/Close'
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -39,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 const CartItems = props => {
   const classes = useStyles()
-  const { cartItems, addToCart } = props
+  const { cartItems, addToCart, removeFromCart } = props
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -83,21 +85,26 @@ const CartItems = props => {
                     <Typography style={{ marginLeft: '.5rem', margin: '1rem' }}>
                       {row.name}
                     </Typography>
-                    <Typography
-                      variant="caption"
+                    <Button
                       style={{
+                        display: 'flex',
+                        justifyContent: 'flex-start',
                         marginLeft: '.5rem',
-                        margin: '1rem',
-                        marginBottom: '0'
+                        textTransform: 'none'
                       }}
+                      onClick={() => removeFromCart(row.item_id)}
                     >
-                      Remove
-                    </Typography>
+                      <Close /> Remove
+                    </Button>
                   </div>
                 </div>
               </TableCell>
               <TableCell className={classes.tableCell} align="right">
-                <PlusMinus addToCart={() => addToCart(row.product_id)} quantity={row.quantity} upddateBag={true} />
+                <PlusMinus
+                  addToCart={() => addToCart(row.product_id)}
+                  quantity={row.quantity}
+                  upddateBag={true}
+                />
               </TableCell>
               <TableCell className={classes.tableCell} align="right">
                 <Typography>£{row.price}</Typography>

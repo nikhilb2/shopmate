@@ -158,22 +158,22 @@ class CategoryPage extends Component {
       departments,
       addToCart,
       newCartItems,
-newTotalItems,
-newAmount
+      newTotalItems,
+      newAmount
     } = this.props
 
     const { productSearch, keyword, showSignIn, newProducts } = this.state
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
-      <NavBarMen
-        cartItems={newCartItems ? newCartItems : cartItems}
-        totalItems={newTotalItems ? newTotalItems : totalItems}
-        amount={newAmount ? newAmount : amount}
-        bgcolor="#efefef"
-        placeOrder={cartId => placeOrder(cartId)}
-        user={user}
-        addToCart={addToCart}
-      />
+        <NavBarMen
+          cartItems={newCartItems ? newCartItems : cartItems}
+          totalItems={newTotalItems ? newTotalItems : totalItems}
+          amount={newAmount ? newAmount : amount}
+          bgcolor="#efefef"
+          placeOrder={cartId => placeOrder(cartId)}
+          user={user}
+          addToCart={addToCart}
+        />
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavigationBar
             onChange={keyword => this.searchProducts(keyword)}

@@ -101,7 +101,8 @@ class NavBarMen extends Component {
       amount,
       placeOrder,
       user,
-      addToCart
+      addToCart,
+      removeFromCart
     } = this.props
 
     const { error, newUser, mobile } = this.state
@@ -163,6 +164,7 @@ class NavBarMen extends Component {
               countItems={totalItems}
               placeOrder={placeOrder}
               addToCart={addToCart}
+              removeFromCart={removeFromCart}
               user={
                 newUser ? newUser : user && user.user ? user && user.user : null
               }
