@@ -159,7 +159,8 @@ class CategoryPage extends Component {
       addToCart,
       newCartItems,
       newTotalItems,
-      newAmount
+      newAmount,
+      removeFromCart
     } = this.props
 
     const { productSearch, keyword, showSignIn, newProducts } = this.state
@@ -173,6 +174,7 @@ class CategoryPage extends Component {
           placeOrder={cartId => placeOrder(cartId)}
           user={user}
           addToCart={addToCart}
+          removeFromCart={removeFromCart}
         />
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavigationBar

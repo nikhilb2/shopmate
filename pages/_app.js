@@ -46,7 +46,7 @@ class MyApp extends App {
       method: 'GET'
     })
     let totalItems = 0
-    cartItems.forEach(item => {
+    const letIterate = await cartItems.forEach(item => {
       totalItems = totalItems + item.quantity
     })
     this.setState({ newTotalItems: totalItems, newCartItems: cartItems })
@@ -118,10 +118,10 @@ class MyApp extends App {
     }
   }
 
-  noOfItemToCart(productId) {
+  async noOfItemToCart(productId) {
     let i = 1
     while (this.state.quantity >= i) {
-      this.addToCart(productId)
+      await this.addToCart(productId)
       i++
     }
     this.setState({ quantity: 1 })
