@@ -18,6 +18,8 @@ export const saveCartId = cartId => {
 //get userdetails from cookies
 export const getUserDetails = () => {
   const user = Cookies.get('user')
+  console.log('user client');
+  console.log(user);
   return user ? JSON.parse(user) : null
 }
 
@@ -32,6 +34,8 @@ export const removeCartId = () => Cookies.remove('cartId')
 
 //get user details if server request
 export const getServerUser = user => {
+    console.log('user server');
+  console.log(user);
   return {
     user: user.user ? JSON.parse(user.user) : null,
     cartId: user.cartId,

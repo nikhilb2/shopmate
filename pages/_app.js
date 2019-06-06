@@ -24,9 +24,11 @@ class MyApp extends App {
     stripe: null
   }
   async placeOrder() {
+    const { newCartId } = this.state
+    const { user } = this.props.pageProps
     const orderStatus = await fetchRequest('orders', {
       method: 'POST',
-      body: JSON.stringify({ cart_id: this.props.pageProps.user.cartId, shipping_id: 4, tax_id: 2 })
+      body: JSON.stringify({ cart_id: newCartId ? newCartId : user.cartId, shipping_id: 4, tax_id: 2 })
     })
     await this.setState({
       orderStatus,
@@ -109,7 +111,8 @@ class MyApp extends App {
         this.setState({
           newTotalItems: totalItems,
           newCartItems: addToCartResult,
-          newAmount: amount
+          newAmount: amount,
+          newCartId
         })
       }
     }
