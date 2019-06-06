@@ -138,7 +138,10 @@ class MyApp extends App {
   }
 
   adjustQuantity(number) {
-    this.setState({ quantity: this.state.quantity + number })
+    if (this.state.quantity + number > 0) {
+          this.setState({ quantity: this.state.quantity + number })
+    }
+
   }
 
   componentDidMount() {
