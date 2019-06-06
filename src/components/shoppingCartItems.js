@@ -104,7 +104,9 @@ const CartItems = props => {
                   addToCart={() => addToCart(row.product_id)}
                   quantity={row.quantity}
                   upddateBag={true}
-                  reduceQuantity={() => reduceQuantity(row.item_id, row.quantity-1)}
+                  reduceQuantity={() =>
+                    reduceQuantity(row.item_id, row.quantity - 1)
+                  }
                 />
               </TableCell>
               <TableCell className={classes.tableCell} align="right">

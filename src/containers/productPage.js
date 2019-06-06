@@ -159,14 +159,17 @@ class ProductPage extends Component {
       placeOrder,
       removeFromCart,
       reduceQuantity,
-      clearProducts
+      clearProducts,
+      clearOrderStatus
     } = this.props
     //console.log(this.state)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen
           cartItems={newCartItems ? newCartItems : cartItems}
-          totalItems={newTotalItems || newTotalItems === 0 ? newTotalItems : totalItems}
+          totalItems={
+            newTotalItems || newTotalItems === 0 ? newTotalItems : totalItems
+          }
           amount={newAmount ? newAmount : amount}
           bgcolor="#efefef"
           placeOrder={cartId => placeOrder(cartId)}
@@ -174,6 +177,8 @@ class ProductPage extends Component {
           addToCart={addToCart}
           removeFromCart={removeFromCart}
           reduceQuantity={reduceQuantity}
+          orderStatus={orderStatus}
+          clearOrderStatus={clearOrderStatus}
         />
         {orderStatus ? (
           <Box
@@ -190,7 +195,10 @@ class ProductPage extends Component {
           </Box>
         ) : null}
         <Hidden only={['sm', 'xs']} implementation="css">
-          <NavigationBar categories={categories} clearProducts={clearProducts}/>
+          <NavigationBar
+            categories={categories}
+            clearProducts={clearProducts}
+          />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
           <NavBarMobile back={true} />

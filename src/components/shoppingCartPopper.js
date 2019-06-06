@@ -40,7 +40,9 @@ class ShoppingCartPopper extends Component {
       user,
       addToCart,
       removeFromCart,
-      reduceQuantity
+      reduceQuantity,
+      orderStatus,
+      clearOrderStatus
     } = this.props
     return (
       <div>
@@ -78,6 +80,8 @@ class ShoppingCartPopper extends Component {
             addToCart={addToCart}
             removeFromCart={removeFromCart}
             reduceQuantity={reduceQuantity}
+            orderStatus={orderStatus}
+            clearOrderStatus={clearOrderStatus}
           />
         </Popover>
       </div>

@@ -6,7 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../src/theme'
 import { fetchRequest, fetchRequestWithoutResponse } from '../src/utils/request'
 import { getUserDetails, getCartId, getServerUser, removeCartId, saveCartId } from '../src/utils/auth'
-
+import { StripeProvider, Elements } from 'react-stripe-elements'
 
 class MyApp extends App {
   state = {
@@ -21,6 +21,7 @@ class MyApp extends App {
     skip: 2,
     limit: 9,
     keyword: '',
+    stripe: null
   }
   async placeOrder() {
     const orderStatus = await fetchRequest('orders', {
@@ -61,6 +62,8 @@ class MyApp extends App {
     const { user } = this.props.pageProps
     let addToCartResult = null
     //if there's a cartId stored in cookies
+    console.log(user.cartId);
+    console.log('user.cartId');
     if (user.cartId) {
       const addToCartResult = await fetchRequest('shoppingcart/add', {
         method: 'POST',
@@ -158,6 +161,7 @@ class MyApp extends App {
     }
 
     this.checkParam()
+    this.setState({stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe')});
   }
 
   searchProducts(keyword) {
@@ -255,11 +259,17 @@ class MyApp extends App {
     this.setState({ newProducts: null, skip: 2 })
   }
 
+  clearOrderStatus() {
+    this.setState({orderStatus:null})
+  }
+
 
 
   render() {
     const { Component, pageProps } = this.props
     return (
+      <StripeProvider stripe={this.state.stripe}>
+      <Elements>
       <Container>
         <Head>
           <title>My page</title>
@@ -278,12 +288,14 @@ class MyApp extends App {
             getMoreProducts={() => this.getMoreProducts()}
             searchProducts={(keyword) => this.searchProducts(keyword)}
             clearProducts={() => this.clearProducts()}
-
+            clearOrderStatus={() => this.clearOrderStatus()}
             {...this.state}
             {...pageProps}
           />
         </ThemeProvider>
       </Container>
+      </Elements>
+     </StripeProvider>
     )
   }
 }

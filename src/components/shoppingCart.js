@@ -11,7 +11,7 @@ import AddReview from './addReview'
 import CartItems from './shoppingCartItems.js'
 import Button from '@material-ui/core/Button'
 import Close from '@material-ui/icons/Close'
-
+import PaymentForm from './paymentForm'
 const styles = {
   justifyCol: {
     display: 'flex',
@@ -68,12 +68,14 @@ class ShoppingCart extends Component {
       user,
       addToCart,
       removeFromCart,
-      reduceQuantity
+      reduceQuantity,
+      orderStatus,
+      clearOrderStatus
     } = this.props
 
     const { checkOutWithoutUser } = this.state
-    console.log('user');
-    console.log(user);
+    console.log('user')
+    console.log(user)
     return (
       <Box
         boxShadow={0}
@@ -82,7 +84,7 @@ class ShoppingCart extends Component {
         p={1}
         className={classes.box}
       >
-        {checkOutWithoutUser ? (
+        {orderStatus ? (
           <Box
             bgcolor="background.paper"
             color="text.primary"
@@ -95,10 +97,10 @@ class ShoppingCart extends Component {
               top: '30%'
             }}
           >
-            <Typography>You need to be logged in to check out</Typography>
+            <PaymentForm />
             <ButtonComp
               text="ok"
-              onClick={() => this.setState({ checkOutWithoutUser: false })}
+              onClick={() => clearOrderStatus()}
               button={1}
             />
           </Box>
@@ -142,7 +144,6 @@ class ShoppingCart extends Component {
             onClick={() => {
               if (user) {
                 placeOrder()
-                closePopover()
               } else {
                 this.setState({ checkOutWithoutUser: true })
               }

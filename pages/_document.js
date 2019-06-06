@@ -25,6 +25,7 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script src="https://js.stripe.com/v3/" />
         </body>
       </html>
     )
