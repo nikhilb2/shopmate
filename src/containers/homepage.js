@@ -32,7 +32,8 @@ class Homepage extends Component {
       newCartItems,
       newTotalItems,
       newAmount,
-      removeFromCart
+      removeFromCart,
+      reduceQuantity
     } = this.props
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
@@ -45,6 +46,7 @@ class Homepage extends Component {
           user={user}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
+          reduceQuantity={reduceQuantity}
         />
 
         <Hidden only={['sm', 'xs']} implementation="css">

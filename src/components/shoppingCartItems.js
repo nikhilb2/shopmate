@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 const CartItems = props => {
   const classes = useStyles()
-  const { cartItems, addToCart, removeFromCart } = props
+  const { cartItems, addToCart, removeFromCart, reduceQuantity } = props
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -104,6 +104,7 @@ const CartItems = props => {
                   addToCart={() => addToCart(row.product_id)}
                   quantity={row.quantity}
                   upddateBag={true}
+                  reduceQuantity={() => reduceQuantity(row.item_id, row.quantity-1)}
                 />
               </TableCell>
               <TableCell className={classes.tableCell} align="right">

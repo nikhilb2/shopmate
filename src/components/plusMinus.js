@@ -39,7 +39,8 @@ const PlusMinus = props => {
     quantity,
     upddateBag,
     adjustQuantity,
-    addToCart
+    addToCart,
+    reduceQuantity
   } = props
   console.log(props)
   return (
@@ -49,6 +50,7 @@ const PlusMinus = props => {
         style={{ marginLeft: 0 }}
         onClick={() => {
           if (upddateBag) {
+            reduceQuantity()
           } else {
             adjustQuantity(-1)
           }

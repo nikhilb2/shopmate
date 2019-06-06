@@ -11,6 +11,7 @@ import AddReview from './addReview'
 import CartItems from './shoppingCartItems.js'
 import Button from '@material-ui/core/Button'
 import Close from '@material-ui/icons/Close'
+
 const styles = {
   justifyCol: {
     display: 'flex',
@@ -66,7 +67,8 @@ class ShoppingCart extends Component {
       placeOrder,
       user,
       addToCart,
-      removeFromCart
+      removeFromCart,
+      reduceQuantity
     } = this.props
 
     const { checkOutWithoutUser } = this.state
@@ -122,6 +124,7 @@ class ShoppingCart extends Component {
               addToCart={addToCart}
               removeFromCart={removeFromCart}
               cartItems={cartItems}
+              reduceQuantity={reduceQuantity}
             />
           ) : null}
         </div>

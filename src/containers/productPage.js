@@ -157,7 +157,8 @@ class ProductPage extends Component {
       getCartItems,
       noOfItemToCart,
       placeOrder,
-      removeFromCart
+      removeFromCart,
+      reduceQuantity
     } = this.props
     //console.log(this.state)
     return (
@@ -171,6 +172,7 @@ class ProductPage extends Component {
           user={user}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
+          reduceQuantity={reduceQuantity}
         />
         {orderStatus ? (
           <Box

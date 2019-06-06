@@ -105,6 +105,18 @@ class MyApp extends App {
       }
     }
   }
+
+  async reduceQuantity(itemId, quantity) {
+    const removeFromCartResult = await fetchRequestWithoutResponse(
+      `shoppingcart/update/${itemId}`,
+      {
+        method: 'PUT',
+        body: JSON.stringify({quantity:quantity})
+      }
+    )
+      await this.getCartItems(user.cartId)
+  }
+
   async removeFromCart(itemId) {
     //if there's a cartId stored in cookies
     const removeFromCartResult = await fetchRequestWithoutResponse(
@@ -154,6 +166,7 @@ class MyApp extends App {
             getCartItems={cartId => this.getCartItems(cartId)}
             placeOrder={cartId => this.placeOrder(cartId)}
             removeFromCart={itemId => this.removeFromCart(itemId)}
+            reduceQuantity={(itemId, quantity) => this.reduceQuantity(itemId, quantity)}
             {...this.state}
             {...pageProps}
           />
