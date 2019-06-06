@@ -14,7 +14,8 @@
     "next-cookies": "^1.1.2",
     "prop-types": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-stripe-elements": "^3.0.0"
   },
   "scripts": {
     "dev": "next",

@@ -7,7 +7,6 @@ import theme from '../src/theme'
 import { fetchRequest, fetchRequestWithoutResponse } from '../src/utils/request'
 import { getUserDetails, getCartId, getServerUser, removeCartId, saveCartId } from '../src/utils/auth'
 
-const user = { user: getUserDetails(), cartId: getCartId() }
 
 class MyApp extends App {
   state = {
@@ -26,9 +25,9 @@ class MyApp extends App {
   async placeOrder() {
     const orderStatus = await fetchRequest('orders', {
       method: 'POST',
-      body: JSON.stringify({ cart_id: user.cartId, shipping_id: 4, tax_id: 2 })
+      body: JSON.stringify({ cart_id: this.props.pageProps.user.cartId, shipping_id: 4, tax_id: 2 })
     })
-    this.setState({
+    await this.setState({
       orderStatus,
       newTotalItems: null,
       newAmount: null,
@@ -59,6 +58,7 @@ class MyApp extends App {
   }
 
   async addToCart(productId) {
+    const { user } = this.props.pageProps
     let addToCartResult = null
     //if there's a cartId stored in cookies
     if (user.cartId) {
