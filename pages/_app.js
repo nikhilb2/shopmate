@@ -272,19 +272,24 @@ class MyApp extends App {
     this.setState({stripeToken:token})
     const { stripeToken, orderStatus, newAmount } = this.state
 
-    const pay = await fetchRequest('stripe/charge', {
-      method: 'POST',
-      body: JSON.stringify({
-        stripeToken: token.token.id,
-        order_id: orderStatus.orderId,
-        description: 'test',
-        amount: Math.round(newAmount * 100),
-        currency: 'GBP'
+    if(token && token.token && token.token.id) {
+      const pay = await fetchRequest('stripe/charge', {
+        method: 'POST',
+        body: JSON.stringify({
+          stripeToken: token.token.id,
+          order_id: orderStatus.orderId,
+          description: 'test',
+          amount: Math.round(newAmount * 100),
+          currency: 'GBP'
+        })
       })
-    })
-    this.setState({stripeChargeResponse:pay,  newTotalItems: null,
-      newAmount: null,
-      newCartItems: null})
+      this.setState({stripeChargeResponse:pay,  newTotalItems: null,
+        newAmount: null,
+        newCartItems: null})
+    } else {
+      alert("Please input all details")
+    }
+
   }
 
 
