@@ -51,9 +51,10 @@ class ProductPage extends Component {
       clearOrderStatus,
       stripeToken,
       saveStripeToken,
-      stripeCharge
+      stripeCharge,
+      stripeChargeResponse
     } = this.props
-    //console.log(this.state)
+    console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen
@@ -63,7 +64,7 @@ class ProductPage extends Component {
           }
           amount={newAmount ? newAmount : amount}
           bgcolor="#efefef"
-          placeOrder={cartId => placeOrder(cartId)}
+          placeOrder={placeOrder}
           user={user}
           addToCart={addToCart}
           removeFromCart={removeFromCart}
@@ -71,7 +72,33 @@ class ProductPage extends Component {
           orderStatus={orderStatus}
           clearOrderStatus={clearOrderStatus}
         />
-        {orderStatus ? (
+        {orderStatus ? stripeChargeResponse
+          ? <Box
+            bgcolor="#eeefef"
+            color="text.primary"
+            boxShadow={4}
+            p={2}
+            position="fixed"
+            top={0}
+            left="35%"
+            zIndex="modal"
+            style={{
+              top: '30%',
+              width: '50%'
+            }}
+          >
+            <Typography variant='h5' style={{textAlign:'center'}}>{stripeChargeResponse.status.toUpperCase()}</Typography>
+            <Typography variant='body1' style={{textAlign:'center'}}>Amount: £{stripeChargeResponse.amount/100}</Typography>
+            <Typography variant='body1' style={{textAlign:'center'}}>Reciept: <a href={stripeChargeResponse.receipt_url} alt='Reciept' target="_blank">click to open</a></Typography>
+            <div><ButtonComp
+              fontSize='1rem'
+              width='3rem'
+              text="Ok"
+              onClick={clearOrderStatus}
+              button={1}
+            /></div>
+          </Box>
+          : (
           <Box
             bgcolor="#eeefef"
             color="text.primary"
@@ -91,8 +118,8 @@ class ProductPage extends Component {
             <ButtonComp
               fontSize='1rem'
               width='3rem'
-              text="ok"
-              onClick={() => clearOrderStatus()}
+              text="Cancel"
+              onClick={clearOrderStatus}
               button={1}
             />
           </Box>

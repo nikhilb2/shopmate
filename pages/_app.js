@@ -62,15 +62,16 @@ class MyApp extends App {
 
   async addToCart(productId) {
     const { user } = this.props.pageProps
+    const { newCartId } = this.state
     let addToCartResult = null
     //if there's a cartId stored in cookies
     console.log(user.cartId);
     console.log('user.cartId');
-    if (user.cartId) {
+    if (newCartId || user.cartId) {
       const addToCartResult = await fetchRequest('shoppingcart/add', {
         method: 'POST',
         body: JSON.stringify({
-          cart_id: user.cartId,
+          cart_id: newCartId ? newCartId : user.cartId,
           product_id: productId,
           attributes: 'none'
         })
@@ -262,8 +263,9 @@ class MyApp extends App {
     this.setState({ newProducts: null, skip: 2 })
   }
 
-  clearOrderStatus() {
-    this.setState({orderStatus:null})
+  async clearOrderStatus() {
+    await this.setState({orderStatus:null, stripeChargeResponse:null})
+    window.location.reload()
   }
 
   async saveStripeToken(token) {
@@ -285,7 +287,7 @@ class MyApp extends App {
         currency: 'GBP'
       })
     })
-    this.setState({stripeCharge:pay,  newTotalItems: null,
+    this.setState({stripeChargeResponse:pay,  newTotalItems: null,
       newAmount: null,
       newCartItems: null})
   }
