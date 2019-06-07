@@ -22,7 +22,8 @@ class MyApp extends App {
     limit: 9,
     keyword: '',
     stripe: null,
-    stripeToken: null
+    stripeToken: null,
+    stripeChargeResponse:null
   }
   async placeOrder() {
     const { newCartId } = this.state
@@ -33,9 +34,7 @@ class MyApp extends App {
     })
     await this.setState({
       orderStatus,
-      newTotalItems: null,
-      newAmount: null,
-      newCartItems: null
+
     })
     //console.log(orderStatus)
     removeCartId()
@@ -267,14 +266,52 @@ class MyApp extends App {
     this.setState({orderStatus:null})
   }
 
-  stripeToken(token) {
+  async saveStripeToken(token) {
+    console.log(token);
     this.setState({stripeToken:token})
+    const { stripeToken, orderStatus, newAmount } = this.state
+    console.log('newAmount');
+    console.log(newAmount);
+    const { amount } = this.props.pageProps
+        console.log('amount');
+        console.log(amount);
+    const pay = await fetchRequest('stripe/charge', {
+      method: 'POST',
+      body: JSON.stringify({
+        stripeToken: token.token.id,
+        order_id: orderStatus.orderId,
+        description: 'test',
+        amount: newAmount ? newAmount * 100 : amount * 100,
+        currency: 'GBP'
+      })
+    })
+    this.setState({stripeCharge:pay,  newTotalItems: null,
+      newAmount: null,
+      newCartItems: null})
+  }
+
+
+  async stripeCharge() {
+    const { stripeToken, orderStatus, newAmount } = this.state
+    const { amount } = this.props.pageProps
+    const pay = await fetchRequest('stripe/charge', {
+      method: 'POST',
+      body: JSON.stringify({
+        stripeToken: stripeToken.token.id,
+        order_id: orderStatus.orderId,
+        description: 'test',
+        amount: newAmount ? newAmount : amount,
+        currency: 'GBP'
+      })
+    })
+    this.setState({stripeCharge:pay})
   }
 
 
 
   render() {
     const { Component, pageProps } = this.props
+    console.log(this.state);
     return (
       <StripeProvider stripe={this.state.stripe}>
       <Elements>
@@ -297,7 +334,8 @@ class MyApp extends App {
             searchProducts={(keyword) => this.searchProducts(keyword)}
             clearProducts={() => this.clearProducts()}
             clearOrderStatus={() => this.clearOrderStatus()}
-            stripeToken={() => this.stripeToken()}
+            saveStripeToken={(token) => this.saveStripeToken(token)}
+            stripeCharge={() => this.stripeCharge()}
             {...this.state}
             {...pageProps}
           />

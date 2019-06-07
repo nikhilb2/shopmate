@@ -4,10 +4,11 @@ import {injectStripe, CardElement} from 'react-stripe-elements';
 import theme from '../theme'
 
 class CheckoutForm extends React.Component {
+
+
   handleSubmit = async (ev) => {
     // We don't want to let default form submission happen here, which would refresh the page.
     ev.preventDefault();
-    console.log(ev.target.value);
 
     // Within the context of `Elements`, this call to createPaymentMethod knows from which Element to
     // create the PaymentMethod, since there's only one in this group.
@@ -29,6 +30,7 @@ class CheckoutForm extends React.Component {
     // https://stripe.com/docs/stripe-js/reference#stripe-create-token
     const token = await this.props.stripe.createToken({type: 'card', name: 'Jenny Rosen'});
     console.log(token);
+    this.props.saveStripeToken(token);
     // token type can optionally be inferred if there is only one one Element
     // with which to create tokens
     // this.props.stripe.createToken({name: 'Jenny Rosen'});
@@ -45,6 +47,7 @@ class CheckoutForm extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <form style={{padding:'2rem', borderRadius:'2rem', marginLeft:'auto', marginRight: 'auto', backgroundColor:'white'}} onSubmit={this.handleSubmit}>
           <p>Card Details</p>

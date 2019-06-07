@@ -48,7 +48,10 @@ class ProductPage extends Component {
       removeFromCart,
       reduceQuantity,
       clearProducts,
-      clearOrderStatus
+      clearOrderStatus,
+      stripeToken,
+      saveStripeToken,
+      stripeCharge
     } = this.props
     //console.log(this.state)
     return (
@@ -84,7 +87,7 @@ class ProductPage extends Component {
             }}
           >
             <Typography variant='h5' style={{textAlign:'center'}}>Payment details</Typography>
-            <PaymentForm />
+            <PaymentForm saveStripeToken={saveStripeToken} stripeCharge={stripeCharge}/>
             <ButtonComp
               fontSize='1rem'
               width='3rem'
