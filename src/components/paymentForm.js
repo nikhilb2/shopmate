@@ -51,7 +51,7 @@ class CheckoutForm extends React.Component {
     return (
       <form style={{padding:'2rem', borderRadius:'2rem', marginLeft:'auto', marginRight: 'auto', backgroundColor:'white'}} onSubmit={this.handleSubmit}>
           <p>Card Details</p>
-          <CardElement style={{marginBottom:'1rem', fontSize:'10rem'}}/>
+          <CardElement hidePostalCode={true} style={{marginBottom:'1rem', fontSize:'10rem'}}/>
           <button style={{marginTop:'1.5rem', color:'white', backgroundColor:theme.palette.secondary.main, fontSize:'1rem', padding:'.5rem', borderRadius:'2rem'}}>Confirm order</button>
       </form>
     );
