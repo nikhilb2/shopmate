@@ -42,7 +42,11 @@ class ShoppingCartPopper extends Component {
       removeFromCart,
       reduceQuantity,
       orderStatus,
-      clearOrderStatus
+      clearOrderStatus,
+      registerUser,
+      signInUser,
+      toggleCheckOutWithoutUser,
+      checkOutWithoutUser
     } = this.props
     return (
       <div>
@@ -82,6 +86,10 @@ class ShoppingCartPopper extends Component {
             reduceQuantity={reduceQuantity}
             orderStatus={orderStatus}
             clearOrderStatus={clearOrderStatus}
+            registerUser={registerUser}
+            signInUser={signInUser}
+            toggleCheckOutWithoutUser={toggleCheckOutWithoutUser}
+            checkOutWithoutUser={checkOutWithoutUser}
           />
         </Popover>
       </div>

@@ -11,7 +11,7 @@ import AddReview from './addReview'
 import CartItems from './shoppingCartItems.js'
 import Button from '@material-ui/core/Button'
 import Close from '@material-ui/icons/Close'
-
+import UserLogin from './userLogin'
 const styles = {
   justifyCol: {
     display: 'flex',
@@ -57,6 +57,11 @@ class ShoppingCart extends Component {
     checkOutWithoutUser: false
   }
 
+  toggleCheckOutWithoutUser() {
+    this.setState({checkOutWithoutUser:false})
+  }
+
+
   render() {
     const {
       classes,
@@ -70,12 +75,15 @@ class ShoppingCart extends Component {
       removeFromCart,
       reduceQuantity,
       orderStatus,
-      clearOrderStatus
+      clearOrderStatus,
+      registerUser,
+      signInUser,
+      toggleCheckOutWithoutUser,
+      checkOutWithoutUser
     } = this.props
 
-    const { checkOutWithoutUser } = this.state
     console.log('user')
-    console.log(user)
+    console.log(this.props)
     return (
       <Box
         boxShadow={0}
@@ -84,6 +92,25 @@ class ShoppingCart extends Component {
         p={1}
         className={classes.box}
       >
+      {checkOutWithoutUser ? (
+        <Box
+          bgcolor="#eeefef"
+          color="text.primary"
+          boxShadow={4}
+          p={2}
+          position="fixed"
+          top={0}
+          left="35%"
+          zIndex="modal"
+          style={{
+            top: '30%',
+            width: '50%'
+          }}
+        >
+          <Typography variant='h5' style={{textAlign:'center'}}>Please Signin then checkout</Typography>
+            <UserLogin registerUser={registerUser} signInUser={signInUser}/>
+        </Box>
+      ) : null}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button
             size="medium"
@@ -125,7 +152,7 @@ class ShoppingCart extends Component {
                 placeOrder()
                 closePopover()
               } else {
-                this.setState({ checkOutWithoutUser: true })
+                toggleCheckOutWithoutUser()
               }
             }}
             button={1}
