@@ -17,7 +17,7 @@ class CheckoutForm extends React.Component {
     this.props.stripe
       .createPaymentMethod('card', {billing_details: {name: 'Jenny Rosen'}})
       .then(({paymentMethod}) => {
-        console.log('Received Stripe PaymentMethod:', paymentMethod);
+        //console.log('Received Stripe PaymentMethod:', paymentMethod);
       });
 
     // You can also use handleCardPayment with the Payment Intents API automatic confirmation flow.
@@ -29,7 +29,7 @@ class CheckoutForm extends React.Component {
     // See our tokens documentation for more:
     // https://stripe.com/docs/stripe-js/reference#stripe-create-token
     const token = await this.props.stripe.createToken({type: 'card', name: 'Jenny Rosen'});
-    console.log(token);
+    //console.log(token);
     this.props.saveStripeToken(token);
     // token type can optionally be inferred if there is only one one Element
     // with which to create tokens
@@ -47,7 +47,7 @@ class CheckoutForm extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <form style={{padding:'2rem', borderRadius:'2rem', marginLeft:'auto', marginRight: 'auto', backgroundColor:'white'}} onSubmit={this.handleSubmit}>
           <p>Card Details</p>

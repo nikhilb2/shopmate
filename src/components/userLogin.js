@@ -5,7 +5,7 @@ import SignInPopper from './signInPopper'
 
 const UserLogin = props => {
   const { user, logOutUser, error, signInUser, registerUser } = props
-  //console.log(user)
+  ////console.log(user)
   return (
     <div>
       {user ? (

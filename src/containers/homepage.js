@@ -47,7 +47,7 @@ class Homepage extends Component {
       stripeCharge,
       stripeChargeResponse
     } = this.props
-    console.log(this.props);
+    //console.log(this.props);
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
       {orderStatus ? stripeChargeResponse
@@ -65,7 +65,7 @@ class Homepage extends Component {
             width: '50%'
           }}
         >
-          <Typography variant='h5' style={{textAlign:'center'}}>{stripeChargeResponse.status.toUpperCase()}</Typography>
+          <Typography variant='h5' style={{textAlign:'center'}}>{stripeChargeResponse.status}</Typography>
           <Typography variant='body1' style={{textAlign:'center'}}>Amount: £{stripeChargeResponse.amount/100}</Typography>
           <Typography variant='body1' style={{textAlign:'center'}}>Reciept: <a href={stripeChargeResponse.receipt_url} alt='Reciept' target="_blank">click to open</a></Typography>
           <div><ButtonComp

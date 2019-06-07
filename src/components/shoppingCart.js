@@ -82,8 +82,8 @@ class ShoppingCart extends Component {
       checkOutWithoutUser
     } = this.props
 
-    console.log('user')
-    console.log(this.props)
+    //console.log('user')
+    //console.log(this.props)
     return (
       <Box
         boxShadow={0}

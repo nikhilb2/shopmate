@@ -38,7 +38,7 @@ class ProductContainer extends Component {
     } = this.props
 
     const { skip, limit, param } = this.state
-    console.log(this.state)
+    //console.log(this.state)
     return (
       <div style={{ width: '100%' }}>
         <div className={classes.container}>

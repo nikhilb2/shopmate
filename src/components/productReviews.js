@@ -45,8 +45,8 @@ const styles = {
 }
 const Review = props => {
   const { classes, review, style } = props
-  //console.log('review')
-  //console.log(review)
+  ////console.log('review')
+  ////console.log(review)
   return (
     <Box
       boxShadow={4}
@@ -98,8 +98,8 @@ class ProductReivews extends Component {
       productDetails,
       productReviews
     } = this.props
-    //console.log('productReviews@');
-    //console.log(productReviews);
+    ////console.log('productReviews@');
+    ////console.log(productReviews);
     return (
       <Box
         boxShadow={0}

@@ -36,7 +36,7 @@ class MyApp extends App {
       orderStatus,
 
     })
-    //console.log(orderStatus)
+    ////console.log(orderStatus)
     removeCartId()
   }
 
@@ -65,8 +65,8 @@ class MyApp extends App {
     const { newCartId } = this.state
     let addToCartResult = null
     //if there's a cartId stored in cookies
-    console.log(user.cartId);
-    console.log('user.cartId');
+    //console.log(user.cartId);
+    //console.log('user.cartId');
     if (newCartId || user.cartId) {
       const addToCartResult = await fetchRequest('shoppingcart/add', {
         method: 'POST',
@@ -190,7 +190,7 @@ class MyApp extends App {
         param: { name: 'inDepartment', id: query.deptId, ogName: 'depId' }
       })
     }
-    console.log(this.props)
+    //console.log(this.props)
   }
 
   async getMoreProducts() {
@@ -213,8 +213,8 @@ class MyApp extends App {
           },
           skip: skip + 1
         })
-        console.log('getMoreProducts')
-        console.log(getMoreProducts)
+        //console.log('getMoreProducts')
+        //console.log(getMoreProducts)
       } else {
         let prod = this.props.pageProps.products.rows
         prod.push(...getMoreProducts.rows)
@@ -243,8 +243,8 @@ class MyApp extends App {
           },
           skip: skip + 1
         })
-        console.log('getMoreProducts')
-        console.log(getMoreProducts)
+        //console.log('getMoreProducts')
+        //console.log(getMoreProducts)
       } else {
         let prod = this.props.pageProps.products.rows
         prod.push(...getMoreProducts.rows)
@@ -269,21 +269,16 @@ class MyApp extends App {
   }
 
   async saveStripeToken(token) {
-    console.log(token);
     this.setState({stripeToken:token})
     const { stripeToken, orderStatus, newAmount } = this.state
-    console.log('newAmount');
-    console.log(newAmount);
-    const { amount } = this.props.pageProps
-        console.log('amount');
-        console.log(amount);
+
     const pay = await fetchRequest('stripe/charge', {
       method: 'POST',
       body: JSON.stringify({
         stripeToken: token.token.id,
         order_id: orderStatus.orderId,
         description: 'test',
-        amount: newAmount ? newAmount * 100 : amount * 100,
+        amount: Math.round(newAmount * 100),
         currency: 'GBP'
       })
     })
@@ -313,7 +308,7 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props
-    console.log(this.state);
+    //console.log(this.state);
     return (
       <StripeProvider stripe={this.state.stripe}>
       <Elements>

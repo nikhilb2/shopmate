@@ -82,8 +82,8 @@ class ItemCard extends Component {
     const rating = Math.round((totalOfRatings / productReviews.length) * 20)
     const ratingInt =
       Math.round((totalOfRatings / productReviews.length) * 100) / 100
-    //console.log(rating)
-    //console.log(ratingInt)
+    ////console.log(rating)
+    ////console.log(ratingInt)
     this.setState({ rating, ratingInt })
   }
 
@@ -117,7 +117,7 @@ class ItemCard extends Component {
       ratingInt,
       rating
     } = this.state
-    console.log(this.state)
+    //console.log(this.state)
     return (
       <div
         style={{

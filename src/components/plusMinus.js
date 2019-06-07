@@ -42,7 +42,7 @@ const PlusMinus = props => {
     addToCart,
     reduceQuantity
   } = props
-  console.log(props)
+  //console.log(props)
   return (
     <div className={classes.root}>
       <Typography
