@@ -34,7 +34,7 @@ export const removeCartId = () => Cookies.remove('cartId')
 
 //get user details if server request
 export const getServerUser = user => {
-    //console.log('user server');
+  //console.log('user server');
   //console.log(user);
   return {
     user: user.user ? JSON.parse(user.user) : null,

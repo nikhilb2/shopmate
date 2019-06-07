@@ -5,7 +5,13 @@ import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../src/theme'
 import { fetchRequest, fetchRequestWithoutResponse } from '../src/utils/request'
-import { getUserDetails, getCartId, getServerUser, removeCartId, saveCartId } from '../src/utils/auth'
+import {
+  getUserDetails,
+  getCartId,
+  getServerUser,
+  removeCartId,
+  saveCartId
+} from '../src/utils/auth'
 import { StripeProvider, Elements } from 'react-stripe-elements'
 
 class MyApp extends App {
@@ -23,18 +29,21 @@ class MyApp extends App {
     keyword: '',
     stripe: null,
     stripeToken: null,
-    stripeChargeResponse:null
+    stripeChargeResponse: null
   }
   async placeOrder() {
     const { newCartId } = this.state
     const { user } = this.props.pageProps
     const orderStatus = await fetchRequest('orders', {
       method: 'POST',
-      body: JSON.stringify({ cart_id: newCartId ? newCartId : user.cartId, shipping_id: 4, tax_id: 2 })
+      body: JSON.stringify({
+        cart_id: newCartId ? newCartId : user.cartId,
+        shipping_id: 4,
+        tax_id: 2
+      })
     })
     await this.setState({
-      orderStatus,
-
+      orderStatus
     })
     ////console.log(orderStatus)
     removeCartId()
@@ -124,10 +133,10 @@ class MyApp extends App {
       `shoppingcart/update/${itemId}`,
       {
         method: 'PUT',
-        body: JSON.stringify({quantity:quantity})
+        body: JSON.stringify({ quantity: quantity })
       }
     )
-      await this.getCartItems(user.cartId)
+    await this.getCartItems(user.cartId)
   }
 
   async removeFromCart(itemId) {
@@ -138,7 +147,7 @@ class MyApp extends App {
         method: 'DELETE'
       }
     )
-      await this.getCartItems(user.cartId)
+    await this.getCartItems(user.cartId)
   }
 
   async noOfItemToCart(productId) {
@@ -152,9 +161,8 @@ class MyApp extends App {
 
   adjustQuantity(number) {
     if (this.state.quantity + number > 0) {
-          this.setState({ quantity: this.state.quantity + number })
+      this.setState({ quantity: this.state.quantity + number })
     }
-
   }
 
   componentDidMount() {
@@ -165,7 +173,7 @@ class MyApp extends App {
     }
 
     this.checkParam()
-    this.setState({stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe')});
+    this.setState({ stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe') })
   }
 
   searchProducts(keyword) {
@@ -175,7 +183,6 @@ class MyApp extends App {
         this.setState({ newProducts: result, keyword })
       })
   }
-
 
   checkParam() {
     const { query } = this.props.router
@@ -264,15 +271,15 @@ class MyApp extends App {
   }
 
   async clearOrderStatus() {
-    await this.setState({orderStatus:null, stripeChargeResponse:null})
+    await this.setState({ orderStatus: null, stripeChargeResponse: null })
     window.location.reload()
   }
 
   async saveStripeToken(token) {
-    this.setState({stripeToken:token})
+    this.setState({ stripeToken: token })
     const { stripeToken, orderStatus, newAmount } = this.state
 
-    if(token && token.token && token.token.id) {
+    if (token && token.token && token.token.id) {
       const pay = await fetchRequest('stripe/charge', {
         method: 'POST',
         body: JSON.stringify({
@@ -283,15 +290,16 @@ class MyApp extends App {
           currency: 'GBP'
         })
       })
-      this.setState({stripeChargeResponse:pay,  newTotalItems: null,
+      this.setState({
+        stripeChargeResponse: pay,
+        newTotalItems: null,
         newAmount: null,
-        newCartItems: null})
+        newCartItems: null
+      })
     } else {
-      alert("Please input all details")
+      alert('Please input all details')
     }
-
   }
-
 
   async stripeCharge() {
     const { stripeToken, orderStatus, newAmount } = this.state
@@ -306,45 +314,45 @@ class MyApp extends App {
         currency: 'GBP'
       })
     })
-    this.setState({stripeCharge:pay})
+    this.setState({ stripeCharge: pay })
   }
-
-
 
   render() {
     const { Component, pageProps } = this.props
     //console.log(this.state);
     return (
       <StripeProvider stripe={this.state.stripe}>
-      <Elements>
-      <Container>
-        <Head>
-          <title>My page</title>
-        </Head>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          <Component
-            addToCart={productId => this.addToCart(productId)}
-            adjustQuantity={number => this.adjustQuantity(number)}
-            noOfItemToCart={productId => this.noOfItemToCart(productId)}
-            getCartItems={cartId => this.getCartItems(cartId)}
-            placeOrder={cartId => this.placeOrder(cartId)}
-            removeFromCart={itemId => this.removeFromCart(itemId)}
-            reduceQuantity={(itemId, quantity) => this.reduceQuantity(itemId, quantity)}
-            getMoreProducts={() => this.getMoreProducts()}
-            searchProducts={(keyword) => this.searchProducts(keyword)}
-            clearProducts={() => this.clearProducts()}
-            clearOrderStatus={() => this.clearOrderStatus()}
-            saveStripeToken={(token) => this.saveStripeToken(token)}
-            stripeCharge={() => this.stripeCharge()}
-            {...this.state}
-            {...pageProps}
-          />
-        </ThemeProvider>
-      </Container>
-      </Elements>
-     </StripeProvider>
+        <Elements>
+          <Container>
+            <Head>
+              <title>My page</title>
+            </Head>
+            <ThemeProvider theme={theme}>
+              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              <CssBaseline />
+              <Component
+                addToCart={productId => this.addToCart(productId)}
+                adjustQuantity={number => this.adjustQuantity(number)}
+                noOfItemToCart={productId => this.noOfItemToCart(productId)}
+                getCartItems={cartId => this.getCartItems(cartId)}
+                placeOrder={cartId => this.placeOrder(cartId)}
+                removeFromCart={itemId => this.removeFromCart(itemId)}
+                reduceQuantity={(itemId, quantity) =>
+                  this.reduceQuantity(itemId, quantity)
+                }
+                getMoreProducts={() => this.getMoreProducts()}
+                searchProducts={keyword => this.searchProducts(keyword)}
+                clearProducts={() => this.clearProducts()}
+                clearOrderStatus={() => this.clearOrderStatus()}
+                saveStripeToken={token => this.saveStripeToken(token)}
+                stripeCharge={() => this.stripeCharge()}
+                {...this.state}
+                {...pageProps}
+              />
+            </ThemeProvider>
+          </Container>
+        </Elements>
+      </StripeProvider>
     )
   }
 }

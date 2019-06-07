@@ -58,9 +58,8 @@ class ShoppingCart extends Component {
   }
 
   toggleCheckOutWithoutUser() {
-    this.setState({checkOutWithoutUser:false})
+    this.setState({ checkOutWithoutUser: false })
   }
-
 
   render() {
     const {
@@ -92,25 +91,27 @@ class ShoppingCart extends Component {
         p={1}
         className={classes.box}
       >
-      {checkOutWithoutUser ? (
-        <Box
-          bgcolor="#eeefef"
-          color="text.primary"
-          boxShadow={4}
-          p={2}
-          position="fixed"
-          top={0}
-          left="35%"
-          zIndex="modal"
-          style={{
-            top: '30%',
-            width: '50%'
-          }}
-        >
-          <Typography variant='h5' style={{textAlign:'center'}}>Please Signin then checkout</Typography>
-            <UserLogin registerUser={registerUser} signInUser={signInUser}/>
-        </Box>
-      ) : null}
+        {checkOutWithoutUser ? (
+          <Box
+            bgcolor="#eeefef"
+            color="text.primary"
+            boxShadow={4}
+            p={2}
+            position="fixed"
+            top={0}
+            left="35%"
+            zIndex="modal"
+            style={{
+              top: '30%',
+              width: '50%'
+            }}
+          >
+            <Typography variant="h5" style={{ textAlign: 'center' }}>
+              Please Signin then checkout
+            </Typography>
+            <UserLogin registerUser={registerUser} signInUser={signInUser} />
+          </Box>
+        ) : null}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <Button
             size="medium"

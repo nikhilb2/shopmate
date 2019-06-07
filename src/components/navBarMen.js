@@ -51,7 +51,7 @@ class NavBarMen extends Component {
   }
 
   toggleCheckOutWithoutUser() {
-    this.setState({checkOutWithoutUser:true})
+    this.setState({ checkOutWithoutUser: true })
   }
   workIcon() {
     return <Work />
@@ -63,7 +63,7 @@ class NavBarMen extends Component {
       body: JSON.stringify(data)
     })
     if (!result.error) {
-      this.setState({ newUser: result.customer, checkOutWithoutUser:false })
+      this.setState({ newUser: result.customer, checkOutWithoutUser: false })
       //save to cookies
       saveAuth(result.accessToken)
       saveUserDetails(result.customer)
@@ -78,7 +78,7 @@ class NavBarMen extends Component {
       body: JSON.stringify(data)
     })
     if (!result.error) {
-      this.setState({ newUser: result.customer, checkOutWithoutUser:false })
+      this.setState({ newUser: result.customer, checkOutWithoutUser: false })
       //save to cookies
       saveAuth(result.accessToken)
       saveUserDetails(result.customer)
@@ -177,7 +177,7 @@ class NavBarMen extends Component {
               clearOrderStatus={clearOrderStatus}
               registerUser={data => this.registerUser(data)}
               signInUser={data => this.signInUser(data)}
-              toggleCheckOutWithoutUser={()=>this.toggleCheckOutWithoutUser()}
+              toggleCheckOutWithoutUser={() => this.toggleCheckOutWithoutUser()}
               checkOutWithoutUser={checkOutWithoutUser}
               user={
                 newUser ? newUser : user && user.user ? user && user.user : null
