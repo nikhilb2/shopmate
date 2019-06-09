@@ -7,7 +7,7 @@ export const saveAuth = accessToken => {
 
 //save user details to cookies
 export const saveUserDetails = details => {
-  Cookies.set('user', JSON.stringify(details))
+  Cookies.set('user', JSON.stringify(details), { expires: 1 })
 }
 
 //save cartid to cookies
