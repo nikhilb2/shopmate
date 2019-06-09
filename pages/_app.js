@@ -170,7 +170,11 @@ class MyApp extends App {
   }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
    componentDidMount() {
+=======
+  async componentDidMount() {
+>>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
 =======
   async componentDidMount() {
 >>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
@@ -182,7 +186,11 @@ class MyApp extends App {
 
     this.checkParam()
 <<<<<<< HEAD
+<<<<<<< HEAD
    this.setState({
+=======
+    await this.setState({
+>>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
 =======
     await this.setState({
 >>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
