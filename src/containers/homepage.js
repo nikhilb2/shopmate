@@ -13,10 +13,7 @@ import Footer from '../components/footer'
 import NavBarMen from '../components/navBarMen'
 import BannerMobileMini from '../components/bannerMobileMini'
 import ItemCard from '../components/itemCard'
-import Box from '@material-ui/core/Box'
-import PaymentForm from '../components/paymentForm'
-import Typography from '@material-ui/core/Typography'
-import ButtonComp from '../components/button'
+import OrderStatus from './orderStatus'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -50,80 +47,13 @@ class Homepage extends Component {
     //console.log(this.props);
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
-        {orderStatus ? (
-          stripeChargeResponse ? (
-            <Box
-              bgcolor="#eeefef"
-              color="text.primary"
-              boxShadow={4}
-              p={2}
-              position="fixed"
-              top={0}
-              left="35%"
-              zIndex="modal"
-              style={{
-                top: '30%',
-                width: '50%'
-              }}
-            >
-              <Typography variant="h5" style={{ textAlign: 'center' }}>
-                {stripeChargeResponse.status}
-              </Typography>
-              <Typography variant="body1" style={{ textAlign: 'center' }}>
-                Amount: £{stripeChargeResponse.amount / 100}
-              </Typography>
-              <Typography variant="body1" style={{ textAlign: 'center' }}>
-                Reciept:{' '}
-                <a
-                  href={stripeChargeResponse.receipt_url}
-                  alt="Reciept"
-                  target="_blank"
-                >
-                  click to open
-                </a>
-              </Typography>
-              <div>
-                <ButtonComp
-                  fontSize="1rem"
-                  width="3rem"
-                  text="Ok"
-                  onClick={clearOrderStatus}
-                  button={1}
-                />
-              </div>
-            </Box>
-          ) : (
-            <Box
-              bgcolor="#eeefef"
-              color="text.primary"
-              boxShadow={4}
-              p={2}
-              position="fixed"
-              top={0}
-              left="35%"
-              zIndex="modal"
-              style={{
-                top: '30%',
-                width: '50%'
-              }}
-            >
-              <Typography variant="h5" style={{ textAlign: 'center' }}>
-                Payment details
-              </Typography>
-              <PaymentForm
-                saveStripeToken={saveStripeToken}
-                stripeCharge={stripeCharge}
-              />
-              <ButtonComp
-                fontSize="1rem"
-                width="3rem"
-                text="Cancel"
-                onClick={clearOrderStatus}
-                button={1}
-              />
-            </Box>
-          )
-        ) : null}
+        <OrderStatus
+          orderStatus={orderStatus}
+          stripeChargeResponse={stripeChargeResponse}
+          saveStripeToken={saveStripeToken}
+          stripeCharge={stripeCharge}
+          clearOrderStatus={clearOrderStatus}
+        />
         <NavBarMen
           cartItems={newCartItems ? newCartItems : cartItems}
           totalItems={

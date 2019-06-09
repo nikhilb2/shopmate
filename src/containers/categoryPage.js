@@ -23,8 +23,7 @@ import Footer2 from '../components/footer2'
 import { getCartId } from '../utils/auth'
 import { fetchRequest } from '../utils/request'
 import { withRouter } from 'next/router'
-import Box from '@material-ui/core/Box'
-import PaymentForm from '../components/paymentForm'
+import OrderStatus from './orderStatus'
 
 const text = 'Background and development'
 const textMobile = 'All Shoes'
@@ -176,85 +175,20 @@ class CategoryPage extends Component {
       orderStatus,
       clearOrderStatus,
       placeOrder,
-      stripeChargeResponse
+      stripeChargeResponse,
+      saveStripeToken,
+      stripeCharge
     } = this.props
 
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
-        {orderStatus ? (
-          stripeChargeResponse ? (
-            <Box
-              bgcolor="#eeefef"
-              color="text.primary"
-              boxShadow={4}
-              p={2}
-              position="fixed"
-              top={0}
-              left="35%"
-              zIndex="modal"
-              style={{
-                top: '30%',
-                width: '50%'
-              }}
-            >
-              <Typography variant="h5" style={{ textAlign: 'center' }}>
-                {stripeChargeResponse.status}
-              </Typography>
-              <Typography variant="body1" style={{ textAlign: 'center' }}>
-                Amount: £{stripeChargeResponse.amount / 100}
-              </Typography>
-              <Typography variant="body1" style={{ textAlign: 'center' }}>
-                Reciept:{' '}
-                <a
-                  href={stripeChargeResponse.receipt_url}
-                  alt="Reciept"
-                  target="_blank"
-                >
-                  click to open
-                </a>
-              </Typography>
-              <div>
-                <ButtonComp
-                  fontSize="1rem"
-                  width="3rem"
-                  text="Ok"
-                  onClick={clearOrderStatus}
-                  button={1}
-                />
-              </div>
-            </Box>
-          ) : (
-            <Box
-              bgcolor="#eeefef"
-              color="text.primary"
-              boxShadow={4}
-              p={2}
-              position="fixed"
-              top={0}
-              left="35%"
-              zIndex="modal"
-              style={{
-                top: '30%',
-                width: '50%'
-              }}
-            >
-              <Typography variant="h5" style={{ textAlign: 'center' }}>
-                Payment details
-              </Typography>
-              <PaymentForm
-                saveStripeToken={saveStripeToken}
-                stripeCharge={stripeCharge}
-              />
-              <ButtonComp
-                fontSize="1rem"
-                width="3rem"
-                text="Cancel"
-                onClick={clearOrderStatus}
-                button={1}
-              />
-            </Box>
-          )
-        ) : null}
+        <OrderStatus
+          orderStatus={orderStatus}
+          stripeChargeResponse={stripeChargeResponse}
+          saveStripeToken={saveStripeToken}
+          stripeCharge={stripeCharge}
+          clearOrderStatus={clearOrderStatus}
+        />
         <NavBarMen
           cartItems={newCartItems ? newCartItems : cartItems}
           totalItems={

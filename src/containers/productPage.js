@@ -11,10 +11,8 @@ import Grid from '@material-ui/core/Grid'
 import { fetchRequest } from '../utils/request'
 import { saveCartId, removeCartId } from '../utils/auth'
 import Hidden from '@material-ui/core/Hidden'
-import Box from '@material-ui/core/Box'
-import ButtonComp from '../components/button'
 import ItemCardBig from '../components/itemCardBig'
-import PaymentForm from '../components/paymentForm'
+import OrderStatus from './orderStatus'
 
 const styles = {
   center: {
@@ -71,80 +69,13 @@ class ProductPage extends Component {
           orderStatus={orderStatus}
           clearOrderStatus={clearOrderStatus}
         />
-        {orderStatus ? (
-          stripeChargeResponse ? (
-            <Box
-              bgcolor="#eeefef"
-              color="text.primary"
-              boxShadow={4}
-              p={2}
-              position="fixed"
-              top={0}
-              left="35%"
-              zIndex="modal"
-              style={{
-                top: '30%',
-                width: '50%'
-              }}
-            >
-              <Typography variant="h5" style={{ textAlign: 'center' }}>
-                {stripeChargeResponse.status}
-              </Typography>
-              <Typography variant="body1" style={{ textAlign: 'center' }}>
-                Amount: £{stripeChargeResponse.amount / 100}
-              </Typography>
-              <Typography variant="body1" style={{ textAlign: 'center' }}>
-                Reciept:{' '}
-                <a
-                  href={stripeChargeResponse.receipt_url}
-                  alt="Reciept"
-                  target="_blank"
-                >
-                  click to open
-                </a>
-              </Typography>
-              <div>
-                <ButtonComp
-                  fontSize="1rem"
-                  width="3rem"
-                  text="Ok"
-                  onClick={clearOrderStatus}
-                  button={1}
-                />
-              </div>
-            </Box>
-          ) : (
-            <Box
-              bgcolor="#eeefef"
-              color="text.primary"
-              boxShadow={4}
-              p={2}
-              position="fixed"
-              top={0}
-              left="35%"
-              zIndex="modal"
-              style={{
-                top: '30%',
-                width: '50%'
-              }}
-            >
-              <Typography variant="h5" style={{ textAlign: 'center' }}>
-                Payment details
-              </Typography>
-              <PaymentForm
-                saveStripeToken={saveStripeToken}
-                stripeCharge={stripeCharge}
-              />
-              <ButtonComp
-                fontSize="1rem"
-                width="3rem"
-                text="Cancel"
-                onClick={clearOrderStatus}
-                button={1}
-              />
-            </Box>
-          )
-        ) : null}
+        <OrderStatus
+          orderStatus={orderStatus}
+          stripeChargeResponse={stripeChargeResponse}
+          saveStripeToken={saveStripeToken}
+          stripeCharge={stripeCharge}
+          clearOrderStatus={clearOrderStatus}
+        />
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavigationBar
             categories={categories}
