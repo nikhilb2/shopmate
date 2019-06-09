@@ -13,6 +13,8 @@ import {
   saveCartId
 } from '../src/utils/auth'
 import { StripeProvider, Elements } from 'react-stripe-elements'
+import * as Sentry from '@sentry/browser';
+Sentry.init({dsn: "https://63f01d00663f40be8678bf3a4dd03cbc@sentry.io/1478089"});
 
 class MyApp extends App {
   state = {
