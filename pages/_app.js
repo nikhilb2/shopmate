@@ -13,8 +13,10 @@ import {
   saveCartId
 } from '../src/utils/auth'
 import { StripeProvider, Elements } from 'react-stripe-elements'
-import * as Sentry from '@sentry/browser';
-Sentry.init({dsn: "https://63f01d00663f40be8678bf3a4dd03cbc@sentry.io/1478089"});
+import * as Sentry from '@sentry/browser'
+Sentry.init({
+  dsn: 'https://63f01d00663f40be8678bf3a4dd03cbc@sentry.io/1478089'
+})
 
 class MyApp extends App {
   state = {
@@ -167,7 +169,7 @@ class MyApp extends App {
     }
   }
 
-  componentDidMount() {
+   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
@@ -175,7 +177,9 @@ class MyApp extends App {
     }
 
     this.checkParam()
-    this.setState({ stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe') })
+   this.setState({
+      stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe')
+    })
   }
 
   searchProducts(keyword) {
