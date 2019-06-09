@@ -121,7 +121,7 @@ class AddReview extends Component {
               />
             </div>
           </div>
-          {user & user.user ? (
+          {user && user.user ? (
             <ButtonComp
               onClick={() => {
                 if (rating && review) {
