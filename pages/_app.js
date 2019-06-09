@@ -169,7 +169,11 @@ class MyApp extends App {
     }
   }
 
+<<<<<<< HEAD
    componentDidMount() {
+=======
+  async componentDidMount() {
+>>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
@@ -177,7 +181,11 @@ class MyApp extends App {
     }
 
     this.checkParam()
+<<<<<<< HEAD
    this.setState({
+=======
+    await this.setState({
+>>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
       stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe')
     })
   }
