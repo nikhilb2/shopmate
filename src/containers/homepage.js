@@ -42,7 +42,8 @@ class Homepage extends Component {
       saveStripeToken,
       placeOrder,
       stripeCharge,
-      stripeChargeResponse
+      stripeChargeResponse,
+      setStripe
     } = this.props
     //console.log(this.props);
     return (
@@ -53,6 +54,7 @@ class Homepage extends Component {
           saveStripeToken={saveStripeToken}
           stripeCharge={stripeCharge}
           clearOrderStatus={clearOrderStatus}
+          setStripe={setStripe}
         />
         <NavBarMen
           cartItems={newCartItems ? newCartItems : cartItems}

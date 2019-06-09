@@ -4,6 +4,10 @@ import { injectStripe, CardElement } from 'react-stripe-elements'
 import theme from '../theme'
 
 class CheckoutForm extends React.Component {
+
+  componentDidMount() {
+    this.props.setStripe()
+  }
   handleSubmit = async ev => {
     // We don't want to let default form submission happen here, which would refresh the page.
     ev.preventDefault()

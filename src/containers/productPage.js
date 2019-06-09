@@ -49,7 +49,8 @@ class ProductPage extends Component {
       stripeToken,
       saveStripeToken,
       stripeCharge,
-      stripeChargeResponse
+      stripeChargeResponse,
+      setStripe
     } = this.props
     //console.log(this.props)
     return (
@@ -75,6 +76,7 @@ class ProductPage extends Component {
           saveStripeToken={saveStripeToken}
           stripeCharge={stripeCharge}
           clearOrderStatus={clearOrderStatus}
+          setStripe={setStripe}
         />
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavigationBar

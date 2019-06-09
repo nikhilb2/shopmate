@@ -10,7 +10,8 @@ const OrderStatus = props => {
     stripeChargeResponse,
     saveStripeToken,
     stripeCharge,
-    clearOrderStatus
+    clearOrderStatus,
+    setStripe
   } = props
   return (
     <div>
@@ -77,6 +78,7 @@ const OrderStatus = props => {
             <PaymentForm
               saveStripeToken={saveStripeToken}
               stripeCharge={stripeCharge}
+              setStripe={setStripe}
             />
             <ButtonComp
               fontSize="1rem"

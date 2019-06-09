@@ -177,7 +177,8 @@ class CategoryPage extends Component {
       placeOrder,
       stripeChargeResponse,
       saveStripeToken,
-      stripeCharge
+      stripeCharge,
+      setStripe
     } = this.props
 
     return (
@@ -188,6 +189,7 @@ class CategoryPage extends Component {
           saveStripeToken={saveStripeToken}
           stripeCharge={stripeCharge}
           clearOrderStatus={clearOrderStatus}
+          setStripe={setStripe}
         />
         <NavBarMen
           cartItems={newCartItems ? newCartItems : cartItems}

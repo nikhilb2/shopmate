@@ -169,15 +169,7 @@ class MyApp extends App {
     }
   }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
    componentDidMount() {
-=======
-  async componentDidMount() {
->>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
-=======
-  async componentDidMount() {
->>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
@@ -185,17 +177,12 @@ class MyApp extends App {
     }
 
     this.checkParam()
-<<<<<<< HEAD
-<<<<<<< HEAD
-   this.setState({
-=======
-    await this.setState({
->>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
-=======
-    await this.setState({
->>>>>>> 45d55ba35b9d5eba64672a56ec7b1dc55475ce99
-      stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe')
-    })
+  }
+
+  setStripe() {
+    this.setState({
+       stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe')
+     })
   }
 
   searchProducts(keyword) {
@@ -368,6 +355,7 @@ class MyApp extends App {
                 clearOrderStatus={() => this.clearOrderStatus()}
                 saveStripeToken={token => this.saveStripeToken(token)}
                 stripeCharge={() => this.stripeCharge()}
+                setStripe={() => this.setStripe()}
                 {...this.state}
                 {...pageProps}
               />
