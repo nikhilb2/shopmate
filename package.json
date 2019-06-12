@@ -13,6 +13,7 @@
     "moment": "^2.24.0",
     "next": "latest",
     "next-cookies": "^1.1.2",
+    "next-ga": "^2.3.4",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",

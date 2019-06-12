@@ -14,6 +14,9 @@ import {
 } from '../src/utils/auth'
 import { StripeProvider, Elements } from 'react-stripe-elements'
 import * as Sentry from '@sentry/browser'
+import Router from "next/router";
+import withGA from "next-ga";
+
 Sentry.init({
   dsn: 'https://63f01d00663f40be8678bf3a4dd03cbc@sentry.io/1478089'
 })
@@ -367,4 +370,4 @@ class MyApp extends App {
   }
 }
 
-export default MyApp
+export default withGA("UA-136014742-1", Router)(MyApp)
