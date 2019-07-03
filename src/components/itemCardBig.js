@@ -8,6 +8,7 @@ import { getCartId, saveCartId } from '../utils/auth'
 import theme from '../theme'
 import PlusMinus from './plusMinus'
 import Breadcrumb from './breadcrumbs'
+import Color from './colorAttribute'
 const styles = {
   box: {
     width: '880px',
@@ -45,6 +46,10 @@ const styles = {
   stars: {
     display: 'flex',
     width: 'fit-content'
+  },
+  colorAttribute: {
+    display: 'flex',
+    flexDirection: 'row'
   }
 }
 
@@ -56,7 +61,8 @@ class ItemCard extends Component {
     rating: 0,
     cartId: null,
     itemQuantity: 1,
-    categoryName: null
+    categoryName: null,
+    attributes: null
   }
 
   componentDidMount() {
@@ -64,8 +70,19 @@ class ItemCard extends Component {
     if (productDetails) {
       this.rating()
       this.getProductCategory(productDetails.product_id)
+      this.getAttributes(productDetails.product_id)
     }
+
   }
+
+  async getAttributes(productId) {
+    const attributes = await fetchRequest(`attributes/inProduct/${productId}`, {
+      method: 'GET'
+    })
+    console.log(attributes);
+    this.setState({attributes})
+  }
+
 
   rating() {
     const { productReviews } = this.props
@@ -115,9 +132,11 @@ class ItemCard extends Component {
       image1Click,
       image2Click,
       ratingInt,
-      rating
+      rating,
+      attributes
     } = this.state
-    //console.log(this.state)
+    console.log('state')
+    console.log(this.state)
     return (
       <div
         style={{
@@ -139,6 +158,7 @@ class ItemCard extends Component {
               }}
             />
             <div className={classes.justifyRow}>
+
               {productDetails && (
                 <img
                   onClick={() =>
@@ -283,6 +303,15 @@ class ItemCard extends Component {
                     quantity={quantity}
                     adjustQuantity={adjustQuantity}
                   />
+                </div>
+                <div className={classes.colorAttribute}>
+                {attributes && attributes.map(attribute => {
+                  if (attribute.attribute_name==='Color') {
+                    return(
+                      <Color color={attribute.attribute_value} />
+                    )
+                  }
+                })}
                 </div>
                 <ButtonComp
                   button={1}
@@ -464,6 +493,15 @@ class ItemCard extends Component {
                     quantity={quantity}
                     adjustQuantity={adjustQuantity}
                   />
+                </div>
+                <div className={classes.colorAttribute}>
+                  {attributes && attributes.map(attribute => {
+                    if (attribute.attribute_name==='Color') {
+                      return(
+                        <Color color={attribute.attribute_value} />
+                      )
+                    }
+                  })}
                 </div>
                 <ButtonComp
                   button={1}
