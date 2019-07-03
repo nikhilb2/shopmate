@@ -109,13 +109,16 @@ class ProductContainer extends Component {
               ))}
           </div>
         </Hidden>
+        <div style={{display:'flex', justifyContent:'center'}}>
+        {loadingProducts ?
+          <img style={{width: '5%'}} src='static/loading.gif' alt="loading" />
+          : null }
+          </div>
         <div
           style={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}
         >
-          {products.count > products.rows.length ? (
-            <div>{loadingProducts ?
-              <img style={{width:'50%'}} src='static/loading.gif' alt="loading" />
-            :            <ButtonComp
+          {!loadingProducts && products.count > products.rows.length ? (
+               <ButtonComp
                           button={1}
                           fontSize="1rem"
                           width="fit-content"
@@ -124,10 +127,9 @@ class ProductContainer extends Component {
                           }}
                           text="Load More"
                         />
-          }</div>
 
           ) : null}
-        </div>
+          </div>
       </div>
     )
   }
