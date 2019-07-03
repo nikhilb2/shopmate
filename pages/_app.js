@@ -330,7 +330,7 @@ class MyApp extends App {
   }
 
   clearProducts() {
-    this.setState({ newProducts: null, skip: 2, searchInitiated: false })
+    this.setState({ newProducts: null, skip: 2, searchInitiated: false, param: {name: null} })
   }
 
   async clearOrderStatus() {
