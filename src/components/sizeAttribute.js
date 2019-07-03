@@ -17,9 +17,9 @@ const useStyles = makeStyles(theme => ({
 
 const Size = (props) => {
   const classes = useStyles()
-  const { size, style } = props
+  const { size, style, onClick } = props
   return(
-    <div className={classes.root}>
+    <div onClick={onClick} className={classes.root}>
       <Typography variant='caption' >{size} </Typography>
     </div>
   )

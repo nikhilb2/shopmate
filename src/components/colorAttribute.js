@@ -16,9 +16,9 @@ const useStyles = makeStyles(theme => ({
 
 const Color = (props) => {
   const classes = useStyles()
-  const { color, style } = props
+  const { color, style, onClick } = props
   return(
-    <div className={classes.root} style={{backgroundColor:color}}>
+    <div className={classes.root} onClick={onClick} style={{backgroundColor:color}}>
 
     </div>
   )

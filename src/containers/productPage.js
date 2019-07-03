@@ -50,9 +50,12 @@ class ProductPage extends Component {
       saveStripeToken,
       stripeCharge,
       stripeChargeResponse,
-      setStripe
+      setStripe,
+      selectColor,
+      selectSize
     } = this.props
-    //console.log(this.props)
+    console.log('this.props on product page')
+    console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen
@@ -109,6 +112,8 @@ class ProductPage extends Component {
                   user={user}
                   quantity={quantity}
                   adjustQuantity={number => adjustQuantity(number)}
+                  selectColor={selectColor}
+                  selectSize={selectSize}
                 />
               </Grid>
               <Grid item xs={12}>

@@ -126,7 +126,9 @@ class ItemCard extends Component {
       addedToCartWithOutUser,
       mobile,
       quantity,
-      adjustQuantity
+      adjustQuantity,
+      selectColor,
+      selectSize
     } = this.props
     const {
       selectedImage,
@@ -136,8 +138,8 @@ class ItemCard extends Component {
       rating,
       attributes
     } = this.state
-    console.log('state')
-    console.log(this.state)
+    console.log('this.props on item card big');
+    console.log(this.props);
     return (
       <div
         style={{
@@ -306,26 +308,32 @@ class ItemCard extends Component {
                   />
                 </div>
                 <div className={classes.colorAttribute}>
+                <Typography variant='caption' style={{marginTop:'auto', marginBottom: 'auto'}}>
+                  Select Color
+                </Typography>
                 {attributes && attributes.map(attribute => {
                   if (attribute.attribute_name==='Color') {
                     return(
-                      <Color color={attribute.attribute_value} />
+                      <Color onClick={() => selectColor(attribute.attribute_value_id)} color={attribute.attribute_value} />
                     )
                   }
                 })}
                 </div>
                 <div className={classes.colorAttribute}>
+                  <Typography variant='caption' style={{marginTop:'auto', marginBottom: 'auto'}}>
+                    Select Size
+                  </Typography>
                   {attributes && attributes.map(attribute => {
                     if (attribute.attribute_name==='Size') {
                       return(
-                        <Size size={attribute.attribute_value} />
+                        <Size onClick={() => selectSize(attribute.attribute_value_id)} size={attribute.attribute_value} />
                       )
                     }
                   })}
                 </div>
                 <ButtonComp
                   button={1}
-                  style={{ width: '2rem' }}
+                  style={{ width: '2rem', marginTop:'2rem' }}
                   text="Add to cart"
                   onClick={() => {
                     addToCart(productDetails.product_id)
@@ -505,23 +513,30 @@ class ItemCard extends Component {
                   />
                 </div>
                 <div className={classes.colorAttribute}>
+                  <Typography variant='caption' style={{marginTop:'auto', marginBottom: 'auto'}}>
+                    Select Color
+                  </Typography>
                   {attributes && attributes.map(attribute => {
                     if (attribute.attribute_name==='Color') {
                       return(
-                        <Color color={attribute.attribute_value} />
+                        <Color onClick={() => selectColor(attribute.attribute_value_id)}  color={attribute.attribute_value} />
                       )
                     }
                   })}
                 </div>
                 <div className={classes.colorAttribute}>
+                <Typography variant='caption' style={{marginTop:'auto', marginBottom: 'auto'}}>
+                  Select Size
+                </Typography>
                   {attributes && attributes.map(attribute => {
                     if (attribute.attribute_name==='Size') {
                       return(
-                        <Size size={attribute.attribute_value} />
+                        <Size onClick={() => selectSize(attribute.attribute_value_id)}  size={attribute.attribute_value} />
                       )
                     }
                   })}
                 </div>
+                <div style={{marginTop:'1rem'}}>
                 <ButtonComp
                   button={1}
                   style={{ width: '2rem' }}
@@ -530,6 +545,7 @@ class ItemCard extends Component {
                     addToCart(productDetails.product_id)
                   }}
                 />
+                </div>
               </div>
             </div>
           </Box>

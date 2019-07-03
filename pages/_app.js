@@ -73,6 +73,14 @@ class MyApp extends App {
     return newCartId.cart_id
   }
 
+  selectColor(color) {
+    this.setState({selectedColor:color})
+  }
+
+  selectSize(size) {
+    this.setState({selectedSize:size})
+  }
+
   async getCartItems(cartId) {
     const { user } = this.props.pageProps
     const cartItems = await fetchRequest(`shoppingcart/${user.cartId}`, {
@@ -390,7 +398,8 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props
-    //console.log(this.state);
+    console.log('check attribute');
+    console.log(this.state);
     return (
       <StripeProvider stripe={this.state.stripe}>
         <Elements>
@@ -407,6 +416,8 @@ class MyApp extends App {
                 noOfItemToCart={productId => this.noOfItemToCart(productId)}
                 getCartItems={cartId => this.getCartItems(cartId)}
                 placeOrder={cartId => this.placeOrder(cartId)}
+                selectColor={color => this.selectColor(color)}
+                selectSize={selectSize => this.selectSize(selectSize)}
                 removeFromCart={itemId => this.removeFromCart(itemId)}
                 reduceQuantity={(itemId, quantity) =>
                   this.reduceQuantity(itemId, quantity)
