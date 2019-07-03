@@ -34,11 +34,13 @@ class ProductContainer extends Component {
       categories,
       departments,
       getMoreProducts,
-      clearProducts
+      searchMoreProducts,
+      clearProducts,
+      searchInitiated,
+      loadingProducts
     } = this.props
 
     const { skip, limit, param } = this.state
-    //console.log(this.state)
     return (
       <div style={{ width: '100%' }}>
         <div className={classes.container}>
@@ -111,16 +113,19 @@ class ProductContainer extends Component {
           style={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}
         >
           {products.count > products.rows.length ? (
-            <ButtonComp
-              button={1}
-              fontSize="1rem"
-              width="fit-content"
-              onClick={() => {
-                getMoreProducts(param, skip, limit)
-                this.setState({ skip: skip + 1 })
-              }}
-              text="Load More"
-            />
+            <div>{loadingProducts ?
+              <img style={{width:'50%'}} src='static/loading.gif' alt="loading" />
+            :            <ButtonComp
+                          button={1}
+                          fontSize="1rem"
+                          width="fit-content"
+                          onClick={() => {
+                            getMoreProducts()
+                          }}
+                          text="Load More"
+                        />
+          }</div>
+
           ) : null}
         </div>
       </div>

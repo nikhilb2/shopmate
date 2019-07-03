@@ -4,7 +4,11 @@ import Head from 'next/head'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import theme from '../src/theme'
-import { fetchRequest, fetchRequestWithoutResponse } from '../src/utils/request'
+import {
+  fetchRequest,
+  fetchRequestWithoutResponse,
+  decoratedUrl
+} from '../src/utils/request'
 import {
   getUserDetails,
   getCartId,
@@ -14,8 +18,8 @@ import {
 } from '../src/utils/auth'
 import { StripeProvider, Elements } from 'react-stripe-elements'
 import * as Sentry from '@sentry/browser'
-import Router from "next/router";
-import withGA from "next-ga";
+import Router from 'next/router'
+import withGA from 'next-ga'
 
 Sentry.init({
   dsn: 'https://63f01d00663f40be8678bf3a4dd03cbc@sentry.io/1478089'
@@ -33,10 +37,14 @@ class MyApp extends App {
     param: { name: null },
     skip: 2,
     limit: 9,
+    searchSkip: 2,
+    searchLimit: 9,
     keyword: '',
     stripe: null,
     stripeToken: null,
-    stripeChargeResponse: null
+    stripeChargeResponse: null,
+    searchInitiated: false,
+    loadingProducts: false
   }
   async placeOrder() {
     const { newCartId } = this.state
@@ -172,7 +180,7 @@ class MyApp extends App {
     }
   }
 
-   componentDidMount() {
+  componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
@@ -184,15 +192,53 @@ class MyApp extends App {
 
   setStripe() {
     this.setState({
-       stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe')
-     })
+      stripe: window.Stripe('pk_test_NcwpaplBCuTL6I0THD44heRe')
+    })
   }
 
-  searchProducts(keyword) {
-    fetch(decoratedUrl(`products/search?query_string=${keyword}`))
+  searchProducts(keyword, page, limit) {
+    this.setState({ loadingSearch: true, searchInitiated: true })
+    fetch(
+      decoratedUrl(
+        `products/search?query_string=${keyword}&page=${
+          page ? page : 1
+        }&limit=${limit ? limit : 9}`
+      )
+    )
       .then(response => response.json())
       .then(result => {
-        this.setState({ newProducts: result, keyword })
+        this.setState({ newProducts: result, keyword, loadingSearch: false })
+      })
+  }
+  searchMoreProducts() {
+    const { searchSkip, searchLimit, newProducts, keyword } = this.state
+    this.setState({ loadingProducts: true })
+    fetch(
+      decoratedUrl(
+        `products/search?query_string=${keyword}&page=${searchSkip}&limit=${searchLimit}`
+      )
+    )
+      .then(response => response.json())
+      .then(result => {
+        if (newProducts) {
+          const addMoreProducts = newProducts
+          addMoreProducts.rows.push(...result.rows)
+          console.log('addMoreProducts')
+          console.log(result)
+          this.setState({
+            newProducts: addMoreProducts,
+            keyword,
+            loadingProducts: false,
+            searchSkip: searchSkip + 1
+          })
+        } else {
+          this.setState({
+            newProducts: result,
+            keyword,
+            loadingProducts: false,
+            searchSkip: searchSkip + 1
+          })
+        }
       })
   }
 
@@ -212,7 +258,8 @@ class MyApp extends App {
     //console.log(this.props)
   }
 
-  async getMoreProducts() {
+  async getMoreProducts(search) {
+    this.setState({loadingProducts:true})
     const updateParams = await this.checkParam()
     const { newProducts, skip, limit, param } = this.state
     if (param.name === 'inCategory' || param.name === 'inDepartment') {
@@ -230,7 +277,8 @@ class MyApp extends App {
             rows: prod,
             count: getMoreProducts.count
           },
-          skip: skip + 1
+          skip: skip + 1,
+          loadingProducts: false
         })
         //console.log('getMoreProducts')
         //console.log(getMoreProducts)
@@ -242,7 +290,8 @@ class MyApp extends App {
             rows: prod,
             count: getMoreProducts.count
           },
-          skip: skip + 1
+          skip: skip + 1,
+          loadingProducts: false
         })
       }
     } else {
@@ -260,7 +309,8 @@ class MyApp extends App {
             rows: prod,
             count: getMoreProducts.count
           },
-          skip: skip + 1
+          skip: skip + 1,
+          loadingProducts: false
         })
         //console.log('getMoreProducts')
         //console.log(getMoreProducts)
@@ -272,14 +322,15 @@ class MyApp extends App {
             rows: prod,
             count: getMoreProducts.count
           },
-          skip: skip + 1
+          skip: skip + 1,
+          loadingProducts: false
         })
       }
     }
   }
 
   clearProducts() {
-    this.setState({ newProducts: null, skip: 2 })
+    this.setState({ newProducts: null, skip: 2, searchInitiated: false })
   }
 
   async clearOrderStatus() {
@@ -354,6 +405,7 @@ class MyApp extends App {
                 }
                 getMoreProducts={() => this.getMoreProducts()}
                 searchProducts={keyword => this.searchProducts(keyword)}
+                searchMoreProducts={keyword => this.searchMoreProducts(keyword)}
                 clearProducts={() => this.clearProducts()}
                 clearOrderStatus={() => this.clearOrderStatus()}
                 saveStripeToken={token => this.saveStripeToken(token)}
@@ -370,4 +422,4 @@ class MyApp extends App {
   }
 }
 
-export default withGA("UA-136014742-1", Router)(MyApp)
+export default withGA('UA-136014742-1', Router)(MyApp)

@@ -4,7 +4,6 @@ import { injectStripe, CardElement } from 'react-stripe-elements'
 import theme from '../theme'
 
 class CheckoutForm extends React.Component {
-
   componentDidMount() {
     this.props.setStripe()
   }

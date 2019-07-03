@@ -39,15 +39,8 @@ const styles = {
 }
 class CategoryPage extends Component {
   state = {
-    /*
-    keyword: '',
-    showSignIn: 'hidden',
-    cartItems: [],
-    newProducts: null,
-    param: { name: null },
-    skip: 2,
+    skip: 1,
     limit: 9
-    */
   }
   /*
   searchProducts(keyword) {
@@ -171,6 +164,8 @@ class CategoryPage extends Component {
       newProducts,
       getMoreProducts,
       searchProducts,
+      searchMoreProducts,
+      searchInitiated,
       clearProducts,
       orderStatus,
       clearOrderStatus,
@@ -178,9 +173,12 @@ class CategoryPage extends Component {
       stripeChargeResponse,
       saveStripeToken,
       stripeCharge,
-      setStripe
+      setStripe,
+      loadingProducts
     } = this.props
-
+    console.log(newProducts)
+    console.log('searchInitiated')
+    console.log(loadingProducts)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <OrderStatus
@@ -208,7 +206,7 @@ class CategoryPage extends Component {
         />
         <Hidden only={['sm', 'xs']} implementation="css">
           <NavigationBar
-            onChange={keyword => this.searchProducts(keyword)}
+            onChange={searchProducts}
             bgcolor="#323232"
             color="primary"
             searchBox={true}
@@ -227,24 +225,47 @@ class CategoryPage extends Component {
             clearProducts={clearProducts}
           />
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <ProductContainer
-              getMoreProducts={getMoreProducts}
-              products={newProducts ? newProducts : products}
-              searchMessage={
-                productSearch && productSearch.count > 0
-                  ? `${productSearch.count} ${
-                      productSearch.count > 1 ? 'matches' : 'match'
-                    } found`
-                  : null
-              }
-              productSearchCount={
-                productSearch && productSearch.count > 0 ? true : false
-              }
-              keywordInput={key => this.keywordInput(key)}
-              categories={categories}
-              departments={departments}
-              clearProducts={clearProducts}
-            />
+            {searchInitiated ? (
+              <ProductContainer
+                getMoreProducts={searchMoreProducts}
+                loadingProducts={loadingProducts}
+                products={newProducts ? newProducts : products}
+                searchMessage={
+                  productSearch && productSearch.count > 0
+                    ? `${productSearch.count} ${
+                        productSearch.count > 1 ? 'matches' : 'match'
+                      } found`
+                    : null
+                }
+                productSearchCount={
+                  productSearch && productSearch.count > 0 ? true : false
+                }
+                keywordInput={key => this.keywordInput(key)}
+                categories={categories}
+                departments={departments}
+                clearProducts={clearProducts}
+              />
+            ) : (
+              <ProductContainer
+                getMoreProducts={getMoreProducts}
+                loadingProducts={loadingProducts}
+                products={newProducts ? newProducts : products}
+                searchMessage={
+                  productSearch && productSearch.count > 0
+                    ? `${productSearch.count} ${
+                        productSearch.count > 1 ? 'matches' : 'match'
+                      } found`
+                    : null
+                }
+                productSearchCount={
+                  productSearch && productSearch.count > 0 ? true : false
+                }
+                keywordInput={key => this.keywordInput(key)}
+                categories={categories}
+                departments={departments}
+                clearProducts={clearProducts}
+              />
+            )}
           </div>
           <div className={classes.brandBanner}>
             <CategoryBanner image="static/brand.png" />
