@@ -9,6 +9,7 @@ import theme from '../theme'
 import PlusMinus from './plusMinus'
 import Breadcrumb from './breadcrumbs'
 import Color from './colorAttribute'
+import Size from './sizeAttribute'
 const styles = {
   box: {
     width: '880px',
@@ -313,6 +314,15 @@ class ItemCard extends Component {
                   }
                 })}
                 </div>
+                <div className={classes.colorAttribute}>
+                  {attributes && attributes.map(attribute => {
+                    if (attribute.attribute_name==='Size') {
+                      return(
+                        <Size size={attribute.attribute_value} />
+                      )
+                    }
+                  })}
+                </div>
                 <ButtonComp
                   button={1}
                   style={{ width: '2rem' }}
@@ -499,6 +509,15 @@ class ItemCard extends Component {
                     if (attribute.attribute_name==='Color') {
                       return(
                         <Color color={attribute.attribute_value} />
+                      )
+                    }
+                  })}
+                </div>
+                <div className={classes.colorAttribute}>
+                  {attributes && attributes.map(attribute => {
+                    if (attribute.attribute_name==='Size') {
+                      return(
+                        <Size size={attribute.attribute_value} />
                       )
                     }
                   })}
