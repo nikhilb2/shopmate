@@ -79,10 +79,13 @@ class MyApp extends App {
       method: 'GET'
     })
     let totalItems = 0
+    let newAmount = 0
     const letIterate = await cartItems.forEach(item => {
-      totalItems = totalItems + item.quantity
+      totalItems = totalItems + item.quantity,
+      newAmount = newAmount + item.subtotal
     })
-    this.setState({ newTotalItems: totalItems, newCartItems: cartItems })
+    console.log(newAmount);
+    this.setState({ newTotalItems: totalItems, newCartItems: cartItems, newAmount })
   }
 
   async addToCart(productId) {
@@ -154,6 +157,7 @@ class MyApp extends App {
         body: JSON.stringify({ quantity: quantity })
       }
     )
+
     await this.getCartItems(user.cartId)
   }
 

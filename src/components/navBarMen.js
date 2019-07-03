@@ -179,6 +179,7 @@ class NavBarMen extends Component {
               signInUser={data => this.signInUser(data)}
               toggleCheckOutWithoutUser={() => this.toggleCheckOutWithoutUser()}
               checkOutWithoutUser={checkOutWithoutUser}
+              amount={amount ? `£${Math.round(amount * 100) / 100}` : 0}
               user={
                 newUser ? newUser : user && user.user ? user && user.user : null
               }

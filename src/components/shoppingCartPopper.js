@@ -46,7 +46,8 @@ class ShoppingCartPopper extends Component {
       registerUser,
       signInUser,
       toggleCheckOutWithoutUser,
-      checkOutWithoutUser
+      checkOutWithoutUser,
+      amount
     } = this.props
     return (
       <div>
@@ -90,6 +91,7 @@ class ShoppingCartPopper extends Component {
             signInUser={signInUser}
             toggleCheckOutWithoutUser={toggleCheckOutWithoutUser}
             checkOutWithoutUser={checkOutWithoutUser}
+            amount={amount}
           />
         </Popover>
       </div>
