@@ -41,7 +41,7 @@ class ProductContainer extends Component {
     } = this.props
 
     const { skip, limit, param } = this.state
-    console.log(products);
+    console.log(products)
     return (
       <div style={{ width: '100%' }}>
         <div className={classes.container}>
@@ -114,27 +114,30 @@ class ProductContainer extends Component {
               ))}
           </div>
         </Hidden>
-        <div style={{display:'flex', justifyContent:'center'}}>
-        {loadingProducts ?
-          <img style={{width: '5%'}} src='static/loading.gif' alt="loading" />
-          : null }
-          </div>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {loadingProducts ? (
+            <img
+              style={{ width: '5%' }}
+              src="static/loading.gif"
+              alt="loading"
+            />
+          ) : null}
+        </div>
         <div
           style={{ display: 'flex', justifyContent: 'center', margin: '1rem' }}
         >
           {!loadingProducts && products.count > products.rows.length ? (
-               <ButtonComp
-                          button={1}
-                          fontSize="1rem"
-                          width="fit-content"
-                          onClick={() => {
-                            getMoreProducts()
-                          }}
-                          text="Load More"
-                        />
-
+            <ButtonComp
+              button={1}
+              fontSize="1rem"
+              width="fit-content"
+              onClick={() => {
+                getMoreProducts()
+              }}
+              text="Load More"
+            />
           ) : null}
-          </div>
+        </div>
       </div>
     )
   }

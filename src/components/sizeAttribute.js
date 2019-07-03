@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width:'2rem',
-    margin:'.2rem',
+    width: '2rem',
+    margin: '.2rem',
     borderStyle: 'solid',
     borderWidth: '1px',
     borderColor: 'black',
@@ -14,13 +14,19 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-
-const Size = (props) => {
+const Size = props => {
   const classes = useStyles()
-  const { size, style, onClick } = props
-  return(
-    <div onClick={onClick} className={classes.root}>
-      <Typography variant='caption' >{size} </Typography>
+  const { size, style, onClick, selection } = props
+  return (
+    <div
+      onClick={onClick}
+      className={classes.root}
+      style={{
+        borderColor: selection ? theme.palette.secondary.main : 'black',
+        borderWidth: selection ? '2px' : '1px'
+      }}
+    >
+      <Typography variant="caption">{size} </Typography>
     </div>
   )
 }

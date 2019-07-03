@@ -61,7 +61,6 @@ class ShoppingCart extends Component {
     this.setState({ checkOutWithoutUser: false })
   }
 
-
   render() {
     const {
       classes,
@@ -140,7 +139,9 @@ class ShoppingCart extends Component {
               reduceQuantity={reduceQuantity}
             />
           ) : null}
-          <Typography style={{textAlign:"right"}} variant='h5'>Total: {amount}</Typography>
+          <Typography style={{ textAlign: 'right' }} variant="h5">
+            Total: {amount}
+          </Typography>
         </div>
         <div className={classes.bottomButtons}>
           <ButtonComp

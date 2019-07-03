@@ -65,7 +65,9 @@ class ItemDetailCard extends Component {
       adjustQuantity,
       quantity,
       selectSize,
-      selectColor
+      selectColor,
+      selectedColor,
+      selectedSize
     } = this.props
 
     const { newProductReviews } = this.state
@@ -92,6 +94,8 @@ class ItemDetailCard extends Component {
               quantity={quantity}
               selectColor={selectColor}
               selectSize={selectSize}
+              selectedColor={selectedColor}
+              selectedSize={selectedSize}
             />
           ) : (
             <div>

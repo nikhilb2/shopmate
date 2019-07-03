@@ -74,11 +74,11 @@ class MyApp extends App {
   }
 
   selectColor(color) {
-    this.setState({selectedColor:color})
+    this.setState({ selectedColor: color })
   }
 
   selectSize(size) {
-    this.setState({selectedSize:size})
+    this.setState({ selectedSize: size })
   }
 
   async getCartItems(cartId) {
@@ -89,11 +89,15 @@ class MyApp extends App {
     let totalItems = 0
     let newAmount = 0
     const letIterate = await cartItems.forEach(item => {
-      totalItems = totalItems + item.quantity,
-      newAmount = newAmount + item.subtotal
+      ;(totalItems = totalItems + item.quantity),
+        (newAmount = newAmount + item.subtotal)
     })
-    console.log(newAmount);
-    this.setState({ newTotalItems: totalItems, newCartItems: cartItems, newAmount })
+    console.log(newAmount)
+    this.setState({
+      newTotalItems: totalItems,
+      newCartItems: cartItems,
+      newAmount
+    })
   }
 
   async addToCart(productId) {
@@ -275,7 +279,7 @@ class MyApp extends App {
   }
 
   async getMoreProducts(search) {
-    this.setState({loadingProducts:true})
+    this.setState({ loadingProducts: true })
     const updateParams = await this.checkParam()
     const { newProducts, skip, limit, param } = this.state
     if (param.name === 'inCategory' || param.name === 'inDepartment') {
@@ -346,7 +350,12 @@ class MyApp extends App {
   }
 
   clearProducts() {
-    this.setState({ newProducts: null, skip: 2, searchInitiated: false, param: {name: null} })
+    this.setState({
+      newProducts: null,
+      skip: 2,
+      searchInitiated: false,
+      param: { name: null }
+    })
   }
 
   async clearOrderStatus() {
@@ -398,8 +407,8 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props
-    console.log('check attribute');
-    console.log(this.state);
+    console.log('check attribute')
+    console.log(this.state)
     return (
       <StripeProvider stripe={this.state.stripe}>
         <Elements>

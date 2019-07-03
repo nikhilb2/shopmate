@@ -40,7 +40,17 @@ class ItemCard extends Component {
     mouseOver: false
   }
   render() {
-    const { classes, title, style, color, image, box, id, price, discounted_price } = this.props
+    const {
+      classes,
+      title,
+      style,
+      color,
+      image,
+      box,
+      id,
+      price,
+      discounted_price
+    } = this.props
     const { elevation, mouseOver } = this.state
     return (
       <Link href={id ? { pathname: '/product', query: { prodId: id } } : '/'}>
@@ -83,11 +93,7 @@ class ItemCard extends Component {
               color: theme.palette.secondary.main
             }}
           >
-            {discounted_price > 0 ? (
-              <strike>£{price}</strike>
-            ) : (
-              `£${price}`
-            )}
+            {discounted_price > 0 ? <strike>£{price}</strike> : `£${price}`}
           </Typography>
           {discounted_price > 0 ? (
             <Typography
@@ -96,9 +102,7 @@ class ItemCard extends Component {
                 color: theme.palette.secondary.main
               }}
             >
-              <strong>
-                £{discounted_price}
-              </strong>
+              <strong>£{discounted_price}</strong>
             </Typography>
           ) : null}
           <div className={classes.justify}>

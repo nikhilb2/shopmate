@@ -194,7 +194,7 @@ class CategoryPage extends Component {
           totalItems={
             newTotalItems || newTotalItems === 0 ? newTotalItems : totalItems
           }
-          amount={newAmount || newAmount=== 0 ? newAmount : amount}
+          amount={newAmount || newAmount === 0 ? newAmount : amount}
           bgcolor="#efefef"
           placeOrder={placeOrder}
           user={user}
