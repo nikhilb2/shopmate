@@ -74,6 +74,7 @@ class MyApp extends App {
   }
 
   async getCartItems(cartId) {
+    const { user } = this.props.pageProps
     const cartItems = await fetchRequest(`shoppingcart/${user.cartId}`, {
       method: 'GET'
     })
@@ -144,6 +145,8 @@ class MyApp extends App {
   }
 
   async reduceQuantity(itemId, quantity) {
+    const { user } = this.props.pageProps
+
     const removeFromCartResult = await fetchRequestWithoutResponse(
       `shoppingcart/update/${itemId}`,
       {
@@ -155,6 +158,7 @@ class MyApp extends App {
   }
 
   async removeFromCart(itemId) {
+    const { user } = this.props.pageProps
     //if there's a cartId stored in cookies
     const removeFromCartResult = await fetchRequestWithoutResponse(
       `shoppingcart/removeProduct/${itemId}`,
