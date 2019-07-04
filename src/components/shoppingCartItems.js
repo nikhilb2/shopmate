@@ -11,6 +11,9 @@ import Typography from '@material-ui/core/Typography'
 import PlusMinus from './plusMinus'
 import Button from '@material-ui/core/Button'
 import Close from '@material-ui/icons/Close'
+import Color from './colorAttribute'
+import Size from './sizeAttribute'
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -36,12 +39,18 @@ const useStyles = makeStyles(theme => ({
   },
   titleTableCell: {
     borderBottomWidth: '1px'
+  },
+  attribute: {
+    display: 'flex',
+     marginLeft: '1rem'
   }
 }))
 
 const CartItems = props => {
   const classes = useStyles()
   const { cartItems, addToCart, removeFromCart, reduceQuantity } = props
+  console.log('cartItems');
+  console.log(cartItems);
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -85,6 +94,12 @@ const CartItems = props => {
                     <Typography style={{ marginLeft: '.5rem', margin: '1rem' }}>
                       {row.name}
                     </Typography>
+                    {row.attributes!=='none'
+                    ? <div className={classes.attribute}>
+                        <div style={{marginTop:'auto', marginBottom:'auto'}}><Color color ={row.attributes.split(" ")[0]} /></div>
+                        <div style={{marginTop:'auto', marginBottom:'auto'}}><Size size ={row.attributes.split(" ")[1]} /></div>
+                      </div>
+                    : null}
                     <Button
                       style={{
                         display: 'flex',

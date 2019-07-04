@@ -10,7 +10,8 @@ const useStyles = makeStyles(theme => ({
     borderStyle: 'solid',
     borderWidth: '1px',
     borderColor: 'black',
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#FFFFFF',
+    textAlign: 'center'
   }
 }))
 

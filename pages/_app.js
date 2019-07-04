@@ -102,7 +102,7 @@ class MyApp extends App {
 
   async addToCart(productId) {
     const { user } = this.props.pageProps
-    const { newCartId } = this.state
+    const { newCartId, selectedColor, selectedSize } = this.state
     let addToCartResult = null
     //if there's a cartId stored in cookies
     //console.log(user.cartId);
@@ -113,7 +113,7 @@ class MyApp extends App {
         body: JSON.stringify({
           cart_id: newCartId ? newCartId : user.cartId,
           product_id: productId,
-          attributes: 'none'
+          attributes: selectedColor.attribute_value+" "+selectedSize.attribute_value
         })
       })
       // calculate total items in cart and total amount
@@ -139,7 +139,7 @@ class MyApp extends App {
         body: JSON.stringify({
           cart_id: newCartId,
           product_id: productId,
-          attributes: 'none'
+          attributes: selectedColor.attribute_value+" "+selectedSize.attribute_value
         })
       })
       if (addToCartResult.length > 0) {
