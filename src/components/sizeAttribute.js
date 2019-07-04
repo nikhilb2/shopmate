@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography'
 const useStyles = makeStyles(theme => ({
   root: {
     width: '2rem',
+    maxHeight: '1.5rem',
     margin: '.2rem',
     borderStyle: 'solid',
     borderWidth: '1px',
