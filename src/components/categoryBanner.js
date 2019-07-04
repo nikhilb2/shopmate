@@ -52,7 +52,7 @@ const CategoryBanner = props => {
       style={{ backgroundImage: `url(${image})` }}
     >
       <Typography className={classes.heading} variant="h4">
-        {text}
+
       </Typography>
       <div
         style={{
@@ -65,28 +65,6 @@ const CategoryBanner = props => {
           flexWrap: 'wrap'
         }}
       >
-        {categories &&
-          categories.rows.map(row => (
-            <Link
-              key={row.category_id}
-              href={{
-                pathname: '/category',
-                query: { catId: row.category_id }
-              }}
-            >
-              <Button
-                color="primary"
-                style={{
-                  margin: '0.3rem',
-                  marginRight: '5rem',
-                  color: 'white'
-                }}
-                onClick={() => clearProducts()}
-              >
-                {row.name}
-              </Button>
-            </Link>
-          ))}
       </div>
     </div>
   )

@@ -226,12 +226,15 @@ class CategoryPage extends Component {
           <NavBarMobile categories={categories} back={true} />
         </Hidden>
         <Hidden only={['xs']} implementation="css">
-          <CategoryBanner
-            image="static/menban.png"
-            text="Categories"
-            categories={categories}
-            clearProducts={clearProducts}
-          />
+          {!searchInitiated
+            ?           <CategoryBanner
+                        image="static/menban.png"
+                        text="Categories"
+                        categories={categories}
+                        clearProducts={clearProducts}
+                      />
+            : null}
+
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             {searchInitiated ? (
               <ProductContainer
