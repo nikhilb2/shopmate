@@ -80,7 +80,7 @@ class ItemCard extends Component {
     const attributes = await fetchRequest(`attributes/inProduct/${productId}`, {
       method: 'GET'
     })
-    console.log(attributes)
+    //console.log(attributes)
     this.setState({ attributes })
   }
 
@@ -99,8 +99,8 @@ class ItemCard extends Component {
     const rating = Math.round((totalOfRatings / productReviews.length) * 20)
     const ratingInt =
       Math.round((totalOfRatings / productReviews.length) * 100) / 100
-    ////console.log(rating)
-    ////console.log(ratingInt)
+    //console.log(rating)
+    //console.log(ratingInt)
     this.setState({ rating, ratingInt })
   }
 
@@ -140,8 +140,8 @@ class ItemCard extends Component {
       attributes,
       error
     } = this.state
-    console.log('this.props on item card big')
-    console.log(this.props)
+    //console.log('this.props on item card big')
+    //console.log(this.props)
     return (
       <div
         style={{

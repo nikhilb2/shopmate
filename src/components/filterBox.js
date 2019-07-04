@@ -33,7 +33,7 @@ const FilterBox = props => {
     selectDepartmentName,
     loadingCategories
   } = props
-  ////console.log(departments)
+  //console.log(departments)
   return (
     <div className={classes.container}>
       <Typography className={classes.margin} variant="h5">

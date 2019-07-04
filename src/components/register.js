@@ -18,7 +18,7 @@ class Register extends Component {
   render() {
     const { style, bgcolor, classes, register, error } = this.props
     const { result } = this.state
-    ////console.log(this.props)
+    //console.log(this.props)
     return (
       <Box
         boxShadow={5}

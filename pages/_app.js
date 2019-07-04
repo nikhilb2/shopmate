@@ -65,7 +65,7 @@ class MyApp extends App {
     await this.setState({
       orderStatus
     })
-    ////console.log(orderStatus)
+    //console.log(orderStatus)
     removeCartId()
   }
 
@@ -109,7 +109,7 @@ class MyApp extends App {
       ;(totalItems = totalItems + item.quantity),
         (newAmount = newAmount + Number(item.subtotal))
     })
-    console.log(newAmount)
+    //console.log(newAmount)
     this.setState({
       newTotalItems: totalItems,
       newCartItems: cartItems,
@@ -266,8 +266,8 @@ class MyApp extends App {
         if (newProducts) {
           const addMoreProducts = newProducts
           addMoreProducts.rows.push(...result.rows)
-          console.log('addMoreProducts')
-          console.log(result)
+          //console.log('addMoreProducts')
+          //console.log(result)
           this.setState({
             newProducts: addMoreProducts,
             keyword,
@@ -311,7 +311,7 @@ class MyApp extends App {
       }
     )
     this.setState({ newProducts: products, loadingProducts: false })
-    console.log(products)
+    //console.log(products)
   }
   async getMoreProductsInCategory() {
     const { searchInitiated } = this.state
@@ -479,9 +479,9 @@ class MyApp extends App {
 
   render() {
     const { Component, pageProps } = this.props
-    console.log('check attribute')
-    console.log(this.state)
-    console.log(pageProps)
+    //console.log('check attribute')
+    //console.log(this.state)
+    //console.log(pageProps)
     return (
       <StripeProvider stripe={this.state.stripe}>
         <Elements>

@@ -59,8 +59,8 @@ class ProductPage extends Component {
       departments,
       getCategoriesByDepartment
     } = this.props
-    console.log('this.props on product page')
-    console.log(this.props)
+    //console.log('this.props on product page')
+    //console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <NavBarMen

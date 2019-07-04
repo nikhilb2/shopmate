@@ -49,8 +49,8 @@ const useStyles = makeStyles(theme => ({
 const CartItems = props => {
   const classes = useStyles()
   const { cartItems, addToCart, removeFromCart, reduceQuantity } = props
-  console.log('cartItems')
-  console.log(cartItems)
+  //console.log('cartItems')
+  //console.log(cartItems)
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>

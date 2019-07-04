@@ -38,8 +38,8 @@ const RadioButtons = props => {
     getProducts(catId)
   }
 
-  console.log('categoriesInSelectedDept')
-  console.log(categoriesInSelectedDept)
+  //console.log('categoriesInSelectedDept')
+  //console.log(categoriesInSelectedDept)
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>

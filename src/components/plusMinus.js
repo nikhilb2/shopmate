@@ -44,8 +44,8 @@ const PlusMinus = props => {
     reduceQuantity,
     itemId
   } = props
-  console.log('PlusMinus')
-  console.log(props)
+  //console.log('PlusMinus')
+  //console.log(props)
   return (
     <div className={classes.root}>
       <Typography

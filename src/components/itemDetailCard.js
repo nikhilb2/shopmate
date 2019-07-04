@@ -42,7 +42,7 @@ class ItemDetailCard extends Component {
       }
     )
     if (!result.error) {
-      ////console.log(result)
+      //console.log(result)
       this.setState({ newProductReviews: result })
     } else {
       this.setState({ error: result })

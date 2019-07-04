@@ -182,9 +182,9 @@ class CategoryPage extends Component {
       selectedDepartmentName,
       loadingCategories
     } = this.props
-    console.log(newProducts)
-    console.log('searchInitiated')
-    console.log(loadingProducts)
+    //console.log(newProducts)
+    //console.log('searchInitiated')
+    //console.log(loadingProducts)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <OrderStatus

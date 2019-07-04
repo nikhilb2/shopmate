@@ -61,8 +61,8 @@ const Selection = props => {
     getDepartmentName()
   }, [])
 
-  console.log('props on select')
-  console.log(props)
+  //console.log('props on select')
+  //console.log(props)
 
   return (
     <form autoComplete="off">
