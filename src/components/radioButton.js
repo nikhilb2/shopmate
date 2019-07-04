@@ -17,6 +17,11 @@ const useStyles = makeStyles(theme => ({
   },
   group: {
     margin: theme.spacing(1, 0)
+  },
+  alignLeft: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start'
   }
 }))
 
@@ -51,7 +56,7 @@ const RadioButtons = props => {
                   query: { catId: item.category_id }
                 }}
               >
-                <div onClick={handleChange}>
+                <div className={classes.alignLeft} onClick={handleChange}>
                   <FormControlLabel
                     value={item.name}
                     control={<Radio />}

@@ -63,7 +63,8 @@ class ItemCard extends Component {
     cartId: null,
     itemQuantity: 1,
     categoryName: null,
-    attributes: null
+    attributes: null,
+    error: null
   }
 
   componentDidMount() {
@@ -136,7 +137,8 @@ class ItemCard extends Component {
       image2Click,
       ratingInt,
       rating,
-      attributes
+      attributes,
+      error
     } = this.state
     console.log('this.props on item card big')
     console.log(this.props)
@@ -592,15 +594,28 @@ class ItemCard extends Component {
                       }
                     })}
                 </div>
+                  <Typography variant='caption' style={{color:'red'}}>{error}</Typography>
                 <div style={{ marginTop: '1rem' }}>
-                  <ButtonComp
-                    button={1}
-                    style={{ width: '2rem' }}
-                    text="Add to cart"
-                    onClick={() => {
-                      addToCart(productDetails.product_id)
-                    }}
-                  />
+                  {!selectedColor || !selectedSize
+                    ? <ButtonComp
+                        button={1}
+                        style={{ width: '2rem' }}
+                        text="Add to cart"
+                        onClick={() => {
+                        this.setState({error:"Please Select Item attributes before adding to cart"})
+                      }}
+                      />
+                    :                  <ButtonComp
+                                        button={1}
+                                        style={{ width: '2rem' }}
+                                        text="Add to cart"
+                                        onClick={() => {
+                                          this.setState({error: null})
+                                          addToCart(productDetails.product_id)
+                                        }}
+                                      />
+                  }
+
                 </div>
               </div>
             </div>
