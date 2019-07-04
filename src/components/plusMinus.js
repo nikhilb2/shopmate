@@ -20,7 +20,8 @@ const styles = {
     width: '2rem',
     margin: '0.2rem',
     marginTop: 'auto',
-    marginBottom: 'auto'
+    marginBottom: 'auto',
+    cursor: 'default'
   },
   number: {
     border: '#eeefef',

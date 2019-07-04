@@ -11,7 +11,8 @@ const useStyles = makeStyles(theme => ({
     borderWidth: '1px',
     borderColor: 'black',
     backgroundColor: '#FFFFFF',
-    textAlign: 'center'
+    textAlign: 'center',
+    cursor: 'default'
   }
 }))
 

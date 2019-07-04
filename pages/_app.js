@@ -354,7 +354,9 @@ class MyApp extends App {
       newProducts: null,
       skip: 2,
       searchInitiated: false,
-      param: { name: null }
+      param: { name: null },
+      selectColor: null,
+      selectedSize: null
     })
   }
 
