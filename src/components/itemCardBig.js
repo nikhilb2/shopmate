@@ -319,13 +319,13 @@ class ItemCard extends Component {
                         return (
                           <Color
                             selection={
-                              selectedColor === attribute.attribute_value_id
+                              selectedColor && selectedColor.attribute_value_id === attribute.attribute_value_id
                                 ? true
                                 : false
                             }
                             selectedColor={selectedColor}
                             onClick={() =>
-                              selectColor(attribute.attribute_value_id)
+                              selectColor(attribute)
                             }
                             color={attribute.attribute_value}
                           />
@@ -346,12 +346,12 @@ class ItemCard extends Component {
                         return (
                           <Size
                             selection={
-                              selectedSize === attribute.attribute_value_id
+                              selectedSize && selectedSize.attribute_value_id === attribute.attribute_value_id
                                 ? true
                                 : false
                             }
                             onClick={() =>
-                              selectSize(attribute.attribute_value_id)
+                              selectSize(attribute)
                             }
                             size={attribute.attribute_value}
                           />
@@ -553,12 +553,12 @@ class ItemCard extends Component {
                         return (
                           <Color
                             selection={
-                              selectedColor === attribute.attribute_value_id
+                              selectedColor && selectedColor.attribute_value_id === attribute.attribute_value_id
                                 ? true
                                 : false
                             }
                             onClick={() =>
-                              selectColor(attribute.attribute_value_id)
+                              selectColor(attribute)
                             }
                             color={attribute.attribute_value}
                           />
@@ -579,12 +579,12 @@ class ItemCard extends Component {
                         return (
                           <Size
                             selection={
-                              selectedSize === attribute.attribute_value_id
+                              selectedSize && selectedSize.attribute_value_id === attribute.attribute_value_id
                                 ? true
                                 : false
                             }
                             onClick={() =>
-                              selectSize(attribute.attribute_value_id)
+                              selectSize(attribute)
                             }
                             size={attribute.attribute_value}
                           />
