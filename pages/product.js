@@ -16,6 +16,8 @@ const Product = props => {
 Product.getInitialProps = async ({ req, query }) => {
   const cat = await fetch(decoratedUrl('categories'))
   const catJson = await cat.json()
+  const dep = await fetch(decoratedUrl('departments'))
+  const depJson = await dep.json()
   const product = await fetch(decoratedUrl(`products/${query.prodId}`))
   const prodJson = await product.json()
   const productReviews = await fetch(
@@ -25,7 +27,8 @@ Product.getInitialProps = async ({ req, query }) => {
   return {
     productDetails: prodJson,
     productReviews: prodRevJson,
-    categories: catJson
+    categories: catJson,
+    departments: depJson
   }
 }
 

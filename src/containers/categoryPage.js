@@ -176,7 +176,10 @@ class CategoryPage extends Component {
       loadingProducts,
       getCategoriesByDepartment,
       categoriesInSelectedDept,
-      getProducts
+      getProducts,
+      getMoreProductsInCategory,
+      selectDepartmentName,
+      selectedDepartmentName
     } = this.props
     console.log(newProducts)
     console.log('searchInitiated')
@@ -214,6 +217,9 @@ class CategoryPage extends Component {
             searchBox={true}
             categories={categories}
             clearProducts={clearProducts}
+            selectDepartmentName={selectDepartmentName}
+            departments={departments}
+            getCategoriesByDepartment={getCategoriesByDepartment}
           />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
@@ -249,6 +255,9 @@ class CategoryPage extends Component {
                 getCategoriesByDepartment={getCategoriesByDepartment}
                 categoriesInSelectedDept={categoriesInSelectedDept}
                 getProducts={getProducts}
+                getMoreProductsInCategory={getMoreProductsInCategory}
+                selectedDepartmentName={selectedDepartmentName}
+                selectDepartmentName={selectDepartmentName}
               />
             ) : (
               <ProductContainer
@@ -272,6 +281,9 @@ class CategoryPage extends Component {
                 getCategoriesByDepartment={getCategoriesByDepartment}
                 categoriesInSelectedDept={categoriesInSelectedDept}
                 getProducts={getProducts}
+                getMoreProductsInCategory={getMoreProductsInCategory}
+                selectedDepartmentName={selectedDepartmentName}
+                selectDepartmentName={selectDepartmentName}
               />
             )}
           </div>

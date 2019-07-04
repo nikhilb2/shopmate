@@ -50,8 +50,12 @@ const MenuAppBar = props => {
     searchBox,
     onChange,
     categories,
-    clearProducts
+    clearProducts,
+    departments,
+    selectDepartmentName,
+    getCategoriesByDepartment
   } = props
+  console.log(props);
   return (
     <div className={classes.root}>
       <AppBar
@@ -70,19 +74,9 @@ const MenuAppBar = props => {
           </Link>
           <div className={classes.menu}>
             <div style={{ flexGrow: 1 }}>
-              <Link href="/category">
-                <Button
-                  style={{ textTransform: 'none' }}
-                  color={color ? color : 'black'}
-                  className={classes.title}
-                  onClick={() => clearProducts()}
-                >
-                  All Categories
-                </Button>
-              </Link>
             </div>
-            {categories &&
-              categories.rows.map((item, i) => (
+            {departments &&
+              departments.map((item, i) => (
                 <div style={{ flexGrow: 1 }}>
                   {i < 6 ? (
                     <div>
@@ -90,14 +84,18 @@ const MenuAppBar = props => {
                         key={item.category_id}
                         href={{
                           pathname: '/category',
-                          query: { catId: item.category_id }
+                          query: { depId: item.department_id }
                         }}
                       >
                         <Button
                           style={{ textTransform: 'none' }}
                           color={color ? color : 'black'}
                           className={classes.title}
-                          onClick={() => clearProducts()}
+                          onClick={() => {
+                            clearProducts()
+                            selectDepartmentName(item.name)
+                            getCategoriesByDepartment(item.department_id)
+                          }}
                         >
                           {item.name}
                         </Button>

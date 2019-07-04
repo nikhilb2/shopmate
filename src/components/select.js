@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect }  from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const Selection = props => {
+  const { name, values, label, clearProducts, getCategoriesByDepartment, selectedDepartmentName, router, selectDepartmentName } = props
   const classes = useStyles()
   const [age, setAge] = React.useState('')
   const [open, setOpen] = React.useState(false)
@@ -42,16 +43,31 @@ const Selection = props => {
     setOpen(true)
   }
 
+  async function getDepartmentName() {
+    const dep = await fetchRequest(
+      `departments/${router.query.depId}`,
+      {
+        method: 'GET'
+      }
+    )
+    selectDepartmentName(dep.name)
+  }
+
+  useEffect(() => {
+    getCategoriesByDepartment(router.query.depId)
+    getDepartmentName()
+  }, [])
 
 
 
-  const { name, values, label, clearProducts, getCategoriesByDepartment } = props
-  console.log(values);
-  console.log(categories);
+
+  console.log('props on select');
+  console.log(props);
+
   return (
     <form autoComplete="off">
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="controlled-open-select">{name}</InputLabel>
+        <InputLabel htmlFor="controlled-open-select">{selectedDepartmentName}</InputLabel>
         <Select
           open={open}
           onClose={handleClose}
@@ -59,14 +75,17 @@ const Selection = props => {
           value={age}
           onChange={handleChange}
           inputProps={{
-            name: "test",
+            name: { selectedDepartmentName },
             id: 'controlled-open-select'
           }}
         >
           {values &&
             values.map(item => (
-                <MenuItem value={10}>
-                  <Typography onClick={()=>getCategoriesByDepartment(item.department_id)}>{item.name}</Typography>
+                <MenuItem value={item.name}>
+                  <Typography onClick={()=>{
+                    getCategoriesByDepartment(item.department_id)
+                    selectDepartmentName(item.name)
+                  }}>{item.name}</Typography>
                 </MenuItem>
             ))}
         </Select>

@@ -45,7 +45,10 @@ class MyApp extends App {
     stripeChargeResponse: null,
     searchInitiated: false,
     loadingProducts: false,
-    categoriesInSelectedDept: []
+    loadingMoreProducts: false,
+    categoriesInSelectedDept: [],
+    selectedCategory:null,
+    selectedDepartmentName:null
   }
   async placeOrder() {
     const { newCartId } = this.state
@@ -89,6 +92,10 @@ class MyApp extends App {
 
   selectSize(size) {
     this.setState({ selectedSize: size })
+  }
+
+  selectDepartmentName(name) {
+    this.setState({selectedDepartmentName:name})
   }
 
   async getCartItems(cartId) {
@@ -211,6 +218,7 @@ class MyApp extends App {
   }
 
   componentDidMount() {
+    const { query } = this.props.router
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
@@ -218,6 +226,10 @@ class MyApp extends App {
     }
 
     this.checkParam()
+    if (query.depId) {
+      this.setState({selectedDepartment:query.depId})
+    }
+
   }
 
   setStripe() {
@@ -289,6 +301,7 @@ class MyApp extends App {
   }
 
   async getProducts(catId) {
+    this.setState({skip:2, loadingProducts:true, selectedCategory: catId})
     const { newProducts, skip, limit } = this.state
     const products = await fetchRequest(
       `products/inCategory/${catId}?limit=9`,
@@ -296,10 +309,36 @@ class MyApp extends App {
         method: 'GET'
       }
     )
-    this.setState({newProducts: products})
+    this.setState({newProducts: products, loadingProducts:false})
     console.log(products);
 
   }
+  async getMoreProductsInCategory() {
+
+    const { searchInitiated } = this.state
+    if (searchInitiated) {
+      this.searchMoreProducts()
+    } else {
+      const { pageProps } = this.props
+      this.setState({loadingProducts:true})
+      const { newProducts, skip, limit, selectedCategory, selectedDepartment } = this.state
+      const products = await fetchRequest(
+        selectedCategory
+        ?`products/inCategory/${selectedCategory}?page=${skip}&limit=${limit}`
+        : `products/inDepartment/${selectedDepartment}?page=${skip}&limit=${limit}`,
+        {
+          method: 'GET'
+        }
+      )
+
+        const prod = newProducts ? newProducts : pageProps.products
+        prod.rows.push(...products.rows)
+        this.setState({newProducts:prod, skip: skip+1,loadingProducts: false})
+
+    }
+
+  }
+
   async getMoreProducts(search) {
     this.setState({ loadingProducts: true })
     const updateParams = await this.checkParam()
@@ -433,6 +472,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     console.log('check attribute')
     console.log(this.state)
+    console.log(pageProps);
     return (
       <StripeProvider stripe={this.state.stripe}>
         <Elements>
@@ -465,6 +505,8 @@ class MyApp extends App {
                 setStripe={() => this.setStripe()}
                 getCategoriesByDepartment={(depId) => this.getCategoriesByDepartment(depId)}
                 getProducts={(catId) => this.getProducts(catId)}
+                getMoreProductsInCategory={(catId) => this.getMoreProductsInCategory(catId)}
+                selectDepartmentName={(name) => this.selectDepartmentName(name)}
                 {...this.state}
                 {...pageProps}
               />

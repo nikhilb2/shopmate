@@ -40,7 +40,10 @@ class ProductContainer extends Component {
       loadingProducts,
       getCategoriesByDepartment,
       categoriesInSelectedDept,
-      getProducts
+      getProducts,
+      getMoreProductsInCategory,
+      selectedDepartmentName,
+      selectDepartmentName
     } = this.props
 
     const { skip, limit, param } = this.state
@@ -58,6 +61,8 @@ class ProductContainer extends Component {
                 getCategoriesByDepartment={getCategoriesByDepartment}
                 categoriesInSelectedDept={categoriesInSelectedDept}
                 getProducts={getProducts}
+                selectedDepartmentName={selectedDepartmentName}
+                selectDepartmentName={selectDepartmentName}
               />
             </div>
           </Hidden>
@@ -138,7 +143,7 @@ class ProductContainer extends Component {
               fontSize="1rem"
               width="fit-content"
               onClick={() => {
-                getMoreProducts()
+                getMoreProductsInCategory()
               }}
               text="Load More"
             />

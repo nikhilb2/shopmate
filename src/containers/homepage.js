@@ -43,9 +43,13 @@ class Homepage extends Component {
       placeOrder,
       stripeCharge,
       stripeChargeResponse,
-      setStripe
+      setStripe,
+      departments,
+      selectDepartmentName,
+      getCategoriesByDepartment
     } = this.props
-    //console.log(this.props);
+    console.log('home');
+    console.log(this.props);
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <OrderStatus
@@ -76,6 +80,9 @@ class Homepage extends Component {
           <NavigationBar
             categories={categories}
             clearProducts={clearProducts}
+            departments={departments}
+            selectDepartmentName={selectDepartmentName}
+            getCategoriesByDepartment={getCategoriesByDepartment}
           />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">

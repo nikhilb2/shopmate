@@ -28,7 +28,9 @@ const FilterBox = props => {
     clearProducts,
     getCategoriesByDepartment,
     categoriesInSelectedDept,
-    getProducts
+    getProducts,
+    selectedDepartmentName,
+    selectDepartmentName
   } = props
   ////console.log(departments)
   return (
@@ -42,6 +44,8 @@ const FilterBox = props => {
         label="cat name"
         clearProducts={clearProducts}
         getCategoriesByDepartment={getCategoriesByDepartment}
+        selectedDepartmentName={selectedDepartmentName}
+        selectDepartmentName={selectDepartmentName}
       />
       <Typography className={classes.margin} variant="h5">
         or

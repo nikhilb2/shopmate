@@ -54,7 +54,10 @@ class ProductPage extends Component {
       selectColor,
       selectSize,
       selectedColor,
-      selectedSize
+      selectedSize,
+      selectDepartmentName,
+      departments,
+      getCategoriesByDepartment
     } = this.props
     console.log('this.props on product page')
     console.log(this.props)
@@ -87,6 +90,10 @@ class ProductPage extends Component {
           <NavigationBar
             categories={categories}
             clearProducts={clearProducts}
+            selectDepartmentName={selectDepartmentName}
+            departments={departments}
+            getCategoriesByDepartment={getCategoriesByDepartment}
+            selectDepartmentName={selectDepartmentName}
           />
         </Hidden>
         <Hidden only={['lg', 'md']} implementation="css">
