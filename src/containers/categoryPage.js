@@ -13,7 +13,6 @@ import ProductContainer from './productContainer'
 import SubsContainer from './subscriptionContainer'
 import Footer from '../components/footer'
 import ItemCard from '../components/itemCard'
-import FilterBox from '../components/filterBox'
 import { decoratedUrl } from '../utils/request'
 import { withStyles } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
@@ -174,7 +173,10 @@ class CategoryPage extends Component {
       saveStripeToken,
       stripeCharge,
       setStripe,
-      loadingProducts
+      loadingProducts,
+      getCategoriesByDepartment,
+      categoriesInSelectedDept,
+      getProducts
     } = this.props
     console.log(newProducts)
     console.log('searchInitiated')
@@ -244,6 +246,9 @@ class CategoryPage extends Component {
                 categories={categories}
                 departments={departments}
                 clearProducts={clearProducts}
+                getCategoriesByDepartment={getCategoriesByDepartment}
+                categoriesInSelectedDept={categoriesInSelectedDept}
+                getProducts={getProducts}
               />
             ) : (
               <ProductContainer
@@ -264,6 +269,9 @@ class CategoryPage extends Component {
                 categories={categories}
                 departments={departments}
                 clearProducts={clearProducts}
+                getCategoriesByDepartment={getCategoriesByDepartment}
+                categoriesInSelectedDept={categoriesInSelectedDept}
+                getProducts={getProducts}
               />
             )}
           </div>

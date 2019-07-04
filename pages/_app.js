@@ -44,7 +44,8 @@ class MyApp extends App {
     stripeToken: null,
     stripeChargeResponse: null,
     searchInitiated: false,
-    loadingProducts: false
+    loadingProducts: false,
+    categoriesInSelectedDept: []
   }
   async placeOrder() {
     const { newCartId } = this.state
@@ -63,6 +64,15 @@ class MyApp extends App {
     ////console.log(orderStatus)
     removeCartId()
   }
+
+  async getCategoriesByDepartment(depId) {
+
+    const cats = await fetchRequest(`categories/inDepartment/${depId}`, {
+      method: 'GET'
+    })
+    this.setState({categoriesInSelectedDept:cats})
+  }
+
 
   async createCartId() {
     const newCartId = await fetchRequest('shoppingcart/generateUniqueId', {
@@ -278,6 +288,18 @@ class MyApp extends App {
     //console.log(this.props)
   }
 
+  async getProducts(catId) {
+    const { newProducts, skip, limit } = this.state
+    const products = await fetchRequest(
+      `products/inCategory/${catId}?limit=9`,
+      {
+        method: 'GET'
+      }
+    )
+    this.setState({newProducts: products})
+    console.log(products);
+
+  }
   async getMoreProducts(search) {
     this.setState({ loadingProducts: true })
     const updateParams = await this.checkParam()
@@ -441,6 +463,8 @@ class MyApp extends App {
                 saveStripeToken={token => this.saveStripeToken(token)}
                 stripeCharge={() => this.stripeCharge()}
                 setStripe={() => this.setStripe()}
+                getCategoriesByDepartment={(depId) => this.getCategoriesByDepartment(depId)}
+                getProducts={(catId) => this.getProducts(catId)}
                 {...this.state}
                 {...pageProps}
               />

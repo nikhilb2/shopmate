@@ -2,10 +2,14 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
+import Typography from '@material-ui/core/Typography'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import Button from '@material-ui/core/Button'
 import Link from 'next/link'
+import { withRouter } from 'next/router'
+import { fetchRequest } from '../utils/request'
+
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -18,10 +22,13 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
+
+
 const Selection = props => {
   const classes = useStyles()
   const [age, setAge] = React.useState('')
   const [open, setOpen] = React.useState(false)
+  const [categories, setCategories] = React.useState(null)
 
   function handleChange(event) {
     setAge(event.target.value)
@@ -35,14 +42,12 @@ const Selection = props => {
     setOpen(true)
   }
 
-  function clearProductsAndHandleClose() {
-    //console.log(props)
-    setOpen(false)
-    props.clearProducts()
-  }
 
-  const { name, values, label, clearProducts } = props
 
+
+  const { name, values, label, clearProducts, getCategoriesByDepartment } = props
+  console.log(values);
+  console.log(categories);
   return (
     <form autoComplete="off">
       <FormControl className={classes.formControl}>
@@ -54,27 +59,15 @@ const Selection = props => {
           value={age}
           onChange={handleChange}
           inputProps={{
-            name: { name },
+            name: "test",
             id: 'controlled-open-select'
           }}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-
           {values &&
             values.map(item => (
-              <Link
-                key={item.department_id}
-                href={{
-                  pathname: '/category',
-                  query: { depId: item.department_id }
-                }}
-              >
-                <MenuItem onClick={clearProductsAndHandleClose} value={10}>
-                  {item.name}
+                <MenuItem value={10}>
+                  <Typography onClick={()=>getCategoriesByDepartment(item.department_id)}>{item.name}</Typography>
                 </MenuItem>
-              </Link>
             ))}
         </Select>
       </FormControl>
@@ -82,4 +75,4 @@ const Selection = props => {
   )
 }
 
-export default Selection
+export default withRouter(Selection)

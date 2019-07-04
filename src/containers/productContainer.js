@@ -37,7 +37,10 @@ class ProductContainer extends Component {
       searchMoreProducts,
       clearProducts,
       searchInitiated,
-      loadingProducts
+      loadingProducts,
+      getCategoriesByDepartment,
+      categoriesInSelectedDept,
+      getProducts
     } = this.props
 
     const { skip, limit, param } = this.state
@@ -52,6 +55,9 @@ class ProductContainer extends Component {
                 categories={categories}
                 departments={departments}
                 clearProducts={clearProducts}
+                getCategoriesByDepartment={getCategoriesByDepartment}
+                categoriesInSelectedDept={categoriesInSelectedDept}
+                getProducts={getProducts}
               />
             </div>
           </Hidden>

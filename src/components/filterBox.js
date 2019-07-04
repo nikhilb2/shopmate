@@ -25,7 +25,10 @@ const FilterBox = props => {
     productCount,
     categories,
     departments,
-    clearProducts
+    clearProducts,
+    getCategoriesByDepartment,
+    categoriesInSelectedDept,
+    getProducts
   } = props
   ////console.log(departments)
   return (
@@ -38,11 +41,12 @@ const FilterBox = props => {
         name="Select Department"
         label="cat name"
         clearProducts={clearProducts}
+        getCategoriesByDepartment={getCategoriesByDepartment}
       />
       <Typography className={classes.margin} variant="h5">
         or
       </Typography>
-      <RadioButton values={categories} clearProducts={clearProducts} />
+      <RadioButton getProducts={getProducts} values={categories} categoriesInSelectedDept={categoriesInSelectedDept} clearProducts={clearProducts} />
     </div>
   )
 }
