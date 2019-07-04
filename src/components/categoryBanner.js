@@ -51,9 +51,7 @@ const CategoryBanner = props => {
       className={banner ? classes.imageContainer2 : classes.imageContainer}
       style={{ backgroundImage: `url(${image})` }}
     >
-      <Typography className={classes.heading} variant="h4">
-
-      </Typography>
+      <Typography className={classes.heading} variant="h4" />
       <div
         style={{
           position: 'absolute',
@@ -64,8 +62,7 @@ const CategoryBanner = props => {
           flexDirection: 'column',
           flexWrap: 'wrap'
         }}
-      >
-      </div>
+      />
     </div>
   )
 }

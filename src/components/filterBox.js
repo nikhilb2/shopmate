@@ -48,11 +48,20 @@ const FilterBox = props => {
         selectedDepartmentName={selectedDepartmentName}
         selectDepartmentName={selectDepartmentName}
       />
-      {loadingCategories
-        ? <img style={{width: '50%', marginLeft:'auto', marginLeft:'auto'}} src='static/loading.gif' alt='loading' />
-        :<RadioButton getProducts={getProducts} values={categories} categoriesInSelectedDept={categoriesInSelectedDept} clearProducts={clearProducts} />
-      }
-
+      {loadingCategories ? (
+        <img
+          style={{ width: '50%', marginLeft: 'auto', marginLeft: 'auto' }}
+          src="static/loading.gif"
+          alt="loading"
+        />
+      ) : (
+        <RadioButton
+          getProducts={getProducts}
+          values={categories}
+          categoriesInSelectedDept={categoriesInSelectedDept}
+          clearProducts={clearProducts}
+        />
+      )}
     </div>
   )
 }

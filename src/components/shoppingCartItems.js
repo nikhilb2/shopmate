@@ -42,15 +42,15 @@ const useStyles = makeStyles(theme => ({
   },
   attribute: {
     display: 'flex',
-     marginLeft: '1rem'
+    marginLeft: '1rem'
   }
 }))
 
 const CartItems = props => {
   const classes = useStyles()
   const { cartItems, addToCart, removeFromCart, reduceQuantity } = props
-  console.log('cartItems');
-  console.log(cartItems);
+  console.log('cartItems')
+  console.log(cartItems)
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -66,8 +66,8 @@ const CartItems = props => {
           </TableRow>
         </TableHead>
         <TableBody shadow={0}>
-          {cartItems.map((row,i) => (
-            <TableRow key={row.name+i}>
+          {cartItems.map((row, i) => (
+            <TableRow key={row.name + i}>
               <TableCell
                 component="th"
                 scope="row"
@@ -94,12 +94,20 @@ const CartItems = props => {
                     <Typography style={{ marginLeft: '.5rem', margin: '1rem' }}>
                       {row.name}
                     </Typography>
-                    {row.attributes!=='none'
-                    ? <div className={classes.attribute}>
-                        <div style={{marginTop:'auto', marginBottom:'auto'}}><Color color ={row.attributes.split(" ")[0]} /></div>
-                        <div style={{marginTop:'auto', marginBottom:'auto'}}><Size size ={row.attributes.split(" ")[1]} /></div>
+                    {row.attributes !== 'none' ? (
+                      <div className={classes.attribute}>
+                        <div
+                          style={{ marginTop: 'auto', marginBottom: 'auto' }}
+                        >
+                          <Color color={row.attributes.split(' ')[0]} />
+                        </div>
+                        <div
+                          style={{ marginTop: 'auto', marginBottom: 'auto' }}
+                        >
+                          <Size size={row.attributes.split(' ')[1]} />
+                        </div>
                       </div>
-                    : null}
+                    ) : null}
                     <Button
                       style={{
                         display: 'flex',

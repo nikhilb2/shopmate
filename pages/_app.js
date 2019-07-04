@@ -47,8 +47,8 @@ class MyApp extends App {
     loadingProducts: false,
     loadingMoreProducts: false,
     categoriesInSelectedDept: [],
-    selectedCategory:null,
-    selectedDepartmentName:null,
+    selectedCategory: null,
+    selectedDepartmentName: null,
     loadingCategories: false
   }
   async placeOrder() {
@@ -70,13 +70,12 @@ class MyApp extends App {
   }
 
   async getCategoriesByDepartment(depId) {
-    this.setState({loadingCategories:true})
+    this.setState({ loadingCategories: true })
     const cats = await fetchRequest(`categories/inDepartment/${depId}`, {
       method: 'GET'
     })
-    this.setState({categoriesInSelectedDept:cats, loadingCategories: false})
+    this.setState({ categoriesInSelectedDept: cats, loadingCategories: false })
   }
-
 
   async createCartId() {
     const newCartId = await fetchRequest('shoppingcart/generateUniqueId', {
@@ -96,7 +95,7 @@ class MyApp extends App {
   }
 
   selectDepartmentName(name) {
-    this.setState({selectedDepartmentName:name})
+    this.setState({ selectedDepartmentName: name })
   }
 
   async getCartItems(cartId) {
@@ -131,7 +130,8 @@ class MyApp extends App {
         body: JSON.stringify({
           cart_id: newCartId ? newCartId : user.cartId,
           product_id: productId,
-          attributes: selectedColor.attribute_value+" "+selectedSize.attribute_value
+          attributes:
+            selectedColor.attribute_value + ' ' + selectedSize.attribute_value
         })
       })
       // calculate total items in cart and total amount
@@ -157,7 +157,8 @@ class MyApp extends App {
         body: JSON.stringify({
           cart_id: newCartId,
           product_id: productId,
-          attributes: selectedColor.attribute_value+" "+selectedSize.attribute_value
+          attributes:
+            selectedColor.attribute_value + ' ' + selectedSize.attribute_value
         })
       })
       if (addToCartResult.length > 0) {
@@ -228,9 +229,8 @@ class MyApp extends App {
 
     this.checkParam()
     if (query.depId) {
-      this.setState({selectedDepartment:query.depId})
+      this.setState({ selectedDepartment: query.depId })
     }
-
   }
 
   setStripe() {
@@ -302,7 +302,7 @@ class MyApp extends App {
   }
 
   async getProducts(catId) {
-    this.setState({skip:2, loadingProducts:true, selectedCategory: catId})
+    this.setState({ skip: 2, loadingProducts: true, selectedCategory: catId })
     const { newProducts, skip, limit } = this.state
     const products = await fetchRequest(
       `products/inCategory/${catId}?limit=9`,
@@ -310,34 +310,40 @@ class MyApp extends App {
         method: 'GET'
       }
     )
-    this.setState({newProducts: products, loadingProducts:false})
-    console.log(products);
-
+    this.setState({ newProducts: products, loadingProducts: false })
+    console.log(products)
   }
   async getMoreProductsInCategory() {
-
     const { searchInitiated } = this.state
     if (searchInitiated) {
       this.searchMoreProducts()
     } else {
       const { pageProps } = this.props
-      this.setState({loadingProducts:true})
-      const { newProducts, skip, limit, selectedCategory, selectedDepartment } = this.state
+      this.setState({ loadingProducts: true })
+      const {
+        newProducts,
+        skip,
+        limit,
+        selectedCategory,
+        selectedDepartment
+      } = this.state
       const products = await fetchRequest(
         selectedCategory
-        ?`products/inCategory/${selectedCategory}?page=${skip}&limit=${limit}`
-        : `products/inDepartment/${selectedDepartment}?page=${skip}&limit=${limit}`,
+          ? `products/inCategory/${selectedCategory}?page=${skip}&limit=${limit}`
+          : `products/inDepartment/${selectedDepartment}?page=${skip}&limit=${limit}`,
         {
           method: 'GET'
         }
       )
 
-        const prod = newProducts ? newProducts : pageProps.products
-        prod.rows.push(...products.rows)
-        this.setState({newProducts:prod, skip: skip+1,loadingProducts: false})
-
+      const prod = newProducts ? newProducts : pageProps.products
+      prod.rows.push(...products.rows)
+      this.setState({
+        newProducts: prod,
+        skip: skip + 1,
+        loadingProducts: false
+      })
     }
-
   }
 
   async getMoreProducts(search) {
@@ -475,7 +481,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props
     console.log('check attribute')
     console.log(this.state)
-    console.log(pageProps);
+    console.log(pageProps)
     return (
       <StripeProvider stripe={this.state.stripe}>
         <Elements>
@@ -506,10 +512,14 @@ class MyApp extends App {
                 saveStripeToken={token => this.saveStripeToken(token)}
                 stripeCharge={() => this.stripeCharge()}
                 setStripe={() => this.setStripe()}
-                getCategoriesByDepartment={(depId) => this.getCategoriesByDepartment(depId)}
-                getProducts={(catId) => this.getProducts(catId)}
-                getMoreProductsInCategory={(catId) => this.getMoreProductsInCategory(catId)}
-                selectDepartmentName={(name) => this.selectDepartmentName(name)}
+                getCategoriesByDepartment={depId =>
+                  this.getCategoriesByDepartment(depId)
+                }
+                getProducts={catId => this.getProducts(catId)}
+                getMoreProductsInCategory={catId =>
+                  this.getMoreProductsInCategory(catId)
+                }
+                selectDepartmentName={name => this.selectDepartmentName(name)}
                 {...this.state}
                 {...pageProps}
               />

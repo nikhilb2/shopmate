@@ -321,14 +321,14 @@ class ItemCard extends Component {
                         return (
                           <Color
                             selection={
-                              selectedColor && selectedColor.attribute_value_id === attribute.attribute_value_id
+                              selectedColor &&
+                              selectedColor.attribute_value_id ===
+                                attribute.attribute_value_id
                                 ? true
                                 : false
                             }
                             selectedColor={selectedColor}
-                            onClick={() =>
-                              selectColor(attribute)
-                            }
+                            onClick={() => selectColor(attribute)}
                             color={attribute.attribute_value}
                           />
                         )
@@ -348,13 +348,13 @@ class ItemCard extends Component {
                         return (
                           <Size
                             selection={
-                              selectedSize && selectedSize.attribute_value_id === attribute.attribute_value_id
+                              selectedSize &&
+                              selectedSize.attribute_value_id ===
+                                attribute.attribute_value_id
                                 ? true
                                 : false
                             }
-                            onClick={() =>
-                              selectSize(attribute)
-                            }
+                            onClick={() => selectSize(attribute)}
                             size={attribute.attribute_value}
                           />
                         )
@@ -555,13 +555,13 @@ class ItemCard extends Component {
                         return (
                           <Color
                             selection={
-                              selectedColor && selectedColor.attribute_value_id === attribute.attribute_value_id
+                              selectedColor &&
+                              selectedColor.attribute_value_id ===
+                                attribute.attribute_value_id
                                 ? true
                                 : false
                             }
-                            onClick={() =>
-                              selectColor(attribute)
-                            }
+                            onClick={() => selectColor(attribute)}
                             color={attribute.attribute_value}
                           />
                         )
@@ -581,41 +581,46 @@ class ItemCard extends Component {
                         return (
                           <Size
                             selection={
-                              selectedSize && selectedSize.attribute_value_id === attribute.attribute_value_id
+                              selectedSize &&
+                              selectedSize.attribute_value_id ===
+                                attribute.attribute_value_id
                                 ? true
                                 : false
                             }
-                            onClick={() =>
-                              selectSize(attribute)
-                            }
+                            onClick={() => selectSize(attribute)}
                             size={attribute.attribute_value}
                           />
                         )
                       }
                     })}
                 </div>
-                  <Typography variant='caption' style={{color:'red'}}>{error}</Typography>
+                <Typography variant="caption" style={{ color: 'red' }}>
+                  {error}
+                </Typography>
                 <div style={{ marginTop: '1rem' }}>
-                  {!selectedColor || !selectedSize
-                    ? <ButtonComp
-                        button={1}
-                        style={{ width: '2rem' }}
-                        text="Add to cart"
-                        onClick={() => {
-                        this.setState({error:"Please Select Item attributes before adding to cart"})
+                  {!selectedColor || !selectedSize ? (
+                    <ButtonComp
+                      button={1}
+                      style={{ width: '2rem' }}
+                      text="Add to cart"
+                      onClick={() => {
+                        this.setState({
+                          error:
+                            'Please Select Item attributes before adding to cart'
+                        })
                       }}
-                      />
-                    :                  <ButtonComp
-                                        button={1}
-                                        style={{ width: '2rem' }}
-                                        text="Add to cart"
-                                        onClick={() => {
-                                          this.setState({error: null})
-                                          addToCart(productDetails.product_id)
-                                        }}
-                                      />
-                  }
-
+                    />
+                  ) : (
+                    <ButtonComp
+                      button={1}
+                      style={{ width: '2rem' }}
+                      text="Add to cart"
+                      onClick={() => {
+                        this.setState({ error: null })
+                        addToCart(productDetails.product_id)
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </div>

@@ -48,8 +48,8 @@ class Homepage extends Component {
       selectDepartmentName,
       getCategoriesByDepartment
     } = this.props
-    console.log('home');
-    console.log(this.props);
+    console.log('home')
+    console.log(this.props)
     return (
       <div style={{ backgroundColor: '#F7F7F7' }}>
         <OrderStatus

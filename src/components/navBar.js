@@ -55,7 +55,7 @@ const MenuAppBar = props => {
     selectDepartmentName,
     getCategoriesByDepartment
   } = props
-  console.log(props);
+  console.log(props)
   return (
     <div className={classes.root}>
       <AppBar
@@ -73,8 +73,7 @@ const MenuAppBar = props => {
             </Button>
           </Link>
           <div className={classes.menu}>
-            <div style={{ flexGrow: 1 }}>
-            </div>
+            <div style={{ flexGrow: 1 }} />
             {departments &&
               departments.map((item, i) => (
                 <div style={{ flexGrow: 1 }}>

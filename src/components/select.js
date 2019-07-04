@@ -1,4 +1,4 @@
-import React, { useEffect }  from 'react'
+import React, { useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -9,7 +9,6 @@ import Button from '@material-ui/core/Button'
 import Link from 'next/link'
 import { withRouter } from 'next/router'
 import { fetchRequest } from '../utils/request'
-
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -22,10 +21,17 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-
-
 const Selection = props => {
-  const { name, values, label, clearProducts, getCategoriesByDepartment, selectedDepartmentName, router, selectDepartmentName } = props
+  const {
+    name,
+    values,
+    label,
+    clearProducts,
+    getCategoriesByDepartment,
+    selectedDepartmentName,
+    router,
+    selectDepartmentName
+  } = props
   const classes = useStyles()
   const [age, setAge] = React.useState('')
   const [open, setOpen] = React.useState(false)
@@ -44,12 +50,9 @@ const Selection = props => {
   }
 
   async function getDepartmentName() {
-    const dep = await fetchRequest(
-      `departments/${router.query.depId}`,
-      {
-        method: 'GET'
-      }
-    )
+    const dep = await fetchRequest(`departments/${router.query.depId}`, {
+      method: 'GET'
+    })
     selectDepartmentName(dep.name)
   }
 
@@ -58,16 +61,15 @@ const Selection = props => {
     getDepartmentName()
   }, [])
 
-
-
-
-  console.log('props on select');
-  console.log(props);
+  console.log('props on select')
+  console.log(props)
 
   return (
     <form autoComplete="off">
       <FormControl className={classes.formControl}>
-        <InputLabel htmlFor="controlled-open-select">{selectedDepartmentName}</InputLabel>
+        <InputLabel htmlFor="controlled-open-select">
+          {selectedDepartmentName}
+        </InputLabel>
         <Select
           open={open}
           onClose={handleClose}
@@ -81,12 +83,16 @@ const Selection = props => {
         >
           {values &&
             values.map(item => (
-                <MenuItem value={item.name}>
-                  <Typography onClick={()=>{
+              <MenuItem value={item.name}>
+                <Typography
+                  onClick={() => {
                     getCategoriesByDepartment(item.department_id)
                     selectDepartmentName(item.name)
-                  }}>{item.name}</Typography>
-                </MenuItem>
+                  }}
+                >
+                  {item.name}
+                </Typography>
+              </MenuItem>
             ))}
         </Select>
       </FormControl>

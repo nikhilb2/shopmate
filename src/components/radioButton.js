@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 const RadioButtons = props => {
   const classes = useStyles()
   const [value, setValue] = React.useState('female')
-const { values, clearProducts, categoriesInSelectedDept, getProducts } = props
+  const { values, clearProducts, categoriesInSelectedDept, getProducts } = props
   function handleChange(event) {
     setValue(event.target.value)
     clearProducts()
@@ -38,9 +38,8 @@ const { values, clearProducts, categoriesInSelectedDept, getProducts } = props
     getProducts(catId)
   }
 
-
-  console.log('categoriesInSelectedDept');
-  console.log(categoriesInSelectedDept);
+  console.log('categoriesInSelectedDept')
+  console.log(categoriesInSelectedDept)
   return (
     <div className={classes.root}>
       <FormControl component="fieldset" className={classes.formControl}>
@@ -54,13 +53,16 @@ const { values, clearProducts, categoriesInSelectedDept, getProducts } = props
         >
           {categoriesInSelectedDept &&
             categoriesInSelectedDept.map(item => (
-                <div className={classes.alignLeft} onClick={() => getProd(item.category_id)}>
-                  <FormControlLabel
-                    value={item.name}
-                    control={<Radio />}
-                    label={item.name}
-                  />
-                </div>
+              <div
+                className={classes.alignLeft}
+                onClick={() => getProd(item.category_id)}
+              >
+                <FormControlLabel
+                  value={item.name}
+                  control={<Radio />}
+                  label={item.name}
+                />
+              </div>
             ))}
         </RadioGroup>
       </FormControl>

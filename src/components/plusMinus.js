@@ -53,7 +53,7 @@ const PlusMinus = props => {
         style={{ marginLeft: 0 }}
         onClick={() => {
           if (reduceQuantity) {
-            reduceQuantity(itemId, quantity -1)
+            reduceQuantity(itemId, quantity - 1)
           } else {
             adjustQuantity(-1)
           }
