@@ -66,8 +66,8 @@ const CartItems = props => {
           </TableRow>
         </TableHead>
         <TableBody shadow={0}>
-          {cartItems.map(row => (
-            <TableRow key={row.name}>
+          {cartItems.map((row,i) => (
+            <TableRow key={row.name+i}>
               <TableCell
                 component="th"
                 scope="row"
@@ -118,10 +118,9 @@ const CartItems = props => {
                 <PlusMinus
                   addToCart={() => addToCart(row.product_id)}
                   quantity={row.quantity}
+                  itemId={row.item_id}
                   upddateBag={true}
-                  reduceQuantity={() =>
-                    reduceQuantity(row.item_id, row.quantity - 1)
-                  }
+                  reduceQuantity={reduceQuantity}
                 />
               </TableCell>
               <TableCell className={classes.tableCell} align="right">

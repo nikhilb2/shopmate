@@ -179,7 +179,8 @@ class CategoryPage extends Component {
       getProducts,
       getMoreProductsInCategory,
       selectDepartmentName,
-      selectedDepartmentName
+      selectedDepartmentName,
+      loadingCategories
     } = this.props
     console.log(newProducts)
     console.log('searchInitiated')
@@ -261,6 +262,7 @@ class CategoryPage extends Component {
                 getMoreProductsInCategory={getMoreProductsInCategory}
                 selectedDepartmentName={selectedDepartmentName}
                 selectDepartmentName={selectDepartmentName}
+                loadingCategories={loadingCategories}
               />
             ) : (
               <ProductContainer
@@ -287,6 +289,7 @@ class CategoryPage extends Component {
                 getMoreProductsInCategory={getMoreProductsInCategory}
                 selectedDepartmentName={selectedDepartmentName}
                 selectDepartmentName={selectDepartmentName}
+                loadingCategories={loadingCategories}
               />
             )}
           </div>

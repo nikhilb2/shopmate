@@ -41,17 +41,19 @@ const PlusMinus = props => {
     upddateBag,
     adjustQuantity,
     addToCart,
-    reduceQuantity
+    reduceQuantity,
+    itemId
   } = props
-  //console.log(props)
+  console.log('PlusMinus')
+  console.log(props)
   return (
     <div className={classes.root}>
       <Typography
         className={classes.round}
         style={{ marginLeft: 0 }}
         onClick={() => {
-          if (upddateBag) {
-            reduceQuantity()
+          if (reduceQuantity) {
+            reduceQuantity(itemId, quantity -1)
           } else {
             adjustQuantity(-1)
           }
@@ -63,8 +65,8 @@ const PlusMinus = props => {
       <Typography
         className={classes.round}
         onClick={() => {
-          if (upddateBag) {
-            addToCart()
+          if (reduceQuantity) {
+            reduceQuantity(itemId, quantity + 1)
           } else {
             adjustQuantity(1)
           }

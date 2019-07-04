@@ -48,7 +48,8 @@ class MyApp extends App {
     loadingMoreProducts: false,
     categoriesInSelectedDept: [],
     selectedCategory:null,
-    selectedDepartmentName:null
+    selectedDepartmentName:null,
+    loadingCategories: false
   }
   async placeOrder() {
     const { newCartId } = this.state
@@ -69,11 +70,11 @@ class MyApp extends App {
   }
 
   async getCategoriesByDepartment(depId) {
-
+    this.setState({loadingCategories:true})
     const cats = await fetchRequest(`categories/inDepartment/${depId}`, {
       method: 'GET'
     })
-    this.setState({categoriesInSelectedDept:cats})
+    this.setState({categoriesInSelectedDept:cats, loadingCategories: false})
   }
 
 
@@ -107,7 +108,7 @@ class MyApp extends App {
     let newAmount = 0
     const letIterate = await cartItems.forEach(item => {
       ;(totalItems = totalItems + item.quantity),
-        (newAmount = newAmount + item.subtotal)
+        (newAmount = newAmount + Number(item.subtotal))
     })
     console.log(newAmount)
     this.setState({
@@ -239,7 +240,7 @@ class MyApp extends App {
   }
 
   searchProducts(keyword, page, limit) {
-    this.setState({ loadingSearch: true, searchInitiated: true })
+    this.setState({ loadingSearch: true, searchInitiated: true, searchSkip: 2 })
     fetch(
       decoratedUrl(
         `products/search?query_string=${keyword}&page=${
@@ -417,7 +418,9 @@ class MyApp extends App {
       searchInitiated: false,
       param: { name: null },
       selectColor: null,
-      selectedSize: null
+      selectedSize: null,
+      searchSkip: 2,
+      keyword: ''
     })
   }
 

@@ -43,7 +43,8 @@ class ProductContainer extends Component {
       getProducts,
       getMoreProductsInCategory,
       selectedDepartmentName,
-      selectDepartmentName
+      selectDepartmentName,
+      loadingCategories
     } = this.props
 
     const { skip, limit, param } = this.state
@@ -63,6 +64,7 @@ class ProductContainer extends Component {
                 getProducts={getProducts}
                 selectedDepartmentName={selectedDepartmentName}
                 selectDepartmentName={selectDepartmentName}
+                loadingCategories={loadingCategories}
               />
             </div>
           </Hidden>

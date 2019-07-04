@@ -30,7 +30,8 @@ const FilterBox = props => {
     categoriesInSelectedDept,
     getProducts,
     selectedDepartmentName,
-    selectDepartmentName
+    selectDepartmentName,
+    loadingCategories
   } = props
   ////console.log(departments)
   return (
@@ -47,10 +48,11 @@ const FilterBox = props => {
         selectedDepartmentName={selectedDepartmentName}
         selectDepartmentName={selectDepartmentName}
       />
-      <Typography className={classes.margin} variant="h5">
-        or
-      </Typography>
-      <RadioButton getProducts={getProducts} values={categories} categoriesInSelectedDept={categoriesInSelectedDept} clearProducts={clearProducts} />
+      {loadingCategories
+        ? <img style={{width: '50%', marginLeft:'auto', marginLeft:'auto'}} src='static/loading.gif' alt='loading' />
+        :<RadioButton getProducts={getProducts} values={categories} categoriesInSelectedDept={categoriesInSelectedDept} clearProducts={clearProducts} />
+      }
+
     </div>
   )
 }
