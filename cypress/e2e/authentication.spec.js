@@ -1,4 +1,4 @@
-
+/*
 
 describe('Authentication Module', () =>{
   beforeEach(() => {
@@ -22,7 +22,7 @@ describe('Login flow with invalid credentials', () =>{
     cy.contains('Sign In').click()
     cy.get('#outlined-email-input').type('fake')
     cy.get('#outlined-password-input').type('fake')
-    cy.contains('Sign in').click()
+    cy.get('#signInButton').contains('Sign In').click()
 
   })
 })
@@ -36,10 +36,10 @@ describe('Login flow with valid credentials', () =>{
     cy.contains('Sign In').click()
     cy.get('#outlined-email-input').type('nikhilbhatia2004@gmail.com')
     cy.get('#outlined-password-input').type('25021989')
-    cy.contains('Sign in').click()
+    cy.get('#signInButton').contains('Sign In').click()
   })
 })
-
+*/
 describe('Sign Up with invalid and then valid credentials', () =>{
   beforeEach(() => {
     cy.visit('/')
@@ -48,11 +48,11 @@ describe('Sign Up with invalid and then valid credentials', () =>{
   it(('shows home page'), () => {
     cy.contains('Register').click()
     cy.get('#outlined-name-input').type('Alexander')
-    cy.get('#outlined-email-input').type('invalidEmail@invalid')
+    cy.get('#outlined-email-input').type('invalidEmailinvalid')
     cy.get('#outlined-password-input').type('test')
-    cy.contains('Register Now').click()
+    cy.get('#registerButton').contains('Register').click()
     let r = Math.random().toString(36).substring(7);
-    cy.get('#outlined-email-input').type(r+'.com')
-    cy.contains('Register Now').click()
+    cy.get('#outlined-email-input').type('@'+r+'.com')
+    cy.get('#registerButton').contains('Register').click()
   })
 })

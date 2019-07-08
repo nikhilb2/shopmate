@@ -33,7 +33,7 @@ class Register extends Component {
         </div>
         <div>
           <TextField
-            id="outlined-email-input"
+            id="outlined-name-input"
             label="Name"
             className={classes.textField}
             type="text"
@@ -67,7 +67,7 @@ class Register extends Component {
             onChange={e => this.setState({ password: e.target.value })}
           />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <div id="registerButton" style={{ display: 'flex', justifyContent: 'center' }}>
           <ButtonComp
             button={1}
             fontSize=".8rem"
