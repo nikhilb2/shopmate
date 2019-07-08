@@ -302,7 +302,7 @@ class ItemCard extends Component {
                 >
                   Quantity
                 </Typography>
-                <div style={{ display: 'flex' }}>
+                <div id='plus-minus' style={{ display: 'flex' }}>
                   <PlusMinus
                     quantity={quantity}
                     adjustQuantity={adjustQuantity}
@@ -553,6 +553,7 @@ class ItemCard extends Component {
                     attributes.map(attribute => {
                       if (attribute.attribute_name === 'Color') {
                         return (
+                          <div id={attribute.attribute_value}>
                           <Color
                             selection={
                               selectedColor &&
@@ -564,6 +565,7 @@ class ItemCard extends Component {
                             onClick={() => selectColor(attribute)}
                             color={attribute.attribute_value}
                           />
+                          </div>
                         )
                       }
                     })}
@@ -579,6 +581,7 @@ class ItemCard extends Component {
                     attributes.map(attribute => {
                       if (attribute.attribute_name === 'Size') {
                         return (
+                          <div id={attribute.attribute_value}>
                           <Size
                             selection={
                               selectedSize &&
@@ -590,6 +593,7 @@ class ItemCard extends Component {
                             onClick={() => selectSize(attribute)}
                             size={attribute.attribute_value}
                           />
+                          </div>
                         )
                       }
                     })}
@@ -597,7 +601,7 @@ class ItemCard extends Component {
                 <Typography variant="caption" style={{ color: 'red' }}>
                   {error}
                 </Typography>
-                <div style={{ marginTop: '1rem' }}>
+                <div style={{ marginTop: '1rem' }} id='addToCart'>
                   {!selectedColor || !selectedSize ? (
                     <ButtonComp
                       button={1}

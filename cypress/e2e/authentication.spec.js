@@ -45,7 +45,7 @@ describe('Sign Up with invalid and then valid credentials', () =>{
     cy.visit('/')
   })
 
-  it(('shows home page'), () => {
+  it(('Flow'), () => {
     cy.contains('Register').click()
     cy.get('#outlined-name-input').type('Alexander')
     cy.get('#outlined-email-input').type('invalidEmailinvalid')
