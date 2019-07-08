@@ -66,6 +66,7 @@ describe('Add to Cart with selecting attributes with multiple quantities', () =>
     cy.get('#outlined-email-input').type('nikhilbhatia2004@gmail.com')
     cy.get('#outlined-password-input').type('25021989')
     cy.get('#signInButton').contains('Sign In').click()
+    cy.get('#checkout').contains('Checkout').click()
 
   })
 })
