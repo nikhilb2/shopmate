@@ -59,9 +59,11 @@ class ShoppingCartPopper extends Component {
           }}
           onClick={event => this.setState({ anchorEl: event.currentTarget })}
         >
+        <div id='shoppingCartPopper'>
           <Badge badgeContent={countItems} color="secondary">
             {text}
           </Badge>
+          </div>
         </Button>
         <Popover
           id={id}

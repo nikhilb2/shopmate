@@ -110,7 +110,9 @@ class ShoppingCart extends Component {
             <Typography variant="h5" style={{ textAlign: 'center' }}>
               Please Signin then checkout
             </Typography>
+            <div id="checkOutWithoutUser">
             <UserLogin registerUser={registerUser} signInUser={signInUser} />
+            </div>
           </Box>
         ) : null}
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -143,7 +145,7 @@ class ShoppingCart extends Component {
             Total: {amount}
           </Typography>
         </div>
-        <div className={classes.bottomButtons}>
+        <div className={classes.bottomButtons} id='checkout'>
           <ButtonComp
             text="Back to Shop"
             width="fit-content"

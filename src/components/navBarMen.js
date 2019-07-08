@@ -165,6 +165,7 @@ class NavBarMen extends Component {
                 </Typography>
               </div>
             </Hidden>
+
             <ShoppingCartPopper
               cartItems={cartItems}
               text={this.workIcon()}
