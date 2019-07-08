@@ -24,9 +24,16 @@
     "build": "next build",
     "start": "next start",
     "now-build": "next build",
-    "format": "prettier --single-quote --no-semi --write \"{src/**/*.js,pages/**/*.js,hocs/**/*.js}\""
+    "format": "prettier --single-quote --no-semi --write \"{src/**/*.js,pages/**/*.js,hocs/**/*.js}\"",
+    "cy:cli": "cypress run",
+    "cy:gui": "cypress open",
+    "test:e2e": "is-ci \"test:e2e:cli\" \"test:e2e:gui\"",
+    "test:e2e:cli": "yarn build && start-server-and-test prod http://localhost:3000 cy:cli",
+    "test:e2e:gui": "start-server-and-test dev http://localhost:3000 cy:gui"
   },
   "devDependencies": {
-    "prettier": "1.17.1"
+    "cypress": "^3.3.2",
+    "prettier": "1.17.1",
+    "start-server-and-test": "^1.9.1"
   }
 }
