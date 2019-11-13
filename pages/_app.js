@@ -483,50 +483,10 @@ class MyApp extends App {
     //console.log(this.state)
     //console.log(pageProps)
     return (
-      <StripeProvider stripe={this.state.stripe}>
-        <Elements>
-          <Container>
-            <Head>
-              <title>My page</title>
-            </Head>
-            <ThemeProvider theme={theme}>
-              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-              <CssBaseline />
-              <Component
-                addToCart={productId => this.addToCart(productId)}
-                adjustQuantity={number => this.adjustQuantity(number)}
-                noOfItemToCart={productId => this.noOfItemToCart(productId)}
-                getCartItems={cartId => this.getCartItems(cartId)}
-                placeOrder={cartId => this.placeOrder(cartId)}
-                selectColor={color => this.selectColor(color)}
-                selectSize={selectSize => this.selectSize(selectSize)}
-                removeFromCart={itemId => this.removeFromCart(itemId)}
-                reduceQuantity={(itemId, quantity) =>
-                  this.reduceQuantity(itemId, quantity)
-                }
-                getMoreProducts={() => this.getMoreProducts()}
-                searchProducts={keyword => this.searchProducts(keyword)}
-                searchMoreProducts={keyword => this.searchMoreProducts(keyword)}
-                clearProducts={() => this.clearProducts()}
-                clearOrderStatus={() => this.clearOrderStatus()}
-                saveStripeToken={token => this.saveStripeToken(token)}
-                stripeCharge={() => this.stripeCharge()}
-                setStripe={() => this.setStripe()}
-                getCategoriesByDepartment={depId =>
-                  this.getCategoriesByDepartment(depId)
-                }
-                getProducts={catId => this.getProducts(catId)}
-                getMoreProductsInCategory={catId =>
-                  this.getMoreProductsInCategory(catId)
-                }
-                selectDepartmentName={name => this.selectDepartmentName(name)}
-                {...this.state}
-                {...pageProps}
-              />
-            </ThemeProvider>
-          </Container>
-        </Elements>
-      </StripeProvider>
+      <div>
+      pk_test_NcwpaplBCuTL6I0THD44heRe
+      </div>
+
     )
   }
 }
