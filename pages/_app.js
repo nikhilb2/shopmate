@@ -492,9 +492,7 @@ class MyApp extends App {
             <ThemeProvider theme={theme}>
               {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
               <CssBaseline />
-              <div>
-              test</div>
-              {/*<Component
+              <Component
                 addToCart={productId => this.addToCart(productId)}
                 adjustQuantity={number => this.adjustQuantity(number)}
                 noOfItemToCart={productId => this.noOfItemToCart(productId)}
@@ -524,7 +522,7 @@ class MyApp extends App {
                 selectDepartmentName={name => this.selectDepartmentName(name)}
                 {...this.state}
                 {...pageProps}
-              />*/}
+              />
             </ThemeProvider>
           </Container>
         </Elements>
