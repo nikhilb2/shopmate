@@ -138,7 +138,7 @@ class MyApp extends App {
       if (addToCartResult.length > 0) {
         let totalItems = 0
         let amount = 0
-        addToCartResult.forEach(item => {
+        await addToCartResult.forEach(item => {
           totalItems = totalItems + item.quantity
           amount = amount + item.quantity * item.price
         })
@@ -164,7 +164,7 @@ class MyApp extends App {
       if (addToCartResult.length > 0) {
         let totalItems = 0
         let amount = 0
-        addToCartResult.forEach(item => {
+        await addToCartResult.forEach(item => {
           totalItems = totalItems + item.quantity
           amount = amount + item.quantity * item.price
         })
@@ -180,7 +180,6 @@ class MyApp extends App {
 
   async reduceQuantity(itemId, quantity) {
     const { user } = this.props.pageProps
-
     const removeFromCartResult = await fetchRequestWithoutResponse(
       `shoppingcart/update/${itemId}`,
       {
@@ -188,8 +187,8 @@ class MyApp extends App {
         body: JSON.stringify({ quantity: quantity })
       }
     )
-
-    await this.getCartItems(user.cartId)
+    console.log("getting cart");
+    await this.getCartItems(this.state.cartId)
   }
 
   async removeFromCart(itemId) {
@@ -219,8 +218,15 @@ class MyApp extends App {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const { query } = this.props.router
+    const cartId = await getCartId()
+    if (cartId) {
+      this.setState({cartId})
+      this.getCartItems(cartId)
+    }
+    console.log('cartid');
+    console.log(cartId);
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
