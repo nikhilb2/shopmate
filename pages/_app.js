@@ -423,7 +423,7 @@ class MyApp extends App {
       skip: 2,
       searchInitiated: false,
       param: { name: null },
-      selectColor: null,
+      selectedColor: null,
       selectedSize: null,
       searchSkip: 2,
       keyword: ''
@@ -490,7 +490,7 @@ class MyApp extends App {
               <title>My page</title>
             </Head>
             <ThemeProvider theme={theme}>
-              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+              { /*CssBaseline kickstart an elegant, consistent, and simple baseline to build upon.*/ }
               <CssBaseline />
               <Component
                 addToCart={productId => this.addToCart(productId)}

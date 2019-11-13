@@ -319,6 +319,7 @@ class ItemCard extends Component {
                     attributes.map(attribute => {
                       if (attribute.attribute_name === 'Color') {
                         return (
+                          <div key={attribute.attribute_name}>
                           <Color
                             selection={
                               selectedColor &&
@@ -331,6 +332,7 @@ class ItemCard extends Component {
                             onClick={() => selectColor(attribute)}
                             color={attribute.attribute_value}
                           />
+                          </div>
                         )
                       }
                     })}
