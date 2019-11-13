@@ -314,6 +314,7 @@ class MyApp extends App {
     //console.log(products)
   }
   async getMoreProductsInCategory() {
+    const { query } = this.props.router
     const { searchInitiated } = this.state
     if (searchInitiated) {
       this.searchMoreProducts()
@@ -330,7 +331,7 @@ class MyApp extends App {
       const products = await fetchRequest(
         selectedCategory
           ? `products/inCategory/${selectedCategory}?page=${skip}&limit=${limit}`
-          : `products/inDepartment/${selectedDepartment}?page=${skip}&limit=${limit}`,
+          : `products/inDepartment/${query.depId}?page=${skip}&limit=${limit}`,
         {
           method: 'GET'
         }

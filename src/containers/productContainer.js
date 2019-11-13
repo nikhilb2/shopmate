@@ -113,7 +113,7 @@ class ProductContainer extends Component {
               products.rows.slice(6).map((item, i) => (
                 <div
                   style={{ display: 'flex', margin: '2rem' }}
-                  key={item.product_id}
+                  key={item.product_id + "hidden"}
                 >
                   <ItemCard
                     box={1}
