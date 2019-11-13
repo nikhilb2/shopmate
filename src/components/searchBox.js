@@ -5,7 +5,6 @@ import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import Search from '@material-ui/icons/Search'
 
-import ButtonComp from './button'
 import theme from '../theme'
 
 const styles = {
