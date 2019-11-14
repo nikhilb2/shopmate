@@ -100,7 +100,7 @@ class MyApp extends App {
 
   async getCartItems(cartId) {
     const { user } = this.props.pageProps
-    const cartItems = await fetchRequest(`shoppingcart/${user.cartId}`, {
+    const cartItems = await fetchRequest(`shoppingcart/${this.state.cartId}`, {
       method: 'GET'
     })
     let totalItems = 0
@@ -188,19 +188,31 @@ class MyApp extends App {
       }
     )
     console.log("getting cart");
+    console.log(this.state.cartId);
     await this.getCartItems(this.state.cartId)
   }
 
   async removeFromCart(itemId) {
     const { user } = this.props.pageProps
     //if there's a cartId stored in cookies
-    const removeFromCartResult = await fetchRequestWithoutResponse(
+    const cartItems = await fetchRequestWithoutResponse(
       `shoppingcart/removeProduct/${itemId}`,
       {
         method: 'DELETE'
       }
     )
-    await this.getCartItems(user.cartId)
+    let totalItems = 0
+    let newAmount = 0
+    const letIterate = await cartItems.forEach(item => {
+      ;(totalItems = totalItems + item.quantity),
+        (newAmount = newAmount + Number(item.subtotal))
+    })
+    //console.log(newAmount)
+    this.setState({
+      newTotalItems: totalItems,
+      newCartItems: cartItems,
+      newAmount
+    })
   }
 
   async noOfItemToCart(productId) {
